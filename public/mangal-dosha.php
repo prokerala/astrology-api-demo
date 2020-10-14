@@ -1,0 +1,69 @@
+<?php
+
+declare(strict_types=1);
+
+use Prokerala\Api\Astrology\Location;
+use Prokerala\Common\Api\Exception\QuotaExceededException;
+use Prokerala\Common\Api\Exception\RateLimitExceededException;
+use Prokerala\Common\Api\Exception\ValidationException;
+
+require __DIR__ . '/../vendor/autoload.php';
+
+$client = include __DIR__ . '/../client.php';
+
+$input = [
+    'datetime' => '1967-08-29T09:00:00+05:30',
+    'latitude' => '19.0821978',
+    'longitude' => '72.7411014', // Mumbai
+];
+$coordinates = $input['latitude'] . ',' . $input['longitude'];
+$result_type = 'basic';
+$submit = $_POST['submit'] ?? 0;
+$ayanamsa = 1;
+
+if (isset($_POST['submit'])) {
+    $input['datetime'] = $_POST['datetime'];
+    $result_type = $_POST['result_type'];
+    $coordinates = $_POST['coordinates'];
+    $arCoordinates = explode(',', $coordinates);
+    $input['latitude'] = $arCoordinates[0] ?? '';
+    $input['longitude'] = $arCoordinates[1] ?? '';
+    $ayanamsa = $_POST['ayanamsa'];
+}
+
+$datetime = new DateTimeImmutable($input['datetime']);
+$tz = $datetime->getTimezone();
+
+$location = new Location($input['latitude'], $input['longitude'], 0, $tz);
+
+$result = [];
+$errors = [];
+
+if ($submit) {
+    try {
+        $advanced = 'advanced' === $result_type;
+
+        $method = new \Prokerala\Api\Astrology\Service\MangalDosha($client);
+        $method->setAyanamsa($ayanamsa);
+        $result = $method->process($location, $datetime, $advanced);
+
+        $mangal_dosha_result = [];
+
+        $mangal_dosha_result['has_mangal_dosha'] = $result->hasMangalDosha();
+        $mangal_dosha_result['description'] = $result->getDescription();
+
+        if ($advanced) {
+            $mangal_dosha_result['has_exception'] = $result->hasException();
+            $mangal_dosha_result['mangal_dosha_type'] = $result->getMangalDoshaType();
+
+            $mangal_dosha_result['exceptions'] = $result->getexceptions();
+            $mangal_dosha_result['remedies'] = $result->getRemedies();
+        }
+    } catch (ValidationException $e) {
+        $errors = $e->getValidationErrors();
+    } catch (QuotaExceededException $e) {
+    } catch (RateLimitExceededException $e) {
+    }
+}
+
+include __DIR__ . '/../templates/mangal-dosha.tpl.php';

@@ -1,0 +1,121 @@
+<?php
+
+declare(strict_types=1);
+
+use Prokerala\Api\Astrology\Location;
+use Prokerala\Api\Astrology\Service\Panchang;
+use Prokerala\Common\Api\Exception\QuotaExceededException;
+use Prokerala\Common\Api\Exception\RateLimitExceededException;
+use Prokerala\Common\Api\Exception\ValidationException;
+
+require __DIR__ . '/../vendor/autoload.php';
+
+$client = include __DIR__ . '/../client.php';
+
+$input = [
+    'datetime' => '1967-08-29T09:00:00+05:30',
+    'latitude' => '19.0821978',
+    'longitude' => '72.7411014', // Mumbai
+];
+$coordinates = $input['latitude'] . ',' . $input['longitude'];
+$submit = $_POST['submit'] ?? 0;
+$ayanamsa = 1;
+$result_type = 'basic';
+
+if (isset($_POST['submit'])) {
+    $input['datetime'] = $_POST['datetime'];
+    $coordinates = $_POST['coordinates'];
+    $result_type = $_POST['result_type'];
+    $arCoordinates = explode(',', $coordinates);
+    $input['latitude'] = $arCoordinates[0] ?? '';
+    $input['longitude'] = $arCoordinates[1] ?? '';
+    $ayanamsa = $_POST['ayanamsa'];
+}
+
+$datetime = new DateTimeImmutable($input['datetime']);
+$tz = $datetime->getTimezone();
+
+$location = new Location($input['latitude'], $input['longitude'], 0, $tz);
+
+$result = [];
+$errors = [];
+
+if ($submit) {
+    try {
+        $advanced = 'advanced' === $result_type;
+
+        $method = new Panchang($client);
+        $method->setAyanamsa($ayanamsa);
+        $result = $method->process($location, $datetime, $advanced);
+
+        $panchangResult = [
+            'sunrise' => $result->getSunrise(),
+            'sunset' => $result->getSunset(),
+            'moonrise' => $result->getMoonrise(),
+            'moonset' => $result->getMoonset(),
+            'vaara' => $result->getVaara(),
+        ];
+
+        $panchang = [];
+        $panchang['Nakshatra'] = $result->getNakshatra();
+        $panchang['Tithi'] = $result->getTithi();
+        $panchang['Karana'] = $result->getKarana();
+        $panchang['Yoga'] = $result->getYoga();
+
+        $data_list = ['Nakshatra', 'Tithi', 'Karana', 'Yoga'];
+
+        foreach ($data_list as $key) {
+            foreach ($panchang[$key] as $idx => $data) {
+                $panchangResult[$key][$idx] = [
+                    'id' => $data->getId(),
+                    'name' => $data->getName(),
+                    'start' => $data->getStart(),
+                    'end' => $data->getEnd(),
+                ];
+                if($key === 'Nakshatra'){
+                    $panchangResult[$key][$idx]['nakshatra_lord'] = $data->getLord();
+                }
+            }
+        }
+
+        $auspicious_fields = ['abhijitMuhurat', 'amritKaal', 'brahmaMuhurat'];
+        $inauspicious_fields = ['rahuKaal', 'yamagandaKaal', 'gulikaKaal', 'durMuhurat', 'varjyam'];
+
+        $auspiciousPeriod = [];
+        $inAuspiciousPeriod = [];
+
+        if ($advanced) {
+            $auspicious_periods = $result->getAuspiciousPeriod();
+            $inauspicious_period = $result->getInauspiciousPeriod();
+
+            foreach ($auspicious_periods as $data){
+                $field = $data->getName();
+                $periods = $data->getPeriod();
+                foreach ($periods as $period){
+                    $auspiciousPeriod[$field][] = [
+                        'start' => $period->getStart(),
+                        'end' => $period->getEnd(),
+                    ];
+                }
+
+            }
+
+            foreach ($inauspicious_period as $data){
+                $field = $data->getName();
+                $periods = $data->getPeriod();
+                foreach ($periods as $period){
+                    $inAuspiciousPeriod[$field][] = [
+                        'start' => $period->getStart(),
+                        'end' => $period->getEnd(),
+                    ];
+                }
+            }
+        }
+
+    } catch (ValidationException $e) {
+        $errors = $e->getValidationErrors();
+    } catch (QuotaExceededException $e) {
+    } catch (RateLimitExceededException $e) {
+    }
+}
+include __DIR__ . '/../templates/panchang.tpl.php';

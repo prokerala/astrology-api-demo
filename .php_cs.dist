@@ -1,0 +1,32 @@
+<?php
+
+$finder = PhpCsFixer\Finder::create()
+    ->exclude('tests/Fixtures')
+    ->in(__DIR__)
+    ->append([__DIR__.'/php-cs-fixer'])
+;
+
+$config = PhpCsFixer\Config::create()
+    ->setRiskyAllowed(true)
+    ->setRules([
+        '@PSR1' => true,
+        '@PSR2' => true,
+        '@Symfony' => true,
+        '@PHP56Migration' => true,
+        '@PHPUnit60Migration:risky' => true,
+        '@PhpCsFixer' => true,
+        '@PhpCsFixer:risky' => true,
+        'cast_spaces' => ['space' => 'none'],
+        'concat_space' => ['spacing' => 'one'],
+        'list_syntax' => ['syntax' => 'short'],
+        'semicolon_after_instruction' => false,
+        'no_short_echo_tag' => false,
+        'no_alternative_syntax' => false,
+        'phpdoc_no_empty_return' => false,
+        'phpdoc_no_alias_tag' => false,
+        'phpdoc_add_missing_param_annotation' => false,
+    ])
+    ->setFinder($finder)
+;
+
+return $config;

@@ -13,6 +13,14 @@ const CLIENT_SECRET = 'YOUR_CLIENT_SECRET';
 $psr17Factory = new Psr17Factory();
 $httpClient = new PsrHttpClient();
 
-$authClient = new Oauth2(CLIENT_ID, CLIENT_SECRET, $httpClient, $psr17Factory, $psr17Factory);
+$clientId = CLIENT_ID;
+$clientSecret = CLIENT_SECRET;
+
+if ('YOUR_CLIENT_ID' === $clientId && isset($_ENV['DEMO_CLIENT_ID'])) {
+    $clientId = $_ENV['DEMO_CLIENT_ID'];
+    $clientSecret = $_ENV['DEMO_CLIENT_SECRET'];
+}
+
+$authClient = new Oauth2($clientId, $clientSecret, $httpClient, $psr17Factory, $psr17Factory);
 
 return new Client($authClient, $httpClient, $psr17Factory);

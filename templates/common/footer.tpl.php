@@ -124,7 +124,7 @@
                                 <a class="dropdown-item rounded-1" href="/demo/kundli.php">Kundli</a>
                                 <a class="dropdown-item rounded-1" href="/demo/kundli-matching.php">Kundli Matching</a>
                                 <a class="dropdown-item rounded-1" href="/demo/mangal-dosha.php">Mangal Dosha</a>
-                                <a class="dropdown-item rounded-1" href="/demo/nakshatra.php">Nakshatra</a>
+                                <a class="dropdown-item rounded-1" href="/demo/birth-details.php">Birth Details</a>
                                 <a class="dropdown-item rounded-1" href="/demo/nakshatra-porutham.php">Nakshatra Porutham</a>
                                 <a class="dropdown-item rounded-1" href="/demo/panchang.php">Panchang</a>
                                 <a class="dropdown-item rounded-1" href="/demo/papasamyam-check.php">Papasamyam Check</a>

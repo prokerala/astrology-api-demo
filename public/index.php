@@ -42,9 +42,9 @@ $samples = [
         'url' => '/demo/mangal-dosha.php',
     ],
     [
-        'image' => '/assets/img/icon/nakshatra.png',
-        'title' => 'Nakshatra',
-        'url' => '/demo/nakshtra.php',
+        'image' => '/assets/img/icon/birth-details.png',
+        'title' => 'Birth Details',
+        'url' => '/demo/birth-details.php',
     ],
     [
         'image' => '/assets/img/icon/nakshatra-porutham.png',

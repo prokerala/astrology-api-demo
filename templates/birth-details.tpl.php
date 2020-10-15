@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Nakshatra | Prokerala API</title>
+    <title>Birth Details | Prokerala API</title>
 
     <link rel="stylesheet" href="/build/style.css">
 
@@ -20,7 +20,7 @@
             <div class="row my-auto">
                 <div class="col-xl-6 col-lg-7 col-md-12 col-sm-12 text-lg-left top-header-text-content">
                     <h2 class="text-white mb-5">
-                        <span class="font-weight-thin">Nakshatra</span>
+                        <span class="font-weight-thin">Birth Details</span>
                     </h2>
                 </div>
             </div>

@@ -23,7 +23,7 @@ $chart_type = 'rasi';
 $coordinates = $input['latitude'] . ',' . $input['longitude'];
 $submit = $_POST['submit'] ?? 0;
 $ayanamsa = 1;
-$chart_style = 'south_indian';
+$chart_style = 'south-indian';
 
 if ($submit) {
     $input['datetime'] = $_POST['datetime'];

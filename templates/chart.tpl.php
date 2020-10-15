@@ -30,10 +30,12 @@
     <div class="container demo-container">
 
         <?php if (!empty($result)): ?>
-        <div class="text-center m-auto">
-            <h3><?=ucwords($chart_type). ' Chart'?></h3>
-            <?php echo $result;?>
-        </div>
+            <div class="row">
+                <div class="text-center m-auto col-12 overflow-auto">
+                    <h3><?=ucwords($chart_type). ' Chart'?></h3>
+                    <?php echo $result;?>
+                </div>
+            </div>
 
         <?php elseif (!empty($errors)):?>
             <?php foreach ($errors as $key => $error):?>
@@ -65,9 +67,9 @@
                         <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Chart Style</label>
                         <div class="col-sm-9 col-md-6">
                             <select name="chart_style" class="form-control form-control-lg rounded-1">
-                                <option value="south_indian" <?='south_indian' === $chart_style ? 'selected' : ''?>>South Indian</option>
-                                <option value="north_indian" <?='north_indian' === $chart_style ? 'selected' : ''?>>North Indian</option>
-                                <option value="east_indian" <?='east_indian' === $chart_style ? 'selected' : ''?>>East Indian</option>
+                                <option value="south-indian" <?='south-indian' === $chart_style ? 'selected' : ''?>>South Indian</option>
+                                <option value="north-indian" <?='north-indian' === $chart_style ? 'selected' : ''?>>North Indian</option>
+                                <option value="east-indian" <?='east-indian' === $chart_style ? 'selected' : ''?>>East Indian</option>
                             </select>
                         </div>
                     </div>

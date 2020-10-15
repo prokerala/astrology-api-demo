@@ -15,6 +15,13 @@ require __DIR__ . '/../vendor/autoload.php';
 $client = include __DIR__ . '/../client.php';
 $time_now = new DateTimeImmutable();
 
+$arChartType = [
+    "rasi", "navamsa", "lagna", "trimsamsa", "drekkana", "chaturthamsa",
+    "dasamsa", "ashtamsa", "dwadasamsa", "shodasamsa", "hora", "akshavedamsa",
+    "shashtyamsa", "panchamsa", "khavedamsa", "saptavimsamsa", "shashtamsa",
+    "chaturvimsamsa", "saptamsa", "vimsamsa"
+];
+
 $input = [
     'datetime' => $time_now->format('c'),
     'latitude' => '19.0821978',

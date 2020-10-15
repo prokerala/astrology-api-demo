@@ -57,9 +57,9 @@
                         <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Chart Type</label>
                         <div class="col-sm-9 col-md-6">
                             <select name="chart_type" class="form-control form-control-lg rounded-1">
-                                <option value="rasi" <?='rasi' === $chart_type ? 'selected' : ''?>>Rasi</option>
-                                <option value="lagna" <?='lagna' === $chart_type ? 'selected' : ''?>>Lagna</option>
-                                <option value="navamsa" <?='navamsa' === $chart_type ? 'selected' : ''?>>Navamsa</option>
+                                <?php foreach($arChartType as $chart):?>
+                                    <option value="<?=$chart?>" <?= $chart === $chart_type ? 'selected' : ''?>><?= ucwords($chart)?></option>
+                                <?php endforeach;?>
                             </select>
                         </div>
                     </div>

@@ -67,10 +67,14 @@
             <?php endif; ?>
 
         <?php elseif (!empty($errors)):?>
-            <?php foreach ($errors as $error):?>
+            <?php foreach ($errors as $key => $error):?>
                 <div class="alert alert-danger text-small">
-                    <?=$error->title; ?>:
-                    <?=$error->detail?>
+                    <?php if($key == 'message'):?>
+                        <?=$error?>
+                    <?php else:?>
+                        <?=$error->title ?? ''; ?>:
+                        <?=$error->detail ?? ''?>
+                    <?php endif;?>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>

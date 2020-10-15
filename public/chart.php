@@ -7,6 +7,8 @@ use Prokerala\Api\Astrology\Service\Chart;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
 use Prokerala\Common\Api\Exception\RateLimitExceededException;
 use Prokerala\Common\Api\Exception\ValidationException;
+use Prokerala\Common\Api\Exception\AuthenticationException;
+use Prokerala\Common\Api\Exception\Exception;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -50,7 +52,13 @@ if($submit){
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {
+        $errors['message'] = 'ERROR: You have exceeded your quota allocation for the day';
     } catch (RateLimitExceededException $e) {
+        $errors['message'] = 'ERROR: Rate limit exceeded. Throttle your requests.';
+    } catch (AuthenticationException $e) {
+        $errors = ['message' => $e->getMessage()];
+    } catch (Exception $e){
+        $errors = ['message' => "API Request Failed with error {$e->getMessage()}"];
     }
 }
 

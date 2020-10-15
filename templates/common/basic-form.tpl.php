@@ -10,7 +10,7 @@
 <div class="form-group row">
     <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Date and Time:</label>
     <div class="col-sm-9 col-md-6 ">
-        <input type='datetime-local' name="datetime" class="form-control form-control-lg rounded-1" placeholder="DD-MM-YYYY" required="required" value="<?=$datetime->format('Y-m-d\Th:i')?>"/>
+        <input type='datetime-local' name="datetime" class="form-control form-control-lg rounded-1" required="required" value="<?=$datetime->format('Y-m-d\Th:i')?>"/>
     </div>
 </div>
 

@@ -14,15 +14,16 @@ use Prokerala\Common\Api\Exception\Exception;
 require __DIR__ . '/../vendor/autoload.php';
 
 $client = include __DIR__ . '/../client.php';
+$time_now = new DateTimeImmutable();
 
 $girl_input = [
-    'datetime' => '1992-08-29T09:00:00+05:30',
+    'datetime' => $time_now->format('c'),
     'latitude' => '19.0821978',
     'longitude' => '72.7411014',
 ];
 
 $boy_input = [
-    'datetime' => '1989-03-14T10:50:00+05:30',
+    'datetime' => $time_now->format('c'),
     'latitude' => '8.0864019',
     'longitude' => '77.5371157',
 ];

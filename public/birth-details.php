@@ -73,4 +73,4 @@ if ($submit) {
     }
 }
 
-include __DIR__ . '/../templates/nakshatra.tpl.php';
+include __DIR__ . '/../templates/birth-details.tpl.php';

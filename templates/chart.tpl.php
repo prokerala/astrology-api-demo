@@ -32,20 +32,20 @@
         <?php if (!empty($result)): ?>
             <div class="row">
                 <div class="text-center m-auto col-12 overflow-auto">
-                    <h3><?=ucwords($chart_type). ' Chart'?></h3>
-                    <?php echo $result;?>
+                    <h3><?=ucwords($chart_type) . ' Chart'?></h3>
+                    <?php echo $result; ?>
                 </div>
             </div>
 
         <?php elseif (!empty($errors)):?>
             <?php foreach ($errors as $key => $error):?>
                 <div class="alert alert-danger text-small">
-                    <?php if($key === 'message'):?>
+                    <?php if ('message' === $key):?>
                         <?=$error?>
                     <?php else:?>
                         <?=$error->title ?? ''; ?>:
                         <?=$error->detail ?? ''?>
-                    <?php endif;?>
+                    <?php endif; ?>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
@@ -57,9 +57,9 @@
                         <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Chart Type</label>
                         <div class="col-sm-9 col-md-6">
                             <select name="chart_type" class="form-control form-control-lg rounded-1">
-                                <?php foreach($arChartType as $chart):?>
+                                <?php foreach ($arChartType as $chart):?>
                                     <option value="<?=$chart?>" <?= $chart === $chart_type ? 'selected' : ''?>><?= ucwords($chart)?></option>
-                                <?php endforeach;?>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                     </div>

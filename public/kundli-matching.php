@@ -5,11 +5,11 @@ declare(strict_types=1);
 use Prokerala\Api\Astrology\Location;
 use Prokerala\Api\Astrology\Profile;
 use Prokerala\Api\Astrology\Service\KundliMatching;
+use Prokerala\Common\Api\Exception\AuthenticationException;
+use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
 use Prokerala\Common\Api\Exception\RateLimitExceededException;
 use Prokerala\Common\Api\Exception\ValidationException;
-use Prokerala\Common\Api\Exception\AuthenticationException;
-use Prokerala\Common\Api\Exception\Exception;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -66,7 +66,6 @@ $boy_location = new Location($boy_input['latitude'], $boy_input['longitude']);
 $boy_dob = new DateTimeImmutable($boy_input['datetime']);
 $boy_profile = new Profile($boy_location, $boy_dob);
 
-
 $result = [];
 $errors = [];
 
@@ -93,12 +92,12 @@ if ($submit) {
                 'id' => $girl_nakshatra->getId(),
                 'Nakshatra' => $girl_nakshatra->getName(),
                 'Nakshatra Pada' => $girl_nakshatra->getPada(),
-                'Nakshatra Lord' => $girl_nakshatra->getLord()->getName().' ('.$girl_nakshatra->getLord()->getVedicName().')',
+                'Nakshatra Lord' => $girl_nakshatra->getLord()->getName() . ' (' . $girl_nakshatra->getLord()->getVedicName() . ')',
             ],
             'rasi' => [
                 'id' => $girl_rasi->getId(),
                 'Rasi' => $girl_rasi->getName(),
-                'Rasi Lord' => $girl_rasi->getLord()->getName().' ('.$girl_rasi->getLord()->getVedicName().')',
+                'Rasi Lord' => $girl_rasi->getLord()->getName() . ' (' . $girl_rasi->getLord()->getVedicName() . ')',
             ],
         ];
 
@@ -107,12 +106,12 @@ if ($submit) {
                 'id' => $boy_nakshatra->getId(),
                 'Nakshatra' => $boy_nakshatra->getName(),
                 'Nakshatra Pada' => $boy_nakshatra->getPada(),
-                'Nakshatra Lord' => $boy_nakshatra->getLord()->getName().' ('.$boy_nakshatra->getLord()->getVedicName().')',
+                'Nakshatra Lord' => $boy_nakshatra->getLord()->getName() . ' (' . $boy_nakshatra->getLord()->getVedicName() . ')',
             ],
             'rasi' => [
                 'id' => $boy_rasi->getId(),
                 'Rasi' => $boy_rasi->getName(),
-                'Rasi Lord' => $boy_rasi->getLord()->getName().' ('.$boy_rasi->getLord()->getVedicName().')',
+                'Rasi Lord' => $boy_rasi->getLord()->getName() . ' (' . $boy_rasi->getLord()->getVedicName() . ')',
             ],
         ];
 
@@ -132,7 +131,6 @@ if ($submit) {
         $compatibilityResult['gunaMilan']['maximumPoints'] = $gunaMilan->getMaximumPoints();
 
         if ($advanced) {
-
             foreach ($gunaMilan->getKoot() as $koot) {
                 $compatibilityResult['gunaMilan'][$koot->getName()] = [
                     'maximumPoints' => $koot->getMaximumPoints(),
@@ -160,7 +158,7 @@ if ($submit) {
         $errors['message'] = 'ERROR: Rate limit exceeded. Throttle your requests.';
     } catch (AuthenticationException $e) {
         $errors = ['message' => $e->getMessage()];
-    } catch (Exception $e){
+    } catch (Exception $e) {
         $errors = ['message' => "API Request Failed with error {$e->getMessage()}"];
     }
 }

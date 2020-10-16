@@ -34,26 +34,26 @@
                 <tr>
                     <th>#</th>
                     <th>Porutham</th>
-                    <?php if($result_type === 'advanced'): ?>
+                    <?php if ('advanced' === $result_type): ?>
                         <th>Status</th>
                     <?php endif; ?>
                     <th class="text-center">Obtained Point</th>
                 </tr>
                 <?php foreach ($compatibilityResult['Matches'] as $idx => $data):?>
-                    <tr><td><?=$idx+1?></td><td><?=$data['name']?></td>
-                        <?php if($result_type === 'advanced'):?>
+                    <tr><td><?=$idx + 1?></td><td><?=$data['name']?></td>
+                        <?php if ('advanced' === $result_type):?>
                             <td>
-                                <?=$data['poruthamStatus'] === 'Good' ? '<span class="text-success">Good</span>' :
-                                    ($data['poruthamStatus'] === 'Bad' ? '<span class="text-danger">Bad</span>' :
+                                <?='Good' === $data['poruthamStatus'] ? '<span class="text-success">Good</span>' :
+                                    ('Bad' === $data['poruthamStatus'] ? '<span class="text-danger">Bad</span>' :
                                         '<span class="text-warning">Satisfactory</span>')?></td>
                             <td class="text-center"><?=$data['points'] ? 1 : 0?></td>
                         <?php else:?>
                             <td class="text-center"><?=$data['hasPorutham'] ? 1 : 0?></td>
-                        <?php endif;?>
+                        <?php endif; ?>
                     </tr>
                 <?php endforeach; ?>
                 <tr class="text-center">
-                    <th colspan="<?=$result_type === 'advanced' ? 3 : 2?>">Total Points:</th>
+                    <th colspan="<?='advanced' === $result_type ? 3 : 2?>">Total Points:</th>
                     <th><?=$compatibilityResult['ObtainedPoint']?> / <?=$compatibilityResult['maximumPoint']?></th>
                 </tr>
             </table>
@@ -69,12 +69,12 @@
         <?php elseif (!empty($errors)):?>
             <?php foreach ($errors as $key => $error):?>
                 <div class="alert alert-danger text-small">
-                    <?php if($key == 'message'):?>
+                    <?php if ('message' === $key):?>
                         <?=$error?>
                     <?php else:?>
                         <?=$error->title ?? ''; ?>:
                         <?=$error->detail ?? ''?>
-                    <?php endif;?>
+                    <?php endif; ?>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
@@ -89,7 +89,7 @@
                                     <div class="col-sm-9 col-md-6">
                                         <select name="girl_nakshatra" class="form-control form-control-lg rounded-1">
                                             <?php foreach ($nakshatraList as $nakshatraId => $nakshatra):?>
-                                                <option value="<?=$nakshatraId?>" <?= $nakshatraId == $girl_nakshatra ? 'selected' : ''?>><?=$nakshatra?></option>
+                                                <option value="<?=$nakshatraId?>" <?= $nakshatraId === $girl_nakshatra ? 'selected' : ''?>><?=$nakshatra?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
@@ -99,7 +99,7 @@
                                     <div class="col-sm-9 col-md-6">
                                         <select name="girl_nakshatra_pada" class="form-control form-control-lg rounded-1">
                                             <?php foreach ($nakshatraPadaList as $nakshatraPadaId => $nakshatraPada):?>
-                                                <option value="<?=$nakshatraPadaId?>" <?= $nakshatraPadaId == $girl_nakshatra_pada ? 'selected' : ''?>><?=$nakshatraPada?></option>
+                                                <option value="<?=$nakshatraPadaId?>" <?= $nakshatraPadaId === $girl_nakshatra_pada ? 'selected' : ''?>><?=$nakshatraPada?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
@@ -112,7 +112,7 @@
                                     <div class="col-sm-9 col-md-6">
                                         <select name="boy_nakshatra" class="form-control form-control-lg rounded-1">
                                             <?php foreach ($nakshatraList as $nakshatraId => $nakshatra):?>
-                                                <option value="<?=$nakshatraId?>" <?= $nakshatraId == $boy_nakshatra ? 'selected' : ''?>><?=$nakshatra?></option>
+                                                <option value="<?=$nakshatraId?>" <?= $nakshatraId === $boy_nakshatra ? 'selected' : ''?>><?=$nakshatra?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
@@ -122,7 +122,7 @@
                                     <div class="col-sm-9 col-md-6">
                                         <select name="boy_nakshatra_pada" class="form-control form-control-lg rounded-1">
                                             <?php foreach ($nakshatraPadaList as $nakshatraPadaId => $nakshatraPada):?>
-                                                <option value="<?=$nakshatraPadaId?>" <?= $nakshatraPadaId == $boy_nakshatra_pada ? 'selected' : ''?>><?=$nakshatraPada?></option>
+                                                <option value="<?=$nakshatraPadaId?>" <?= $nakshatraPadaId === $boy_nakshatra_pada ? 'selected' : ''?>><?=$nakshatraPada?></option>
                                             <?php endforeach; ?>
                                         </select>
                                     </div>

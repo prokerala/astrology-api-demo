@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 use Prokerala\Api\Astrology\Location;
 use Prokerala\Api\Astrology\Service\Panchang;
+use Prokerala\Common\Api\Exception\AuthenticationException;
+use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
 use Prokerala\Common\Api\Exception\RateLimitExceededException;
 use Prokerala\Common\Api\Exception\ValidationException;
-use Prokerala\Common\Api\Exception\AuthenticationException;
-use Prokerala\Common\Api\Exception\Exception;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -75,7 +75,7 @@ if ($submit) {
                     'start' => $data->getStart(),
                     'end' => $data->getEnd(),
                 ];
-                if($key === 'Nakshatra'){
+                if ('Nakshatra' === $key) {
                     $panchangResult[$key][$idx]['nakshatra_lord'] = $data->getLord();
                 }
             }
@@ -91,22 +91,21 @@ if ($submit) {
             $auspicious_periods = $result->getAuspiciousPeriod();
             $inauspicious_period = $result->getInauspiciousPeriod();
 
-            foreach ($auspicious_periods as $data){
+            foreach ($auspicious_periods as $data) {
                 $field = $data->getName();
                 $periods = $data->getPeriod();
-                foreach ($periods as $period){
+                foreach ($periods as $period) {
                     $auspiciousPeriod[$field][] = [
                         'start' => $period->getStart(),
                         'end' => $period->getEnd(),
                     ];
                 }
-
             }
 
-            foreach ($inauspicious_period as $data){
+            foreach ($inauspicious_period as $data) {
                 $field = $data->getName();
                 $periods = $data->getPeriod();
-                foreach ($periods as $period){
+                foreach ($periods as $period) {
                     $inAuspiciousPeriod[$field][] = [
                         'start' => $period->getStart(),
                         'end' => $period->getEnd(),
@@ -114,7 +113,6 @@ if ($submit) {
                 }
             }
         }
-
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {
@@ -123,7 +121,7 @@ if ($submit) {
         $errors['message'] = 'ERROR: Rate limit exceeded. Throttle your requests.';
     } catch (AuthenticationException $e) {
         $errors = ['message' => $e->getMessage()];
-    } catch (Exception $e){
+    } catch (Exception $e) {
         $errors = ['message' => "API Request Failed with error {$e->getMessage()}"];
     }
 }

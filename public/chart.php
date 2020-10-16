@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 use Prokerala\Api\Astrology\Location;
 use Prokerala\Api\Astrology\Service\Chart;
+use Prokerala\Common\Api\Exception\AuthenticationException;
+use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
 use Prokerala\Common\Api\Exception\RateLimitExceededException;
 use Prokerala\Common\Api\Exception\ValidationException;
-use Prokerala\Common\Api\Exception\AuthenticationException;
-use Prokerala\Common\Api\Exception\Exception;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -16,10 +16,10 @@ $client = include __DIR__ . '/../client.php';
 $time_now = new DateTimeImmutable();
 
 $arChartType = [
-    "rasi", "navamsa", "lagna", "trimsamsa", "drekkana", "chaturthamsa",
-    "dasamsa", "ashtamsa", "dwadasamsa", "shodasamsa", "hora", "akshavedamsa",
-    "shashtyamsa", "panchamsa", "khavedamsa", "saptavimsamsa", "shashtamsa",
-    "chaturvimsamsa", "saptamsa", "vimsamsa"
+    'rasi', 'navamsa', 'lagna', 'trimsamsa', 'drekkana', 'chaturthamsa',
+    'dasamsa', 'ashtamsa', 'dwadasamsa', 'shodasamsa', 'hora', 'akshavedamsa',
+    'shashtyamsa', 'panchamsa', 'khavedamsa', 'saptavimsamsa', 'shashtamsa',
+    'chaturvimsamsa', 'saptamsa', 'vimsamsa',
 ];
 
 $input = [
@@ -51,12 +51,11 @@ $location = new Location($input['latitude'], $input['longitude'], 0, $tz);
 $result = [];
 $errors = [];
 
-if($submit){
+if ($submit) {
     try {
         $method = new Chart($client);
         $method->setAyanamsa($ayanamsa);
         $result = $method->process($location, $datetime, $chart_type, $chart_style);
-
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {
@@ -65,7 +64,7 @@ if($submit){
         $errors['message'] = 'ERROR: Rate limit exceeded. Throttle your requests.';
     } catch (AuthenticationException $e) {
         $errors = ['message' => $e->getMessage()];
-    } catch (Exception $e){
+    } catch (Exception $e) {
         $errors = ['message' => "API Request Failed with error {$e->getMessage()}"];
     }
 }

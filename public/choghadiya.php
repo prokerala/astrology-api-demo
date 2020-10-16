@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 use Prokerala\Api\Astrology\Location;
 use Prokerala\Api\Astrology\Service\Choghadiya;
+use Prokerala\Common\Api\Exception\AuthenticationException;
+use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
 use Prokerala\Common\Api\Exception\RateLimitExceededException;
 use Prokerala\Common\Api\Exception\ValidationException;
-use Prokerala\Common\Api\Exception\AuthenticationException;
-use Prokerala\Common\Api\Exception\Exception;
 
 require __DIR__ . '/../vendor/autoload.php';
 $client = include __DIR__ . '/../client.php';
@@ -40,7 +40,7 @@ $location = new Location($input['latitude'], $input['longitude'], 0, $tz);
 $result = [];
 $errors = [];
 
-if($submit){
+if ($submit) {
     try {
         $method = new Choghadiya($client);
         $method->setAyanamsa($ayanamsa);
@@ -50,8 +50,7 @@ if($submit){
 
         $choghadiyaResult = [];
 
-        foreach ($arData as $data)
-        {
+        foreach ($arData as $data) {
             $choghadiyaResult[$data->getIsDay()][] = [
                 'id' => $data->getId(),
                 'name' => $data->getName(),
@@ -70,7 +69,7 @@ if($submit){
         $errors['message'] = 'ERROR: Rate limit exceeded. Throttle your requests.';
     } catch (AuthenticationException $e) {
         $errors = ['message' => $e->getMessage()];
-    } catch (Exception $e){
+    } catch (Exception $e) {
         $errors = ['message' => "API Request Failed with error {$e->getMessage()}"];
     }
 }

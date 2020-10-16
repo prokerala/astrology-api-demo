@@ -88,4 +88,4 @@ $samples = [
     ],
 ];
 
-include __DIR__.'/../templates/home.tpl.php';
+include __DIR__ . '/../templates/home.tpl.php';

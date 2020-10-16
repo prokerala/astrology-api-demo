@@ -74,20 +74,20 @@
                 <tr><th colspan="7" class="text-center">Total Papa Points : <?=$papaSamyamCheckResult['boyPapasamyam']['total_point']?></th> </tr>
             </table>
             <div class="alert  p-4 text-center
-            <?=$papaSamyamCheckResult['status'] === 'Excellent' ? 'alert-success' :
-                ($papaSamyamCheckResult['status'] === 'Satisfactory' ? 'alert-warning' : 'alert-danger')?>" role="alert">
+            <?='Excellent' === $papaSamyamCheckResult['status'] ? 'alert-success' :
+                ('Satisfactory' === $papaSamyamCheckResult['status'] ? 'alert-warning' : 'alert-danger')?>" role="alert">
                 Papasamyam for this couple is <b><?=$papaSamyamCheckResult['status']?></b><br>
                 <?=$papaSamyamCheckResult['message']?>
             </div>
         <?php elseif (!empty($errors)):?>
             <?php foreach ($errors as $key => $error):?>
                 <div class="alert alert-danger text-small">
-                    <?php if($key == 'message'):?>
+                    <?php if ('message' === $key):?>
                         <?=$error?>
                     <?php else:?>
                         <?=$error->title ?? ''; ?>:
                         <?=$error->detail ?? ''?>
-                    <?php endif;?>
+                    <?php endif; ?>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
@@ -99,8 +99,8 @@
                         <label class="col-sm-3 col-md-4 col-form-label  text-xs-left">Ayanamsa</label>
                         <div class="col-sm-9 col-md-6">
                             <select name="ayanamsa" class="form-control form-control-lg rounded-1">
-                                <option value="1" <?=$ayanamsa == 1 ? 'selected' :''?>>Lahiri</option>
-                                <option value="3" <?=$ayanamsa == 3 ? 'selected' :''?>>Raman</option>
+                                <option value="1" <?=1 === $ayanamsa ? 'selected' : ''?>>Lahiri</option>
+                                <option value="3" <?=3 === $ayanamsa ? 'selected' : ''?>>Raman</option>
                             </select>
                         </div>
                     </div>

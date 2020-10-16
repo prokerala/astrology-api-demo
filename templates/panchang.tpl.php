@@ -46,10 +46,10 @@
                         <?php foreach ($data as $idx => $value):?>
                             <span class="text-black d-block"><?=$value['name']?>
 
-                            <?php if($key === 'Nakshatra'):?>
+                            <?php if ('Nakshatra' === $key):?>
                                 (Lord: <?= $value['nakshatra_lord']?>) :
-                            <?php endif;?>
-                                <?=$value['start']->format('h:i A'). ' - '.$value['end']->format('h:i A')?></span>
+                            <?php endif; ?>
+                                <?=$value['start']->format('h:i A') . ' - ' . $value['end']->format('h:i A')?></span>
                         <?php endforeach; ?>
 
                     <?php elseif ('vaara' === $key):?>
@@ -90,12 +90,12 @@
         <?php elseif (!empty($errors)):?>
             <?php foreach ($errors as $key => $error):?>
                 <div class="alert alert-danger text-small">
-                    <?php if($key == 'message'):?>
+                    <?php if ('message' === $key):?>
                         <?=$error?>
                     <?php else:?>
                         <?=$error->title ?? ''; ?>:
                         <?=$error->detail ?? ''?>
-                    <?php endif;?>
+                    <?php endif; ?>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>

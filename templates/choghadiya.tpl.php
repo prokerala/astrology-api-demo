@@ -45,8 +45,8 @@
                     <tr><th>Name</th><th>Type</th><th>Start</th><th>End</th></tr>
 
                 <?php foreach ($choghadiya as $data):?>
-                    <tr class="<?= $data['type'] === 'Good' ? 'table-warning' : ($data['type'] === 'Inauspicious' ? 'table-danger' : 'table-success')?>">
-                        <td><?=$data['name']?><br><i><?= $data['vela']? : ''?></i></td>
+                    <tr class="<?= 'Good' === $data['type'] ? 'table-warning' : ('Inauspicious' === $data['type'] ? 'table-danger' : 'table-success')?>">
+                        <td><?=$data['name']?><br><i><?= $data['vela'] ?: ''?></i></td>
                         <td><?= $data['type']?></td>
                         <td><?= $data['start']->format('h:i:A')?></td>
                         <td><?= $data['end']->format('h:i:A')?></td>
@@ -59,15 +59,15 @@
 
         </div>
 
-        <?php elseif (!empty($errors)):?>
+        <?php elseif (!empty($errors)) : ?>
             <?php foreach ($errors as $key => $error):?>
                 <div class="alert alert-danger text-small">
-                    <?php if($key == 'message'):?>
+                    <?php if ('message' === $key):?>
                         <?=$error?>
                     <?php else:?>
                         <?=$error->title ?? ''; ?>:
                         <?=$error->detail ?? ''?>
-                    <?php endif;?>
+                    <?php endif; ?>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>

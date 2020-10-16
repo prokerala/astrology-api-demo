@@ -5,11 +5,11 @@ declare(strict_types=1);
 use Prokerala\Api\Astrology\Location;
 use Prokerala\Api\Astrology\Profile;
 use Prokerala\Api\Astrology\Service\PapaSamyamCheck;
+use Prokerala\Common\Api\Exception\AuthenticationException;
+use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
 use Prokerala\Common\Api\Exception\RateLimitExceededException;
 use Prokerala\Common\Api\Exception\ValidationException;
-use Prokerala\Common\Api\Exception\AuthenticationException;
-use Prokerala\Common\Api\Exception\Exception;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -118,10 +118,9 @@ if ($submit) {
         $errors['message'] = 'ERROR: Rate limit exceeded. Throttle your requests.';
     } catch (AuthenticationException $e) {
         $errors = ['message' => $e->getMessage()];
-    } catch (Exception $e){
+    } catch (Exception $e) {
         $errors = ['message' => "API Request Failed with error {$e->getMessage()}"];
     }
 }
-
 
 include __DIR__ . '/../templates/papasamyam-check.tpl.php';

@@ -5,11 +5,11 @@ declare(strict_types=1);
 use Prokerala\Api\Astrology\Location;
 use Prokerala\Api\Astrology\Profile;
 use Prokerala\Api\Astrology\Service\Porutham;
+use Prokerala\Common\Api\Exception\AuthenticationException;
+use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
 use Prokerala\Common\Api\Exception\RateLimitExceededException;
 use Prokerala\Common\Api\Exception\ValidationException;
-use Prokerala\Common\Api\Exception\AuthenticationException;
-use Prokerala\Common\Api\Exception\Exception;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -67,12 +67,10 @@ $boy_location = new Location($boy_input['latitude'], $boy_input['longitude']);
 $boy_dob = new DateTimeImmutable($boy_input['datetime']);
 $boy_profile = new Profile($boy_location, $boy_dob);
 
-
-
 $result = [];
 $errors = [];
 
-if($submit){
+if ($submit) {
     try {
         $advanced = 'advanced' === $result_type;
         $porutham = new Porutham($client);
@@ -127,7 +125,7 @@ if($submit){
                 'name' => $match->getName(),
                 'hasPorutham' => $match->hasPorutham(),
             ];
-            if ($advanced){
+            if ($advanced) {
                 $compatibilityResult['Matches'][$idx]['poruthamStatus'] = $match->getPoruthamStatus();
                 $compatibilityResult['Matches'][$idx]['points'] = $match->getPoints();
                 $compatibilityResult['Matches'][$idx]['description'] = $match->getDescription();
@@ -141,7 +139,7 @@ if($submit){
         $errors['message'] = 'ERROR: Rate limit exceeded. Throttle your requests.';
     } catch (AuthenticationException $e) {
         $errors = ['message' => $e->getMessage()];
-    } catch (Exception $e){
+    } catch (Exception $e) {
         $errors = ['message' => "API Request Failed with error {$e->getMessage()}"];
     }
 }

@@ -34,9 +34,9 @@
                 <tr><td>Nakshatra Pada</td><td><?=$nakshatra_details['nakshatra']->getPada()?></td></tr>
                 <tr><td>Nakshatra Lord</td><td><?=$nakshatra_details['nakshatra']->getLord()?></td></tr>
                 <tr><td>Chandra Rasi</td><td><?=$nakshatra_details['chandra_rasi']->getName()?></td></tr>
-                <tr><td>Chandra Rasi Lord</td><td><?=$nakshatra_details['chandra_rasi']->getLord().'('.$nakshatra_details['chandra_rasi']->getLord()->getVedicName().')'?></td></tr>
+                <tr><td>Chandra Rasi Lord</td><td><?=$nakshatra_details['chandra_rasi']->getLord() . '(' . $nakshatra_details['chandra_rasi']->getLord()->getVedicName() . ')'?></td></tr>
                 <tr><td>Soorya Rasi</td><td><?=$nakshatra_details['soorya_rasi']->getName()?></td></tr>
-                <tr><td>Soorya Rasi Lord</td><td><?=$nakshatra_details['soorya_rasi']->getLord().'('.$nakshatra_details['soorya_rasi']->getLord()->getVedicName().')'?></td></tr>
+                <tr><td>Soorya Rasi Lord</td><td><?=$nakshatra_details['soorya_rasi']->getLord() . '(' . $nakshatra_details['soorya_rasi']->getLord()->getVedicName() . ')'?></td></tr>
                 <tr><td>Zodiac</td><td><?=$nakshatra_details['zodiac']->getName()?></td></tr>
                 <tr class="table-warning"><td colspan="2" class="text-center">Additional Info:</td></tr>
                 <?php foreach ($nakshatra_additional_info as $key => $data):?>
@@ -46,12 +46,12 @@
         <?php elseif (!empty($errors)):?>
             <?php foreach ($errors as $key => $error):?>
                 <div class="alert alert-danger text-small">
-                    <?php if($key == 'message'):?>
+                    <?php if ('message' === $key):?>
                         <?=$error?>
                     <?php else:?>
                         <?=$error->title ?? ''; ?>:
                         <?=$error->detail ?? ''?>
-                    <?php endif;?>
+                    <?php endif; ?>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>

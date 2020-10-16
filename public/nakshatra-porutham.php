@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 use Prokerala\Api\Astrology\NakshatraProfile;
 use Prokerala\Api\Astrology\Service\NakshatraPorutham;
+use Prokerala\Common\Api\Exception\AuthenticationException;
+use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
 use Prokerala\Common\Api\Exception\RateLimitExceededException;
 use Prokerala\Common\Api\Exception\ValidationException;
-use Prokerala\Common\Api\Exception\AuthenticationException;
-use Prokerala\Common\Api\Exception\Exception;
 
 require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/nakshatra-list.php';
@@ -53,7 +53,7 @@ if ($submit) {
                 'name' => $match->getName(),
                 'hasPorutham' => $match->hasPorutham(),
             ];
-            if ($advanced){
+            if ($advanced) {
                 $compatibilityResult['Matches'][$idx]['poruthamStatus'] = $match->getPoruthamStatus();
                 $compatibilityResult['Matches'][$idx]['points'] = $match->getPoints();
                 $compatibilityResult['Matches'][$idx]['description'] = $match->getDescription();
@@ -67,7 +67,7 @@ if ($submit) {
         $errors['message'] = 'ERROR: Rate limit exceeded. Throttle your requests.';
     } catch (AuthenticationException $e) {
         $errors = ['message' => $e->getMessage()];
-    } catch (Exception $e){
+    } catch (Exception $e) {
         $errors = ['message' => "API Request Failed with error {$e->getMessage()}"];
     }
 }

@@ -11,11 +11,11 @@
 <body>
 <?php include 'common/header.tpl.php'; ?>
 <?php $alertClass = [
-   'Excellent' => 'alert-success',
-   'Good' => 'alert-info',
-   'Average' => 'alert-warning',
-   'Bad' => 'alert-danger',
-   ];?>
+    'Excellent' => 'alert-success',
+    'Good' => 'alert-info',
+    'Average' => 'alert-warning',
+    'Bad' => 'alert-danger',
+]; ?>
 <div class="main-content">
     <div class="header-1 section-rotate bg-section-secondary">
         <div class="section-inner bg-gradient-violet section-radius-min">
@@ -46,16 +46,18 @@
                     <td><?=$boy_dob->format('F d, Y')?></td>
                 </tr>
                 <?php foreach ($compatibilityResult['girlInfo'] as $idx => $info): ?>
-                    <?php if(in_array($idx, ['nakshatra', 'rasi'], true)):?>
+                    <?php if (in_array($idx, ['nakshatra', 'rasi'], true)):?>
                         <?php foreach ($info as $item => $itemVale):?>
-                            <?php if($item == 'id') { continue;}?>
+                            <?php if ('id' === $item) {
+       continue;
+   }?>
                             <tr>
                                 <td><b><?=$item?></b></td>
                                 <td><?=$itemVale?></td>
                                 <td><?=$compatibilityResult['boyInfo'][$idx][$item]?></td>
                             </tr>
-                        <?php endforeach;?>
-                    <?php endif;?>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </table>
             <div class="alert alert-info mb-5 p-4 text-center <?=$alertClass[$compatibilityResult['status']]?>">
@@ -66,26 +68,26 @@
                 <tr>
                     <th>#</th>
                     <th>Porutham</th>
-                    <?php if($result_type === 'advanced'): ?>
+                    <?php if ('advanced' === $result_type): ?>
                         <th>Status</th>
                     <?php endif; ?>
                     <th class="text-center">Obtained Point</th>
                 </tr>
                 <?php foreach ($compatibilityResult['Matches'] as $idx => $data):?>
-                    <tr><td><?=$idx+1?></td><td><?=$data['name']?></td>
-                        <?php if($result_type === 'advanced'):?>
+                    <tr><td><?=$idx + 1?></td><td><?=$data['name']?></td>
+                        <?php if ('advanced' === $result_type):?>
                             <td>
-                                <?=$data['poruthamStatus'] === 'Good' ? '<span class="text-success">Good</span>' :
-                                    ($data['poruthamStatus'] === 'Satisfactory' ? '<span class="text-warning">Satisfactory</span>' :
+                                <?='Good' === $data['poruthamStatus'] ? '<span class="text-success">Good</span>' :
+                                    ('Satisfactory' === $data['poruthamStatus'] ? '<span class="text-warning">Satisfactory</span>' :
                                         '<span class="text-danger">Not Satisfactory</span>')?></td>
                             <td class="text-center"><?=$data['points'] ? 1 : 0?></td>
                         <?php else:?>
                             <td class="text-center"><?=$data['hasPorutham'] ? 1 : 0?></td>
-                        <?php endif;?>
+                        <?php endif; ?>
                     </tr>
                 <?php endforeach; ?>
                 <tr class="text-center text-large">
-                    <th colspan="<?=$result_type === 'advanced' ? 3 : 2?>">Total Points:</th>
+                    <th colspan="<?='advanced' === $result_type ? 3 : 2?>">Total Points:</th>
                     <th><?=$compatibilityResult['totalPoint']?> / <?=$compatibilityResult['maximumPoint']?></th>
                 </tr>
             </table>
@@ -101,12 +103,12 @@
         <?php elseif (!empty($errors)):?>
             <?php foreach ($errors as $key => $error):?>
                 <div class="alert alert-danger text-small">
-                    <?php if($key == 'message'):?>
+                    <?php if ('message' === $key):?>
                         <?=$error?>
                     <?php else:?>
                         <?=$error->title ?? ''; ?>:
                         <?=$error->detail ?? ''?>
-                    <?php endif;?>
+                    <?php endif; ?>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
@@ -120,8 +122,8 @@
                                 <label class="col-md-4 pr-md-0 col-form-label">Ayanamsa</label>
                                 <div class="col-md-8 pl-md-0">
                                     <select name="ayanamsa" class="form-control form-control-lg rounded-1">
-                                        <option value="1" <?=$ayanamsa == 1 ? 'selected' :''?>>Lahiri</option>
-                                        <option value="3" <?=$ayanamsa == 3 ? 'selected' :''?>>Raman</option>
+                                        <option value="1" <?=1 === $ayanamsa ? 'selected' : ''?>>Lahiri</option>
+                                        <option value="3" <?=3 === $ayanamsa ? 'selected' : ''?>>Raman</option>
                                     </select>
                                 </div>
                             </div>
@@ -131,8 +133,8 @@
                                 <label class="col-md-4 pr-md-0 col-form-label">System</label>
                                 <div class="col-md-8 pl-md-0">
                                     <select name="system" class="form-control form-control-lg rounded-1">
-                                        <option value="kerala" <?=$system == 'kerala' ? 'selected' :''?>>Kerala</option>
-                                        <option value="tamil" <?=$system == 'tamil' ? 'selected' :''?>>Tamil</option>
+                                        <option value="kerala" <?='kerala' === $system ? 'selected' : ''?>>Kerala</option>
+                                        <option value="tamil" <?='tamil' === $system ? 'selected' : ''?>>Tamil</option>
                                     </select>
                                 </div>
                             </div>

@@ -43,16 +43,18 @@
                         <td><?=$boy_dob->format('F d, Y')?></td>
                     </tr>
                     <?php foreach ($compatibilityResult['girlInfo'] as $idx => $info): ?>
-                        <?php if(in_array($idx, ['nakshatra', 'rasi'], true)):?>
+                        <?php if (in_array($idx, ['nakshatra', 'rasi'], true)):?>
                             <?php foreach ($info as $item => $itemVale):?>
-                                <?php if($item == 'id') { continue;}?>
+                                <?php if ('id' === $item) {
+    continue;
+}?>
                                 <tr>
                                     <td><b><?=$item?></b></td>
                                     <td><?=$itemVale?></td>
                                     <td><?=$compatibilityResult['boyInfo'][$idx][$item]?></td>
                                 </tr>
-                            <?php endforeach;?>
-                        <?php endif;?>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </table>
 
@@ -66,11 +68,11 @@
                         <?php if ('advanced' === $result_type):?>
                             <th>Maximum Points</th>
                             <th>Obtained Points</th>
-                        <?php endif;?>
+                        <?php endif; ?>
                     </tr>
                     <?php $count = 1; foreach ($compatibilityResult['girlInfo']['guna'] as $guna => $data): ?>
                         <?php $guna_koot = preg_replace('/(?<!\ )[A-Z]/', ' $0', $guna);
-                        $guna_koot = ucwords($guna_koot);?>
+                        $guna_koot = ucwords($guna_koot); ?>
                         <tr>
                             <td><?=$count?></td>
                             <td><b><?=$guna_koot?> Koot</b></td>
@@ -79,7 +81,7 @@
                             <?php if ('advanced' === $result_type):?>
                                 <td><?=$compatibilityResult['gunaMilan'][$guna_koot]['maximumPoints']?></td>
                                 <td><?=$compatibilityResult['gunaMilan'][$guna_koot]['obtainedPoints']?></td>
-                            <?php endif;?>
+                            <?php endif; ?>
                         </tr>
                     <?php ++$count; endforeach; ?>
                     <tr class="text-large">
@@ -90,7 +92,7 @@
                         <?php else:?>
                             <th colspan="4" class="text-center">Total Guna Milan Points :
                                 <?=$compatibilityResult['gunaMilan']['totalPoints']?> / <?=$compatibilityResult['gunaMilan']['maximumPoints']?></th>
-                        <?php endif;?>
+                        <?php endif; ?>
                     </tr>
                 </table>
                 <?php if ('advanced' === $result_type):?>
@@ -120,12 +122,12 @@
             <?php elseif (!empty($errors)):?>
                 <?php foreach ($errors as $key => $error):?>
                     <div class="alert alert-danger text-small">
-                        <?php if($key == 'message'):?>
+                        <?php if ('message' === $key):?>
                             <?=$error?>
                         <?php else:?>
                             <?=$error->title ?? ''; ?>:
                             <?=$error->detail ?? ''?>
-                        <?php endif;?>
+                        <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>
@@ -149,8 +151,8 @@
                             <label class="col-sm-3 col-md-4 col-form-label ">Ayanamsa</label>
                             <div class="col-sm-9 col-md-6">
                                 <select name="ayanamsa" class="form-control form-control-lg rounded-1">
-                                    <option value="1" <?=$ayanamsa == 1 ? 'selected' :''?>>Lahiri</option>
-                                    <option value="3" <?=$ayanamsa == 3 ? 'selected' :''?>>Raman</option>
+                                    <option value="1" <?=1 === $ayanamsa ? 'selected' : ''?>>Lahiri</option>
+                                    <option value="3" <?=3 === $ayanamsa ? 'selected' : ''?>>Raman</option>
                                 </select>
                             </div>
                         </div>

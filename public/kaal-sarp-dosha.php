@@ -48,9 +48,9 @@ if ($submit) {
         $result = $method->process($location, $datetime);
 
         $kaalSarpDoshaResult = [];
-        $kaalSarpDoshaResult['kaal_sarp_type'] = $result->getKaalSarpType();
-        $kaalSarpDoshaResult['kaal_sarp_dosha_type'] = $result->getKaalSarpDoshaType();
-        $kaalSarpDoshaResult['has_kaal_sarp_dosha'] = $result->hasKaalSarpDosha();
+        $kaalSarpDoshaResult['kaal_sarp_type'] = $result->getType();
+        $kaalSarpDoshaResult['kaal_sarp_dosha_type'] = $result->getDoshaType();
+        $kaalSarpDoshaResult['has_kaal_sarp_dosha'] = $result->hasDosha();
         $kaalSarpDoshaResult['description'] = $result->getDescription();
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();

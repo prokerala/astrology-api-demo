@@ -66,6 +66,10 @@
                 <?php endforeach; ?>
             <?php endif; ?>
 
+            <div class="mb-5 alert text-center alert-info p-5">
+                <?=$compatibilityResult['message']['description']?>
+            </div>
+
         <?php elseif (!empty($errors)):?>
             <?php foreach ($errors as $key => $error):?>
                 <div class="alert alert-danger text-small">

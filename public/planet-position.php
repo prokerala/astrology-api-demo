@@ -59,7 +59,7 @@ if ($submit) {
                 'id' => $position->getId(),
                 'name' => $position->getName(),
                 'longitude' => $position->getLongitude(),
-                'isReverse' => $position->isReverse(),
+                'isRetrograde' => $position->isRetrograde(),
                 'position' => $position->getPosition(),
                 'degree' => $deg . '&deg; ' . $min . "' ",
                 'rasi' => $position->getRasi(),

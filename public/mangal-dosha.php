@@ -52,14 +52,14 @@ if ($submit) {
 
         $mangal_dosha_result = [];
 
-        $mangal_dosha_result['has_mangal_dosha'] = $result->hasMangalDosha();
+        $mangal_dosha_result['has_mangal_dosha'] = $result->hasDosha();
         $mangal_dosha_result['description'] = $result->getDescription();
 
         if ($advanced) {
             $mangal_dosha_result['has_exception'] = $result->hasException();
-            $mangal_dosha_result['mangal_dosha_type'] = $result->getMangalDoshaType();
+            $mangal_dosha_result['mangal_dosha_type'] = $result->getType();
 
-            $mangal_dosha_result['exceptions'] = $result->getexceptions();
+            $mangal_dosha_result['exceptions'] = $result->getExceptions();
             $mangal_dosha_result['remedies'] = $result->getRemedies();
         }
     } catch (ValidationException $e) {

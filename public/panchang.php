@@ -77,6 +77,8 @@ if ($submit) {
                 ];
                 if ('Nakshatra' === $key) {
                     $panchangResult[$key][$idx]['nakshatra_lord'] = $data->getLord();
+                } elseif ($key === 'Tithi'){
+                    $panchangResult[$key][$idx]['paksha'] = $data->getPaksha();
                 }
             }
         }

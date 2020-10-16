@@ -45,6 +45,11 @@ if ($submit) {
 
         $compatibilityResult['maximumPoint'] = $result->getMaximumPoints();
         $compatibilityResult['ObtainedPoint'] = $result->getObtainedPoints();
+        $message = $result->getMessage();
+        $compatibilityResult['message'] = [
+            'type' => $message->getType(),
+            'description' => $message->getDescription(),
+        ];
         $compatibilityResult['Matches'] = [];
 
         foreach ($result->getMatches() as $idx => $match) {

@@ -46,7 +46,7 @@
                                 <?='Good' === $data['poruthamStatus'] ? '<span class="text-success">Good</span>' :
                                     ('Bad' === $data['poruthamStatus'] ? '<span class="text-danger">Bad</span>' :
                                         '<span class="text-warning">Satisfactory</span>')?></td>
-                            <td class="text-center"><?=$data['points'] ? 1 : 0?></td>
+                            <td class="text-center"><?=$data['points']?></td>
                         <?php else:?>
                             <td class="text-center"><?=$data['hasPorutham'] ? 1 : 0?></td>
                         <?php endif; ?>

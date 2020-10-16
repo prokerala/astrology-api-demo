@@ -49,19 +49,27 @@
                     <?php if (in_array($idx, ['nakshatra', 'rasi'], true)):?>
                         <?php foreach ($info as $item => $itemVale):?>
                             <?php if ('id' === $item) {
-       continue;
-   }?>
-                            <tr>
+                                continue;
+                            }?>
+                            <?php if('lord' === $item):?>
+                                <tr>
+                                    <td><b><?=$item?></b></td>
+                                    <td><?="{$itemVale['vedicName']} ({$itemVale['name']})"?></td>
+                                    <td><?="{$compatibilityResult['boyInfo'][$idx][$item]['vedicName']} ({$compatibilityResult['boyInfo'][$idx][$item]['name']})"?></td>
+                                </tr>
+                            <?php else:?>
+                                <tr>
                                 <td><b><?=$item?></b></td>
                                 <td><?=$itemVale?></td>
                                 <td><?=$compatibilityResult['boyInfo'][$idx][$item]?></td>
-                            </tr>
+                                </tr>
+                            <?php endif;?>
                         <?php endforeach; ?>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </table>
-            <div class="alert alert-info mb-5 p-4 text-center <?=$alertClass[$compatibilityResult['status']]?>">
-                <?=$compatibilityResult['description']?> (<?=$compatibilityResult['totalPoint']?> / 10)
+            <div class="alert alert-info mb-5 p-4 text-center <?=$alertClass[$compatibilityResult['message']['type']]?>">
+                <?=$compatibilityResult['message']['description']?> (<?=$compatibilityResult['totalPoints']?> / 10)
             </div>
             <h3 class="text-black text-center">10 Poruthams and Your Compatibility</h3>
             <table class="mb-5 table table-bordered <?= ('advanced' === $result_type) ? 'text-small' : ''?>">
@@ -73,14 +81,14 @@
                     <?php endif; ?>
                     <th class="text-center">Obtained Point</th>
                 </tr>
-                <?php foreach ($compatibilityResult['Matches'] as $idx => $data):?>
+                <?php foreach ($compatibilityResult['matches'] as $idx => $data):?>
                     <tr><td><?=$idx + 1?></td><td><?=$data['name']?></td>
                         <?php if ('advanced' === $result_type):?>
                             <td>
                                 <?='Good' === $data['poruthamStatus'] ? '<span class="text-success">Good</span>' :
                                     ('Satisfactory' === $data['poruthamStatus'] ? '<span class="text-warning">Satisfactory</span>' :
                                         '<span class="text-danger">Not Satisfactory</span>')?></td>
-                            <td class="text-center"><?=$data['points'] ? 1 : 0?></td>
+                            <td class="text-center"><?=$data['points']?></td>
                         <?php else:?>
                             <td class="text-center"><?=$data['hasPorutham'] ? 1 : 0?></td>
                         <?php endif; ?>
@@ -88,13 +96,13 @@
                 <?php endforeach; ?>
                 <tr class="text-center text-large">
                     <th colspan="<?='advanced' === $result_type ? 3 : 2?>">Total Points:</th>
-                    <th><?=$compatibilityResult['totalPoint']?> / <?=$compatibilityResult['maximumPoint']?></th>
+                    <th><?=$compatibilityResult['totalPoints']?> / <?=$compatibilityResult['maximumPoints']?></th>
                 </tr>
             </table>
 
             <?php if ('advanced' === $result_type):?>
                 <h3>Interpretation of 10 porutham</h3>
-                <?php foreach ($compatibilityResult['Matches'] as $key => $data):?>
+                <?php foreach ($compatibilityResult['matches'] as $key => $data):?>
                     <h3><?=$data['name']?></h3>
                     <p><?=$data['description']?></p>
                 <?php endforeach; ?>

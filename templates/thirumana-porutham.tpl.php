@@ -39,7 +39,7 @@
                 <?php foreach ($compatibilityResult['matches'] as $idx => $data):?>
                     <tr><td><?=$idx + 1?></td><td><?=$data['name']?></td>
                         <?php if ('advanced' === $result_type):?>
-                            <td class="text-center"><?=$data['points'] ? 1 : 0?></td>
+                            <td class="text-center"><?=$data['points']?></td>
                         <?php else:?>
                             <td class="text-center"><?=$data['hasPorutham'] ? 1 : 0?></td>
                         <?php endif; ?>

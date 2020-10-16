@@ -86,51 +86,83 @@ if ($submit) {
         $boy_nakshatra = $boy_info->getNakshatra();
         $boy_rasi = $boy_info->getRasi();
 
+        $girl_nakshatra_lord = $girl_nakshatra->getLord();
+        $boy_nakshatra_lord = $boy_nakshatra->getLord();
+
+        $girl_rasi_lord = $girl_rasi->getLord();
+        $boy_rasi_lord = $boy_rasi->getLord();
+
         $compatibilityResult['girlInfo'] = [
             'nakshatra' => [
                 'id' => $girl_nakshatra->getId(),
-                'Nakshatra' => $girl_nakshatra->getName(),
-                'Nakshatra Pada' => $girl_nakshatra->getPada(),
-                'Nakshatra Lord' => $girl_nakshatra->getLord(),
+                'name' => $girl_nakshatra->getName(),
+                'pada' => $girl_nakshatra->getPada(),
+                'lord' => [
+                    'id' => $girl_nakshatra_lord->getId(),
+                    'name' => $girl_nakshatra_lord->getName(),
+                    'vedicName' => $girl_nakshatra_lord->getVedicName()
+                ],
             ],
             'rasi' => [
                 'id' => $girl_rasi->getId(),
-                'Rasi' => $girl_rasi->getName(),
-                'Rasi Lord' => $girl_rasi->getLord(),
+                'name' => $girl_rasi->getName(),
+                'lord' => [
+                    'id' => $girl_rasi_lord->getId(),
+                    'name' => $girl_rasi_lord->getName(),
+                    'vedicName' => $girl_rasi_lord->getVedicName()
+                ],
             ],
         ];
 
         $compatibilityResult['boyInfo'] = [
             'nakshatra' => [
                 'id' => $boy_nakshatra->getId(),
-                'Nakshatra' => $boy_nakshatra->getName(),
-                'Nakshatra Pada' => $boy_nakshatra->getPada(),
-                'Nakshatra Lord' => $boy_nakshatra->getLord(),
+                'name' => $boy_nakshatra->getName(),
+                'pada' => $boy_nakshatra->getPada(),
+                'lord' => [
+                    'id' => $boy_nakshatra_lord->getId(),
+                    'name' => $boy_nakshatra_lord->getName(),
+                    'vedicName' => $boy_nakshatra_lord->getVedicName()
+                ],
             ],
             'rasi' => [
                 'id' => $boy_rasi->getId(),
-                'Rasi' => $boy_rasi->getName(),
-                'Rasi Lord' => $boy_rasi->getLord(),
+                'name' => $boy_rasi->getName(),
+                'lord' => [
+                    'id' => $boy_rasi_lord->getId(),
+                    'name' => $boy_rasi_lord->getName(),
+                    'vedicName' => $boy_rasi_lord->getVedicName()
+                ],
             ],
         ];
+        $compatibilityResult['maximumPoints'] = $result->getMaximumPoints();
+        $compatibilityResult['totalPoints'] = $result->getTotalPoints();
+        $message = $result->getMessage();
+        $compatibilityResult['message'] = [
+            'type' => $message->getType(),
+            'description' => $message->getDescription(),
+        ];
 
-        $compatibilityResult['maximumPoint'] = $result->getMaximumPoints();
-        $compatibilityResult['totalPoint'] = $result->getTotalPoints();
-        $compatibilityResult['status'] = $result->getStatus();
-        $compatibilityResult['description'] = $result->getDescription();
-
-        foreach ($result->getMatches() as $idx => $match) {
-            $compatibilityResult['Matches'][$idx] = [
+        $match_result = $result->getMatches();
+        $matches = [];
+        foreach ($match_result as $match) {
+            $compatibilityResult['matches'][] = [
                 'id' => $match->getId(),
                 'name' => $match->getName(),
                 'hasPorutham' => $match->hasPorutham(),
             ];
+        }
+
+        if ($advanced) {
             if ($advanced) {
-                $compatibilityResult['Matches'][$idx]['poruthamStatus'] = $match->getPoruthamStatus();
-                $compatibilityResult['Matches'][$idx]['points'] = $match->getPoints();
-                $compatibilityResult['Matches'][$idx]['description'] = $match->getDescription();
+                foreach ($match_result as $idx => $match) {
+                    $compatibilityResult['matches'][$idx]['poruthamStatus'] = $match->getPoruthamStatus();
+                    $compatibilityResult['matches'][$idx]['points'] = $match->getPoints();
+                    $compatibilityResult['matches'][$idx]['description'] = $match->getDescription();
+                }
             }
         }
+
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {

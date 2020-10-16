@@ -21,6 +21,7 @@ $input = [
 ];
 $coordinates = $input['latitude'] . ',' . $input['longitude'];
 $submit = $_POST['submit'] ?? 0;
+$result_type = 'basic';
 $ayanamsa = 1;
 
 if (isset($_POST['submit'])) {
@@ -30,6 +31,7 @@ if (isset($_POST['submit'])) {
     $input['latitude'] = $arCoordinates[0] ?? '';
     $input['longitude'] = $arCoordinates[1] ?? '';
     $ayanamsa = $_POST['ayanamsa'];
+    $result_type = $_POST['result_type'];
 }
 
 $datetime = new DateTimeImmutable($input['datetime']);
@@ -42,50 +44,97 @@ $errors = [];
 
 if ($submit) {
     try {
+        $advanced = 'advanced' === $result_type ? true : false;
+
         $method = new Kundli($client);
         $method->setAyanamsa($ayanamsa);
-        $result = $method->process($location, $datetime);
+        $result = $method->process($location, $datetime, $advanced);
+
         $nakshatraDetails = $result->getNakshatraDetails();
-        $nakshatraResult = [
-            'nakshatraName' => $nakshatraDetails->getNakshatraName(),
-            'nakshatraLongitude' => $nakshatraDetails->getNakshatraLongitude(),
-            'nakshatraStart' => $nakshatraDetails->getNakshatraStart(),
-            'nakshatraEnd' => $nakshatraDetails->getNakshatraEnd(),
-            'nakshatraPada' => $nakshatraDetails->getNakshatraPada(),
-        ];
+        $nakshatra = $nakshatraDetails->getNakshatra();
+        $nakshatraLord = $nakshatra->getLord();
 
-        foreach (['chandraRasi', 'sooryaRasi', 'zodiac'] as $item) {
-            $fn = 'get' . ucwords($item);
-            $itemResult = $nakshatraDetails->{$fn}();
-            $nakshatraResult[$item] = [
-                'id' => $itemResult->getId(),
-                'name' => $itemResult->getName(),
-                'longitude' => $itemResult->getLongitude(),
-            ];
-        }
+        $chandraRasi = $nakshatraDetails->getChandraRasi();
+        $chandraRasiLord = $chandraRasi->getLord();
+
+        $sooryaRasi = $nakshatraDetails->getSooryaRasi();
+        $sooryaRasiLord = $sooryaRasi->getLord();
+
+        $zodiac = $nakshatraDetails->getZodiac();
+
         $additionalInfo = $nakshatraDetails->getAdditionalInfo();
-        foreach (['diety', 'ganam', 'symbol', 'animalSign', 'nadi', 'color', 'bestDirection', 'syllables', 'birthStone', 'gender', 'planet', 'enemyYoni'] as $info) {
-            $fn = 'get' . ucwords($info);
-            $nakshatraResult['additionalInfo'][$info] = $additionalInfo->{$fn}();
-        }
 
-        $mangalDoshaResult = [];
-        $mangalDoshaDetails = $result->getMangalDosha();
-        $mangalDoshaResult['has_mangal_dosha'] = $mangalDoshaDetails->hasMangalDosha();
-        $mangalDoshaResult['description'] = $mangalDoshaDetails->getDescription();
+        $mangalDosha = $result->getMangalDosha();
 
-        $yogaDetails = $result->getYogas();
-        $yogaResult = [];
-        foreach (['majorYogas', 'chandrayogas', 'sooryaYogas', 'inauspiciousYogas'] as $yoga) {
-            $fn = 'get' . ucwords($yoga);
-            $yogaResult[$yoga] = $yogaDetails->{$fn}();
-        }
+        $yogaDetails = $result->getYogaDetails();
 
         $kundliResult = [
-            'nakshatraDetails' => $nakshatraResult,
-            'mangalDosha' => $mangalDoshaResult,
-            'yogas' => $yogaResult,
+            'nakshatraDetails' => [
+
+                'nakshatra' => [
+                    'id' => $nakshatra->getId(),
+                    'name' => $nakshatra->getName(),
+                    'lord' => [
+                        'id' => $nakshatraLord->getId(),
+                        'name' => $nakshatraLord->getName(),
+                        'vedicName' => $nakshatraLord->getVedicName(),
+                    ],
+                    'pada' => $nakshatra->getPada(),
+                ],
+                'chandraRasi' => [
+                    'id' => $chandraRasi->getId(),
+                    'name' => $chandraRasi->getName(),
+                    'lord' => [
+                        'id' => $chandraRasiLord->getId(),
+                        'name' => $chandraRasiLord->getName(),
+                        'vedicName' => $chandraRasiLord->getVedicName(),
+                    ],
+                ],
+                'sooryaRasi' =>  [
+                    'id' => $sooryaRasi->getId(),
+                    'name' => $sooryaRasi->getName(),
+                    'lord' => [
+                        'id' => $sooryaRasiLord->getId(),
+                        'name' => $sooryaRasiLord->getName(),
+                        'vedicName' => $sooryaRasiLord->getVedicName(),
+                    ],
+                ],
+                'zodiac' =>  [
+                    'id' => $zodiac->getId(),
+                    'name' => $zodiac->getName(),
+                ],
+                'additionalInfo' => [
+                    'deity' => $additionalInfo->getDeity(),
+                    'ganam' => $additionalInfo->getGanam(),
+                    'symbol' => $additionalInfo->getSymbol(),
+                    'animalSign' => $additionalInfo->getAnimalsign(),
+                    'nadi' => $additionalInfo->getNadi(),
+                    'color' => $additionalInfo->getColor(),
+                    'bestDirection' => $additionalInfo->getBestdirection(),
+                    'syllables' => $additionalInfo->getSyllables(),
+                    'birthStone' => $additionalInfo->getBirthstone(),
+                    'gender' => $additionalInfo->getGender(),
+                    'planet' => $additionalInfo->getPlanet(),
+                    'enemyYoni' => $additionalInfo->getEnemyYoni(),
+                ],
+            ],
+            'mangalDosha' => [
+                'hasDosha' => $mangalDosha->hasDosha(),
+                'description' => $mangalDosha->getDescription(),
+            ],
         ];
+
+        $yogaDetailResult = [];
+
+        foreach ($yogaDetails as $details) {
+            $yogaDetailResult[] = [
+                'name' => $details->getName(),
+                'description' => $details->getDescription(),
+            ];
+        }
+
+        $kundliResult['yogaDetails'] = $yogaDetailResult;
+
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {

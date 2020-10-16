@@ -58,16 +58,17 @@ if ($submit) {
         ];
 
         if ($advanced) {
-            $transitData = [];
-            $transit = $result->getTransits();
-            foreach ($transit as $data) {
-                $transitData[] = [
-                    'phase' => $data->getPhase(),
-                    'start' => new DateTimeImmutable($data->getStart()),
-                    'end' => new DateTimeImmutable($data->getEnd()),
+            $arTransit = $result->getTransits();
+            foreach ($arTransit as $transit) {
+                $sadeSatiResult['transits'][] = [
+                    'saturnSign' => $transit->getSaturnSign(),
+                    'phase' => $transit->getPhase(),
+                    'start' => $transit->getStart(),
+                    'end' => $transit->getEnd(),
+                    'isRetrograde' => $transit->isRetrograde(),
+                    'description' => $transit->getDescription(),
                 ];
             }
-            $sadeSatiResult['transits'] = $transitData;
         }
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();

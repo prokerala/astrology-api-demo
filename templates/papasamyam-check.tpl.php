@@ -74,10 +74,10 @@
                 <tr><th colspan="7" class="text-center">Total Papa Points : <?=$papaSamyamCheckResult['boyPapasamyam']['total_point']?></th> </tr>
             </table>
             <div class="alert  p-4 text-center
-            <?='Excellent' === $papaSamyamCheckResult['status'] ? 'alert-success' :
-                ('Satisfactory' === $papaSamyamCheckResult['status'] ? 'alert-warning' : 'alert-danger')?>" role="alert">
-                Papasamyam for this couple is <b><?=$papaSamyamCheckResult['status']?></b><br>
-                <?=$papaSamyamCheckResult['message']?>
+            <?='Excellent' === $papaSamyamCheckResult['message']['type'] ? 'alert-success' :
+                ('Satisfactory' === $papaSamyamCheckResult['message']['type'] ? 'alert-warning' : 'alert-danger')?>" role="alert">
+                Papasamyam for this couple is <b><?=$papaSamyamCheckResult['message']['type']?></b><br>
+                <?=$papaSamyamCheckResult['message']['description']?>
             </div>
         <?php elseif (!empty($errors)):?>
             <?php foreach ($errors as $key => $error):?>

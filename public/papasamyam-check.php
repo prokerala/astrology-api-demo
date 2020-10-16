@@ -71,9 +71,10 @@ if ($submit) {
         $porutham = new PapaSamyamCheck($client);
         $porutham->setAyanamsa($ayanamsa);
         $result = $porutham->process($girl_profile, $boy_profile);
-        $papaSamyamCheckResult = [
-            'status' => $result->getStatus(),
-            'message' => $result->getMessage(),
+        $message = $result->getMessage();
+        $papaSamyamCheckResult['message'] = [
+            'type' => $message->getType(),
+            'description' => $message->getDescription(),
         ];
 
         $girlPapasamyam = $result->getGirlPapasamyam();

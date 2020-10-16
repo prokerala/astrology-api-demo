@@ -45,14 +45,20 @@
                     <?php foreach ($compatibilityResult['girlInfo'] as $idx => $info): ?>
                         <?php if (in_array($idx, ['nakshatra', 'rasi'], true)):?>
                             <?php foreach ($info as $item => $itemVale):?>
-                                <?php if ('id' === $item) {
-    continue;
-}?>
-                                <tr>
-                                    <td><b><?=$item?></b></td>
-                                    <td><?=$itemVale?></td>
-                                    <td><?=$compatibilityResult['boyInfo'][$idx][$item]?></td>
-                                </tr>
+                                <?php if ('id' === $item) {continue;}?>
+                                <?php if('lord' === $item):?>
+                                    <tr>
+                                        <td><b><?=$item?></b></td>
+                                        <td><?="{$itemVale['vedicName']} ({$itemVale['name']})"?></td>
+                                        <td><?="{$compatibilityResult['boyInfo'][$idx][$item]['vedicName']} ({$compatibilityResult['boyInfo'][$idx][$item]['name']})"?></td>
+                                    </tr>
+                                <?php else:?>
+                                    <tr>
+                                        <td><b><?=$item?></b></td>
+                                        <td><?=$itemVale?></td>
+                                        <td><?=$compatibilityResult['boyInfo'][$idx][$item]?></td>
+                                    </tr>
+                                <?php endif;?>
                             <?php endforeach; ?>
                         <?php endif; ?>
                     <?php endforeach; ?>
@@ -70,20 +76,29 @@
                             <th>Obtained Points</th>
                         <?php endif; ?>
                     </tr>
-                    <?php $count = 1; foreach ($compatibilityResult['girlInfo']['guna'] as $guna => $data): ?>
-                        <?php $guna_koot = preg_replace('/(?<!\ )[A-Z]/', ' $0', $guna);
-                        $guna_koot = ucwords($guna_koot); ?>
-                        <tr>
-                            <td><?=$count?></td>
-                            <td><b><?=$guna_koot?> Koot</b></td>
-                            <td><?=$data?></td>
-                            <td><?=$compatibilityResult['boyInfo']['guna'][$guna]?></td>
-                            <?php if ('advanced' === $result_type):?>
-                                <td><?=$compatibilityResult['gunaMilan'][$guna_koot]['maximumPoints']?></td>
-                                <td><?=$compatibilityResult['gunaMilan'][$guna_koot]['obtainedPoints']?></td>
-                            <?php endif; ?>
-                        </tr>
-                    <?php ++$count; endforeach; ?>
+                    <?php if ('advanced' === $result_type):?>
+                        <?php foreach ($compatibilityResult['gunaMilan']['guna'] as $data):?>
+                            <tr>
+                                <td><?=$data['id']?></td>
+                                <td><b><?=$data['name']?> Koot</b></td>
+                                <td><?=$data['girlKoot']?></td>
+                                <td><?=$data['boyKoot']?></td>
+                                <td><?=$data['maximumPoints']?></td>
+                                <td><?=$data['obtainedPoints']?></td>
+                            </tr>
+                        <?php endforeach;?>
+                    <?php else:?>
+                        <?php $count = 1; foreach ($compatibilityResult['girlInfo']['koot'] as $guna => $data): ?>
+                            <?php $guna_koot = preg_replace('/(?<!\ )[A-Z]/', ' $0', $guna);
+                            $guna_koot = ucwords($guna_koot); ?>
+                            <tr>
+                                <td><?=$count?></td>
+                                <td><b><?=$guna_koot?> Koot</b></td>
+                                <td><?=$data?></td>
+                                <td><?=$compatibilityResult['boyInfo']['koot'][$guna]?></td>
+                            </tr>
+                            <?php ++$count; endforeach; ?>
+                    <?php endif;?>
                     <tr class="text-large">
                         <?php if ('advanced' === $result_type):?>
                             <th colspan="4" class="text-center">Total Guna Milan Points :</th>
@@ -97,12 +112,9 @@
                 </table>
                 <?php if ('advanced' === $result_type):?>
                     <h3 class="text-black">Guna Milan Detailed Interpretation</h3>
-                    <?php $count = 1; foreach ($compatibilityResult['gunaMilan'] as $kootName => $koot): ?>
-                        <?php if (in_array($kootName, ['maximumPoints', 'totalPoints'], true)) {
-                            continue;
-                        }?>
-                        <p class="text-black"><?=$count?>. <?=ucwords($kootName)?></p>
-                        <p class="text-black"><?=$koot['message']?></p>
+                    <?php $count = 1; foreach ($compatibilityResult['gunaMilan']['guna'] as  $koot): ?>
+                        <p class="text-black"><?=$koot['id']?>. <?=$koot['name']?> Koot</p>
+                        <p class="text-black"><?=$koot['description']?></p>
                         <?php ++$count; endforeach; ?>
 
                     <p>Girl Mangal Dosha Details</p>
@@ -116,8 +128,8 @@
                     </p>
                 <?php endif; ?>
 
-                <div class="mb-5 alert text-center <?=(('bad' === $compatibilityResult['messageType']) ? 'alert-danger' : 'alert-success')?>">
-                    <?=$compatibilityResult['message']?>
+                <div class="mb-5 alert text-center <?=(('bad' === $compatibilityResult['message']['type']) ? 'alert-danger' : 'alert-success')?>">
+                    <?=$compatibilityResult['message']['description']?>
                 </div>
             <?php elseif (!empty($errors)):?>
                 <?php foreach ($errors as $key => $error):?>

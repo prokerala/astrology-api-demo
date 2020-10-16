@@ -80,76 +80,114 @@ if ($submit) {
         $result = $kundli_matching->process($girl_profile, $boy_profile, $advanced);
 
         $girl_info = $result->getGirlInfo();
-        $girl_nakshatra = $girl_info->getNakshatra();
-        $girl_rasi = $girl_info->getRasi();
-
         $boy_info = $result->getBoyInfo();
+        $boy_koot = $boy_info->getKoot();
+        $girl_koot = $girl_info->getKoot();
+
+        $girl_nakshatra = $girl_info->getNakshatra();
         $boy_nakshatra = $boy_info->getNakshatra();
+        $girl_nakshatra_lord = $girl_nakshatra->getLord();
+        $boy_nakshatra_lord = $boy_nakshatra->getLord();
+
+        $girl_rasi = $girl_info->getRasi();
         $boy_rasi = $boy_info->getRasi();
+        $girl_rasi_lord = $girl_rasi->getLord();
+        $boy_rasi_lord = $boy_rasi->getLord();
 
-        $compatibilityResult['girlInfo'] = [
-            'nakshatra' => [
-                'id' => $girl_nakshatra->getId(),
-                'Nakshatra' => $girl_nakshatra->getName(),
-                'Nakshatra Pada' => $girl_nakshatra->getPada(),
-                'Nakshatra Lord' => $girl_nakshatra->getLord()->getName() . ' (' . $girl_nakshatra->getLord()->getVedicName() . ')',
-            ],
-            'rasi' => [
-                'id' => $girl_rasi->getId(),
-                'Rasi' => $girl_rasi->getName(),
-                'Rasi Lord' => $girl_rasi->getLord()->getName() . ' (' . $girl_rasi->getLord()->getVedicName() . ')',
+        $compatibilityResult['boyInfo']['koot'] = $boy_koot->getKoot();
+        $compatibilityResult['girlInfo']['koot'] = $girl_koot->getKoot();
+
+
+        $compatibilityResult['girlInfo']['nakshatra'] = [
+            'id' => $girl_nakshatra->getId(),
+            'name' => $girl_nakshatra->getName(),
+            'pada' => $girl_nakshatra->getPada(),
+            'lord' => [
+                'id' => $girl_nakshatra_lord->getId(),
+                'name' => $girl_nakshatra_lord->getName(),
+                'vedicName' => $girl_nakshatra_lord->getVedicName()
             ],
         ];
 
-        $compatibilityResult['boyInfo'] = [
-            'nakshatra' => [
-                'id' => $boy_nakshatra->getId(),
-                'Nakshatra' => $boy_nakshatra->getName(),
-                'Nakshatra Pada' => $boy_nakshatra->getPada(),
-                'Nakshatra Lord' => $boy_nakshatra->getLord()->getName() . ' (' . $boy_nakshatra->getLord()->getVedicName() . ')',
-            ],
-            'rasi' => [
-                'id' => $boy_rasi->getId(),
-                'Rasi' => $boy_rasi->getName(),
-                'Rasi Lord' => $boy_rasi->getLord()->getName() . ' (' . $boy_rasi->getLord()->getVedicName() . ')',
+        $compatibilityResult['boyInfo']['nakshatra'] = [
+            'id' => $boy_nakshatra->getId(),
+            'name' => $boy_nakshatra->getName(),
+            'pada' => $boy_nakshatra->getPada(),
+            'lord' => [
+                'id' => $boy_nakshatra_lord->getId(),
+                'name' => $boy_nakshatra_lord->getName(),
+                'vedicName' => $boy_nakshatra_lord->getVedicName()
             ],
         ];
 
-        foreach (['girlInfo', 'boyInfo'] as $profile) {
-            $fn = 'get' . ucwords($profile);
-            $profileData = $result->{$fn}();
-            $compatibilityResult[$profile]['guna'] = $profileData->getGuna()->getGuna();
-        }
+        $compatibilityResult['girlInfo']['rasi'] = [
+            'id' => $girl_rasi->getId(),
+            'name' => $girl_rasi->getName(),
+            'lord' => [
+                'id' => $girl_rasi_lord->getId(),
+                'name' => $girl_rasi_lord->getName(),
+                'vedicName' => $girl_rasi_lord->getVedicName()
+            ],
+        ];
+
+        $compatibilityResult['boyInfo']['rasi'] = [
+            'id' => $boy_rasi->getId(),
+            'name' => $boy_rasi->getName(),
+            'lord' => [
+                'id' => $boy_rasi_lord->getId(),
+                'name' => $boy_rasi_lord->getName(),
+                'vedicName' => $boy_rasi_lord->getVedicName()
+            ],
+        ];
 
         $message = $result->getMessage();
-        $compatibilityResult['message'] = $message->getDescription();
-        $compatibilityResult['messageType'] = $message->getType();
+        $compatibilityResult['message'] = [
+            'type' => $message->getType(),
+            'description' => $message->getDescription(),
+        ];
 
         $gunaMilan = $result->getGunaMilan();
+        $compatibilityResult['gunaMilan'] = [
+            'totalPoints' => $gunaMilan->getTotalPoints(),
+            'maximumPoints' => $gunaMilan->getMaximumPoints(),
+        ];
 
-        $compatibilityResult['gunaMilan']['totalPoints'] = $gunaMilan->getTotalPoints();
-        $compatibilityResult['gunaMilan']['maximumPoints'] = $gunaMilan->getMaximumPoints();
+
 
         if ($advanced) {
-            foreach ($gunaMilan->getKoot() as $koot) {
-                $compatibilityResult['gunaMilan'][$koot->getName()] = [
-                    'maximumPoints' => $koot->getMaximumPoints(),
-                    'obtainedPoints' => $koot->getObtainedPoints(),
-                    'message' => $koot->getDescription(),
-                ];
-            }
+            $arGuna = $gunaMilan->getGuna();
 
-            foreach (['girlMangalDoshaDetails', 'boyMangalDoshaDetails'] as $field) {
-                $functionName = 'get' . ucwords($field);
-                $mangalDoshaResult = $result->{$functionName}();
-                $compatibilityResult[$field] = [
-                    'hasMangalDosha' => $mangalDoshaResult->hasMangalDosha(),
-                    'hasException' => $mangalDoshaResult->hasException(),
-                    'mangalDoshaType' => $mangalDoshaResult->getMangalDoshaType(),
-                    'description' => $mangalDoshaResult->getDescription(),
+            foreach ($arGuna as $guna) {
+                $compatibilityResult['gunaMilan']['guna'][] = [
+                    'id' => $guna->getId(),
+                    'name' => $guna->getName(),
+                    'girlKoot' => $guna->getGirlKoot(),
+                    'boyKoot' => $guna->getBoyKoot(),
+                    'maximumPoints' => $guna->getMaximumPoints(),
+                    'obtainedPoints' => $guna->getObtainedPoints(),
+                    'description' => $guna->getDescription(),
                 ];
             }
+            $compatibilityResult['exceptions'] = $result->getExceptions();
+
+            $girl_mangal_dosha_details = $result->getGirlMangalDoshaDetails();
+            $boy_mangal_dosha_details = $result->getBoyMangalDoshaDetails();
+
+            $compatibilityResult['girlMangalDoshaDetails'] = [
+                'hasMangalDosha' => $girl_mangal_dosha_details->hasDosha(),
+                'hasException' => $girl_mangal_dosha_details->hasException(),
+                'mangalDoshaType' => $girl_mangal_dosha_details->getDoshaType(),
+                'description' => $girl_mangal_dosha_details->getDescription(),
+            ];
+
+            $compatibilityResult['boyMangalDoshaDetails'] = [
+                'hasMangalDosha' => $boy_mangal_dosha_details->hasDosha(),
+                'hasException' => $boy_mangal_dosha_details->hasException(),
+                'mangalDoshaType' => $boy_mangal_dosha_details->getDoshaType(),
+                'description' => $boy_mangal_dosha_details->getDescription(),
+            ];
         }
+
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {

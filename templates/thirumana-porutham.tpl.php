@@ -30,39 +30,36 @@
     <div class="container demo-container">
         <?php if (!empty($result)): ?>
             <h3 class="text-black text-center">Porutham Result</h3>
-            <table class="mb-5 table table-bordered">
-
-                <?php if ('advanced' === $result_type):?>
-                    <tr>
-                        <th>#</th>
-                        <th>Porutham</th>
-                        <th>Status</th>
-                        <th>Obtained Point</th>
-                    </tr>
-                    <?php $count = 1; ?>
-                    <?php foreach ($compatibilityResult['porutham'] as $key => $data):?>
-                        <tr><td><?=$count++?></td><td><?=ucwords($key)?></td><td><?=$data['hasPorutham'] ? 1 : 0?></td><td><?=$data['point']?></td></tr>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-
+            <table class="mb-5 table table-bordered <?= ('advanced' === $result_type) ? 'text-small' : ''?>">
                 <tr>
-                    <th colspan="2"></th>
-                    <th>Maximum Point</th>
-                    <th>Obtained Point</th>
+                    <th>#</th>
+                    <th>Porutham</th>
+                    <th class="text-center">Obtained Point</th>
                 </tr>
-                <tr>
-                    <td colspan="2">Total Points</td>
-                    <td><?=$compatibilityResult['maximumPoint']?></td>
-                    <td><?=$compatibilityResult['ObtainedPoint']?></td>
+                <?php foreach ($compatibilityResult['matches'] as $idx => $data):?>
+                    <tr><td><?=$idx + 1?></td><td><?=$data['name']?></td>
+                        <?php if ('advanced' === $result_type):?>
+                            <td class="text-center"><?=$data['points'] ? 1 : 0?></td>
+                        <?php else:?>
+                            <td class="text-center"><?=$data['hasPorutham'] ? 1 : 0?></td>
+                        <?php endif; ?>
+                    </tr>
+                <?php endforeach; ?>
+                <tr class="text-center">
+                    <th colspan="2">Total Points:</th>
+                    <th><?=$compatibilityResult['ObtainedPoint']?> / <?=$compatibilityResult['maximumPoint']?></th>
                 </tr>
             </table>
 
             <?php if ('advanced' === $result_type):?>
-                <?php foreach ($compatibilityResult['porutham'] as $key => $data):?>
-                    <h3><?=ucwords($key)?></h3>
+                <?php foreach ($compatibilityResult['matches'] as $data):?>
+                    <h3><?=$data['name']?></h3>
                     <p><?=$data['description']?></p>
                 <?php endforeach; ?>
             <?php endif; ?>
+            <div class="mb-5 alert text-center alert-info p-5">
+                <?=$compatibilityResult['message']['description']?>
+            </div>
         <?php elseif (!empty($errors)):?>
             <?php foreach ($errors as $key => $error):?>
                 <div class="alert alert-danger text-small">

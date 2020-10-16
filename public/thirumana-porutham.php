@@ -36,41 +36,33 @@ if (isset($_POST['submit'])) {
 
     try {
         $advanced = 'advanced' === $result_type ? true : false;
-        $girl_profile = new NakshatraProfile($girl_nakshatra, $girl_nakshatra_pada);
-        $boy_profile = new NakshatraProfile($boy_nakshatra, $boy_nakshatra_pada);
+        $girl_profile = new NakshatraProfile((int)$girl_nakshatra, (int)$girl_nakshatra_pada);
+        $boy_profile = new NakshatraProfile((int)$boy_nakshatra, (int)$boy_nakshatra_pada);
 
         $thirumana_porutham = new ThirumanaPorutham($client);
-
-        $thirumana_porutham->process($girl_profile, $boy_profile, $advanced);
-        $result = $thirumana_porutham->getResult();
-
+        $result = $thirumana_porutham->process($girl_profile, $boy_profile, $advanced);
         $compatibilityResult = [];
+        $compatibilityResult['maximumPoint'] = $result->getMaximumPoints();
+        $compatibilityResult['ObtainedPoint'] = $result->getObtainedPoints();
+        $message = $result->getMessage();
+        $compatibilityResult['message'] = [
+            'type' => $message->getType(),
+            'description' => $message->getDescription(),
+        ];
+        $matches = $result->getMatches();
 
-        $compatibilityResult['maximumPoint'] = $result->getMaximumPoint();
-        $compatibilityResult['ObtainedPoint'] = $result->getObtainedPoint();
+        foreach ($matches as $match) {
+            $compatibilityResult['matches'][] = [
+                'id' => $match->getId(),
+                'name' => $match->getName(),
+                'hasPorutham' => $match->hasPorutham(),
+            ];
+        }
 
         if ($advanced) {
-            $fields = [
-                'dinaPorutham',
-                'ganaPorutham',
-                'mahendraPorutham',
-                'streeDhrirghamPorutham',
-                'yoniPorutham',
-                'rasiPorutham',
-                'rasiLordPorutham',
-                'rajjuPorutham',
-                'vedaPorutham',
-                'vashyaPorutham',
-                'nadiPorutham',
-                'varnaPorutham',
-            ];
-            foreach ($fields as $field) {
-                $functionName = 'get' . ucwords($field);
-                $poruthamResult = $result->{$functionName}();
-                foreach (['hasPorutham', 'point', 'description'] as $value) {
-                    $functionName = 'get' . ucwords($value);
-                    $compatibilityResult['porutham'][$field][$value] = $poruthamResult->{$functionName}();
-                }
+            foreach ($matches as $idx => $match) {
+                $compatibilityResult['matches'][$idx]['points'] = $match->getPoints();
+                $compatibilityResult['matches'][$idx]['description'] = $match->getDescription();
             }
         }
     } catch (ValidationException $e) {

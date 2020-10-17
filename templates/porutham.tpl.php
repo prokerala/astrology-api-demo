@@ -130,8 +130,9 @@
                                 <label class="col-md-4 pr-md-0 col-form-label">Ayanamsa</label>
                                 <div class="col-md-8 pl-md-0">
                                     <select name="ayanamsa" class="form-control form-control-lg rounded-1">
-                                        <option value="1" <?=1 === $ayanamsa ? 'selected' : ''?>>Lahiri</option>
-                                        <option value="3" <?=3 === $ayanamsa ? 'selected' : ''?>>Raman</option>
+                                        <option value="1" <?=1 == $ayanamsa ? 'selected' : ''?>>Lahiri</option>
+                                        <option value="3" <?=3 == $ayanamsa ? 'selected' : ''?>>Raman</option>
+                                        <option value="5" <?=5 == $ayanamsa ? 'selected' : ''?>>KP</option>
                                     </select>
                                 </div>
                             </div>

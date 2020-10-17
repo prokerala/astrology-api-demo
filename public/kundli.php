@@ -133,7 +133,73 @@ if ($submit) {
             ];
         }
 
+        if ($advanced) {
+            $kundliResult['mangalDosha'] = [
+                'hasDosha' => $mangalDosha->hasDosha(),
+                'description' => $mangalDosha->getDescription(),
+                'hasException' => $mangalDosha->hasException(),
+                'type' => $mangalDosha->getType(),
+                'exceptions' => $mangalDosha->getExceptions(),
+            ];
+
+            $yogaDetailResult = [];
+
+            foreach ($yogaDetails as $details) {
+                $yogaList = $details->getYogaList();
+                $yogas = [];
+                    foreach ($yogaList as $yoga) {
+                        $yogas[] = [
+                            'name' => $yoga->getName(),
+                            'hasYoga' => $yoga->hasYoga(),
+                            'description' => $yoga->getDescription(),
+                        ];
+                    }
+                    $yogaDetailResult[] = [
+                        'name' => $details->getName(),
+                        'description' => $details->getDescription(),
+                        'yogaList' => $yogas,
+                    ];
+            }
+
+            $kundliResult['yogaDetails'] = $yogaDetailResult;
+
+            $dashaPeriods = $result->getDashaPeriods();
+            $dashaPeriodResult = [];
+            foreach ($dashaPeriods as $dashaPeriod) {
+                 $antardashas = $dashaPeriod->getAntardasha();
+                $antardashaResult = [];
+                foreach ($antardashas as $antardasha) {
+                    $pratyantardashas = $antardasha->getPratyantardasha();
+                    $pratyantardashaResult = [];
+                    foreach ($pratyantardashas as $pratyantardasha) {
+                        $pratyantardashaResult[] = [
+                            'id' => $pratyantardasha->getId(),
+                            'name' => $pratyantardasha->getName(),
+                            'start' => $pratyantardasha->getStart(),
+                            'end' => $pratyantardasha->getEnd(),
+                        ];
+                    }
+                    $antardashaResult[]  = [
+                        'id' => $antardasha->getId(),
+                        'name' => $antardasha->getName(),
+                        'start' => $antardasha->getStart(),
+                        'end' => $antardasha->getEnd(),
+                        'pratyantardasha' => $pratyantardashaResult
+                    ];
+                }
+                $dashaPeriodResult[] = [
+                    'id' => $dashaPeriod->getId(),
+                    'name' => $dashaPeriod->getName(),
+                    'start' => $dashaPeriod->getStart(),
+                    'end' => $dashaPeriod->getEnd(),
+                    'antardasha' => $antardashaResult
+                ];
+            }
+            $kundliResult['dashaPeriods'] = $dashaPeriodResult;
+
+        }
         $kundliResult['yogaDetails'] = $yogaDetailResult;
+
 
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();

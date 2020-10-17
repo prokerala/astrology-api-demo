@@ -6,6 +6,18 @@
     <title>Kundli | Prokerala API</title>
 
     <link rel="stylesheet" href="/build/style.css">
+    <style>
+        .table-dashas{
+            max-width:100%;
+        }
+        @media (min-width: 576px) {
+            .table-dashas{
+                margin:.5%;
+                max-width:49%;
+            }
+        }
+
+    </style>
 
 </head>
 
@@ -33,8 +45,8 @@
             <?php $nakshatra_details = $kundliResult['nakshatraDetails']; ?>
             <table class="table table-bordered mb-5">
                 <?php foreach ($kundliResult['nakshatraDetails'] as $key => $kundli):?>
+                    <?php $item = preg_replace('/(?<!\ )[A-Z]/', ' $0', $key);?>
                     <?php if(in_array( $key, ['nakshatra', 'chandraRasi', 'sooryaRasi'])):?>
-                        <?php $item = preg_replace('/(?<!\ )[A-Z]/', ' $0', $key);?>
                         <tr><th><?=ucwords($item)?></th><td><?=$kundli['name']?></td></tr>
                         <tr><th><?=ucwords($item)?> Lord</th><td><?="{$kundli['lord']['vedicName']} ({$kundli['lord']['name']})"?></td></tr>
                     <?php elseif($key === 'additionalInfo'):?>
@@ -50,12 +62,52 @@
 
             <h3 class="text-black">Yoga Details</h3>
             <?php foreach ($kundliResult['yogaDetails'] as $data):?>
-                <span class="font-weight-regular text-black"><?= ($data['name'])?></span>
+                <h3 class="font-weight-regular text-black"><?= ($data['name'])?></h3>
                 <p class="text-black"><?=$data['description']?></p>
+                <?php if ($result_type === 'advanced'):?>
+                    <?php foreach ($data['yogaList'] as $yogas):?>
+                        <?php if($yogas['hasYoga']):?>
+                        <span class="font-weight-regular text-black"><?=$yogas['name']?></span>
+                        <p class="text-black"><?=$yogas['description']?></p>
+                        <?php endif;?>
+                    <?php endforeach;?>
+                <?php endif;?>
             <?php endforeach; ?>
             <div class="alert p-4 text-center p-5 <?=$kundliResult['mangalDosha']['hasDosha'] ? 'alert-danger' : 'alert-success'?>" >
                 <?=$kundliResult['mangalDosha']['description']?>
             </div>
+            <?php if ($result_type === 'advanced'):?>
+                <?php if($kundliResult['mangalDosha']['hasException']):?>
+                    <h3>Exceptions</h3>
+                    <ul>
+                        <?php foreach ($kundliResult['mangalDosha']['exceptions'] as $exceptions):?>
+                            <li><?=$exceptions?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif;?>
+
+
+                <?php foreach($kundliResult['dashaPeriods'] as $mahadashas):?>
+                    <h3 class="text-black">Anthardashas in <?=$mahadashas['name']?> Mahadasha</h3>
+                    <div class="row">
+                    <?php foreach($mahadashas['antardasha'] as $anthardashas):?>
+                        <table class="table table-bordered mb-5 col-12 col-md-6 text-small table-dashas">
+                            <tr><th>AD</th><th>PD</th><th>Starts</th><th>Ends</th></tr>
+                        <?php foreach($anthardashas['pratyantardasha'] as $paryantradashas):?>
+                        <tr>
+                            <td><?=$anthardashas['name']?></td>
+                            <td><?=$paryantradashas['name']?></td>
+                            <td><?=$paryantradashas['start']->format('d-m-Y')?></td>
+                            <td><?=$paryantradashas['end']->format('d-m-Y')?></td>
+                        </tr>
+                        <?php endforeach;?>
+                        </table>
+                    <?php endforeach;?>
+                    </div>
+                <?php endforeach;?>
+                <p class="text-small text-right text-danger"><span class="text-danger">**</span> AD stands for Antardashad &  PD stands for Paryantra dasha</p>
+
+            <?php endif;?>
 
         <?php elseif (!empty($errors)):?>
             <?php foreach ($errors as $key => $error):?>

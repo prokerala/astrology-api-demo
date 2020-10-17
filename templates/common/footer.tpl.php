@@ -36,12 +36,12 @@
                             <li><a href="/">Home</a></li>
                             <li><a href="/demo">Demo</a></li>
                             <li><a href="/pricing">Pricing</a></li>
-                            <li><a href="/services">Services</a></li>
+                            <li><a href="/faq">FAQ</a></li>
                         </ul>
                         <ul class="nav">
                             <li><a href="/about">About</a></li>
                             <li><a href="https://www.prokerala.com/">Prokerala</a></li>
-                            <li><a href="/docs/">Documentation</a></li>
+                            <li><a href="/docs/" target="_blank">Documentation</a></li>
                             <li><a href="https://www.prokerala.com/astrology">Prokerala Astrology</a></li>
                         </ul>
                     </div>
@@ -66,15 +66,7 @@
                             <li class="nav-item px-3">
                                 <a href="/privacy" class="nav-link">Privacy</a>
                             </li>
-                            <li class="nav-item px-3">
-                                <a href="/tos" class="nav-link">TOS</a>
-                            </li>
-                            <li class="nav-item px-3">
-                                <a href="#" class="nav-link">Disclaimer</a>
-                            </li>
-                            <li class="nav-item px-3">
-                                <a href="" class="nav-link">Cookies</a>
-                            </li>
+
                             <li class="nav-item px-3">
                                 <a href="/contact" class="nav-link">Contact</a>
                             </li>
@@ -108,31 +100,28 @@
                         <li class="align-items-center sidebar-panel-link rounded-1">
                             <a href="/about">About</a>
                         </li>
-                        <li class="align-items-center sidebar-panel-link rounded-1">
-                            <a href="/services">Services</a>
-                        </li>
                         <li class="align-items-center sidebar-panel-link rounded-1 dropdown">
                                     <span class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Demo
                                     </span>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item rounded-1" href="/demo/auspicious-period.php">Auspicious Period</a>
-                                <a class="dropdown-item rounded-1" href="/demo/chart.php">Chart</a>
-                                <a class="dropdown-item rounded-1" href="/demo/choghadiya.php">Choghadiya</a>
-                                <a class="dropdown-item rounded-1" href="/demo/inauspicious-period.php">Inauspicious Period</a>
-                                <a class="dropdown-item rounded-1" href="/demo/kaal-sarp-dosha.php">Kaal Sarp Dosha</a>
-                                <a class="dropdown-item rounded-1" href="/demo/kundli.php">Kundli</a>
-                                <a class="dropdown-item rounded-1" href="/demo/kundli-matching.php">Kundli Matching</a>
-                                <a class="dropdown-item rounded-1" href="/demo/mangal-dosha.php">Mangal Dosha</a>
-                                <a class="dropdown-item rounded-1" href="/demo/birth-details.php">Birth Details</a>
-                                <a class="dropdown-item rounded-1" href="/demo/nakshatra-porutham.php">Nakshatra Porutham</a>
-                                <a class="dropdown-item rounded-1" href="/demo/panchang.php">Panchang</a>
-                                <a class="dropdown-item rounded-1" href="/demo/papasamyam-check.php">Papasamyam Check</a>
-                                <a class="dropdown-item rounded-1" href="/demo/papasamyam.php">Papasamyam</a>
-                                <a class="dropdown-item rounded-1" href="/demo/planet-position.php">Planet Position</a>
-                                <a class="dropdown-item rounded-1" href="/demo/porutham.php">Porutham</a>
-                                <a class="dropdown-item rounded-1" href="/demo/sade-sati.php">Sade Sati</a>
-                                <a class="dropdown-item rounded-1" href="/demo/thirumana-porutham.php">Thirumana Porutham</a>
+                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/auspicious-period.php">Auspicious Period</a>
+                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/chart.php">Chart</a>
+                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/choghadiya.php">Choghadiya</a>
+                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/inauspicious-period.php">Inauspicious Period</a>
+                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/kaal-sarp-dosha.php">Kaal Sarp Dosha</a>
+                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/kundli.php">Kundli</a>
+                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/kundli-matching.php">Kundli Matching</a>
+                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/mangal-dosha.php">Mangal Dosha</a>
+                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/birth-details.php">Birth Details</a>
+                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/nakshatra-porutham.php">Nakshatra Porutham</a>
+                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/panchang.php">Panchang</a>
+                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/papasamyam-check.php">Papasamyam Check</a>
+                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/papasamyam.php">Papasamyam</a>
+                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/planet-position.php">Planet Position</a>
+                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/porutham.php">Porutham</a>
+                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/sade-sati.php">Sade Sati</a>
+                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/thirumana-porutham.php">Thirumana Porutham</a>
                             </div>
                         </li>
                         <li class="align-items-center sidebar-panel-link rounded-1">
@@ -148,13 +137,13 @@
                             <a href="/docs/">Documentation</a>
                         </li>
                         <li class="align-items-center sidebar-panel-link rounded-1">
-                            <a href="/tos">Terms of Service</a>
-                        </li>
-                        <li class="align-items-center sidebar-panel-link rounded-1">
                             <a href="https://www.prokerala.com/">Prokerala</a>
                         </li>
                         <li class="align-items-center sidebar-panel-link rounded-1">
                             <a href="https://www.prokerala.com/astrology/">Prokerala Astrology</a>
+                        </li>
+                        <li class="align-items-center sidebar-panel-link rounded-1">
+                            <a href="/login">Login</a>
                         </li>
                     </ul>
                 </div>

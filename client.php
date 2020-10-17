@@ -16,9 +16,9 @@ $httpClient = new PsrHttpClient();
 $clientId = CLIENT_ID;
 $clientSecret = CLIENT_SECRET;
 
-if ('YOUR_CLIENT_ID' === $clientId && isset($_ENV['DEMO_CLIENT_ID'])) {
-    $clientId = $_ENV['DEMO_CLIENT_ID'];
-    $clientSecret = $_ENV['DEMO_CLIENT_SECRET'];
+if ('YOUR_CLIENT_ID' === $clientId && !empty(getenv('DEMO_CLIENT_ID'))) {
+    $clientId = getenv('DEMO_CLIENT_ID');
+    $clientSecret = getenv('DEMO_CLIENT_SECRET');
 }
 
 $authClient = new Oauth2($clientId, $clientSecret, $httpClient, $psr17Factory, $psr17Factory);

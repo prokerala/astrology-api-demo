@@ -48,7 +48,7 @@
             <div class="text-center mb-5">
                 <div class="row list-element-grid">
                     <?php foreach ($samples as $value):?>
-                        <div class="col-4 col-sm-3 col-lg-2 mb-5">
+                        <div class="col-4 col-sm-3 col-lg-2 mb-5 m-4 p-5 shadow rounded-2">
                             <a href="<?=$value['url']?>">
                                 <span class="feature-card-image"><img src="<?=$value['image']?>"></span>
                                 <span class="feature-card-title"><?=$value['title']?></span>

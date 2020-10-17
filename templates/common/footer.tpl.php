@@ -41,7 +41,7 @@
                         <ul class="nav">
                             <li><a href="/about">About</a></li>
                             <li><a href="https://www.prokerala.com/">Prokerala</a></li>
-                            <li><a href="/docs/" target="_blank">Documentation</a></li>
+                            <li><a href="/docs" target="_blank">Documentation</a></li>
                             <li><a href="https://www.prokerala.com/astrology">Prokerala Astrology</a></li>
                         </ul>
                     </div>
@@ -134,7 +134,7 @@
                             <a href="/contact">Contact</a>
                         </li>
                         <li class="align-items-center sidebar-panel-link rounded-1">
-                            <a href="/docs/">Documentation</a>
+                            <a href="/docs">Documentation</a>
                         </li>
                         <li class="align-items-center sidebar-panel-link rounded-1">
                             <a href="https://www.prokerala.com/">Prokerala</a>

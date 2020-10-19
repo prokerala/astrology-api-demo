@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Kaal Sarp Dosha | Prokerala API</title>
+    <title>Kaal Sarp Dosha | Astrology API Demo - Prokerala Astrology</title>
 
     <link rel="stylesheet" href="/build/style.css">
 

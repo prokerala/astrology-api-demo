@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Prokerala API Demo</title>
+    <title>Astrology API Demo | </title>
 
     <link rel="stylesheet" href="/build/style.css">
 
@@ -20,7 +20,7 @@
             <div class="row my-auto">
                 <div class="col-xl-6 col-lg-7 col-md-12 col-sm-12 text-lg-left mb-4 top-header-text-content">
                     <h2 class="text-white mb-5">
-                        <span class="font-weight-thin">Astrology API Services</span>
+                        <span class="font-weight-thin">Astrology API Demo</span>
                     </h2>
                     <p class="text-white mb-5 font-weight-regular">From basic birth charts and daily astrology to detailed horoscope & kundli matching, all your astrology content needs delivered at one place</p>
                     <div class="mb-5">
@@ -48,7 +48,7 @@
             <div class="text-center mb-5">
                 <div class="row list-element-grid">
                     <?php foreach ($samples as $value):?>
-                        <div class="col-4 col-sm-3 col-lg-2 mb-5 m-4 p-5 shadow rounded-2">
+                        <div class="col-4 col-sm-3 col-lg-2 mb-5 m-4 p-5 shadow">
                             <a href="<?=$value['url']?>">
                                 <span class="feature-card-image"><img src="<?=$value['image']?>"></span>
                                 <span class="feature-card-title"><?=$value['title']?></span>

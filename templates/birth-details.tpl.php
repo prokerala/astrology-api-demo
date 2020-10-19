@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Birth Details | Prokerala API</title>
+    <title>Vedic Astrology Birth Details | Astrology API Demo - Prokerala Astrology</title>
 
     <link rel="stylesheet" href="/build/style.css">
 

@@ -53,7 +53,7 @@ $samples = [
     ],
     [
         'image' => '/assets/img/icon/panchang.png',
-        'title' => 'Panchangam',
+        'title' => 'Panchang',
         'url' => '/demo/panchang.php',
     ],
     [

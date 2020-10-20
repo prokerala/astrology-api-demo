@@ -1,4 +1,4 @@
-<header class="header header-transparent" id="header-main">
+<header class="header header-transparent bg-header" id="header-main">
     <!-- Main navbar -->
     <nav class="navbar navbar navbar-main navbar-expand-lg navbar-transparent navbar-dark" id="navbar-main">
         <!-- Navbar collapse trigger -->

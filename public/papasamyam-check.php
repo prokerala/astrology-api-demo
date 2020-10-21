@@ -126,4 +126,5 @@ if ($submit) {
     }
 }
 
+$apiCreditUsed = $client->getCreditUsed();
 include __DIR__ . '/../templates/papasamyam-check.tpl.php';

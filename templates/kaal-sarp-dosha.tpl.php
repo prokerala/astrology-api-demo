@@ -28,21 +28,11 @@
     </div>
 
     <div class="container demo-container">
+        <?php include 'common/helper.tpl.php'; ?>
         <?php if (!empty($result)): ?>
             <div class="alert p-4 text-center <?=$kaalSarpDoshaResult['has_kaal_sarp_dosha'] ? 'alert-danger' : 'alert-success'?>">
                 <?=$kaalSarpDoshaResult['description']?>
             </div>
-        <?php elseif (!empty($errors)):?>
-            <?php foreach ($errors as $key => $error):?>
-                <div class="alert alert-danger text-small">
-                    <?php if ('message' === $key):?>
-                        <?=$error?>
-                    <?php else:?>
-                        <?=$error->title ?? ''; ?>:
-                        <?=$error->detail ?? ''?>
-                    <?php endif; ?>
-                </div>
-            <?php endforeach; ?>
         <?php endif; ?>
             <section>
 

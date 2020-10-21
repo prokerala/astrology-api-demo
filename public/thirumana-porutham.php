@@ -80,4 +80,5 @@ if (isset($_POST['submit'])) {
     }
 }
 
+$apiCreditUsed = $client->getCreditUsed();
 include __DIR__ . '/../templates/thirumana-porutham.tpl.php';

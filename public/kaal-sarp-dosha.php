@@ -66,4 +66,6 @@ if ($submit) {
         $errors = ['message' => "API Request Failed with error {$e->getMessage()}"];
     }
 }
+
+$apiCreditUsed = $client->getCreditUsed();
 include __DIR__ . '/../templates/kaal-sarp-dosha.tpl.php';

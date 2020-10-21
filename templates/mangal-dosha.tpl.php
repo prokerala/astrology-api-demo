@@ -28,6 +28,8 @@
     </div>
 
     <div class="container demo-container">
+        <?php include 'common/helper.tpl.php'; ?>
+
         <?php if (!empty($result)): ?>
             <h2 class="text-center">Mangal Dosha Result</h2>
             <div class="alert p-4 text-center <?=$mangal_dosha_result['has_mangal_dosha'] ? 'alert-danger' : 'alert-success'?>" >
@@ -52,18 +54,6 @@
 
                 <?php endif; ?>
             <?php endif; ?>
-
-        <?php elseif (!empty($errors)):?>
-            <?php foreach ($errors as $key => $error):?>
-                <div class="alert alert-danger text-small">
-                    <?php if ('message' === $key):?>
-                        <?=$error?>
-                    <?php else:?>
-                        <?=$error->title ?? ''; ?>:
-                        <?=$error->detail ?? ''?>
-                    <?php endif; ?>
-                </div>
-            <?php endforeach; ?>
         <?php endif; ?>
             <section>
                 <div class="card contact-form-wrapper box-shadow mx-auto rounded-2 mb-5">

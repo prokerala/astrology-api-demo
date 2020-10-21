@@ -29,6 +29,7 @@
 
     <div class="container">
         <section>
+            <?php include 'common/helper.tpl.php'; ?>
             <?php if (!empty($result)): ?>
                 <h3>Birth Details</h3>
                 <table class="table table-bordered text-small mb-5">
@@ -131,17 +132,6 @@
                 <div class="mb-5 alert text-center <?=(('bad' === $compatibilityResult['message']['type']) ? 'alert-danger' : 'alert-success')?>">
                     <?=$compatibilityResult['message']['description']?>
                 </div>
-            <?php elseif (!empty($errors)):?>
-                <?php foreach ($errors as $key => $error):?>
-                    <div class="alert alert-danger text-small">
-                        <?php if ('message' === $key):?>
-                            <?=$error?>
-                        <?php else:?>
-                            <?=$error->title ?? ''; ?>:
-                            <?=$error->detail ?? ''?>
-                        <?php endif; ?>
-                    </div>
-                <?php endforeach; ?>
             <?php endif; ?>
                 <div class="card sample-form-wrapper box-shadow mx-auto rounded-2 mb-5">
                     <form class="p-5 text-default"  action="kundli-matching.php" method="POST">

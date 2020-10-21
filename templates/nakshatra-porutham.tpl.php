@@ -28,6 +28,8 @@
     </div>
 
     <div class="container demo-container">
+        <?php include 'common/helper.tpl.php'; ?>
+
         <?php if (!empty($result)): ?>
             <h3 class="text-black text-center">10 Poruthams and Your Compatibility</h3>
             <table class="mb-5 table table-bordered <?= ('advanced' === $result_type) ? 'text-small' : ''?>">
@@ -70,17 +72,6 @@
                 <?=$compatibilityResult['message']['description']?>
             </div>
 
-        <?php elseif (!empty($errors)):?>
-            <?php foreach ($errors as $key => $error):?>
-                <div class="alert alert-danger text-small">
-                    <?php if ('message' === $key):?>
-                        <?=$error?>
-                    <?php else:?>
-                        <?=$error->title ?? ''; ?>:
-                        <?=$error->detail ?? ''?>
-                    <?php endif; ?>
-                </div>
-            <?php endforeach; ?>
         <?php endif; ?>
             <section>
                 <div class="card contact-form-wrapper box-shadow mx-auto rounded-2 mb-5">

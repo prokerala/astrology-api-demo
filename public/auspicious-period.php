@@ -78,4 +78,5 @@ if ($submit) {
     }
 }
 
+$apiCreditUsed = $client->getCreditUsed();
 include __DIR__ . '/../templates/auspicious-period.tpl.php';

@@ -28,6 +28,7 @@
     </div>
 
     <div class="container demo-container">
+        <?php include 'common/helper.tpl.php'; ?>
         <?php if (!empty($result)): ?>
             <div class="alert text-center p-4 pad-large <?=(($sadeSatiResult['isInSadeSati']) ? 'alert-danger' : 'alert-success')?>">
                 <?=$sadeSatiResult['description']?>
@@ -48,17 +49,6 @@
                     <?php endforeach; ?>
                 </table>
             <?php endif; ?>
-        <?php elseif (!empty($errors)):?>
-            <?php foreach ($errors as $key => $error):?>
-                <div class="alert alert-danger text-small">
-                    <?php if ('message' === $key):?>
-                        <?=$error?>
-                    <?php else:?>
-                        <?=$error->title ?? ''; ?>:
-                        <?=$error->detail ?? ''?>
-                    <?php endif; ?>
-                </div>
-            <?php endforeach; ?>
         <?php endif; ?>
         <section>
 

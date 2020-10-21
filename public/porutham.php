@@ -178,4 +178,5 @@ if ($submit) {
     }
 }
 
+$apiCreditUsed = $client->getCreditUsed();
 include __DIR__ . '/../templates/porutham.tpl.php';

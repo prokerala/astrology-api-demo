@@ -129,4 +129,6 @@ if ($submit) {
         $errors = ['message' => "API Request Failed with error {$e->getMessage()}"];
     }
 }
+
+$apiCreditUsed = $client->getCreditUsed();
 include __DIR__ . '/../templates/panchang.tpl.php';

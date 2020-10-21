@@ -79,4 +79,5 @@ if ($submit) {
     }
 }
 
+$apiCreditUsed = $client->getCreditUsed();
 include __DIR__ . '/../templates/nakshatra-porutham.tpl.php';

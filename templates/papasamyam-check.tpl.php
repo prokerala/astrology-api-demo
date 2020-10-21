@@ -28,6 +28,8 @@
     </div>
 
     <div class="container demo-container">
+        <?php include 'common/helper.tpl.php'; ?>
+
         <?php if (!empty($result)): ?>
             <?php $arPapaPlanets = ['Mars', 'Saturn', 'Sun', 'Rahu']; ?>
             <?php $arPapaFromPlanets = ['Ascendant', 'Moon', 'Venus']; ?>
@@ -79,17 +81,6 @@
                 Papasamyam for this couple is <b><?=$papaSamyamCheckResult['message']['type']?></b><br>
                 <?=$papaSamyamCheckResult['message']['description']?>
             </div>
-        <?php elseif (!empty($errors)):?>
-            <?php foreach ($errors as $key => $error):?>
-                <div class="alert alert-danger text-small">
-                    <?php if ('message' === $key):?>
-                        <?=$error?>
-                    <?php else:?>
-                        <?=$error->title ?? ''; ?>:
-                        <?=$error->detail ?? ''?>
-                    <?php endif; ?>
-                </div>
-            <?php endforeach; ?>
         <?php endif; ?>
         <section>
 

@@ -40,6 +40,7 @@
     </div>
 
     <div class="container">
+        <?php include 'common/helper.tpl.php'; ?>
         <?php if (!empty($result)): ?>
 
             <?php $nakshatra_details = $kundliResult['nakshatraDetails']; ?>
@@ -108,18 +109,6 @@
                 <p class="text-small text-right text-danger"><span class="text-danger">**</span> AD stands for Antardashad &  PD stands for Paryantra dasha</p>
 
             <?php endif;?>
-
-        <?php elseif (!empty($errors)):?>
-            <?php foreach ($errors as $key => $error):?>
-                <div class="alert alert-danger text-small">
-                    <?php if ('message' === $key):?>
-                        <?=$error?>
-                    <?php else:?>
-                        <?=$error->title ?? ''; ?>:
-                        <?=$error->detail ?? ''?>
-                    <?php endif; ?>
-                </div>
-            <?php endforeach; ?>
         <?php endif; ?>
         <section>
             <div class="card contact-form-wrapper box-shadow mx-auto rounded-2 mb-5">

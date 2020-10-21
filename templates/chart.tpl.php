@@ -29,6 +29,7 @@
 
     <div class="container demo-container">
 
+        <?php include 'common/helper.tpl.php'; ?>
         <?php if (!empty($result)): ?>
             <div class="row">
                 <div class="text-center m-auto col-12 overflow-auto">
@@ -36,18 +37,6 @@
                     <?php echo $result; ?>
                 </div>
             </div>
-
-        <?php elseif (!empty($errors)):?>
-            <?php foreach ($errors as $key => $error):?>
-                <div class="alert alert-danger text-small">
-                    <?php if ('message' === $key):?>
-                        <?=$error?>
-                    <?php else:?>
-                        <?=$error->title ?? ''; ?>:
-                        <?=$error->detail ?? ''?>
-                    <?php endif; ?>
-                </div>
-            <?php endforeach; ?>
         <?php endif; ?>
         <section>
             <div class="card contact-form-wrapper box-shadow mx-auto rounded-2 mb-5">

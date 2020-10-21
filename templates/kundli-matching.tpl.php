@@ -176,6 +176,7 @@
                         </div>
                     </form>
                 </div>
+            <?php include 'common/calculator-list.tpl.php'; ?>
 
         </section>
     </div>

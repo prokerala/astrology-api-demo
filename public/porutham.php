@@ -12,6 +12,7 @@ use Prokerala\Common\Api\Exception\RateLimitExceededException;
 use Prokerala\Common\Api\Exception\ValidationException;
 
 require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/calculators-list.php';
 
 $client = include __DIR__ . '/../client.php';
 $time_now = new DateTimeImmutable();

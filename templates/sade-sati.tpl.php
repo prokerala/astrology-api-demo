@@ -85,6 +85,7 @@
                 </form>
             </div>
         </section>
+        <?php include 'common/calculator-list.tpl.php'; ?>
 
     </div>
 </div>

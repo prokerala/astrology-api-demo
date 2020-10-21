@@ -25,6 +25,7 @@ $coordinates = $input['latitude'] . ',' . $input['longitude'];
 $result_type = 'basic';
 $submit = $_POST['submit'] ?? 0;
 $ayanamsa = 1;
+$sample_name = 'sade-sati';
 
 if (isset($_POST['submit'])) {
     $input['datetime'] = $_POST['datetime'];

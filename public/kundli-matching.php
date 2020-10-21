@@ -34,6 +34,7 @@ $boy_coordinates = $boy_input['latitude'] . ',' . $boy_input['longitude'];
 $result_type = 'basic';
 $submit = $_POST['submit'] ?? 0;
 $ayanamsa = 1;
+$sample_name = 'kundli-matching';
 
 if ($submit) {
     if (isset($_POST['submit'])) {

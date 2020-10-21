@@ -33,6 +33,7 @@ $girl_coordinates = $girl_input['latitude'] . ',' . $girl_input['longitude'];
 $boy_coordinates = $boy_input['latitude'] . ',' . $boy_input['longitude'];
 $submit = $_POST['submit'] ?? 0;
 $ayanamsa = 1;
+$sample_name = 'papasamyam-check';
 
 if (isset($_POST['submit'])) {
     $girl_datetime = $_POST['girl_dob'];

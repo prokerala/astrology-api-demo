@@ -25,6 +25,7 @@ $coordinates = $input['latitude'] . ',' . $input['longitude'];
 $submit = $_POST['submit'] ?? 0;
 $ayanamsa = 1;
 $result_type = 'basic';
+$sample_name = 'panchang';
 
 if (isset($_POST['submit'])) {
     $input['datetime'] = $_POST['datetime'];

@@ -24,6 +24,7 @@ $coordinates = $input['latitude'] . ',' . $input['longitude'];
 $submit = $_POST['submit'] ?? 0;
 $result_type = 'basic';
 $ayanamsa = 1;
+$sample_name = 'kundli';
 
 if (isset($_POST['submit'])) {
     $input['datetime'] = $_POST['datetime'];

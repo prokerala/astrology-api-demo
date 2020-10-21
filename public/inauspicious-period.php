@@ -25,6 +25,7 @@ $input = [
 $coordinates = $input['latitude'] . ',' . $input['longitude'];
 $submit = $_POST['submit'] ?? 0;
 $ayanamsa = 1;
+$sample_name = 'inauspicious-period';
 
 if ($submit) {
     $input['datetime'] = $_POST['datetime'];

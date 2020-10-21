@@ -35,6 +35,7 @@ $result_type = 'basic';
 $submit = $_POST['submit'] ?? 0;
 $ayanamsa = 1;
 $system = 'kerala';
+$sample_name = 'porutham';
 
 if (isset($_POST['submit'])) {
     $girl_datetime = $_POST['girl_dob'];

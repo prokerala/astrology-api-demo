@@ -22,6 +22,7 @@ $boy_nakshatra = 13;
 $boy_nakshatra_pada = 3;
 
 $result_type = 'basic';
+$sample_name = 'nakshatra-porutham';
 $submit = $_POST['submit'] ?? 0;
 $result = [];
 $errors = [];

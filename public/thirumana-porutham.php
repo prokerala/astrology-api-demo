@@ -24,6 +24,7 @@ $boy_nakshatra_pada = 3;
 $result_type = 'basic';
 $submit = $_POST['submit'] ?? 0;
 $ayanamsa = 1;
+$sample_name = 'thirumana-porutham';
 
 $result = [];
 $errors = [];

@@ -33,6 +33,7 @@ $coordinates = $input['latitude'] . ',' . $input['longitude'];
 $submit = $_POST['submit'] ?? 0;
 $ayanamsa = 1;
 $chart_style = 'south-indian';
+$sample_name = 'chart';
 
 if ($submit) {
     $input['datetime'] = $_POST['datetime'];

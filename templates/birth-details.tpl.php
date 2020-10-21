@@ -30,8 +30,9 @@
     <div class="container demo-container">
         <?php include 'common/helper.tpl.php'; ?>
         <?php if (!empty($result)): ?>
-            <table class="table table-bordered">
-                <tr class="table-success"><th colspan="2" class="text-center">Nakshatra is <?=$nakshatra_details['nakshatra']->getName()?></th></tr>
+            <table class="table table-bordered table-hover">
+                <tr class="bg-secondary text-white text-center"><td colspan="2" class="text-center">Nakshatra Details</td></tr>
+                <tr><td>Nakshatra</td><td><?=$nakshatra_details['nakshatra']->getName()?></td></tr>
                 <tr><td>Nakshatra Pada</td><td><?=$nakshatra_details['nakshatra']->getPada()?></td></tr>
                 <tr><td>Nakshatra Lord</td><td><?=$nakshatra_details['nakshatra']->getLord()?></td></tr>
                 <tr><td>Chandra Rasi</td><td><?=$nakshatra_details['chandra_rasi']->getName()?></td></tr>
@@ -39,7 +40,7 @@
                 <tr><td>Soorya Rasi</td><td><?=$nakshatra_details['soorya_rasi']->getName()?></td></tr>
                 <tr><td>Soorya Rasi Lord</td><td><?=$nakshatra_details['soorya_rasi']->getLord() . '(' . $nakshatra_details['soorya_rasi']->getLord()->getVedicName() . ')'?></td></tr>
                 <tr><td>Zodiac</td><td><?=$nakshatra_details['zodiac']->getName()?></td></tr>
-                <tr class="table-warning"><td colspan="2" class="text-center">Additional Info:</td></tr>
+                <tr class="bg-secondary text-white text-center"><td colspan="2" class="text-center">Additional Info:</td></tr>
                 <?php foreach ($nakshatra_additional_info as $key => $data):?>
                     <tr><td><?= $key?></td><td><?=$data?></td></tr>
                 <?php endforeach; ?>

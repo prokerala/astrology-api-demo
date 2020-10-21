@@ -32,8 +32,8 @@
             <?php include 'common/helper.tpl.php'; ?>
             <?php if (!empty($result)): ?>
                 <h3>Birth Details</h3>
-                <table class="table table-bordered text-small mb-5">
-                    <tr>
+                <table class="table table-bordered mb-5 table-hover">
+                    <tr class="bg-secondary text-white">
                         <th>#</th>
                         <th>Details of Girl</th>
                         <th>Details of Boy</th>
@@ -66,8 +66,8 @@
                 </table>
 
                 <h3>Guna Milan Details</h3>
-                <table class="mb-5 table table-bordered text-small table-responsive-sm">
-                    <tr>
+                <table class="mb-5 table table-bordered table-responsive-sm table-hover">
+                    <tr class="bg-secondary text-white">
                         <th>#</th>
                         <th>Guna</th>
                         <th>Girl</th>
@@ -114,16 +114,16 @@
                 <?php if ('advanced' === $result_type):?>
                     <h3 class="text-black">Guna Milan Detailed Interpretation</h3>
                     <?php $count = 1; foreach ($compatibilityResult['gunaMilan']['guna'] as  $koot): ?>
-                        <p class="text-black"><?=$koot['id']?>. <?=$koot['name']?> Koot</p>
+                        <span class="font-weight-regular text-black"><?=$koot['id']?>. <?=$koot['name']?> Koot</span>
                         <p class="text-black"><?=$koot['description']?></p>
                         <?php ++$count; endforeach; ?>
 
-                    <p>Girl Mangal Dosha Details</p>
+                    <h3 class="text-black">Girl Mangal Dosha Details</h3>
                     <p class="alert <?=(($compatibilityResult['girlMangalDoshaDetails']['hasMangalDosha']) ? 'alert-danger' : 'alert-success')?>">
                         <?=$compatibilityResult['girlMangalDoshaDetails']['description']?>
                     </p>
 
-                    <p>Boy Mangal Dosha Details</p>
+                    <h3 class="text-black">Boy Mangal Dosha Details</h3>
                     <p class="alert <?=(($compatibilityResult['boyMangalDoshaDetails']['hasMangalDosha']) ? 'alert-danger' : 'alert-success')?>">
                         <?=$compatibilityResult['boyMangalDoshaDetails']['description']?>
                     </p>

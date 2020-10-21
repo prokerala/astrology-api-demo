@@ -32,11 +32,11 @@
 
         <?php if (!empty($result)): ?>
             <h2 class="text-center text-black">Papasamyam Details</h2>
-            <table class="table table-bordered text-small table-responsive-sm table-striped">
+            <table class="table table-bordered table-responsive-sm table-hover">
                 <thead>
-                <tr><th rowspan="2">Papa Points</th><th colspan="2">From Ascendant</th><th colspan="2">From Moon</th><th colspan="2">From Venus
+                <tr class="bg-secondary text-white"><th rowspan="2">Papa Points</th><th colspan="2">From Ascendant</th><th colspan="2">From Moon</th><th colspan="2">From Venus
                     </th></tr>
-                <tr><th>Position</th><th>Papam</th><th>Position</th><th>Papam</th><th>Position</th><th>Papam</th></tr>
+                <tr class="bg-secondary text-white"><th>Position</th><th>Papam</th><th>Position</th><th>Papam</th><th>Position</th><th>Papam</th></tr>
                 </thead>
                 <?php $arPapaPlanets = ['Mars', 'Saturn', 'Sun', 'Rahu']; ?>
                 <?php $arPapaFromPlanets = ['Ascendant', 'Moon', 'Venus']; ?>

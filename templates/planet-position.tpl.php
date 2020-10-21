@@ -32,8 +32,8 @@
 
         <?php if (!empty($result)): ?>
             <h3 class="text-center">Planet Positions</h3>
-            <table class="table table-bordered text-large table-responsive-sm">
-                <tr>
+            <table class="table table-bordered table-hover table-responsive-sm">
+                <tr class="bg-secondary text-white">
                     <th>Planets</th>
                     <th>Position</th>
                     <th>Degree</th>

@@ -44,14 +44,15 @@
         <?php if (!empty($result)): ?>
 
             <?php $nakshatra_details = $kundliResult['nakshatraDetails']; ?>
-            <table class="table table-bordered mb-5">
+            <table class="table table-bordered mb-5 table-hover">
+                <tr class="bg-secondary text-white text-center"><th colspan=2">Nakshatra Details</th></tr>
                 <?php foreach ($kundliResult['nakshatraDetails'] as $key => $kundli):?>
                     <?php $item = preg_replace('/(?<!\ )[A-Z]/', ' $0', $key);?>
                     <?php if(in_array( $key, ['nakshatra', 'chandraRasi', 'sooryaRasi'])):?>
                         <tr><th><?=ucwords($item)?></th><td><?=$kundli['name']?></td></tr>
                         <tr><th><?=ucwords($item)?> Lord</th><td><?="{$kundli['lord']['vedicName']} ({$kundli['lord']['name']})"?></td></tr>
                     <?php elseif($key === 'additionalInfo'):?>
-                        <tr class="text-center"><th class="table-warning" colspan=2">Additional Info</th></tr>
+                        <tr class="bg-secondary text-white text-center"><th colspan=2">Additional Info</th></tr>
                         <?php foreach($kundli as $index => $value):?>
                             <tr><th><?=ucwords(preg_replace('/(?<!\ )[A-Z]/', ' $0', $index))?></th><td><?=$value?></td></tr>
                         <?php endforeach;?>

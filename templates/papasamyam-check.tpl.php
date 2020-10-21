@@ -35,8 +35,8 @@
             <?php $arPapaFromPlanets = ['Ascendant', 'Moon', 'Venus']; ?>
             <h2 class="text-center text-black">Papasamyam Details</h2>
             <h3 class="text-black">Girl Papa Points</h3>
-            <table class="table table-bordered text-small table-responsive-sm table-striped">
-                <thead>
+            <table class="table table-bordered table-responsive-sm table-hover">
+                <thead class="bg-secondary text-white">
                 <tr><th rowspan="2">Girl Papa Points</th><th colspan="2">From Ascendant</th>
                     <th colspan="2">From Moon</th><th colspan="2">From Venus</th>
                 </tr>
@@ -56,8 +56,8 @@
                 <tr><th colspan="7" class="text-center">Total Papa Points : <?=$papaSamyamCheckResult['girlPapasamyam']['total_point']?></th> </tr>
             </table>
             <h3 class="text-black">Boy Papa Points</h3>
-            <table class="table table-bordered text-small table-responsive-sm table-striped">
-                <thead>
+            <table class="table table-bordered table-responsive-sm table-hover">
+                <thead class="bg-secondary text-white">
                     <tr><th rowspan="2">Boy Papa Points</th><th colspan="2">From Ascendant</th>
                         <th colspan="2">From Moon</th><th colspan="2">From Venus</th>
                     </tr>

@@ -9,8 +9,8 @@
     <style>
         .table>tbody>tr>th,
         .table>tbody>tr>td {
-            height: 50px;
-            border: 1px solid #fff;
+            height: 70px;
+            border: 1px solid #6c757d;
         }
     </style>
 </head>
@@ -39,7 +39,7 @@
         <div class="row">
             <?php foreach ($choghadiyaResult as $type => $choghadiya): ?>
             <div class="col-12 col-md-6">
-                <table class="table table-bordered text-small border-white" style="margin-right: 10px">
+                <table class="table table-bordered border-white table-hover" style="margin-right: 10px">
                     <tr class="bg-secondary text-white">
                         <th colspan="4" class="text-center"><?= ($type ? 'Day' : 'Night')?> Choghadiya</th>
                     </tr>

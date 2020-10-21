@@ -32,8 +32,8 @@
 
         <?php if (!empty($result)): ?>
             <h3 class="text-black text-center">10 Poruthams and Your Compatibility</h3>
-            <table class="mb-5 table table-bordered <?= ('advanced' === $result_type) ? 'text-small' : ''?>">
-                <tr>
+            <table class="mb-5 table table-bordered table-hover">
+                <tr class="bg-secondary text-white">
                     <th>#</th>
                     <th>Porutham</th>
                     <?php if ('advanced' === $result_type): ?>

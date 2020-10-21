@@ -35,8 +35,8 @@
             </div>
             <?php if ('advanced' === $result_type):?>
                 <h3 class="text-black">The Detailed sade sati report is as follows</h3>
-                <table class="table table-bordered mb-5 text-small">
-                    <tr>
+                <table class="table table-bordered mb-5 table-hover">
+                    <tr class="bg-secondary text-white">
                         <th>Sade Sati Phase</th>
                         <th>Start Time</th>
                         <th>End Time</th>

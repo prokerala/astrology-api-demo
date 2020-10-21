@@ -36,8 +36,8 @@
 
         <?php if (!empty($result)): ?>
             <h3>Birth Details</h3>
-            <table class="table table-bordered text-small mb-5">
-                <tr>
+            <table class="table table-bordered  mb-5 table-hover">
+                <tr class="bg-secondary text-white text-center">
                     <th>#</th>
                     <th>Details of Girl</th>
                     <th>Details of Boy</th>
@@ -74,8 +74,8 @@
                 <?=$compatibilityResult['message']['description']?> (<?=$compatibilityResult['totalPoints']?> / 10)
             </div>
             <h3 class="text-black text-center">10 Poruthams and Your Compatibility</h3>
-            <table class="mb-5 table table-bordered <?= ('advanced' === $result_type) ? 'text-small' : ''?>">
-                <tr>
+            <table class="mb-5 table table-bordered table-hover">
+                <tr class="bg-secondary text-white text-center">
                     <th>#</th>
                     <th>Porutham</th>
                     <?php if ('advanced' === $result_type): ?>

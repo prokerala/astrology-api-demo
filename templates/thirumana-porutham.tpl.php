@@ -31,8 +31,8 @@
         <?php include 'common/helper.tpl.php'; ?>
         <?php if (!empty($result)): ?>
             <h3 class="text-black text-center">Porutham Result</h3>
-            <table class="mb-5 table table-bordered <?= ('advanced' === $result_type) ? 'text-small' : ''?>">
-                <tr>
+            <table class="mb-5 table table-bordered table-hover">
+                <tr class="bg-secondary text-white">
                     <th>#</th>
                     <th>Porutham</th>
                     <th class="text-center">Obtained Point</th>

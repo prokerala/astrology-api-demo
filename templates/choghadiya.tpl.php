@@ -39,7 +39,7 @@
         <div class="row">
             <?php foreach ($choghadiyaResult as $type => $choghadiya): ?>
             <div class="col-12 col-md-6">
-                <table class="table table-bordered border-white table-hover" style="margin-right: 10px">
+                <table class="table table-bordered border-white table-hover table-responsive-sm" style="margin-right: 10px">
                     <tr class="bg-secondary text-white">
                         <th colspan="4" class="text-center"><?= ($type ? 'Day' : 'Night')?> Choghadiya</th>
                     </tr>

@@ -40,7 +40,7 @@
                 <tr><td>Soorya Rasi</td><td><?=$nakshatra_details['soorya_rasi']->getName()?></td></tr>
                 <tr><td>Soorya Rasi Lord</td><td><?=$nakshatra_details['soorya_rasi']->getLord() . '(' . $nakshatra_details['soorya_rasi']->getLord()->getVedicName() . ')'?></td></tr>
                 <tr><td>Zodiac</td><td><?=$nakshatra_details['zodiac']->getName()?></td></tr>
-                <tr class="bg-secondary text-white text-center"><td colspan="2" class="text-center">Additional Info:</td></tr>
+                <tr class="bg-secondary text-white text-center"><td colspan="2" class="text-center">Additional Info</td></tr>
                 <?php foreach ($nakshatra_additional_info as $key => $data):?>
                     <tr><td><?= $key?></td><td><?=$data?></td></tr>
                 <?php endforeach; ?>

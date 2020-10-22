@@ -41,8 +41,10 @@
                         <th>Start Time</th>
                         <th>End Time</th>
                     </tr>
+                    <?php $today = strtotime(date('Y-m-d'));?>
                     <?php foreach ($sadeSatiResult['transits'] as $transit):?>
-                        <tr><td><?=$transit['phase']?></td>
+                        <tr class="<?=($today >= strtotime($transit['start']->format('Y-m-d')) && $today <= strtotime($transit['end']->format('Y-m-d'))) ? 'table-danger' : ''?>">
+                            <td><?=$transit['phase']?></td>
                             <td><?=$transit['start']->format('F d, Y')?></td>
                             <td><?=$transit['end']->format('F d, Y')?></td>
                         </tr>

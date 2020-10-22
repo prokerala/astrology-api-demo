@@ -43,21 +43,21 @@
                         <td><?=$girl_dob->format('F d, Y')?></td>
                         <td><?=$boy_dob->format('F d, Y')?></td>
                     </tr>
-                    <?php foreach ($compatibilityResult['girlInfo'] as $idx => $info): ?>
-                        <?php if (in_array($idx, ['nakshatra', 'rasi'], true)):?>
+                    <?php foreach ($compatibilityResult['girlInfo'] as $key => $info): ?>
+                        <?php if (in_array($key, ['nakshatra', 'rasi'], true)):?>
                             <?php foreach ($info as $item => $itemVale):?>
                                 <?php if ('id' === $item) {continue;}?>
                                 <?php if('lord' === $item):?>
                                     <tr>
-                                        <td><b><?=$item?></b></td>
+                                        <td><b><?=ucwords($key.' '.$item)?></b></td>
                                         <td><?="{$itemVale['vedicName']} ({$itemVale['name']})"?></td>
-                                        <td><?="{$compatibilityResult['boyInfo'][$idx][$item]['vedicName']} ({$compatibilityResult['boyInfo'][$idx][$item]['name']})"?></td>
+                                        <td><?="{$compatibilityResult['boyInfo'][$key][$item]['vedicName']} ({$compatibilityResult['boyInfo'][$key][$item]['name']})"?></td>
                                     </tr>
                                 <?php else:?>
                                     <tr>
-                                        <td><b><?=$item?></b></td>
+                                        <td><b><?=ucwords($key.' '.$item)?></b></td>
                                         <td><?=$itemVale?></td>
-                                        <td><?=$compatibilityResult['boyInfo'][$idx][$item]?></td>
+                                        <td><?=$compatibilityResult['boyInfo'][$key][$item]?></td>
                                     </tr>
                                 <?php endif;?>
                             <?php endforeach; ?>

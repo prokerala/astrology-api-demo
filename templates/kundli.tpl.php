@@ -107,7 +107,7 @@
                     <?php endforeach;?>
                     </div>
                 <?php endforeach;?>
-                <p class="text-small text-right text-danger"><span class="text-danger">**</span> AD stands for Antardashad &  PD stands for Paryantra dasha</p>
+                <p class="text-small text-right text-danger"><span class="text-danger">**</span> AD stands for Antardasha &  PD stands for Paryantra dasha</p>
 
             <?php endif;?>
         <?php endif; ?>

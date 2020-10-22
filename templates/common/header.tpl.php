@@ -3,7 +3,11 @@
     <nav class="navbar navbar navbar-main navbar-expand-lg navbar-transparent navbar-dark" id="navbar-main">
         <!-- Navbar collapse trigger -->
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" onclick="toggleFunction()" data-target="#navbar-main-collapse" aria-controls="navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
-            <img alt="menu" src="/assets/img/menu-link.png" class="toggle-menu" >
+            <svg class="toggle-menu" fill="#fff" viewBox="0 0 80 80" width="40" height="40">
+                <rect width="100" height="12" rx="8"></rect>
+                <rect y="30" width="100" height="12" rx="8"></rect>
+                <rect y="60" width="100" height="12" rx="8"></rect>
+            </svg>
         </button>
 
         <div class="container  d-flex justify-content-between">
@@ -41,7 +45,9 @@
             </div>
         </div>
         <a class="user-login" href="/login">
-            <img class="user-login-icon" src="/assets/img/login.png">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" aria-hidden="true" class="user-login-icon" viewBox="0 0 496 512">
+                <path d="M248 8a248 248 0 100 496 248 248 0 000-496zm0 96a88 88 0 110 176 88 88 0 010-176zm0 344c-59 0-111-27-146-68 18-36 55-60 98-60l7 1c13 4 27 7 41 7s28-3 41-7l7-1c43 0 80 24 99 60-36 41-88 68-147 68z"/>
+            </svg>
         </a>
     </nav>
 </header>

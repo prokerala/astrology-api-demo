@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Astrology API Demo | </title>
+    <title>Astrology API Demo</title>
 
     <link rel="stylesheet" href="/build/style.css">
 

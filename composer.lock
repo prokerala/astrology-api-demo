@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5efab69ca54949a6ae96214a12608063",
+    "content-hash": "431b20f76f012b590d7a2cf54a603ee2",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -351,29 +351,38 @@
         },
         {
             "name": "prokerala/astrology-sdk",
-            "version": "dev-feature/v2",
+            "version": "0.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/prokerala/astrology-sdk.git",
-                "reference": "7155bcf12b4ead7dc6e43c2a48cd1318015fda7d"
+                "reference": "49361aa755835d26485edaa386daf5fdc6105f8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/prokerala/astrology-sdk/zipball/7155bcf12b4ead7dc6e43c2a48cd1318015fda7d",
-                "reference": "7155bcf12b4ead7dc6e43c2a48cd1318015fda7d",
+                "url": "https://api.github.com/repos/prokerala/astrology-sdk/zipball/49361aa755835d26485edaa386daf5fdc6105f8d",
+                "reference": "49361aa755835d26485edaa386daf5fdc6105f8d",
                 "shasum": ""
             },
             "require": {
-                "ext-curl": "*",
                 "ext-json": "*",
                 "php": ">=5.6.0",
                 "psr/http-client": "^1.0",
+                "psr/http-client-implementation": "^1.0",
                 "psr/http-factory": "^1.0",
+                "psr/http-factory-implementation": "^1.0",
                 "psr/http-message": "^1.0",
                 "psr/simple-cache": "^1.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.15"
+                "friendsofphp/php-cs-fixer": "^2.15",
+                "guzzlehttp/guzzle": "^7",
+                "nyholm/psr7": "^1.0",
+                "symfony/cache": "~3.4|~4.0|~5.0"
+            },
+            "suggest": {
+                "guzzlehttp/guzzle": "PSR-7 compatible Guzzle client",
+                "nyholm/psr7": "For a super lightweight PSR-7/17 implementation",
+                "symfony/cache": "PSR-16 Simple cache implementation"
             },
             "type": "library",
             "autoload": {
@@ -393,7 +402,7 @@
                 }
             ],
             "description": "Prokerala.com Astrology API Client Library for PHP.",
-            "time": "2020-10-14T12:28:16+00:00"
+            "time": "2020-10-22T14:20:19+00:00"
         },
         {
             "name": "psr/http-client",
@@ -1014,20 +1023,20 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v9.99.99",
+            "version": "v9.99.100",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95"
+                "reference": "996434e5492cb4c3edcb9168db6fbb1359ef965a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95",
-                "reference": "84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/996434e5492cb4c3edcb9168db6fbb1359ef965a",
+                "reference": "996434e5492cb4c3edcb9168db6fbb1359ef965a",
                 "shasum": ""
             },
             "require": {
-                "php": "^7"
+                "php": ">= 7"
             },
             "require-dev": {
                 "phpunit/phpunit": "4.*|5.*",
@@ -1055,7 +1064,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2018-07-02T15:55:56+00:00"
+            "time": "2020-10-15T08:29:30+00:00"
         },
         {
             "name": "php-cs-fixer/diff",
@@ -2677,9 +2686,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "prokerala/astrology-sdk": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

@@ -38,7 +38,7 @@
                             <a href="/contact" class="nav-link">Contact</a>
                         </li>
                         <li class="nav-item px-3">
-                            <a href="/register" class="btn-warning btn-signup text-black">Sign up</a>
+                            <a href="/register" class="nav-link btn-signup bg-warning px-3">Sign up</a>
                         </li>
                     </ul>
                 </div>

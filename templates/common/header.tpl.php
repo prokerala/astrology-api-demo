@@ -45,9 +45,7 @@
             </div>
         </div>
         <a class="user-login" href="/login">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" aria-hidden="true" class="user-login-icon" viewBox="0 0 496 512">
-                <path d="M248 8a248 248 0 100 496 248 248 0 000-496zm0 96a88 88 0 110 176 88 88 0 010-176zm0 344c-59 0-111-27-146-68 18-36 55-60 98-60l7 1c13 4 27 7 41 7s28-3 41-7l7-1c43 0 80 24 99 60-36 41-88 68-147 68z"/>
-            </svg>
+            <img class="user-login-icon" src="/assets/img/login.png">
         </a>
     </nav>
 </header>

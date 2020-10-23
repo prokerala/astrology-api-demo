@@ -66,7 +66,9 @@
                             <li class="nav-item px-3">
                                 <a href="/privacy" class="nav-link">Privacy</a>
                             </li>
-
+                            <li class="nav-item px-3">
+                                <a href="/tos" class="nav-link">TOS</a>
+                            </li>
                             <li class="nav-item px-3">
                                 <a href="/contact" class="nav-link">Contact</a>
                             </li>
@@ -135,6 +137,9 @@
                         </li>
                         <li class="align-items-center sidebar-panel-link rounded-1">
                             <a href="/docs">Documentation</a>
+                        </li>
+                        <li class="align-items-center sidebar-panel-link rounded-1">
+                            <a href="/tos">Terms of Service</a>
                         </li>
                         <li class="align-items-center sidebar-panel-link rounded-1">
                             <a href="https://www.prokerala.com/">Prokerala</a>

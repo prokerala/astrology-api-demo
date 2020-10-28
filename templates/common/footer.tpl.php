@@ -86,71 +86,68 @@
     <div class="sidebar-container">
         <div class="sidebar-panel-footer-offset">
             <!-- Toggle Button -->
-            <div class="d-flex text-right border-bottom py-4 px-5">
-                <a href="javascript:void(0)" class="sidebar-close ml-auto" onclick="toggleFunction()">×</a>
+            <div class="sidebar-close">
+                <span>×</span>
             </div>
             <!-- End Toggle Button -->
 
             <!-- Content -->
             <div class="sidebar-body">
-                <div class="sidebar-content py-5 px-3">
+                <div class="sidebar-content py-5">
 
-                    <ul class="mb-0 navbar-nav">
-                        <li class="align-items-center sidebar-panel-link rounded-1">
+                    <ul class="mb-3 navbar-nav">
+                        <li class="align-items-center sidebar-panel-link py-3">
                             <a href="/">Home</a>
                         </li>
-                        <li class="align-items-center sidebar-panel-link rounded-1">
-                            <a href="/about">About</a>
-                        </li>
-                        <li class="align-items-center sidebar-panel-link rounded-1 dropdown">
-                                    <span class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Demo
-                                    </span>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/auspicious-period.php">Auspicious Period</a>
-                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/chart.php">Chart</a>
-                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/choghadiya.php">Choghadiya</a>
-                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/inauspicious-period.php">Inauspicious Period</a>
-                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/kaal-sarp-dosha.php">Kaal Sarp Dosha</a>
-                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/kundli.php">Kundli</a>
-                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/kundli-matching.php">Kundli Matching</a>
-                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/mangal-dosha.php">Mangal Dosha</a>
-                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/birth-details.php">Birth Details</a>
-                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/nakshatra-porutham.php">Nakshatra Porutham</a>
-                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/panchang.php">Panchang</a>
-                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/papasamyam-check.php">Papasamyam Check</a>
-                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/papasamyam.php">Papasamyam</a>
-                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/planet-position.php">Planet Position</a>
-                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/porutham.php">Porutham</a>
-                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/sade-sati.php">Sade Sati</a>
-                                <a class="dropdown-item rounded-1" target="_blank" href="/demo/thirumana-porutham.php">Thirumana Porutham</a>
-                            </div>
-                        </li>
-                        <li class="align-items-center sidebar-panel-link rounded-1">
+                        <li class="align-items-center sidebar-panel-link py-3">
                             <a href="/pricing">Pricing</a>
                         </li>
-                        <li class="align-items-center sidebar-panel-link rounded-1">
-                            <a href="/faq">FAQ</a>
+                        <li class="align-items-center sidebar-panel-link dropdown py-3">
+                            <span class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            API Demo
+                            </span>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" target="_blank" href="/demo/auspicious-period.php">Auspicious Period</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/chart.php">Chart</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/choghadiya.php">Choghadiya</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/inauspicious-period.php">Inauspicious Period</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/kaal-sarp-dosha.php">Kaal Sarp Dosha</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/kundli.php">Kundli</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/kundli-matching.php">Kundli Matching</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/mangal-dosha.php">Mangal Dosha</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/birth-details.php">Birth Details</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/nakshatra-porutham.php">Nakshatra Porutham</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/panchang.php">Panchang</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/papasamyam-check.php">Papasamyam Check</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/papasamyam.php">Papasamyam</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/planet-position.php">Planet Position</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/porutham.php">Porutham</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/sade-sati.php">Sade Sati</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/thirumana-porutham.php">Thirumana Porutham</a>
+                            </div>
                         </li>
-                        <li class="align-items-center sidebar-panel-link rounded-1">
-                            <a href="/contact">Contact</a>
-                        </li>
-                        <li class="align-items-center sidebar-panel-link rounded-1">
+                        <li class="align-items-center sidebar-panel-link py-3">
                             <a href="/docs">Documentation</a>
                         </li>
-                        <li class="align-items-center sidebar-panel-link rounded-1">
+                        <li class="align-items-center sidebar-panel-link py-3">
+                            <a href="/faq">FAQ</a>
+                        </li>
+                        <li class="align-items-center sidebar-panel-link py-3">
+                            <a href="/contact">Contact</a>
+                        </li>
+                        <li class="align-items-center sidebar-panel-link py-3">
                             <a href="/tos">Terms of Service</a>
                         </li>
-                        <li class="align-items-center sidebar-panel-link rounded-1">
+                        <li class="align-items-center sidebar-panel-link py-3">
                             <a href="https://www.prokerala.com/">Prokerala</a>
                         </li>
-                        <li class="align-items-center sidebar-panel-link rounded-1">
+                        <li class="align-items-center sidebar-panel-link py-3">
                             <a href="https://www.prokerala.com/astrology/">Prokerala Astrology</a>
                         </li>
-                        <li class="align-items-center sidebar-panel-link rounded-1">
-                            <a href="/login">Login</a>
-                        </li>
                     </ul>
+                    <div class="text-center">
+                        <a class="btn btn-warning" href="https://api.prokerala.com/login">Login</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -175,10 +172,26 @@
             this.querySelector('.dropdown-menu').classList.toggle('show')
         })
     });
-    function toggleFunction() {
+    function toggleSideBarFunction() {
         let sidebarContent = document.getElementById('sidebarContent');
         sidebarContent.classList.toggle('unfold-hidden');
         sidebarContent.classList.toggle('fadeInLeft')
     }
+    document.getElementById('sidebarContent').addEventListener("click", function(evt) {
+        var flyoutElement = document.querySelector('.sidebar-body');
+        var targetElement = evt.target;  // clicked element
+    
+        do {
+            if (targetElement == flyoutElement) {
+                // This is a click inside. Do nothing, just return.
+                return;
+            }
+            // Go up the DOM
+            targetElement = targetElement.parentNode;
+        } while (targetElement);
+    
+        // This is a click outside.
+        toggleSideBarFunction();
+    });
 </script>
 

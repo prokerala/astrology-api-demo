@@ -2,7 +2,7 @@
     <!-- Main navbar -->
     <nav class="navbar navbar navbar-main navbar-expand-lg navbar-transparent navbar-dark" id="navbar-main">
         <!-- Navbar collapse trigger -->
-        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" onclick="toggleFunction()" data-target="#navbar-main-collapse" aria-controls="navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" onclick="toggleSideBarFunction()" data-target="#navbar-main-collapse" aria-controls="navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
             <svg class="toggle-menu" fill="#fff" viewBox="0 0 80 80" width="40" height="40">
                 <rect width="100" height="12" rx="8"></rect>
                 <rect y="30" width="100" height="12" rx="8"></rect>

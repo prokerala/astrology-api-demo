@@ -27,6 +27,7 @@
                     <h2 class="text-white mb-5">
                         <span class="font-weight-thin">Inauspicious Period</span>
                     </h2>
+                    <p class="text-white">Inauspicious period shows results like Rahu, Gulika and Yamaganda. <a class="text-warning" href="https://www.prokerala.com/astrology/panchangam/" target="_blank">Read More..</a></p>
                 </div>
             </div>
         </div>

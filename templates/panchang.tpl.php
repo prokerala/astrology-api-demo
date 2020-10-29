@@ -20,7 +20,7 @@
 <?php include 'common/header.tpl.php'; ?>
 
 <div class="main-content">
-    <div class="header-1 section-rotate bg-section-secondary">
+    <div class="header-1 mb-0 section-rotate bg-section-secondary">
         <div class="section-inner bg-gradient-violet section-radius-min">
         </div>
         <div class="container top-header-wrapper">
@@ -29,6 +29,7 @@
                     <h2 class="text-white mb-5">
                         <span class="font-weight-thin">Panchang</span>
                     </h2>
+                    <p class="text-white">Panchang is one of the most popular reference manual for astrologers and people of the hindu community who rely on a day's planetary position to determine auspicious timing, festivals, vrats etc. <a class="text-warning" href="https://www.prokerala.com/astrology/panchang/" target="_blank">Read More..</a></p>
                 </div>
             </div>
         </div>

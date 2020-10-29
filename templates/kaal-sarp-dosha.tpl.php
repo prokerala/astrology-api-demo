@@ -22,6 +22,7 @@
                     <h2 class="text-white mb-5">
                         <span class="font-weight-thin">Kaal Sarp Dosha</span>
                     </h2>
+                    <p class="text-white">Kaal Sarp Dosha or Kaal Sarp Yog is a malefic astrological combination of planets in a person's birth chart which has detrimental effect. <a class="text-warning" href="https://www.prokerala.com/astrology/kaalsarp-yog.php" target="_blank">Read More..</a></p>
                 </div>
             </div>
         </div>

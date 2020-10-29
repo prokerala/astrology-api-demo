@@ -26,6 +26,7 @@
                     <h2 class="text-white mb-5">
                         <span class="font-weight-thin">Porutham</span>
                     </h2>
+                    <p class="text-white">Porutham is used to find Marriage Match using the birth details of the Boy and Girl. <a class="text-warning" href="https://www.prokerala.com/astrology/porutham/" target="_blank">Read More..</a></p>
                 </div>
             </div>
         </div>

@@ -1,6 +1,7 @@
+
 <?php if($apiCreditUsed):?>
-    <div class="clearfix mb-4">
-        <span class="bg-success float-right text-white btn-sm p-3">
+    <div class="mb-4">
+        <span class="bg-success text-white btn-sm p-3">
             Credit Used <span class="badge badge-light"><?=$apiCreditUsed?></span>
         </span>
     </div>

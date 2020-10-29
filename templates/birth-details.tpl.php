@@ -22,6 +22,7 @@
                     <h2 class="text-white mb-5">
                         <span class="font-weight-thin">Birth Details</span>
                     </h2>
+                    <p class="text-white">Birth details is used to find nakshatra and other astrology related information about your birth date like zodiac sign, moon sign or rasi, Chinese year, birth stone etc. <a class="text-warning" href="https://www.prokerala.com/astrology/nakshatra-finder/" target="_blank">Read More..</a></p>
                 </div>
             </div>
         </div>

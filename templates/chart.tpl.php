@@ -13,7 +13,7 @@
 <?php include 'common/header.tpl.php'; ?>
 
 <div class="main-content">
-    <div class="header-1 section-rotate bg-section-secondary">
+    <div class="header-1 mb-0 section-rotate bg-section-secondary">
         <div class="section-inner bg-gradient-violet section-radius-min">
         </div>
         <div class="container top-header-wrapper">
@@ -22,6 +22,7 @@
                     <h2 class="text-white mb-5">
                         <span class="font-weight-thin">Charts</span>
                     </h2>
+                    <p class="text-white">An astrological chart shows the position of the sun, the moon and other planets at the exact time of a person's birth at a particular place on earth. <a class="text-warning" href="https://www.prokerala.com/astrology/birth-chart/" target="_blank">Read More..</a></p>
                 </div>
             </div>
         </div>

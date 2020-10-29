@@ -22,6 +22,7 @@
                     <h2 class="text-white mb-5">
                         <span class="font-weight-thin">Nakshatra Porutham</span>
                     </h2>
+                    <p class="text-white">Nakshatra porutham is an essential pre-requisite for a marriage alliance where nakshatra and rasi porutham of both the boy and the girl who plan to get married is checked.. <a class="text-warning" href="https://www.prokerala.com/astrology/nakshatra-porutham.php" target="_blank">Read More..</a></p>
                 </div>
             </div>
         </div>

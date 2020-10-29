@@ -6,7 +6,15 @@
     <title>Astrology API Demo</title>
 
     <link rel="stylesheet" href="/build/style.css">
-
+    <style>
+        .api-calculators-list-card {
+            height:175px;
+            line-height: 2.5rem;
+        }
+        .api-calculators-list-image {
+            background: linear-gradient(#8430de, #6643c9);
+        }
+    </style>
 </head>
 
 <body>
@@ -45,17 +53,24 @@
     </div>
     <div class="container">
         <section>
-            <div class="text-center mb-5">
-                <div class="row list-element-grid">
-                    <?php foreach ($samples as $value):?>
-                        <div class="col-4 col-sm-3 col-lg-2 mb-5 m-4 p-5 shadow">
-                            <a href="<?=$value['url']?>">
-                                <span class="feature-card-image"><img src="<?=$value['image']?>"></span>
-                                <span class="feature-card-title"><?=$value['title']?></span>
-                            </a>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
+            <div class="mb-5">
+                <?php foreach($arGroupCalculators as $group_name => $calculators): ?>
+                    <h3><?=$group_name?> Calculators</h3>
+                    <div class="row mb-5 api-calculators-list">
+                            <?php foreach ($calculators as $calculator):?>
+                                <div class="col-6 col-sm-4 col-md-2 mb-4">
+                                    <div class="api-calculators-list-card p-2 shadow text-center">
+                                        <a href="<?=$samples[$calculator]['url']?>">
+                                            <div class="api-calculators-list-image m-4">
+                                                <img class="img-fluid" src="<?=$samples[$calculator]['image']?>">
+                                            </div>
+                                            <span class="feature-card-title b"><?=$samples[$calculator]['title']?></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                    </div>
+                <?php endforeach; ?>
             </div>
 
         </section>

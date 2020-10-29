@@ -13,15 +13,16 @@
 <?php include 'common/header.tpl.php'; ?>
 
 <div class="main-content">
-    <div class="header-1 section-rotate bg-section-secondary">
+    <div class="header-1 mb-0 section-rotate bg-section-secondary">
         <div class="section-inner bg-gradient-violet section-radius-min">
         </div>
         <div class="container top-header-wrapper">
             <div class="row my-auto">
                 <div class="col-xl-6 col-lg-7 col-md-12 col-sm-12 text-lg-left top-header-text-content">
                     <h2 class="text-white mb-5">
-                        <span class="font-weight-thin">Papa Samyam Check</span>
+                        <span class="font-weight-thin">Papasamyam Check</span>
                     </h2>
+                    <p class="text-white">Papasamyam Check is used in checking the Horoscope of a Girl and Boy, this is an important Tool for many Astrologers, to work out the amount of Dosham and decide about their Marriage. <a class="text-warning" href="https://www.prokerala.com/astrology/porutham/" target="_blank">Read More..</a></p>
                 </div>
             </div>
         </div>

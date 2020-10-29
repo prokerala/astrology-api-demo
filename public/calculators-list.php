@@ -33,7 +33,7 @@ $samples = [
     ],
     'kundli' => [
         'image' => '/assets/img/icon/kundli.png',
-        'title' => 'Free Kundli',
+        'title' => 'Kundli',
         'url' => './kundli.php',
         'docs' => 'kundli',
     ],

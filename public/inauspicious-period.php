@@ -10,10 +10,7 @@ use Prokerala\Common\Api\Exception\QuotaExceededException;
 use Prokerala\Common\Api\Exception\RateLimitExceededException;
 use Prokerala\Common\Api\Exception\ValidationException;
 
-require __DIR__ . '/../vendor/autoload.php';
-require __DIR__ . '/calculators-list.php';
-
-$client = include __DIR__ . '/../client.php';
+require __DIR__ . '/bootstrap.php';
 
 $time_now = new DateTimeImmutable();
 
@@ -82,4 +79,4 @@ if ($submit) {
 }
 
 $apiCreditUsed = $client->getCreditUsed();
-include __DIR__ . '/../templates/inauspicious-period.tpl.php';
+include DEMO_BASE_DIR . '/templates/inauspicious-period.tpl.php';

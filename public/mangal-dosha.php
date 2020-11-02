@@ -9,10 +9,8 @@ use Prokerala\Common\Api\Exception\QuotaExceededException;
 use Prokerala\Common\Api\Exception\RateLimitExceededException;
 use Prokerala\Common\Api\Exception\ValidationException;
 
-require __DIR__ . '/../vendor/autoload.php';
-require __DIR__ . '/calculators-list.php';
+require __DIR__ . '/bootstrap.php';
 
-$client = include __DIR__ . '/../client.php';
 $time_now = new DateTimeImmutable();
 
 $input = [
@@ -78,4 +76,4 @@ if ($submit) {
 }
 
 $apiCreditUsed = $client->getCreditUsed();
-include __DIR__ . '/../templates/mangal-dosha.tpl.php';
+include DEMO_BASE_DIR . '/templates/mangal-dosha.tpl.php';

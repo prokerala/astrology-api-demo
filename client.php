@@ -7,9 +7,6 @@ use Nyholm\Psr7\Factory\Psr17Factory;
 use Prokerala\Common\Api\Authentication\Oauth2;
 use Prokerala\Common\Api\Client;
 
-const CLIENT_ID = 'fb5ea517-14bf-4074-93b2-26d169cad89e';
-const CLIENT_SECRET = '5OyTKU3DFNT3CfNpQAXuSxiA7fTVCdKTNnYRVBuj';
-
 $psr17Factory = new Psr17Factory();
 $httpClient = new PsrHttpClient();
 

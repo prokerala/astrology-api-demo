@@ -1,7 +1,6 @@
 <?php
 
-require __DIR__ . '/calculators-list.php';
-
+require __DIR__ . '/bootstrap.php';
 
 $arGroupCalculators = [
     'Daily Panchang' => [
@@ -9,7 +8,7 @@ $arGroupCalculators = [
         'auspicious-period',
         'auspicious-period',
         'inauspicious-period',
-        'choghadiya'
+        'choghadiya',
     ],
     'Horoscope' => [
         'birth-details',
@@ -19,16 +18,14 @@ $arGroupCalculators = [
         'sade-sati',
         'papasamyam',
         'planet-position',
-        'chart'
+        'chart',
     ],
     'Marriage Matching' => [
         'kundli-matching',
         'nakshatra-porutham',
         'thirumana-porutham',
         'porutham',
-        'papasamyam-check'
-    ]
+        'papasamyam-check',
+    ],
 ];
-
-
-include __DIR__ . '/../templates/home.tpl.php';
+include DEMO_BASE_DIR . '/templates/home.tpl.php';

@@ -65,7 +65,7 @@ $girl_location = new Location($girl_input['latitude'], $girl_input['longitude'],
 $girl_dob = new DateTimeImmutable($girl_input['datetime'], $girl_tz);
 $girl_profile = new Profile($girl_location, $girl_dob);
 
-$boy_tz = new DateTimeZone($girl_timezone);
+$boy_tz = new DateTimeZone($boy_timezone);
 $boy_location = new Location($boy_input['latitude'], $boy_input['longitude'], 0, $boy_tz);
 $boy_dob = new DateTimeImmutable($boy_input['datetime'], $boy_tz);
 $boy_profile = new Profile($boy_location, $boy_dob);

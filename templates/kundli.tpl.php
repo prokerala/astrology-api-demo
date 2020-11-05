@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Kundli | Astrology API Demo - Prokerala Astrology</title>
-
+    <?php include 'common/style.tpl.php'; ?>
     <link rel="stylesheet" href="/build/style.css">
+    <link rel="stylesheet" href="/build/reports.css">
     <style>
         .table-dashas{
             max-width:100%;
@@ -24,9 +25,9 @@
 <body>
 <?php include 'common/header.tpl.php'; ?>
 
-<div class="main-content demo-container">
+<div class="main-content">
     <div class="header-1 section-rotate bg-section-secondary">
-        <div class="section-inner bg-gradient-violet section-radius-min">
+        <div class="section-inner bg-gradient-violet bg-container section-radius-min">
         </div>
         <div class="container top-header-wrapper">
             <div class="row my-auto">
@@ -39,7 +40,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container prokerala-api-demo-container">
         <?php include 'common/helper.tpl.php'; ?>
         <?php if (!empty($result)): ?>
 
@@ -47,69 +48,69 @@
             <table class="table table-bordered mb-5 table-hover">
                 <tr class="bg-secondary text-white text-center"><th colspan=2">Nakshatra Details</th></tr>
                 <?php foreach ($kundliResult['nakshatraDetails'] as $key => $kundli):?>
-                    <?php $item = preg_replace('/(?<!\ )[A-Z]/', ' $0', $key);?>
-                    <?php if(in_array( $key, ['nakshatra', 'chandraRasi', 'sooryaRasi'])):?>
+                    <?php $item = preg_replace('/(?<!\ )[A-Z]/', ' $0', $key); ?>
+                    <?php if (in_array($key, ['nakshatra', 'chandraRasi', 'sooryaRasi'])):?>
                         <tr><th><?=ucwords($item)?></th><td><?=$kundli['name']?></td></tr>
                         <tr><th><?=ucwords($item)?> Lord</th><td><?="{$kundli['lord']['vedicName']} ({$kundli['lord']['name']})"?></td></tr>
-                    <?php elseif($key === 'additionalInfo'):?>
+                    <?php elseif ('additionalInfo' === $key):?>
                         <tr class="bg-secondary text-white text-center"><th colspan=2">Additional Info</th></tr>
-                        <?php foreach($kundli as $index => $value):?>
+                        <?php foreach ($kundli as $index => $value):?>
                             <tr><th><?=ucwords(preg_replace('/(?<!\ )[A-Z]/', ' $0', $index))?></th><td><?=$value?></td></tr>
-                        <?php endforeach;?>
+                        <?php endforeach; ?>
                     <?php else:?>
                         <tr><th><?=ucwords($item)?></th><td><?=$kundli['name']?></td></tr>
-                    <?php endif;?>
-                <?php endforeach;?>
+                    <?php endif; ?>
+                <?php endforeach; ?>
             </table>
 
             <h3 class="text-black">Yoga Details</h3>
             <?php foreach ($kundliResult['yogaDetails'] as $data):?>
                 <h3 class="font-weight-regular text-black"><?= ($data['name'])?></h3>
                 <p class="text-black"><?=$data['description']?></p>
-                <?php if ($result_type === 'advanced'):?>
+                <?php if ('advanced' === $result_type):?>
                     <?php foreach ($data['yogaList'] as $yogas):?>
-                        <?php if($yogas['hasYoga']):?>
+                        <?php if ($yogas['hasYoga']):?>
                         <span class="font-weight-regular text-black"><?=$yogas['name']?></span>
                         <p class="text-black"><?=$yogas['description']?></p>
-                        <?php endif;?>
-                    <?php endforeach;?>
-                <?php endif;?>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             <?php endforeach; ?>
             <div class="alert p-4 text-center p-5 <?=$kundliResult['mangalDosha']['hasDosha'] ? 'alert-danger' : 'alert-success'?>" >
                 <?=$kundliResult['mangalDosha']['description']?>
             </div>
-            <?php if ($result_type === 'advanced'):?>
-                <?php if($kundliResult['mangalDosha']['hasException']):?>
+            <?php if ('advanced' === $result_type):?>
+                <?php if ($kundliResult['mangalDosha']['hasException']):?>
                     <h3>Exceptions</h3>
                     <ul>
                         <?php foreach ($kundliResult['mangalDosha']['exceptions'] as $exceptions):?>
                             <li><?=$exceptions?></li>
                         <?php endforeach; ?>
                     </ul>
-                <?php endif;?>
+                <?php endif; ?>
 
 
-                <?php foreach($kundliResult['dashaPeriods'] as $mahadashas):?>
+                <?php foreach ($kundliResult['dashaPeriods'] as $mahadashas):?>
                     <h3 class="text-black">Anthardashas in <?=$mahadashas['name']?> Mahadasha</h3>
                     <div class="row">
-                    <?php foreach($mahadashas['antardasha'] as $anthardashas):?>
+                    <?php foreach ($mahadashas['antardasha'] as $anthardashas):?>
                         <table class="table table-bordered mb-5 col-12 col-md-6 text-small table-dashas">
                             <tr><th>AD</th><th>PD</th><th>Starts</th><th>Ends</th></tr>
-                        <?php foreach($anthardashas['pratyantardasha'] as $paryantradashas):?>
+                        <?php foreach ($anthardashas['pratyantardasha'] as $paryantradashas):?>
                         <tr>
                             <td><?=$anthardashas['name']?></td>
                             <td><?=$paryantradashas['name']?></td>
                             <td><?=$paryantradashas['start']->format('d-m-Y')?></td>
                             <td><?=$paryantradashas['end']->format('d-m-Y')?></td>
                         </tr>
-                        <?php endforeach;?>
+                        <?php endforeach; ?>
                         </table>
-                    <?php endforeach;?>
+                    <?php endforeach; ?>
                     </div>
-                <?php endforeach;?>
+                <?php endforeach; ?>
                 <p class="text-small text-right text-danger"><span class="text-danger">**</span> AD stands for Antardasha &  PD stands for Paryantra dasha</p>
 
-            <?php endif;?>
+            <?php endif; ?>
         <?php endif; ?>
         <section>
             <div class="card contact-form-wrapper box-shadow mx-auto rounded-2 mb-5">
@@ -129,7 +130,7 @@
                         </div>
                     </div>
                     <div class="text-right">
-                        <button type="submit" class="btn btn-warning">Get Result</button>
+                        <button type="submit" class="btn btn-warning btn-submit">Get Result</button>
                         <input type="hidden" name="submit" value="1">
                     </div>
                 </form>

@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Panchang | Astrology API Demo - Prokerala Astrology</title>
-
+    <?php include 'common/style.tpl.php'; ?>
     <link rel="stylesheet" href="/build/style.css">
+    <link rel="stylesheet" href="/build/reports.css">
     <style>
         .panchang-details{
             max-width:800px;
@@ -14,6 +15,7 @@
             padding: 2rem;
         }
     </style>
+
 </head>
 
 <body>
@@ -21,7 +23,7 @@
 
 <div class="main-content">
     <div class="header-1 mb-0 section-rotate bg-section-secondary">
-        <div class="section-inner bg-gradient-violet section-radius-min">
+        <div class="section-inner bg-gradient-violet bg-container section-radius-min">
         </div>
         <div class="container top-header-wrapper">
             <div class="row my-auto">
@@ -34,7 +36,7 @@
         </div>
     </div>
 
-    <div class="container demo-container">
+    <div class="container prokerala-api-demo-container">
         <?php include 'common/helper.tpl.php'; ?>
 
         <?php if (!empty($result)): ?>
@@ -108,7 +110,7 @@
                             </div>
                         </div>
                         <div class="text-right">
-                            <button type="submit" class="btn btn-warning">Get Result</button>
+                            <button type="submit" class="btn btn-warning btn-submit">Get Result</button>
                             <input type="hidden" name="submit" value="1">
                         </div>
                     </form>

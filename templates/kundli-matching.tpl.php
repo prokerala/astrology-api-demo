@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Kundli Matching | Astrology API Demo - Prokerala Astrology</title>
-
+    <?php include 'common/style.tpl.php'; ?>
     <link rel="stylesheet" href="/build/style.css">
+    <link rel="stylesheet" href="/build/reports.css">
 
 </head>
 
@@ -14,7 +15,7 @@
 
 <div class="main-content">
     <div class="header-1 section-rotate bg-section-secondary">
-        <div class="section-inner bg-gradient-violet section-radius-min">
+        <div class="section-inner bg-gradient-violet bg-container section-radius-min">
         </div>
         <div class="container top-header-wrapper">
             <div class="row my-auto">
@@ -27,7 +28,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container prokerala-api-demo-container">
         <section>
             <?php include 'common/helper.tpl.php'; ?>
             <?php if (!empty($result)): ?>
@@ -46,20 +47,22 @@
                     <?php foreach ($compatibilityResult['girlInfo'] as $key => $info): ?>
                         <?php if (in_array($key, ['nakshatra', 'rasi'], true)):?>
                             <?php foreach ($info as $item => $itemVale):?>
-                                <?php if ('id' === $item) {continue;}?>
-                                <?php if('lord' === $item):?>
+                                <?php if ('id' === $item) {
+    continue;
+}?>
+                                <?php if ('lord' === $item):?>
                                     <tr>
-                                        <td><b><?=ucwords($key.' '.$item)?></b></td>
+                                        <td><b><?=ucwords($key . ' ' . $item)?></b></td>
                                         <td><?="{$itemVale['vedicName']} ({$itemVale['name']})"?></td>
                                         <td><?="{$compatibilityResult['boyInfo'][$key][$item]['vedicName']} ({$compatibilityResult['boyInfo'][$key][$item]['name']})"?></td>
                                     </tr>
                                 <?php else:?>
                                     <tr>
-                                        <td><b><?=ucwords($key.' '.$item)?></b></td>
+                                        <td><b><?=ucwords($key . ' ' . $item)?></b></td>
                                         <td><?=$itemVale?></td>
                                         <td><?=$compatibilityResult['boyInfo'][$key][$item]?></td>
                                     </tr>
-                                <?php endif;?>
+                                <?php endif; ?>
                             <?php endforeach; ?>
                         <?php endif; ?>
                     <?php endforeach; ?>
@@ -87,7 +90,7 @@
                                 <td><?=$data['maximumPoints']?></td>
                                 <td><?=$data['obtainedPoints']?></td>
                             </tr>
-                        <?php endforeach;?>
+                        <?php endforeach; ?>
                     <?php else:?>
                         <?php $count = 1; foreach ($compatibilityResult['girlInfo']['koot'] as $guna => $data): ?>
                             <?php $guna_koot = preg_replace('/(?<!\ )[A-Z]/', ' $0', $guna);
@@ -99,7 +102,7 @@
                                 <td><?=$compatibilityResult['boyInfo']['koot'][$guna]?></td>
                             </tr>
                             <?php ++$count; endforeach; ?>
-                    <?php endif;?>
+                    <?php endif; ?>
                     <tr class="text-large">
                         <?php if ('advanced' === $result_type):?>
                             <th colspan="4" class="text-center">Total Guna Milan Points :</th>
@@ -161,7 +164,7 @@
                         </div>
                         <?php include 'common/porutham-form.tpl.php'; ?>
                         <div class="text-right">
-                            <button type="submit" class="btn btn-warning">Get Result</button>
+                            <button type="submit" class="btn btn-warning btn-submit">Get Result</button>
                             <input type="hidden" name="submit" value="1">
                         </div>
                     </form>

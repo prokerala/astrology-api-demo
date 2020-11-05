@@ -4,15 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Astrology API Demo</title>
-    
+    <?php include 'common/style.tpl.php'; ?>
     <link rel="stylesheet" href="/build/style.css">
+    <link rel="stylesheet" href="/build/reports.css">
     <style>
         .api-calculators-list-card {
             height:175px;
             line-height: 2.5rem;
         }
         .api-calculators-list-image {
-            background: linear-gradient(#8430de, #6643c9);
+            background: var(--background-property) !important
         }
     </style>
 </head>
@@ -22,7 +23,7 @@
 
 <div class="main-content">
     <div class="header-1 section-rotate bg-section-secondary">
-        <div class="section-inner bg-gradient-violet section-radius-min">
+        <div class="section-inner bg-gradient-violet bg-container section-radius-min">
         </div>
         <div class="container top-header-wrapper">
             <div class="row my-auto">
@@ -54,7 +55,7 @@
             </div>
         </section>
     </div>
-    <div class="container">
+    <div class="container prokerala-api-demo-container">
         <section>
             <div class="mb-5">
                 <?php foreach($arGroupCalculators as $group_name => $calculators): ?>
@@ -64,7 +65,7 @@
                                 <div class="col-6 col-sm-4 col-md-2 mb-4">
                                     <div class="api-calculators-list-card p-2 shadow text-center">
                                         <a href="<?=$samples[$calculator]['url']?>">
-                                            <div class="api-calculators-list-image m-4">
+                                            <div class="api-calculators-list-image demo-api-calculators-list-image m-4">
                                                 <img class="img-fluid" src="<?=$samples[$calculator]['image']?>">
                                             </div>
                                             <span class="feature-card-title b"><?=$samples[$calculator]['title']?></span>

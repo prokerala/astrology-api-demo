@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Astrology API Demo</title>
-
+    
     <link rel="stylesheet" href="/build/style.css">
     <style>
         .api-calculators-list-card {
@@ -48,6 +48,9 @@
                     <span class="font-weight-thin"></span>
                 </h2>
                 <p class="mb-5">Prokerala astrology API offers a complete array of astrology features empowering you to develop a full fledged astrology website or mobile app in no time. </p>
+                <div class="text-center">
+                    <a class="btn btn-primary" href="https://github.com/prokerala/astrology-api-demo" target="_blank">Download Source Code</a>
+                </div>
             </div>
         </section>
     </div>

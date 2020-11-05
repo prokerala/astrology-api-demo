@@ -22,7 +22,6 @@
                     <h2 class="text-white mb-5">
                         <span class="font-weight-thin">Papa samyam</span>
                     </h2>
-                    <p class="text-white">Papasamyam is a method in Astrology to calculate the Dosham in a Horoscope. <a class="text-warning" href="https://www.prokerala.com/astrology/porutham/" target="_blank">Read More..</a></p>
                 </div>
             </div>
         </div>

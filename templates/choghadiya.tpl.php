@@ -28,7 +28,6 @@
                     <h2 class="text-white mb-5">
                         <span class="font-weight-thin">Choghadiya</span>
                     </h2>
-                    <p class="text-white">Choghadiya is an Indian astrology based muhurat or auspicious time guide. <a class="text-warning" href="https://www.prokerala.com/astrology/choghadiya.php" target="_blank">Read More..</a></p>
                 </div>
             </div>
         </div>

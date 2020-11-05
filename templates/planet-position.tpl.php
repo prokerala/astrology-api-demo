@@ -21,8 +21,7 @@
                 <div class="col-xl-6 col-lg-7 col-md-12 col-sm-12 text-lg-left top-header-text-content">
                     <h2 class="text-white mb-5">
                         <span class="font-weight-thin">Planet Position</span>
-                    </h2>                    
-                    <p class="text-white">Planet position results the position of the sun, the moon and other planets at the exact time of a person's birth at a particular place on earth. <a class="text-warning" href="https://www.prokerala.com/astrology/birth-chart/" target="_blank">Read More..</a></p>
+                    </h2>
                 </div>
             </div>
         </div>

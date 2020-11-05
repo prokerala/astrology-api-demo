@@ -34,7 +34,6 @@
                     <h2 class="text-white mb-5">
                         <span class="font-weight-thin">Kundli</span>
                     </h2>
-                    <p class="text-white">Kundli or horoscope is an astrological chart used by astrology practitioners to gain insight into the personality and life of an individual. <a class="text-warning" href="https://www.prokerala.com/astrology/kundli/" target="_blank">Read More..</a></p>
                 </div>
             </div>
         </div>

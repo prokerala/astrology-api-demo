@@ -22,7 +22,6 @@
                     <h2 class="text-white mb-5">
                         <span class="font-weight-thin">Thirumana Porutham</span>
                     </h2>
-                    <p class="text-white">Thirumana porutham is jathagam porutham in Tamil based on the rasi and natchathira porutham of the bride and groom. <a class="text-warning" href="https://www.prokerala.com/astrology/thirumana-porutham.php" target="_blank">Read More..</a></p>
                 </div>
             </div>
         </div>

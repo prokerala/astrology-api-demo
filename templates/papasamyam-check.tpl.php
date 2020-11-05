@@ -22,7 +22,6 @@
                     <h2 class="text-white mb-5">
                         <span class="font-weight-thin">Papasamyam Check</span>
                     </h2>
-                    <p class="text-white">Papasamyam Check is used in checking the Horoscope of a Girl and Boy, this is an important Tool for many Astrologers, to work out the amount of Dosham and decide about their Marriage. <a class="text-warning" href="https://www.prokerala.com/astrology/porutham/" target="_blank">Read More..</a></p>
                 </div>
             </div>
         </div>

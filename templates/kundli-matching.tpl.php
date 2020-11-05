@@ -22,7 +22,6 @@
                     <h2 class="text-white mb-5">
                         <span class="font-weight-thin">Kundli Matching</span>
                     </h2>
-                    <p class="text-white">Kundali matching or Kundli milan is the vedic astrology equivalent of horoscope matching for marriage. <a class="text-warning" href="https://www.prokerala.com/astrology/kundali-matching/" target="_blank">Read More..</a></p>
                 </div>
             </div>
         </div>

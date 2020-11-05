@@ -82,6 +82,5 @@
 </div>
 
 <?php include 'common/footer.tpl.php'; ?>
-
 </body>
 </html>

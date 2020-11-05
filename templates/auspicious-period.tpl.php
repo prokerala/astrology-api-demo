@@ -25,9 +25,9 @@
             <div class="row my-auto">
                 <div class="col-xl-6 col-lg-7 col-md-12 col-sm-12 text-lg-left top-header-text-content">
                     <h2 class="text-white mb-5">
-                        <span class="font-weight-thin">Auspicious Period</span>
+                        <a href="https://www.prokerala.com/astrology/panchangam/" target="_blank"><span class="font-weight-thin">Auspicious Period</span></a>
                     </h2>
-                    <p class="text-white">Auspicious period shows results like Abhijit Muhurat, Amrit Kaal and Brahma Muhurat. <a class="text-warning" href="https://www.prokerala.com/astrology/panchangam/" target="_blank">Read More..</a></p>
+<!--                    <p class="text-white">Auspicious period shows results like Abhijit Muhurat, Amrit Kaal and Brahma Muhurat. <a class="text-warning" href="https://www.prokerala.com/astrology/panchangam/" target="_blank">Read More..</a></p>-->
                 </div>
             </div>
         </div>
@@ -70,6 +70,13 @@
 
 
 <?php include 'common/footer.tpl.php'; ?>
+<!-- CODE FOR LOCATION SEARCH STARTS -->
+<script src="https://client-api.prokerala.com/static/js/location.min.js"></script>
+<script>
+    (function () {
 
+    })();
+</script>
+<!-- CODE FOR LOCATION SEARCH ENDS -->
 </body>
 </html>

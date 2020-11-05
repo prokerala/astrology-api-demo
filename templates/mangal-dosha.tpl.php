@@ -22,7 +22,6 @@
                     <h2 class="text-white mb-5">
                         <span class="font-weight-thin">Mangal Dosha</span>
                     </h2>
-                    <p class="text-white">Mangal dosha or kuja dosha or chovva dosham is one of the major deciding factor in Hindu marriages. <a class="text-warning" href="https://www.prokerala.com/astrology/mangal-dosha/manglik.php" target="_blank">Read More..</a></p>
                 </div>
             </div>
         </div>

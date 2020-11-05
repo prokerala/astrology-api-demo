@@ -22,7 +22,6 @@
                     <h2 class="text-white mb-5">
                         <span class="font-weight-thin">Sade Sati</span>
                     </h2>
-                    <p class="text-white">Sade Sati is a period in the life of an individual, spanning approximately seven and a half years, which is dubiously associated with difficulties and challenges. <a class="text-warning" href="https://www.prokerala.com/astrology/sade-sati.php" target="_blank">Read More..</a></p>
                 </div>
             </div>
         </div>

@@ -9,15 +9,19 @@
     </div>
 </div>
 <div class="form-group row">
-    <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Date and Time:</label>
+    <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Date: </label>
     <div class="col-sm-9 col-md-6 ">
-        <input type='datetime-local' name="datetime" class="form-control form-control-lg rounded-1" required="required" value="<?=$datetime->format('Y-m-d\TH:i')?>"/>
+        <input type='date' name="datetime" class="form-control form-control-lg rounded-1" required="required" value="<?=$datetime->format('Y-m-d')?>"/>
     </div>
 </div>
 
 <div class="form-group row">
-    <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Place of birth:</label>
+    <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Location:</label>
     <div class="col-sm-9 col-md-6 ">
-        <input type='text' id="coordinates" name="coordinates" class="form-control form-control-lg rounded-1" placeholder="Place of birth" value="<?=$coordinates?>" required>
+        <input type="text" name="location" autocomplete="off" class="form-control form-control-lg rounded-1 prokerala-location-input" placeholder="Enter Location" value="" required>
     </div>
+</div>
+
+<div id="form-hidden-fields">
+
 </div>

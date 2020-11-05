@@ -11,7 +11,7 @@
             <label class="col-md-4 pr-md-0 col-form-label">Place of birth:</label>
             <div class="col-md-8 pl-md-0">
                 <div id='g-location'>
-                    <input type='text' id="g-autocomplete" name="girl_coordinates" class="porutham-form-input autocomplete form-control form-control-lg rounded-1" placeholder="Place of birth" value="<?=$girl_coordinates?>" required="required"/>
+                    <input type='text' id="fin-girl-location" name="girl_location" autocomplete="off" class="porutham-form-input autocomplete form-control form-control-lg rounded-1 prokerala-location-input" data-location_input_prefix="girl_" placeholder="Place of birth" value="" required="required"/>
                 </div>
             </div>
         </div>
@@ -28,9 +28,13 @@
             <label class="col-md-4 pr-md-0 col-form-label">Place of birth:</label>
             <div class="col-md-8 pl-md-0">
                 <div id='b-location'>
-                    <input type='text' id="b-coordinates" name="boy_coordinates" class="porutham-form-input autocomplete form-control form-control-lg rounded-1" placeholder="Place of birth" value="<?=$boy_coordinates?>" required="required"/>
+                    <input type='text' id="fin-boy-location" name="boy_location" autocomplete="off" class="porutham-form-input autocomplete form-control form-control-lg rounded-1 prokerala-location-input" data-location_input_prefix="boy_" placeholder="Place of birth" value="" required="required"/>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<div id="form-hidden-fields">
+
 </div>

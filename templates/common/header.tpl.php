@@ -49,4 +49,7 @@
         </a>
     </nav>
 </header>
+<script>
+    const CLIENT_ID = '<?=$clientId?>';
+</script>
 

@@ -53,7 +53,7 @@
             <section>
                 <div class="card contact-form-wrapper box-shadow mx-auto rounded-2 mb-5">
                     <form class="p-5 text-default"  action="" method="POST">
-                        <?php include 'common/basic-form.tpl.php'; ?>
+                        <?php include 'common/panchang-form.tpl.php'; ?>
                         <div class="text-right">
                             <button type="submit" class="btn btn-warning">Get Result</button>
                             <input type="hidden" name="submit" value="1">
@@ -70,5 +70,29 @@
 
 <?php include 'common/footer.tpl.php'; ?>
 
+<!-- CODE FOR LOCATION SEARCH STARTS -->
+<script src="https://client-api.prokerala.com/static/js/location.min.js"></script>
+<script>
+    (function () {
+        let location = document.querySelectorAll('.prokerala-location-input');
+        [...location].map(function (input) {
+            new LocationSearch(input, function (data) {
+                const inputPrefix = input.dataset.location_input_prefix ? input.dataset.location_input_prefix : '';
+                const hiddenDiv = document.getElementById('form-hidden-fields');
+                const coordinates = document.createElement('input');
+                coordinates.name = inputPrefix +'coordinates';
+                coordinates.type = 'hidden';
+                coordinates.value = `${data.latitude},${data.longitude}`;
+                const timezone = document.createElement('input');
+                timezone.name = inputPrefix +'timezone';
+                timezone.type = 'hidden';
+                timezone.value = data.timezone;
+                hiddenDiv.appendChild(coordinates);
+                hiddenDiv.appendChild(timezone);
+            }, {clientId: CLIENT_ID});
+        });
+    })();
+</script>
+<!-- CODE FOR LOCATION SEARCH ENDS -->
 </body>
 </html>

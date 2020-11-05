@@ -33,6 +33,7 @@ $ayanamsa = 1;
 $chart_style = 'south-indian';
 $sample_name = 'chart';
 
+$timezone = 'Asia/Kolkata';
 if ($submit) {
     $input['datetime'] = $_POST['datetime'];
     $coordinates = $_POST['coordinates'];
@@ -41,10 +42,11 @@ if ($submit) {
     $input['longitude'] = $arCoordinates[1] ?? '';
     $chart_type = $_POST['chart_type'];
     $chart_style = $_POST['chart_style'];
+    $timezone = $_POST['timezone'] ?? '';
 }
 
-$datetime = new DateTimeImmutable($input['datetime']);
-$tz = $datetime->getTimezone();
+$tz = new DateTimeZone($timezone);
+$datetime = new DateTimeImmutable($input['datetime'], $tz);
 
 $location = new Location($input['latitude'], $input['longitude'], 0, $tz);
 

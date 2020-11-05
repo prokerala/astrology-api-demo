@@ -25,6 +25,7 @@ $ayanamsa = 1;
 $result_type = 'basic';
 $sample_name = 'panchang';
 
+$timezone = 'Asia/Kolkata';
 if (isset($_POST['submit'])) {
     $input['datetime'] = $_POST['datetime'];
     $coordinates = $_POST['coordinates'];
@@ -33,12 +34,14 @@ if (isset($_POST['submit'])) {
     $input['latitude'] = $arCoordinates[0] ?? '';
     $input['longitude'] = $arCoordinates[1] ?? '';
     $ayanamsa = $_POST['ayanamsa'];
+    $timezone = $_POST['timezone'] ?? '';
 }
 
-$datetime = new DateTimeImmutable($input['datetime']);
-$tz = $datetime->getTimezone();
+$tz = new DateTimeZone($timezone);
+$datetime = new DateTimeImmutable($input['datetime'], $tz);
 
 $location = new Location($input['latitude'], $input['longitude'], 0, $tz);
+
 
 $result = [];
 $errors = [];

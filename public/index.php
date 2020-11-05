@@ -6,7 +6,6 @@ $arGroupCalculators = [
     'Daily Panchang' => [
         'panchang',
         'auspicious-period',
-        'auspicious-period',
         'inauspicious-period',
         'choghadiya',
     ],

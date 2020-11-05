@@ -24,6 +24,7 @@ $result_type = 'basic';
 $ayanamsa = 1;
 $sample_name = 'kundli';
 
+$timezone = 'Asia/Kolkata';
 if (isset($_POST['submit'])) {
     $input['datetime'] = $_POST['datetime'];
     $coordinates = $_POST['coordinates'];
@@ -32,12 +33,14 @@ if (isset($_POST['submit'])) {
     $input['longitude'] = $arCoordinates[1] ?? '';
     $ayanamsa = $_POST['ayanamsa'];
     $result_type = $_POST['result_type'];
+    $timezone = $_POST['timezone'] ?? '';
 }
 
-$datetime = new DateTimeImmutable($input['datetime']);
-$tz = $datetime->getTimezone();
+$tz = new DateTimeZone($timezone);
+$datetime = new DateTimeImmutable($input['datetime'], $tz);
 
 $location = new Location($input['latitude'], $input['longitude'], 0, $tz);
+
 
 $result = [];
 $errors = [];

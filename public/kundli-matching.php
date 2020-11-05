@@ -27,6 +27,8 @@ $boy_input = [
     'longitude' => '77.5371157',
 ];
 
+$girl_timezone = $boy_timezone = 'Asia/Kolkata';
+
 $girl_coordinates = $girl_input['latitude'] . ',' . $girl_input['longitude'];
 $boy_coordinates = $boy_input['latitude'] . ',' . $boy_input['longitude'];
 $result_type = 'basic';
@@ -37,9 +39,12 @@ $sample_name = 'kundli-matching';
 if ($submit) {
     if (isset($_POST['submit'])) {
         $girl_datetime = $_POST['girl_dob'];
-        $boy_datetime = $_POST['boy_dob'];
+        $girl_timezone = $_POST['girl_timezone'] ?? '';
         $girl_coordinates = $_POST['girl_coordinates'];
         $girl_coordinates_data = explode(',', $girl_coordinates);
+
+        $boy_datetime = $_POST['boy_dob'];
+        $boy_timezone = $_POST['boy_timezone'] ?? '';
         $boy_coordinates = $_POST['boy_coordinates'];
         $boy_coordinates_data = explode(',', $boy_coordinates);
         $result_type = $_POST['result_type'];
@@ -58,12 +63,14 @@ if ($submit) {
     }
 }
 
-$girl_location = new Location($girl_input['latitude'], $girl_input['longitude']);
-$girl_dob = new DateTimeImmutable($girl_input['datetime']);
+$girl_tz = new DateTimeZone($girl_timezone);
+$girl_location = new Location($girl_input['latitude'], $girl_input['longitude'], 0, $girl_tz);
+$girl_dob = new DateTimeImmutable($girl_input['datetime'], $girl_tz);
 $girl_profile = new Profile($girl_location, $girl_dob);
 
-$boy_location = new Location($boy_input['latitude'], $boy_input['longitude']);
-$boy_dob = new DateTimeImmutable($boy_input['datetime']);
+$boy_tz = new DateTimeZone($girl_timezone);
+$boy_location = new Location($boy_input['latitude'], $boy_input['longitude'], 0, $boy_tz);
+$boy_dob = new DateTimeImmutable($boy_input['datetime'], $boy_tz);
 $boy_profile = new Profile($boy_location, $boy_dob);
 
 $result = [];

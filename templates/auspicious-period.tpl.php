@@ -25,7 +25,7 @@
             <div class="row my-auto">
                 <div class="col-xl-6 col-lg-7 col-md-12 col-sm-12 text-lg-left top-header-text-content">
                     <h2 class="text-white mb-5">
-                        <a href="https://www.prokerala.com/astrology/panchangam/" target="_blank"><span class="font-weight-thin">Auspicious Period</span></a>
+                        <span class="font-weight-thin">Auspicious Period</span>
                     </h2>
 <!--                    <p class="text-white">Auspicious period shows results like Abhijit Muhurat, Amrit Kaal and Brahma Muhurat. <a class="text-warning" href="https://www.prokerala.com/astrology/panchangam/" target="_blank">Read More..</a></p>-->
                 </div>
@@ -55,7 +55,7 @@
             <section>
                 <div class="card contact-form-wrapper box-shadow mx-auto rounded-2 mb-5">
                     <form class="p-5 text-default"  action="auspicious-period.php" method="POST">
-                        <?php include 'common/basic-form.tpl.php'; ?>
+                        <?php include 'common/panchang-form.tpl.php'; ?>
                         <div class="text-right">
                             <button type="submit" class="btn btn-warning">Get Result</button>
                             <input type="hidden" name="submit" value="1">
@@ -73,9 +73,25 @@
 <!-- CODE FOR LOCATION SEARCH STARTS -->
 <script src="https://client-api.prokerala.com/static/js/location.min.js"></script>
 <script>
-    (function () {
-
-    })();
+(function () {
+    let location = document.querySelectorAll('.prokerala-location-input');
+    [...location].map(function (input) {
+        new LocationSearch(input, function (data) {
+            const inputPrefix = input.dataset.location_input_prefix ? input.dataset.location_input_prefix : '';
+            const hiddenDiv = document.getElementById('form-hidden-fields');
+            const coordinates = document.createElement('input');
+            coordinates.name = inputPrefix +'coordinates';
+            coordinates.type = 'hidden';
+            coordinates.value = `${data.latitude},${data.longitude}`;
+            const timezone = document.createElement('input');
+            timezone.name = inputPrefix +'timezone';
+            timezone.type = 'hidden';
+            timezone.value = data.timezone;
+            hiddenDiv.appendChild(coordinates);
+            hiddenDiv.appendChild(timezone);
+        }, {clientId: CLIENT_ID});
+    });
+})();
 </script>
 <!-- CODE FOR LOCATION SEARCH ENDS -->
 </body>

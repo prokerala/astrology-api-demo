@@ -169,5 +169,29 @@
 
 <?php include 'common/footer.tpl.php'; ?>
 
+<!-- CODE FOR LOCATION SEARCH STARTS -->
+<script src="https://client-api.prokerala.com/static/js/location.min.js"></script>
+<script>
+    (function () {
+        let location = document.querySelectorAll('.prokerala-location-input');
+        [...location].map(function (input) {
+            new LocationSearch(input, function (data) {
+                const inputPrefix = input.dataset.location_input_prefix ? input.dataset.location_input_prefix : '';
+                const hiddenDiv = document.getElementById('form-hidden-fields');
+                const coordinates = document.createElement('input');
+                coordinates.name = inputPrefix +'coordinates';
+                coordinates.type = 'hidden';
+                coordinates.value = `${data.latitude},${data.longitude}`;
+                const timezone = document.createElement('input');
+                timezone.name = inputPrefix +'timezone';
+                timezone.type = 'hidden';
+                timezone.value = data.timezone;
+                hiddenDiv.appendChild(coordinates);
+                hiddenDiv.appendChild(timezone);
+            }, {clientId: CLIENT_ID});
+        });
+    })();
+</script>
+<!-- CODE FOR LOCATION SEARCH ENDS -->
 </body>
 </html>

@@ -14,7 +14,7 @@
             <!-- Logo -->
 
             <a class="navbar-brand d-flex align-items-center" href="/">
-                <img alt="Image placeholder" src="/assets/img/logo-large-beta.png" id="navbar-logo" >
+                <img alt="Image placeholder" src="<?=DEMO_BASE_URL?>/assets/img/logo-large-beta.png" id="navbar-logo" >
             </a>
 
 
@@ -45,7 +45,7 @@
             </div>
         </div>
         <a class="user-login" href="/login">
-            <img class="user-login-icon" src="/assets/img/login.png">
+            <img class="user-login-icon" src="<?=DEMO_BASE_URL?>/assets/img/login.png">
         </a>
     </nav>
 </header>

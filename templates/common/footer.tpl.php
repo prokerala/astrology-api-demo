@@ -53,7 +53,7 @@
                                 <a href="tel:18004250053" class="btn btn-sm rounded btn-warning">Talk to us</a>
                             </div>
                             <div class="contact-wrapper row  px-lg-3">
-                                <span class="col-1 text-left icon-map p-0"><img src="/assets/img/icon-map.png"></span>
+                                <span class="col-1 text-left icon-map p-0"><img src="<?=DEMO_BASE_URL?>/assets/img/icon-map.png"></span>
                                 <span class="col-11 i ">Ennexa Technologies Pvt.Ltd. XI/476, Manganam, Kottayam, Kerala, India</span>
                             </div>
 
@@ -180,7 +180,7 @@
     document.getElementById('sidebarContent').addEventListener("click", function(evt) {
         var flyoutElement = document.querySelector('.sidebar-body');
         var targetElement = evt.target;  // clicked element
-    
+
         do {
             if (targetElement == flyoutElement) {
                 // This is a click inside. Do nothing, just return.
@@ -189,7 +189,7 @@
             // Go up the DOM
             targetElement = targetElement.parentNode;
         } while (targetElement);
-    
+
         // This is a click outside.
         toggleSideBarFunction();
     });

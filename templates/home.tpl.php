@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Astrology API Demo</title>
     <?php include 'common/style.tpl.php'; ?>
-    <link rel="stylesheet" href="/build/style.css">
-    <link rel="stylesheet" href="/build/reports.css">
+    <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/style.css">
+    <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/reports.css">
     <style>
         .api-calculators-list-card {
             height:175px;
@@ -66,7 +66,7 @@
                                     <div class="api-calculators-list-card p-2 shadow text-center">
                                         <a href="<?=$samples[$calculator]['url']?>">
                                             <div class="api-calculators-list-image demo-api-calculators-list-image m-4">
-                                                <img class="img-fluid" src="<?=$samples[$calculator]['image']?>">
+                                                <img class="img-fluid" src="<?=DEMO_BASE_URL?><?=$samples[$calculator]['image']?>">
                                             </div>
                                             <span class="feature-card-title b"><?=$samples[$calculator]['title']?></span>
                                         </a>

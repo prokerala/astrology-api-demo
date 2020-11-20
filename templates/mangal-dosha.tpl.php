@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Mangal Dosha | Astrology API Demo - Prokerala Astrology</title>
     <?php include 'common/style.tpl.php'; ?>
-    <link rel="stylesheet" href="/build/style.css">
-    <link rel="stylesheet" href="/build/reports.css">
+    <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/style.css">
+    <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/reports.css">
 
 </head>
 

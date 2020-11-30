@@ -52,17 +52,17 @@
                 <?php endforeach; ?>
             </table>
         <?php endif; ?>
-            <section>
-                <div class="card contact-form-wrapper box-shadow mx-auto rounded-2 mb-5">
-                    <form class="p-5 text-default"  action="planet-position.php" method="POST">
-                        <?php include 'common/basic-form.tpl.php'; ?>
-                        <div class="text-right">
-                            <button type="submit" class="btn btn-warning btn-submit">Get Result</button>
-                            <input type="hidden" name="submit" value="1">
-                        </div>
-                    </form>
-                </div>
-            </section>
+        <section>
+            <div class="card contact-form-wrapper box-shadow mx-auto rounded-2 mb-5">
+                <form class="p-5 text-default"  action="planet-position.php" method="POST">
+                    <?php include 'common/horoscope-form.tpl.php'; ?>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-warning btn-submit">Get Result</button>
+                        <input type="hidden" name="submit" value="1">
+                    </div>
+                </form>
+            </div>
+        </section>
         <?php include 'common/calculator-list.tpl.php'; ?>
 
 

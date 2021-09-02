@@ -126,27 +126,45 @@
 <?php include 'common/footer.tpl.php'; ?>
 
 <!-- CODE FOR LOCATION SEARCH STARTS -->
-<script src="https://client-api.prokerala.com/static/js/location.min.js"></script>
 <script>
-    (function () {
-        let location = document.querySelectorAll('.prokerala-location-input');
-        [...location].map(function (input) {
-            new LocationSearch(input, function (data) {
-                const inputPrefix = input.dataset.location_input_prefix ? input.dataset.location_input_prefix : '';
-                const hiddenDiv = document.getElementById('form-hidden-fields');
-                const coordinates = document.createElement('input');
-                coordinates.name = inputPrefix +'coordinates';
-                coordinates.type = 'hidden';
-                coordinates.value = `${data.latitude},${data.longitude}`;
-                const timezone = document.createElement('input');
-                timezone.name = inputPrefix +'timezone';
-                timezone.type = 'hidden';
-                timezone.value = data.timezone;
-                hiddenDiv.appendChild(coordinates);
-                hiddenDiv.appendChild(timezone);
-            }, {clientId: CLIENT_ID});
+(function () {
+    function loadScript(cb) {
+        var script = document.createElement('script');
+        script.src = 'https://client-api.prokerala.com/static/js/location.min.js';
+        script.onload = cb;
+        script.async = 1;
+        document.head.appendChild(script);
+    }
+
+    function createInput(name, value) {
+        const input = document.createElement('input');
+        input.name = name;
+        input.type = 'hidden';
+
+        return input;
+    }
+    function initWidget(input) {
+        const form = input.form;
+        const inputPrefix = input.dataset.location_input_prefix ? input.dataset.location_input_prefix : '';
+        const coordinates = createInput(inputPrefix +'coordinates');
+        const timezone = createInput(inputPrefix +'timezone');
+        form.appendChild(coordinates);
+        form.appendChild(timezone);
+        new LocationSearch(input, function (data) {
+            coordinates.value = `${data.latitude},${data.longitude}`;
+            timezone.value = data.timezone;
+            input.setCustomValidity('');
+        }, {clientId: CLIENT_ID, persistKey: `${inputPrefix}loc`});
+
+        input.addEventListener('change', function (e) {
+            input.setCustomValidity('Please select a location from the suggestions list');
         });
-    })();
+    }
+    loadScript(function() {
+        let location = document.querySelectorAll('.prokerala-location-input');
+        Array.from(location).map(initWidget);
+    });
+})();
 </script>
 <!-- CODE FOR LOCATION SEARCH ENDS -->
 </body>

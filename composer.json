@@ -2,7 +2,7 @@
     "name": "prokerala/astrology-api-demo",
     "description": "Demo site using Prokerala Astrology API",
     "type": "project",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "require": {
         "prokerala/astrology-sdk": "^0.6.0",
         "nyholm/psr7": "^1.3",

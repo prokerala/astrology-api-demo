@@ -51,6 +51,7 @@ if ($submit) {
 
         $sade_sati = new SadeSati($client);
         $sade_sati->setAyanamsa($ayanamsa);
+        $sade_sati->setTimeZone($tz);
         $result = $sade_sati->process($location, $datetime, $advanced);
 
         $sadeSatiResult = [

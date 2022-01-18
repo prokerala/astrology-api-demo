@@ -48,6 +48,7 @@ if ($submit) {
     try {
         $method = new InauspiciousPeriod($client);
         $method->setAyanamsa($ayanamsa);
+        $method->setTimeZone($tz);
         $result = $method->process($location, $datetime);
 
         $inauspiciousPeriod = [];

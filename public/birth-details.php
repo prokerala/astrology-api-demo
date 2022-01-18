@@ -47,6 +47,7 @@ if ($submit) {
     try {
         $method = new BirthDetails($client);
         $method->setAyanamsa($ayanamsa);
+        $method->setTimeZone($tz);
         $result = $method->process($location, $datetime);
 
         $nakshatra_details = [];

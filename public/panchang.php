@@ -52,6 +52,8 @@ if ($submit) {
 
         $method = new Panchang($client);
         $method->setAyanamsa($ayanamsa);
+        $method->setTimeZone($tz);
+        
         $result = $method->process($location, $datetime, $advanced);
 
         $panchangResult = [

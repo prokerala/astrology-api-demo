@@ -46,6 +46,7 @@ if ($submit) {
     try {
         $method = new AuspiciousPeriod($client);
         $method->setAyanamsa($ayanamsa);
+        $method->setTimeZone($tz);
         $result = $method->process($location, $datetime);
         $arData = $result->getMuhurat();
         $auspiciousPeriodResult = [];

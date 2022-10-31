@@ -4,7 +4,7 @@
     "type": "project",
     "version": "0.1.2",
     "require": {
-        "prokerala/astrology-sdk": "^0.6.0",
+        "prokerala/astrology-sdk": "dev-master",
         "nyholm/psr7": "^1.3",
         "php-http/message-factory": "^1.0",
         "guzzlehttp/guzzle": "^7.1",

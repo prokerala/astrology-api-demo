@@ -2,36 +2,18 @@
 
 declare(strict_types=1);
 
-use Prokerala\Api\Astrology\Location;
 use Prokerala\Common\Api\Exception\AuthenticationException;
 use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
 use Prokerala\Common\Api\Exception\RateLimitExceededException;
 use Prokerala\Common\Api\Exception\ValidationException;
-use Prokerala\Api\Numerology\Result\Number;
 
 
 require __DIR__ . '/bootstrap.php';
 
 
 $calculators = [];
-$months = array(
-     1 => 'January',
-     2 => 'February',
-     3 => 'March',
-     4 => 'April',
-     5 => 'May',
-     6 => 'June',
-     7 => 'July',
-     8 => 'August',
-     9 => 'September',
-    10 => 'October',
-    11 => 'November',
-    12 => 'December ');
-$years = range(1980,2022);
-$m31 = range(1,31);
-$m30 = range(1,30);
-$m28 = range(1,28);
+
 
 if(isset($_POST['datetime'])){
     $time = new DateTimeImmutable($_POST['datetime']);
@@ -138,7 +120,6 @@ $calculatorClass = [
         'pinnacle-number' => \Prokerala\Api\Numerology\Service\PinnacleNumber::class,
         'karmic-debt-number' => \Prokerala\Api\Numerology\Service\KarmicDebtNumber::class,
         'bridge-number' => \Prokerala\Api\Numerology\Service\BridgeNumber::class,
-        'life-cycle-number' => \Prokerala\Api\Numerology\Service\LifeCycleNumber::class,
         ],
     'chaldean'=>[
         'birth-number' => \Prokerala\Api\Numerology\Service\Chaldean\BirthNumber::class,
@@ -153,7 +134,6 @@ $calculatorParams = [
         'date' => [
             'life-path-number',
             'birth-month-number',
-            'corner-stone-number',
             'universal-month-number',
             'birth-day-number',
             'universal-day-number',
@@ -175,6 +155,8 @@ $calculatorParams = [
             'balance-number',
             'subconscious-self-number',
             'soul-urge-number',
+            'corner-stone-number',
+
         ],
         'name_and_vowel' =>[
             'personality-number',
@@ -211,8 +193,7 @@ if ($submit) {
         $reference = isset($_POST['referenceYear']) ? $_POST['referenceYear'] :null;
         $vowel = isset($_POST['additionalVowel']) ? $_POST['additionalVowel'] :"";
         $system = isset($_POST['system']) ? $_POST['system'] :"";
-
-
+        $reference = intval($reference);
         $calculatorValue = isset($_POST['calculatorName']) ? $_POST['calculatorName'] : null;
         $calculatorKey = str_replace(' ', '-',strtolower($calculatorValue));
         if ($calculatorValue) {
@@ -225,10 +206,10 @@ if ($submit) {
                 $result = $calculator->process($datetime, $firstName, $middleName, $lastName);
             }
              elseif(in_array(str_replace(' ', '-',strtolower($calculatorValue)),$calculatorParams[$system]['name_and_vowel'])){
-                 $calculator->process($firstName,$middleName,$lastName,$vowel);
+                $result = $calculator->process($firstName,$middleName,$lastName,$vowel);
              }
              elseif(in_array(str_replace(' ', '-',strtolower($calculatorValue)),$calculatorParams[$system]['date_and_reference_year'])){
-                 $calculator->process($datetime,$reference);
+                 $result = $calculator->process($datetime,$reference);
              }
              else{
                  echo('CALCULATOR NOT FOUND');

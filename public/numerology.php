@@ -15,43 +15,20 @@ require __DIR__ . '/bootstrap.php';
 $calculators = [];
 
 
-if(isset($_POST['datetime'])){
-    $time = new DateTimeImmutable($_POST['datetime']);
-    $input = [
-        'datetime' => $time->format('c'),
-        'latitude' => '19.0821978',
-        'longitude' => '72.7411014', // Mumbai
-    ];
-}
-else{
-    $time = new DateTimeImmutable();
-    $input = [
-        'datetime' => $time->format('c'),
-        'latitude' => '19.0821978',
-        'longitude' => '72.7411014', // Mumbai
-    ];
-
-}
-$coordinates = $input['latitude'] . ',' . $input['longitude'];
 $submit = $_POST['submit'] ?? 0;
 $ayanamsa = 1;
 $sample_name = '';
-
-if ($submit) {
-    $input['datetime'] = $_POST['datetime'];
-}
 $timezone = 'Asia/Kolkata';
 $tz = new DateTimeZone($timezone);
-$datetime = new DateTimeImmutable($input['datetime'], $tz);
+$datestr = isset($_POST['datetime']) ? $_POST['datetime'] : null;
+$datetime = new DateTimeImmutable($datestr, $tz);
 
 $result = [];
 $errors = [];
 
-$vowel = "yw";
-$reference = 1;
-$firstName = "";
-$middleName = '';
-$lastName = "";
+$firstName = null;
+$middleName = null;
+$lastName = null;
 $calculators = [
     'pythagorean' => [
         'life-cycle-number' => 'Life Cycle Number',
@@ -179,9 +156,6 @@ $calculatorParams = [
             'identity-initial-code-number',
             'whole-name-number',
         ],
-        'date_and_name' =>[],
-        'name_and_vowel' =>[],
-        'date_and_reference_year' =>[],
     ]
 ];
 
@@ -200,24 +174,18 @@ if ($submit) {
             $calculator = new $calculatorClass[$system][$calculatorKey]($client);
              if (in_array($calculatorKey, $calculatorParams[$system]['date'])) {
                 $result = $calculator->process($datetime);
-            } else if (in_array($calculatorKey, $calculatorParams[$system]['name'])) {
+            } elseif (in_array($calculatorKey, $calculatorParams[$system]['name'])) {
                 $result = $calculator->process($firstName, $middleName, $lastName);
-            } else if (in_array($calculatorKey, $calculatorParams[$system]['date_and_name'])) {
+            } elseif (in_array($calculatorKey, $calculatorParams[$system]['date_and_name'])) {
                 $result = $calculator->process($datetime, $firstName, $middleName, $lastName);
-            }
-             elseif(in_array(str_replace(' ', '-',strtolower($calculatorValue)),$calculatorParams[$system]['name_and_vowel'])){
+            } elseif (in_array(str_replace(' ', '-',strtolower($calculatorValue)),$calculatorParams[$system]['name_and_vowel'])){
                 $result = $calculator->process($firstName,$middleName,$lastName,$vowel);
-             }
-             elseif(in_array(str_replace(' ', '-',strtolower($calculatorValue)),$calculatorParams[$system]['date_and_reference_year'])){
+             } elseif (in_array(str_replace(' ', '-',strtolower($calculatorValue)),$calculatorParams[$system]['date_and_reference_year'])){
                  $result = $calculator->process($datetime,$reference);
+             } else {
+                 throw new \Exception('Selected calculator not found');
              }
-             else{
-                 echo('CALCULATOR NOT FOUND');
-                 exit();
-             }
-
         }
-
 
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();

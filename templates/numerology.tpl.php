@@ -49,25 +49,25 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">First Name:</label>
                             <div class="col-sm-9 col-md-6 ">
-                                <input type="text" name="firstName" class="form-control form-control-lg rounded-1" placeholder="Enter First Name" value="" required>
+                                <input type="text" name="firstName" class="form-control form-control-lg rounded-1" placeholder="Enter First Name" value=<?= $firstName ?> required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Middle Name:</label>
                             <div class="col-sm-9 col-md-6 ">
-                                <input type="text" name="middleName" class="form-control form-control-lg rounded-1" placeholder="Enter Middle Name" value="" >
+                                <input type="text" name="middleName" class="form-control form-control-lg rounded-1" placeholder="Enter Middle Name" value=<?= $middleName ?> >
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Last Name:</label>
                             <div class="col-sm-9 col-md-6 ">
-                                <input type="text" name="lastName" class="form-control form-control-lg rounded-1" placeholder="Enter Last Name" value="" required>
+                                <input type="text" name="lastName" class="form-control form-control-lg rounded-1" placeholder="Enter Last Name" value=<?= $lastName ?> required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Date of Birth: </label>
                             <div class="col-sm-9 col-md-6 ">
-                                <input type='date' name="datetime" class="form-control form-control-lg rounded-1" required="required" value=""/>
+                                <input type='date' name="datetime" class="form-control form-control-lg rounded-1" required="required" value='<?=$datetime->format('Y-m-d')?>'/>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -92,7 +92,7 @@
                             <div class="col-sm-9 col-md-6 ">
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="system" class="fin-numerology-system" id="optionsRadios1" value="pythagorean" checked>
+                                        <input type="radio" name="system" class="fin-numerology-system" id="optionsRadios1" value=<?=$system?> checked>
                                         Pythagorean
                                     </label>
                                 </div>

@@ -8,7 +8,7 @@
     <?=$result->getBridgeNumber()->getName()?>
 </h2>
 
-<?php foreach ($result->getBridgeNumber()->getDifferences() as $challenge): ?>
-    <h3><?= $challenge->getName() ?> : <?= $challenge->getNumber() ?></h3>
-    <p><?= $challenge->getDescription() ?></p>
+<?php foreach ($result->getBridgeNumber()->getDifferences() as $difference): ?>
+    <h3><?= $difference->getName() ?> : <?= $difference->getNumber() ?></h3>
+    <p><?= $difference->getDescription() ?></p>
 <?php endforeach; ?>

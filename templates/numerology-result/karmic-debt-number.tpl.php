@@ -8,7 +8,7 @@
     <?=$result->getKarmicDebtNumber()->getName()?>
 </h2>
 
-<?php foreach ($result->getKarmicDebtNumber()->getDebts() as $challenge): ?>
-    <h3><?= $challenge->getName() ?> : <?= $challenge->getNumber() ?></h3>
-    <p><?= $challenge->getDescription() ?></p>
+<?php foreach ($result->getKarmicDebtNumber()->getDebts() as $debt): ?>
+    <h3><?= $debt->getName() ?> : <?= $debt->getNumber() ?></h3>
+    <p><?= $debt->getDescription() ?></p>
 <?php endforeach; ?>

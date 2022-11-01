@@ -8,6 +8,8 @@ use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
 use Prokerala\Common\Api\Exception\RateLimitExceededException;
 use Prokerala\Common\Api\Exception\ValidationException;
+use Prokerala\Api\Numerology\Result\Number;
+
 
 require __DIR__ . '/bootstrap.php';
 
@@ -70,7 +72,7 @@ $middleName = '';
 $lastName = "";
 $calculators = [
     'pythagorean' => [
-        'life-cycle' => 'Life Cycle',
+        'life-cycle-number' => 'Life Cycle Number',
         'life-path-number' => 'Life Path Number',
         'cap-stone-number' => 'Cap Stone Number',
         'personality-number' => 'Personality Number',
@@ -102,6 +104,7 @@ $calculators = [
         'birth-number' => 'Birth Number',
         'life-path-number' => 'Life Path Number',
         'identity-initial-code-number' => 'Identity Initial Code Number',
+        'whole-name-number' => 'Whole Name Number'
 
 
     ]
@@ -109,7 +112,6 @@ $calculators = [
 
 $calculatorClass = [
     'pythagorean'=>[
-        'life-cycle' => \Prokerala\Api\Numerology\Service\LifeCycle::class,
         'life-path-number' => \Prokerala\Api\Numerology\Service\LifePathNumber::class,
         'cap-stone-number' => \Prokerala\Api\Numerology\Service\CapStoneNumber::class,
         'personality-number' => \Prokerala\Api\Numerology\Service\PersonalityNumber::class,
@@ -135,12 +137,14 @@ $calculatorClass = [
         'rational-thought-number' => \Prokerala\Api\Numerology\Service\RationalThoughtNumber::class,
         'pinnacle-number' => \Prokerala\Api\Numerology\Service\PinnacleNumber::class,
         'karmic-debt-number' => \Prokerala\Api\Numerology\Service\KarmicDebtNumber::class,
-        'bridge-number' =>\Prokerala\Api\Numerology\Service\BridgeNumber::class
+        'bridge-number' => \Prokerala\Api\Numerology\Service\BridgeNumber::class,
+        'life-cycle-number' => \Prokerala\Api\Numerology\Service\LifeCycleNumber::class,
         ],
     'chaldean'=>[
         'birth-number' => \Prokerala\Api\Numerology\Service\Chaldean\BirthNumber::class,
         'life-path-number'=> \Prokerala\Api\Numerology\Service\Chaldean\LifePathNumber::class,
         'identity-initial-code-number' => \Prokerala\Api\Numerology\Service\Chaldean\IdentityInitialCode::class,
+        'whole-name-number' => \Prokerala\Api\Numerology\Service\Chaldean\WholeNameNumber::class,
     ],
 ];
 
@@ -155,7 +159,8 @@ $calculatorParams = [
             'universal-day-number',
             'universal-year-number',
             'challenge-number',
-            'pinnacle-number'
+            'pinnacle-number',
+            'life-cycle-number'
         ],
         'date_and_reference_year' =>[
             'personal-year-number',
@@ -190,6 +195,7 @@ $calculatorParams = [
         ],
         'name' =>[
             'identity-initial-code-number',
+            'whole-name-number',
         ],
         'date_and_name' =>[],
         'name_and_vowel' =>[],

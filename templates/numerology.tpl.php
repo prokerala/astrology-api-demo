@@ -67,7 +67,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Date of Birth: </label>
                             <div class="col-sm-9 col-md-6 ">
-                                <input type='date' name="datetime" class="form-control form-control-lg rounded-1" required="required" value='<?=$datetime->format('Y-m-d')?>'/>
+                                <input type='date' name="datetime" class="form-control form-control-lg rounded-1" required="required"/>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -109,7 +109,6 @@
                             <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Calculator: </label>
                             <div class="col-sm-9 col-md-6 ">
                                 <select name="calculatorName" id="fin-calculator-list" class="form-control form-control-lg rounded-1">
-                                    <option>Select Calculator</option>
                                     <?php foreach ($calculators[$system] as $calculatorValue => $calculatorName):?>
                                         <option value="<?=$calculatorValue?>"><?=$calculatorName?></option>
                                     <?php endforeach;?>

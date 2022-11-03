@@ -20,20 +20,17 @@ $ayanamsa = 1;
 $sample_name = '';
 $timezone = 'Asia/Kolkata';
 $tz = new DateTimeZone($timezone);
-$datestr = isset($_POST['datetime']) ? $_POST['datetime'] : null;
-$datetime = new DateTimeImmutable($datestr, $tz);
-
+$datetime = new DateTimeImmutable('now');
 $result = [];
 $errors = [];
-
+$system = isset($_POST['system']) ? $_POST['system'] : 'pythagorean';
 $firstName = null;
 $middleName = null;
 $lastName = null;
 $calculators = [
     'pythagorean' => [
-        'life-cycle-number' => 'Life Cycle Number',
         'life-path-number' => 'Life Path Number',
-        'cap-stone-number' => 'Cap Stone Number',
+        'capstone-number' => 'Cap Stone Number',
         'personality-number' => 'Personality Number',
         'challenge-number' => 'Challenge Number',
         'inner-dream-number' => 'Inner Dream Number',
@@ -50,7 +47,7 @@ $calculators = [
         'universal-year-number' => 'UniversalYearNumber',
         'balance-number' => 'Balance Number',
         'personal-day-number' => 'Personal Day Number',
-        'corner-stone-number' => 'Corner Stone Number',
+        'cornerstone-number' => 'Corner Stone Number',
         'subconscious-self-number' => 'Subconscious Self Number',
         'maturity-number' => 'Maturity Number',
         'hidden-passion-number' => 'Hidden Passion Number',
@@ -72,7 +69,7 @@ $calculators = [
 $calculatorClass = [
     'pythagorean'=>[
         'life-path-number' => \Prokerala\Api\Numerology\Service\LifePathNumber::class,
-        'cap-stone-number' => \Prokerala\Api\Numerology\Service\CapStoneNumber::class,
+        'capstone-number' => \Prokerala\Api\Numerology\Service\CapStoneNumber::class,
         'personality-number' => \Prokerala\Api\Numerology\Service\PersonalityNumber::class,
         'challenge-number' => \Prokerala\Api\Numerology\Service\ChallengeNumber::class,
         'inner-dream-number' => \Prokerala\Api\Numerology\Service\InnerDreamNumber::class,
@@ -89,7 +86,7 @@ $calculatorClass = [
         'universal-year-number' => \Prokerala\Api\Numerology\Service\UniversalYearNumber::class,
         'balance-number' => \Prokerala\Api\Numerology\Service\BalanceNumber::class,
         'personal-day-number' => \Prokerala\Api\Numerology\Service\PersonalDayNumber::class,
-        'corner-stone-number' => \Prokerala\Api\Numerology\Service\CornerStoneNumber::class,
+        'cornerstone-number' => \Prokerala\Api\Numerology\Service\CornerStoneNumber::class,
         'subconscious-self-number' => \Prokerala\Api\Numerology\Service\SubconsciousSelfNumber::class,
         'maturity-number' => \Prokerala\Api\Numerology\Service\MaturityNumber::class,
         'hidden-passion-number' => \Prokerala\Api\Numerology\Service\HiddenPassionNumber::class,
@@ -97,7 +94,7 @@ $calculatorClass = [
         'pinnacle-number' => \Prokerala\Api\Numerology\Service\PinnacleNumber::class,
         'karmic-debt-number' => \Prokerala\Api\Numerology\Service\KarmicDebtNumber::class,
         'bridge-number' => \Prokerala\Api\Numerology\Service\BridgeNumber::class,
-        ],
+    ],
     'chaldean'=>[
         'birth-number' => \Prokerala\Api\Numerology\Service\Chaldean\BirthNumber::class,
         'life-path-number'=> \Prokerala\Api\Numerology\Service\Chaldean\LifePathNumber::class,
@@ -117,7 +114,6 @@ $calculatorParams = [
             'universal-year-number',
             'challenge-number',
             'pinnacle-number',
-            'life-cycle-number'
         ],
         'date_and_reference_year' =>[
             'personal-year-number',
@@ -169,19 +165,19 @@ if ($submit) {
         $system = isset($_POST['system']) ? $_POST['system'] :"";
         $reference = intval($reference);
         $calculatorValue = isset($_POST['calculatorName']) ? $_POST['calculatorName'] : null;
-        $calculatorKey = str_replace(' ', '-',strtolower($calculatorValue));
+
         if ($calculatorValue) {
-            $calculator = new $calculatorClass[$system][$calculatorKey]($client);
-             if (in_array($calculatorKey, $calculatorParams[$system]['date'])) {
+            $calculator = new $calculatorClass[$system][$calculatorValue]($client);
+             if (in_array($calculatorValue, $calculatorParams[$system]['date'])) {
                 $result = $calculator->process($datetime);
-            } elseif (in_array($calculatorKey, $calculatorParams[$system]['name'])) {
+            } elseif (in_array($calculatorValue, $calculatorParams[$system]['name'])) {
                 $result = $calculator->process($firstName, $middleName, $lastName);
-            } elseif (in_array($calculatorKey, $calculatorParams[$system]['date_and_name'])) {
+            } elseif (in_array($calculatorValue, $calculatorParams[$system]['date_and_name'])) {
                 $result = $calculator->process($datetime, $firstName, $middleName, $lastName);
-            } elseif (in_array(str_replace(' ', '-',strtolower($calculatorValue)),$calculatorParams[$system]['name_and_vowel'])){
-                $result = $calculator->process($firstName,$middleName,$lastName,$vowel);
-             } elseif (in_array(str_replace(' ', '-',strtolower($calculatorValue)),$calculatorParams[$system]['date_and_reference_year'])){
-                 $result = $calculator->process($datetime,$reference);
+            } elseif (in_array($calculatorValue, $calculatorParams[$system]['name_and_vowel'])){
+                $result = $calculator->process($firstName, $middleName, $lastName, $vowel);
+             } elseif (in_array($calculatorValue, $calculatorParams[$system]['date_and_reference_year'])){
+                 $result = $calculator->process($datetime, $reference);
              } else {
                  throw new \Exception('Selected calculator not found');
              }

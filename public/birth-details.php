@@ -21,6 +21,7 @@ $input = [
 ];
 $coordinates = $input['latitude'] . ',' . $input['longitude'];
 $submit = $_POST['submit'] ?? 0;
+$la = $_POST['la'] ?? 'en';
 $ayanamsa = 1;
 $sample_name = 'birth-details';
 
@@ -48,7 +49,7 @@ if ($submit) {
         $method = new BirthDetails($client);
         $method->setAyanamsa($ayanamsa);
         $method->setTimeZone($tz);
-        $result = $method->process($location, $datetime);
+        $result = $method->process($location, $datetime, $la);
 
         $nakshatra_details = [];
 

@@ -31,6 +31,7 @@ $girl_coordinates = $girl_input['latitude'] . ',' . $girl_input['longitude'];
 $boy_coordinates = $boy_input['latitude'] . ',' . $boy_input['longitude'];
 $result_type = 'basic';
 $submit = $_POST['submit'] ?? 0;
+$la = $_POST['la'] ?? 'en';
 $ayanamsa = 1;
 $system = 'kerala';
 $sample_name = 'porutham';
@@ -83,7 +84,7 @@ if ($submit) {
         $advanced = 'advanced' === $result_type;
         $porutham = new Porutham($client);
         $porutham->setAyanamsa($ayanamsa);
-        $result = $porutham->process($girl_profile, $boy_profile, $system, $advanced);
+        $result = $porutham->process($girl_profile, $boy_profile, $system, $advanced, $la);
 
         $compatibilityResult = [];
         $girl_info = $result->getGirlInfo();

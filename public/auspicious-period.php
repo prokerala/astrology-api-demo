@@ -22,6 +22,7 @@ $input = [
 $coordinates = $input['latitude'] . ',' . $input['longitude'];
 $submit = $_POST['submit'] ?? 0;
 $ayanamsa = 1;
+$la = $_POST['la'] ?? 'en';
 $sample_name = 'auspicious-period';
 
 $timezone = 'Asia/Kolkata';
@@ -47,7 +48,7 @@ if ($submit) {
         $method = new AuspiciousPeriod($client);
         $method->setAyanamsa($ayanamsa);
         $method->setTimeZone($tz);
-        $result = $method->process($location, $datetime);
+        $result = $method->process($location, $datetime, $la);
         $arData = $result->getMuhurat();
         $auspiciousPeriodResult = [];
         foreach ($arData as $idx => $data) {

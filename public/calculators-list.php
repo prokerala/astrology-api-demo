@@ -103,4 +103,52 @@ $samples = [
         'url' => DEMO_BASE_URL . '/thirumana-porutham.php',
         'docs' => 'thirumana-porutham',
     ],
+    'anandadi-yoga' => [
+        'image' => '/assets/img/icon/panchang.png',
+        'title' => 'Anandadi Yoga',
+        'url' => DEMO_BASE_URL . '/anandadi-yoga.php',
+        'docs' => 'anandadi-yoga',
+    ],
+    'chandra-bala' => [
+        'image' => '/assets/img/icon/panchang.png',
+        'title' => 'Chandra Bala',
+        'url' => DEMO_BASE_URL . '/chandra-bala.php',
+        'docs' => 'chandra-bala',
+    ],
+    'tara-bala' => [
+        'image' => '/assets/img/icon/panchang.png',
+        'title' => 'Tara Bala',
+        'url' => DEMO_BASE_URL . '/tara-bala.php',
+        'docs' => 'tara-bala',
+    ],
+    'ritu' => [
+        'image' => '/assets/img/icon/panchang.png',
+        'title' => 'Ritu',
+        'url' => DEMO_BASE_URL . '/ritu.php',
+        'docs' => 'ritu',
+    ],
+    'solstice' => [
+        'image' => '/assets/img/icon/panchang.png',
+        'title' => 'Solstice',
+        'url' => DEMO_BASE_URL . '/solstice.php',
+        'docs' => 'solstice',
+    ],
+    'hora' => [
+        'image' => '/assets/img/icon/panchang.png',
+        'title' => 'Hora',
+        'url' => DEMO_BASE_URL . '/hora.php',
+        'docs' => 'hora',
+    ],
+    'disha-shool' => [
+        'image' => '/assets/img/icon/panchang.png',
+        'title' => 'Disha Shool',
+        'url' => DEMO_BASE_URL . '/disha-shool.php',
+        'docs' => 'disha-shool',
+    ],
+    'auspicious-yoga' => [
+        'image' => '/assets/img/icon/panchang.png',
+        'title' => 'Auspicious Yoga',
+        'url' => DEMO_BASE_URL . '/auspicious-yoga',
+        'docs' => 'auspicious-yoga',
+    ],
 ];

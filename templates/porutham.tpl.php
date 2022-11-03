@@ -13,6 +13,7 @@
 <?php include 'common/header.tpl.php'; ?>
 <?php $alertClass = [
     'Excellent' => 'alert-success',
+    'ഉത്തമം' => 'alert-success',
     'Good' => 'alert-info',
     'Average' => 'alert-warning',
     'Bad' => 'alert-danger',
@@ -142,7 +143,7 @@
                     </div>
                     <?php include 'common/porutham-form.tpl.php'; ?>
                     <div class="form-group row">
-                        <label class="col-sm-3 col-md-4 col-form-label  text-xs-left">Result Type: </label>
+                        <label class="col-sm-3 col-md-2 col-form-label  text-xs-left">Result Type: </label>
                         <div class="col-sm-9 col-md-6 ">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="result_type" id="result_type1" value="basic" <?='basic' === $result_type ? 'checked' : ''?>>
@@ -154,7 +155,17 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-md-2 col-form-label  text-xs-left">Language</label>
+                        <div class="col-sm-9 col-md-4">
+                            <select name="la" class="form-control form-control-lg rounded-1">
+                                <option value="en" >English</option>
+                                <option value="ta" >Tamil</option>
+                                <option value="ml" >Malayalam</option>
+                                <option value="hi" >Hindi</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="text-right">
                         <button type="submit" class="btn btn-warning btn-submit">Get Result</button>
                         <input type="hidden" name="submit" value="1">

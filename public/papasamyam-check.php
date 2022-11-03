@@ -32,6 +32,7 @@ $girl_timezone = $boy_timezone = 'Asia/Kolkata';
 $girl_coordinates = $girl_input['latitude'] . ',' . $girl_input['longitude'];
 $boy_coordinates = $boy_input['latitude'] . ',' . $boy_input['longitude'];
 $submit = $_POST['submit'] ?? 0;
+$la = $_POST['la'] ?? 0;
 $ayanamsa = 1;
 $sample_name = 'papasamyam-check';
 
@@ -77,7 +78,7 @@ if ($submit) {
     try {
         $porutham = new PapaSamyamCheck($client);
         $porutham->setAyanamsa($ayanamsa);
-        $result = $porutham->process($girl_profile, $boy_profile);
+        $result = $porutham->process($girl_profile, $boy_profile, $la);
         $message = $result->getMessage();
         $papaSamyamCheckResult['message'] = [
             'type' => $message->getType(),

@@ -22,7 +22,7 @@ $result_type = 'basic';
 $submit = $_POST['submit'] ?? 0;
 $ayanamsa = 1;
 $sample_name = 'thirumana-porutham';
-
+$la = $_POST['la'] ?? 'en';
 $result = [];
 $errors = [];
 
@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
         $boy_profile = new NakshatraProfile((int)$boy_nakshatra, (int)$boy_nakshatra_pada);
 
         $thirumana_porutham = new ThirumanaPorutham($client);
-        $result = $thirumana_porutham->process($girl_profile, $boy_profile, $advanced);
+        $result = $thirumana_porutham->process($girl_profile, $boy_profile, $la, $advanced);
         $compatibilityResult = [];
         $compatibilityResult['maximumPoint'] = $result->getMaximumPoints();
         $compatibilityResult['ObtainedPoint'] = $result->getObtainedPoints();

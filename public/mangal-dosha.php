@@ -22,6 +22,7 @@ $coordinates = $input['latitude'] . ',' . $input['longitude'];
 $result_type = 'basic';
 $submit = $_POST['submit'] ?? 0;
 $ayanamsa = 1;
+$la = $_POST['la'] ?? 'en';
 $sample_name = 'mangal-dosha';
 
 $timezone = 'Asia/Kolkata';
@@ -51,7 +52,7 @@ if ($submit) {
 
         $method = new \Prokerala\Api\Astrology\Service\MangalDosha($client);
         $method->setAyanamsa($ayanamsa);
-        $result = $method->process($location, $datetime, $advanced);
+        $result = $method->process($location, $datetime, $la, $advanced);
 
         $mangal_dosha_result = [];
 

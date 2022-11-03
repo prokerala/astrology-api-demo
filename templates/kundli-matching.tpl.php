@@ -162,6 +162,15 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-md-4 col-form-label  text-xs-left">Language</label>
+                            <div class="col-sm-9 col-md-6">
+                                <select name="la" class="form-control form-control-lg rounded-1">
+                                    <option value="en" >English</option>
+                                    <option value="hi" >Hindi</option>
+                                </select>
+                            </div>
+                        </div>
                         <?php include 'common/porutham-form.tpl.php'; ?>
                         <div class="text-right">
                             <button type="submit" class="btn btn-warning btn-submit">Get Result</button>

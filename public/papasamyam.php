@@ -21,6 +21,7 @@ $input = [
 $coordinates = $input['latitude'] . ',' . $input['longitude'];
 $submit = $_POST['submit'] ?? 0;
 $ayanamsa = 1;
+$la = $_POST['la'] ?? 'en';
 $sample_name = 'papasamyam';
 
 $timezone = 'Asia/Kolkata';
@@ -47,7 +48,7 @@ if ($submit) {
     try {
         $method = new Papasamyam($client);
         $method->setAyanamsa($ayanamsa);
-        $result = $method->process($location, $datetime);
+        $result = $method->process($location, $datetime, $la);
 
         $papasamyamResult['total_points'] = $result->getTotalPoints();
         $papaSamyam = $result->getPapaSamyam();

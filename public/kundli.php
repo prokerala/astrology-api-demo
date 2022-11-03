@@ -23,7 +23,7 @@ $submit = $_POST['submit'] ?? 0;
 $result_type = 'basic';
 $ayanamsa = 1;
 $sample_name = 'kundli';
-
+$la = $_POST['la'] ?? 'en';
 $timezone = 'Asia/Kolkata';
 if (isset($_POST['submit'])) {
     $input['datetime'] = $_POST['datetime'];
@@ -52,7 +52,7 @@ if ($submit) {
         $method = new Kundli($client);
         $method->setAyanamsa($ayanamsa);
         $method->setTimeZone($tz);
-        $result = $method->process($location, $datetime, $advanced);
+        $result = $method->process($location, $datetime, $la, $advanced);
 
         $nakshatraDetails = $result->getNakshatraDetails();
         $nakshatra = $nakshatraDetails->getNakshatra();

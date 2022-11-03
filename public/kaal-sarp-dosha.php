@@ -21,6 +21,7 @@ $input = [
 $coordinates = $input['latitude'] . ',' . $input['longitude'];
 $submit = $_POST['submit'] ?? 0;
 $ayanamsa = 1;
+$la = $_POST['la'] ?? 'en';
 $sample_name = 'kaal-sarp-dosha';
 
 $timezone = 'Asia/Kolkata';
@@ -47,7 +48,7 @@ if ($submit) {
     try {
         $method = new KaalSarpDosha($client);
         $method->setAyanamsa($ayanamsa);
-        $result = $method->process($location, $datetime);
+        $result = $method->process($location, $datetime, $la);
 
         $kaalSarpDoshaResult = [];
         $kaalSarpDoshaResult['kaal_sarp_type'] = $result->getType();

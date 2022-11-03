@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Prokerala\Api\Astrology\Location;
-use Prokerala\Api\Astrology\Service\Choghadiya;
+use Prokerala\Api\Astrology\Service\Hora;
 use Prokerala\Common\Api\Exception\AuthenticationException;
 use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
@@ -13,6 +13,7 @@ use Prokerala\Common\Api\Exception\ValidationException;
 require __DIR__ . '/bootstrap.php';
 
 $time_now = new DateTimeImmutable();
+
 $input = [
     'datetime' => $time_now->format('c'),
     'latitude' => '19.0821978',
@@ -20,9 +21,9 @@ $input = [
 ];
 $coordinates = $input['latitude'] . ',' . $input['longitude'];
 $submit = $_POST['submit'] ?? 0;
-$la = $_POST['la'] ?? 'en';
 $ayanamsa = 1;
-$sample_name = 'choghadiya';
+$la = $_POST['la'] ?? 'en';
+$sample_name = 'hora';
 
 $timezone = 'Asia/Kolkata';
 if ($submit) {
@@ -34,38 +35,21 @@ if ($submit) {
     $ayanamsa = $_POST['ayanamsa'];
     $timezone = $_POST['timezone'] ?? '';
 }
-
 $tz = new DateTimeZone($timezone);
 $datetime = new DateTimeImmutable($input['datetime'], $tz);
 
 $location = new Location($input['latitude'], $input['longitude'], 0, $tz);
 
-
 $result = [];
 $errors = [];
+$arData = [];
 
 if ($submit) {
     try {
-        $method = new Choghadiya($client);
+        $method = new Hora($client);
         $method->setAyanamsa($ayanamsa);
         $method->setTimeZone($tz);
         $result = $method->process($location, $datetime, $la);
-
-        $arData = $result->getmuhurat();
-
-        $choghadiyaResult = [];
-
-        foreach ($arData as $data) {
-            $choghadiyaResult[$data->getIsDay()][] = [
-                'id' => $data->getId(),
-                'name' => $data->getName(),
-                'type' => $data->getType(),
-                'vela' => $data->getVela(),
-                'isDay' => $data->getIsDay(),
-                'start' => $data->getStart(),
-                'end' => $data->getEnd(),
-            ];
-        }
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {
@@ -80,4 +64,4 @@ if ($submit) {
 }
 
 $apiCreditUsed = $client->getCreditUsed();
-include DEMO_BASE_DIR . '/templates/choghadiya.tpl.php';
+include DEMO_BASE_DIR . '/templates/hora.tpl.php';

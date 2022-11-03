@@ -33,6 +33,7 @@ $girl_coordinates = $girl_input['latitude'] . ',' . $girl_input['longitude'];
 $boy_coordinates = $boy_input['latitude'] . ',' . $boy_input['longitude'];
 $result_type = 'basic';
 $submit = $_POST['submit'] ?? 0;
+$la = $_POST['la'] ?? 'en';
 $ayanamsa = 1;
 $sample_name = 'kundli-matching';
 
@@ -84,7 +85,7 @@ if ($submit) {
         }
         $kundli_matching = new KundliMatching($client);
         $kundli_matching->setAyanamsa($ayanamsa);
-        $result = $kundli_matching->process($girl_profile, $boy_profile, $advanced);
+        $result = $kundli_matching->process($girl_profile, $boy_profile, $la, $advanced);
 
         $girl_info = $result->getGirlInfo();
         $boy_info = $result->getBoyInfo();

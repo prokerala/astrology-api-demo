@@ -21,6 +21,7 @@ $input = [
 ];
 $coordinates = $input['latitude'] . ',' . $input['longitude'];
 $submit = $_POST['submit'] ?? 0;
+$la = $_POST['la'] ?? 'en';
 $ayanamsa = 1;
 $sample_name = 'planet-position';
 
@@ -48,7 +49,7 @@ if ($submit) {
     try {
         $method = new PlanetPosition($client);
         $method->setAyanamsa($ayanamsa);
-        $result = $method->process($location, $datetime);
+        $result = $method->process($location, $datetime, $la);
         $planetPositions = $result->getPlanetPosition();
         $planetPositionResult = [];
         foreach ($planetPositions as $position) {

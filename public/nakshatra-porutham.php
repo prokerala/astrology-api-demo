@@ -21,6 +21,7 @@ $boy_nakshatra_pada = 3;
 $result_type = 'basic';
 $sample_name = 'nakshatra-porutham';
 $submit = $_POST['submit'] ?? 0;
+$la = $_POST['la'] ?? 'en';
 $result = [];
 $errors = [];
 
@@ -38,7 +39,7 @@ if ($submit) {
         $boy_profile = new NakshatraProfile((int)$boy_nakshatra, (int)$boy_nakshatra_pada);
 
         $nakshatra_porutham = new NakshatraPorutham($client);
-        $result = $nakshatra_porutham->process($girl_profile, $boy_profile, $advanced);
+        $result = $nakshatra_porutham->process($girl_profile, $boy_profile, $la,  $advanced);
 
         $compatibilityResult = [];
 

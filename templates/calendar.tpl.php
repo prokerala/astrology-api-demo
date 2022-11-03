@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Tara Bala Astrology API Demo</title>
+    <title>Calendar Astrology API Demo</title>
     <?php include 'common/style.tpl.php'; ?>
     <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/style.css">
     <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/reports.css">
@@ -26,7 +26,7 @@
             <div class="row my-auto">
                 <div class="col-xl-6 col-lg-7 col-md-12 col-sm-12 text-lg-left top-header-text-content">
                     <h2 class="text-white mb-5">
-                        <span class="font-weight-thin">Tara Bala</span>
+                        <span class="font-weight-thin">Calendar</span>
                     </h2>
 <!--                    <p class="text-white">Auspicious period shows results like Abhijit Muhurat, Amrit Kaal and Brahma Muhurat. <a class="text-warning" href="https://www.prokerala.com/astrology/panchangam/" target="_blank">Read More..</a></p>-->
                 </div>
@@ -38,20 +38,26 @@
 
         <?php include 'common/helper.tpl.php'; ?>
         <?php if(!empty($result)): ?>
-            <h2 class="text-center text-black">Tara Bala</h2>
+            <h2 class="text-center text-black">Calendar</h2>
             <table class="table table-bordered text-large text-center table-hover">
-                <tr><td class="text-right">Name</td><td class="text-left"><?=$result->getTaraBala()->getName()?></td></tr>
-                <tr><td class="text-right">Type</td><td class="text-left"><?=$result->getTaraBala()->getType()?></td></tr>
-                <tr><td class="text-right">Nakshatra</td><td class="text-left"><?=$result->getTaraBala()->getNakshatra()->getName()?></td></tr>
-                <tr><td class="text-right">Nakshatra Lord</td><td class="text-left"><?=$result->getTaraBala()->getNakshatra()->getLord()->getName()?></td></tr>
-                <tr><td class="text-right">Start</td><td class="text-left"><?=$result->getTaraBala()->getStart()->format('c')?></td></tr>
-                <tr><td class="text-right">End</td><td class="text-left"><?=$result->getTaraBala()->getEnd()->format('c')?></td></tr>
+                <tr><td>Gregorian Date</td><td><?=$date->format('c')?></td></tr>
+                <tr><td>Calendar Name </td><td><?=$result->getCalendarDate()->getName()?></td></tr>
+                <tr><td>Year</td><td><?=$result->getCalendarDate()->getYear()?></td></tr>
+                <tr><td>Month</td><td><?=$result->getCalendarDate()->getMonth()?></td></tr>
+                <tr><td>Day</td><td><?=$result->getCalendarDate()->getDay()?></td></tr>
+                <?php if(!in_array(strtolower(trim($result->getCalendarDate()->getName())), ['hijri', 'gujarati', 'bengali', 'malayalam', 'tamil'])): ?>
+                    <tr><td>Leap</td><td><?=$result->getCalendarDate()->getLeap()?></td></tr>
+                <?php endif; ?>
+                <?php if(!in_array(strtolower(trim($result->getCalendarDate()->getName())), ['hijri', 'gujarati', 'bengali', 'malayalam'])): ?>
+                    <tr><td>Year Name</td><td><?=$result->getCalendarDate()->getYearName()?></td></tr>
+                <?php endif; ?>
+                <tr><td>Month Name</td><td><?=$result->getCalendarDate()->getMonthName()?></td></tr>
             </table>
         <?php endif; ?>
             <section>
                 <div class="card contact-form-wrapper box-shadow mx-auto rounded-2 mb-5">
-                    <form class="p-5 text-default"  action="tara-bala.php" method="POST">
-                        <?php include 'common/panchang-form.tpl.php'; ?>
+                    <form class="p-5 text-default"  action="calendar.php" method="POST">
+                        <?php include 'common/calendar-form.tpl.php'; ?>
                         <div class="text-right">
                             <button type="submit" class="btn btn-warning btn-submit ">Get Result</button>
                             <input type="hidden" name="submit" value="1">

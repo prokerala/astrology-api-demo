@@ -2,8 +2,7 @@
 
 declare(strict_types=1);
 
-use Prokerala\Api\Astrology\Location;
-use Prokerala\Api\Astrology\Service\ChandraBala;
+use Prokerala\Api\Calendar\Service\CalendarDate;
 use Prokerala\Common\Api\Exception\AuthenticationException;
 use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
@@ -23,21 +22,17 @@ $coordinates = $input['latitude'] . ',' . $input['longitude'];
 $submit = $_POST['submit'] ?? 0;
 $ayanamsa = 1;
 $la = $_POST['la'] ?? 'en';
-$sample_name = 'tara-bala';
+$sample_name = 'calendar';
+$date = new DateTime('now');
+
 $timezone = 'Asia/Kolkata';
 if ($submit) {
-    $input['datetime'] = $_POST['datetime'];
-    $coordinates = $_POST['coordinates'];
-    $arCoordinates = explode(',', $coordinates);
-    $input['latitude'] = $arCoordinates[0] ?? '';
-    $input['longitude'] = $arCoordinates[1] ?? '';
-    $ayanamsa = $_POST['ayanamsa'];
-    $timezone = $_POST['timezone'] ?? '';
+    $input['date'] = $_POST['date'];
+    $input['calendar'] = $_POST['calendar'];
+    $la = $_POST['la'] ?? 'en';
+    $calendar = $input['calendar'];
+    $date = new DateTime($input['date']);
 }
-$tz = new DateTimeZone($timezone);
-$datetime = new DateTimeImmutable($input['datetime'], $tz);
-
-$location = new Location($input['latitude'], $input['longitude'], 0, $tz);
 
 $result = [];
 $errors = [];
@@ -45,10 +40,8 @@ $arData = [];
 
 if ($submit) {
     try {
-        $method = new ChandraBala($client);
-        $method->setAyanamsa($ayanamsa);
-        $method->setTimeZone($tz);
-        $result = $method->process($location, $datetime, $la);
+        $method = new CalendarDate($client);
+        $result = $method->process($calendar, $date, $la);
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {
@@ -63,4 +56,4 @@ if ($submit) {
 }
 
 $apiCreditUsed = $client->getCreditUsed();
-include DEMO_BASE_DIR . '/templates/chandra-bala.tpl.php';
+include DEMO_BASE_DIR . '/templates/calendar.tpl.php';

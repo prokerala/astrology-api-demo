@@ -151,4 +151,10 @@ $samples = [
         'url' => DEMO_BASE_URL . '/auspicious-yoga',
         'docs' => 'auspicious-yoga',
     ],
+    'calendar' => [
+        'image' => '/assets/img/icon/panchang.png',
+        'title' => 'Calendar',
+        'url' => DEMO_BASE_URL . '/calendar',
+        'docs' => 'calendar',
+    ],
 ];

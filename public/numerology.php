@@ -2,6 +2,35 @@
 
 declare(strict_types=1);
 
+use Prokerala\Api\Numerology\Service\AttainmentNumber;
+use Prokerala\Api\Numerology\Service\BalanceNumber;
+use Prokerala\Api\Numerology\Service\BirthDayNumber;
+use Prokerala\Api\Numerology\Service\BirthMonthNumber;
+use Prokerala\Api\Numerology\Service\BridgeNumber;
+use Prokerala\Api\Numerology\Service\CapStoneNumber;
+use Prokerala\Api\Numerology\Service\Chaldean\BirthNumber;
+use Prokerala\Api\Numerology\Service\Chaldean\IdentityInitialCode;
+use Prokerala\Api\Numerology\Service\Chaldean\WholeNameNumber;
+use Prokerala\Api\Numerology\Service\ChallengeNumber;
+use Prokerala\Api\Numerology\Service\CornerStoneNumber;
+use Prokerala\Api\Numerology\Service\DestinyNumber;
+use Prokerala\Api\Numerology\Service\ExpressionNumber;
+use Prokerala\Api\Numerology\Service\HiddenPassionNumber;
+use Prokerala\Api\Numerology\Service\InnerDreamNumber;
+use Prokerala\Api\Numerology\Service\KarmicDebtNumber;
+use Prokerala\Api\Numerology\Service\LifePathNumber;
+use Prokerala\Api\Numerology\Service\MaturityNumber;
+use Prokerala\Api\Numerology\Service\PersonalDayNumber;
+use Prokerala\Api\Numerology\Service\PersonalityNumber;
+use Prokerala\Api\Numerology\Service\PersonalMonthNumber;
+use Prokerala\Api\Numerology\Service\PersonalYearNumber;
+use Prokerala\Api\Numerology\Service\PinnacleNumber;
+use Prokerala\Api\Numerology\Service\RationalThoughtNumber;
+use Prokerala\Api\Numerology\Service\SoulUrgeNumber;
+use Prokerala\Api\Numerology\Service\SubconsciousSelfNumber;
+use Prokerala\Api\Numerology\Service\UniversalDayNumber;
+use Prokerala\Api\Numerology\Service\UniversalMonthNumber;
+use Prokerala\Api\Numerology\Service\UniversalYearNumber;
 use Prokerala\Common\Api\Exception\AuthenticationException;
 use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
@@ -62,39 +91,39 @@ $calculators = [
 ];
 
 $calculatorClass = [
-    'pythagorean' => [
-        'life-path-number' => \Prokerala\Api\Numerology\Service\LifePathNumber::class,
-        'capstone-number' => \Prokerala\Api\Numerology\Service\CapStoneNumber::class,
-        'personality-number' => \Prokerala\Api\Numerology\Service\PersonalityNumber::class,
-        'challenge-number' => \Prokerala\Api\Numerology\Service\ChallengeNumber::class,
-        'inner-dream-number' => \Prokerala\Api\Numerology\Service\InnerDreamNumber::class,
-        'personal-year-number' => \Prokerala\Api\Numerology\Service\PersonalYearNumber::class,
-        'expression-number' => \Prokerala\Api\Numerology\Service\ExpressionNumber::class,
-        'universal-month-number' => \Prokerala\Api\Numerology\Service\UniversalMonthNumber::class,
-        'personal-month-number' => \Prokerala\Api\Numerology\Service\PersonalMonthNumber::class,
-        'soul-urge-number' => \Prokerala\Api\Numerology\Service\SoulUrgeNumber::class,
-        'destiny-number' => \Prokerala\Api\Numerology\Service\DestinyNumber::class,
-        'attainment-number' => \Prokerala\Api\Numerology\Service\AttainmentNumber::class,
-        'birth-day-number' => \Prokerala\Api\Numerology\Service\BirthDayNumber::class,
-        'universal-day-number' => \Prokerala\Api\Numerology\Service\UniversalDayNumber::class,
-        'birth-month-number' => \Prokerala\Api\Numerology\Service\BirthMonthNumber::class,
-        'universal-year-number' => \Prokerala\Api\Numerology\Service\UniversalYearNumber::class,
-        'balance-number' => \Prokerala\Api\Numerology\Service\BalanceNumber::class,
-        'personal-day-number' => \Prokerala\Api\Numerology\Service\PersonalDayNumber::class,
-        'cornerstone-number' => \Prokerala\Api\Numerology\Service\CornerStoneNumber::class,
-        'subconscious-self-number' => \Prokerala\Api\Numerology\Service\SubconsciousSelfNumber::class,
-        'maturity-number' => \Prokerala\Api\Numerology\Service\MaturityNumber::class,
-        'hidden-passion-number' => \Prokerala\Api\Numerology\Service\HiddenPassionNumber::class,
-        'rational-thought-number' => \Prokerala\Api\Numerology\Service\RationalThoughtNumber::class,
-        'pinnacle-number' => \Prokerala\Api\Numerology\Service\PinnacleNumber::class,
-        'karmic-debt-number' => \Prokerala\Api\Numerology\Service\KarmicDebtNumber::class,
-        'bridge-number' => \Prokerala\Api\Numerology\Service\BridgeNumber::class,
+    'pythagorean'=>[
+        'life-path-number' => LifePathNumber::class,
+        'capstone-number' => CapStoneNumber::class,
+        'personality-number' => PersonalityNumber::class,
+        'challenge-number' => ChallengeNumber::class,
+        'inner-dream-number' => InnerDreamNumber::class,
+        'personal-year-number' => PersonalYearNumber::class,
+        'expression-number' => ExpressionNumber::class,
+        'universal-month-number' => UniversalMonthNumber::class,
+        'personal-month-number' => PersonalMonthNumber::class,
+        'soul-urge-number' => SoulUrgeNumber::class,
+        'destiny-number' => DestinyNumber::class,
+        'attainment-number' => AttainmentNumber::class,
+        'birth-day-number' => BirthDayNumber::class,
+        'universal-day-number' => UniversalDayNumber::class,
+        'birth-month-number' => BirthMonthNumber::class,
+        'universal-year-number' => UniversalYearNumber::class,
+        'balance-number' => BalanceNumber::class,
+        'personal-day-number' => PersonalDayNumber::class,
+        'cornerstone-number' => CornerStoneNumber::class,
+        'subconscious-self-number' => SubconsciousSelfNumber::class,
+        'maturity-number' => MaturityNumber::class,
+        'hidden-passion-number' => HiddenPassionNumber::class,
+        'rational-thought-number' => RationalThoughtNumber::class,
+        'pinnacle-number' => PinnacleNumber::class,
+        'karmic-debt-number' => KarmicDebtNumber::class,
+        'bridge-number' => BridgeNumber::class,
     ],
-    'chaldean' => [
-        'birth-number' => \Prokerala\Api\Numerology\Service\Chaldean\BirthNumber::class,
-        'life-path-number' => \Prokerala\Api\Numerology\Service\Chaldean\LifePathNumber::class,
-        'identity-initial-code-number' => \Prokerala\Api\Numerology\Service\Chaldean\IdentityInitialCode::class,
-        'whole-name-number' => \Prokerala\Api\Numerology\Service\Chaldean\WholeNameNumber::class,
+    'chaldean'=>[
+        'birth-number' => BirthNumber::class,
+        'life-path-number'=> \Prokerala\Api\Numerology\Service\Chaldean\LifePathNumber::class,
+        'identity-initial-code-number' => IdentityInitialCode::class,
+        'whole-name-number' => WholeNameNumber::class,
     ],
 ];
 
@@ -116,14 +145,15 @@ $calculatorParams = [
             'personal-day-number',
         ],
         'name' => [
-            'cap-stone-number',
+            'capstone-number',
             'destiny-number',
             'expression-number',
             'hidden-passion-number',
             'balance-number',
             'subconscious-self-number',
             'soul-urge-number',
-            'corner-stone-number',
+            'cornerstone-number',
+
         ],
         'name_and_vowel' => [
             'personality-number',
@@ -152,29 +182,29 @@ $calculatorParams = [
 if ($submit) {
     try {
         $firstName = isset($_POST['firstName']) ? $_POST['firstName'] : null;
-        $middleName = isset($_POST['middleName']) ? $_POST['middleName'] : null;
-        $lastName = isset($_POST['lastName']) ? $_POST['lastName'] : null;
-        $reference = isset($_POST['referenceYear']) ? $_POST['referenceYear'] : null;
-        $vowel = isset($_POST['additionalVowel']) ? $_POST['additionalVowel'] : '';
-        $system = isset($_POST['system']) ? $_POST['system'] : '';
-        $reference = (int)$reference;
-        $calculatorValue = isset($_POST['calculatorName']) ? $_POST['calculatorName'] : null;
+        $middleName = isset($_POST['middleName']) ? $_POST['middleName'] :null;
+        $lastName = isset($_POST['lastName']) ? $_POST['lastName'] :null;
+        $reference = isset($_POST['referenceYear']) ? $_POST['referenceYear'] :null;
+        $vowel = isset($_POST['additionalVowel']) ? $_POST['additionalVowel'] :"";
+        $system = isset($_POST['system']) ? $_POST['system'] :"";
+        $reference = intval($reference);
+        $selectedCalculator = isset($_POST['calculatorName']) ? $_POST['calculatorName'] : null;
 
-        if ($calculatorValue) {
-            $calculator = new $calculatorClass[$system][$calculatorValue]($client);
-            if (in_array($calculatorValue, $calculatorParams[$system]['date'], true)) {
+        if ($selectedCalculator) {
+            $calculator = new $calculatorClass[$system][$selectedCalculator]($client);
+             if (in_array($selectedCalculator, $calculatorParams[$system]['date'])) {
                 $result = $calculator->process($datetime);
-            } elseif (in_array($calculatorValue, $calculatorParams[$system]['name'], true)) {
+            } elseif (in_array($selectedCalculator, $calculatorParams[$system]['name'])) {
                 $result = $calculator->process($firstName, $middleName, $lastName);
-            } elseif (in_array($calculatorValue, $calculatorParams[$system]['date_and_name'], true)) {
+            } elseif (in_array($selectedCalculator, $calculatorParams[$system]['date_and_name'])) {
                 $result = $calculator->process($datetime, $firstName, $middleName, $lastName);
-            } elseif (in_array($calculatorValue, $calculatorParams[$system]['name_and_vowel'], true)) {
+            } elseif (in_array($selectedCalculator, $calculatorParams[$system]['name_and_vowel'])){
                 $result = $calculator->process($firstName, $middleName, $lastName, $vowel);
-            } elseif (in_array($calculatorValue, $calculatorParams[$system]['date_and_reference_year'], true)) {
-                $result = $calculator->process($datetime, $reference);
-            } else {
-                throw new \Exception('Selected calculator not found');
-            }
+             } elseif (in_array($selectedCalculator, $calculatorParams[$system]['date_and_reference_year'])){
+                 $result = $calculator->process($datetime, $reference);
+             } else {
+                 throw new \Exception('Selected calculator not found');
+             }
         }
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();

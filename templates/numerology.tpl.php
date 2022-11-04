@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Auspicious Period Astrology API Demo</title>
+    <title>Numerology Calculator | API Demo</title>
     <?php include 'common/style.tpl.php'; ?>
     <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/style.css">
     <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/reports.css">
@@ -26,7 +26,7 @@
             <div class="row my-auto">
                 <div class="col-xl-6 col-lg-7 col-md-12 col-sm-12 text-lg-left top-header-text-content">
                     <h2 class="text-white mb-5">
-                        <span class="font-weight-thin">Numerology Demos</span>
+                        <span class="font-weight-thin">Numerology Calculator Demo</span>
                     </h2>
 <!--                    <p class="text-white">Auspicious period shows results like Abhijit Muhurat, Amrit Kaal and Brahma Muhurat. <a class="text-warning" href="https://www.prokerala.com/astrology/panchangam/" target="_blank">Read More..</a></p>-->
                 </div>
@@ -38,10 +38,7 @@
 
         <?php include 'common/helper.tpl.php'; ?>
         <?php if (!empty($result)): ?>
-
-            <?php include "numerology-result/{$calculatorValue}.tpl.php";
-
-            ?>
+            <?php include "numerology-result.tpl.php"; ?>
         <?php endif; ?>
             <section>
                 <div class="card contact-form-wrapper box-shadow mx-auto rounded-2 mb-5">
@@ -49,25 +46,25 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">First Name:</label>
                             <div class="col-sm-9 col-md-6 ">
-                                <input type="text" name="firstName" class="form-control form-control-lg rounded-1" placeholder="Enter First Name" value=<?= $firstName ?> required>
+                                <input type="text" name="firstName" class="form-control form-control-lg rounded-1" placeholder="Enter First Name" value="<?=$firstName?>" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Middle Name:</label>
                             <div class="col-sm-9 col-md-6 ">
-                                <input type="text" name="middleName" class="form-control form-control-lg rounded-1" placeholder="Enter Middle Name" value=<?= $middleName ?> >
+                                <input type="text" name="middleName" class="form-control form-control-lg rounded-1" placeholder="Enter Middle Name" value="<?=$middleName?>" >
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Last Name:</label>
                             <div class="col-sm-9 col-md-6 ">
-                                <input type="text" name="lastName" class="form-control form-control-lg rounded-1" placeholder="Enter Last Name" value=<?= $lastName ?> required>
+                                <input type="text" name="lastName" class="form-control form-control-lg rounded-1" placeholder="Enter Last Name" value="<?=$lastName?>" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Date of Birth: </label>
                             <div class="col-sm-9 col-md-6 ">
-                                <input type='date' name="datetime" class="form-control form-control-lg rounded-1" required="required"/>
+                                <input type='date' name="date" value="<?=$datetime->format('Y-m-d')?>" class="form-control form-control-lg rounded-1" required="required"/>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -110,8 +107,8 @@
                             <div class="col-sm-9 col-md-6 ">
                                 <select name="calculatorName" id="fin-calculator-list" class="form-control form-control-lg rounded-1">
                                     <?php foreach ($calculators[$system] as $calculatorValue => $calculatorName):?>
-                                        <option value="<?=$calculatorValue?>"><?=$calculatorName?></option>
-                                    <?php endforeach; ?>
+                                        <option <?=$selectedCalculator === $calculatorValue ? 'selected' : ''?> value="<?=$calculatorValue?>"><?=$calculatorName?></option>
+                                    <?php endforeach;?>
                                 </select>
                             </div>
                         </div>
@@ -135,10 +132,8 @@
 
     [...document.getElementsByClassName('fin-numerology-system')].forEach(function (elem) {
         elem.addEventListener('change', function () {
-            console.log('html');
             let calculators = numerologyCalculators[this.value];
-            let html = '<option>Select Calculator</option>';
-            console.log(calculators);
+            let html = '';
             for (var i in calculators) {
                 html += '<option value="'+ i +'">'+ calculators[i] +'</option>';
             };

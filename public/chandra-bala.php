@@ -37,7 +37,7 @@ if ($submit) {
 $tz = new DateTimeZone($timezone);
 $datetime = new DateTimeImmutable($input['datetime'], $tz);
 
-$location = new Location($input['latitude'], $input['longitude'], 0, $tz);
+$location = new Location((float)$input['latitude'], (float)$input['longitude'], 0, $tz);
 
 $result = [];
 $errors = [];

@@ -139,12 +139,12 @@
                                 <td><?=$rituResult->getDrikRitu()->getVedicName()?></td>
                             </tr>
                             <tr class="border-top">
-                                <td>Start: <?=$rituResult->getVedicRitu()->getStart()?></td>
-                                <td>Start: <?=$rituResult->getDrikRitu()->getStart()?></td>
+                                <td>Start: <?=$rituResult->getVedicRitu()->getStart()->format('c')?></td>
+                                <td>Start: <?=$rituResult->getDrikRitu()->getStart()->format('c')?></td>
                             </tr>
                             <tr class="border-top">
-                                <td>End: <?=$rituResult->getVedicRitu()->getEnd()?></td>
-                                <td>End: <?=$rituResult->getDrikRitu()->getEnd()?></td>
+                                <td>End: <?=$rituResult->getVedicRitu()->getEnd()->format('c')?></td>
+                                <td>End: <?=$rituResult->getDrikRitu()->getEnd()->format('c')?></td>
                             </tr>
                         </table>
                         <span class="text-black d-block b"><?= ucwords('Solstice')?></span>

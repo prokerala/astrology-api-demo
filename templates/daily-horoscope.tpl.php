@@ -37,57 +37,39 @@
         <?php include 'common/helper.tpl.php'; ?>
 
         <section>
-            <br>
-            <br>
-            <br>
-            <br>
-            <?php if ($resultToday):?>
+            <?php if ($result):?>
             <div>
-                <h3><?=$resultToday->getDailyHoroscopePrediction()->getSignName()?></h3>
-                <nav>
-                    <ul class="nav nav-pills nav-fill" >
+                <h3><?=$result->getDailyHoroscopePrediction()->getSignName()?> : <?=$result->getDailyHoroscopePrediction()->getDate()->format('d M, Y')?></h3>
+                <nav class="mb-3">
+                    <ul class="nav nav-tabs" >
                         <li class="nav-item">
-                            <?php if('yesterday' === $dateSelected):?>
-                            <a class="nav-link active"  href="?sign=<?=strtolower($signName)?>&date=yesterday">Yesterday</a>
-                            <?php else:?>
-                            <a class="nav-link"  href="?sign=<?=strtolower($signName)?>&date=yesterday">Yesterday</a>
-                            <?php endif; ?>
+                            <a class="nav-link <?=('yesterday' === $day) ? 'active' : ''?>"  href="?sign=<?=strtolower($signName)?>&day=yesterday">Yesterday</a>
                         </li>
                         <li class="nav-item">
-                            <?php if('today' === $dateSelected):?>
-                                <a class="nav-link active" aria-current="page" href="?sign=<?=strtolower($signName)?>&date=today">Today</a>
-                            <?php else:?>
-                                <a class="nav-link" aria-current="page" href="?sign=<?=strtolower($signName)?>&date=today">Today</a>
-                            <?php endif; ?>
+                            <a class="nav-link <?=('today' === $day) ? 'active' : ''?>" aria-current="page" href="?sign=<?=strtolower($signName)?>&day=today">Today</a>
                         </li>
                         <li class="nav-item">
-                            <?php if('tommorow' === $dateSelected):?>
-                                <a class="nav-link active" href="?sign=<?=strtolower($signName)?>&date=tommorow">Tommorow</a>
-                            <?php else: ?>
-                                <a class="nav-link" href="?sign=<?=strtolower($signName)?>&date=tommorow">Tommorow</a>
-                            <?php endif; ?>
+                            <a class="nav-link <?=('tomorrow' === $day) ? 'active' : ''?>" href="?sign=<?=strtolower($signName)?>&day=tomorrow">Tommorow</a>
                         </li>
                     </ul>
-                    <?php if('yesterday' === $dateSelected):?>
-                        <p><?=$resultYesterday->getDailyHoroscopePrediction()->getPrediction()?></p>
-                    <?php elseif('tommorow' === $dateSelected):?>
-                        <p><?=$resultTommorow->getDailyHoroscopePrediction()->getPrediction()?></p>
-                    <?php else:?>
-                        <p><?=$resultToday->getDailyHoroscopePrediction()->getPrediction()?></p>
-                    <?php endif?>
                 </nav>
+
+                <p><?=$result->getDailyHoroscopePrediction()->getPrediction()?></p>
             </div>
             <?php endif?>
             <br>
             <br>
-            <div class="row">
+            <div class="row mb-5 api-calculators-list">
                 <?php foreach ($signs as $signKey => $sign):?>
                     <div class="col-6 col-sm-4 col-md-2 mb-4">
-                        <a href="/demo/daily-horoscope.php?sign=<?=$signKey?>">
-                            <div class="shadow text-center">
-                                <?=$sign?>
-                            </div>
-                        </a>
+                        <div class="api-calculators-list-card p-2 shadow text-center">
+                            <a href="daily-horoscope.php?sign=<?=$signKey?>">
+                                <div class="api-calculators-list-image demo-api-calculators-list-image m-4 p-4">
+                                    <img class="img-fluid" src="<?=DEMO_BASE_URL?>/assets/img/icon/sign/<?=$signKey?>.png">
+                                </div>
+                                <span class="feature-card-title b"><?=$sign?></span>
+                            </a>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -95,23 +77,6 @@
 
     </div>
 </div>
-
-<script>
-    var numerologyCalculators = <?=json_encode($calculators)?>;
-
-    [...document.getElementsByClassName('fin-numerology-system')].forEach(function (elem) {
-        elem.addEventListener('change', function () {
-            console.log('html');
-            let calculators = numerologyCalculators[this.value];
-            let html = '<option>Select Calculator</option>';
-            console.log(calculators);
-            for (var i in calculators) {
-                html += '<option value="'+ i +'">'+ calculators[i] +'</option>';
-            };
-            document.getElementById('fin-calculator-list').innerHTML = html;
-        });
-    });
-</script>
 <?php include 'common/footer.tpl.php'; ?>
 </body>
 </html>

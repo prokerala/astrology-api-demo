@@ -58,21 +58,55 @@
     <div class="container prokerala-api-demo-container">
         <section>
             <div class="mb-5">
+                <?php
+                $signs = [
+                    'aries' => 'Aries',
+                    'taurus' => 'Taurus',
+                    'gemini' => 'Gemini ',
+                    'cancer' => 'Cancer ',
+                    'leo' => 'Leo',
+                    'virgo' => 'Virgo',
+                    'libra' => 'Libra',
+                    'scorpio' => 'Scorpio',
+                    'sagittarius' => 'Sagittarius',
+                    'capricorn' => 'Capricorn ',
+                    'aquarius' => 'Aquarius',
+                    'pisces' => 'Pisces',
+                ];
+                ?>
+
+                <h3>Daily Horoscope</h3>
+                <div class="row mb-5 api-calculators-list">
+                    <?php foreach ($signs as $signKey => $sign):?>
+                        <div class="col-6 col-sm-4 col-md-2 mb-4">
+                            <div class="api-calculators-list-card p-2 shadow text-center">
+                                <a href="daily-horoscope.php?sign=<?=$signKey?>">
+                                    <div class="api-calculators-list-image demo-api-calculators-list-image m-4 p-4">
+                                        <img class="img-fluid" src="<?=DEMO_BASE_URL?>/assets/img/icon/sign/<?=$signKey?>.png">
+                                    </div>
+                                    <span class="feature-card-title b"><?=$sign?></span>
+                                </a>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <div class="mb-5">
                 <?php foreach($arGroupCalculators as $group_name => $calculators): ?>
                     <h3><?=$group_name?> Calculators</h3>
                     <div class="row mb-5 api-calculators-list">
-                            <?php foreach ($calculators as $calculator):?>
-                                <div class="col-6 col-sm-4 col-md-2 mb-4">
-                                    <div class="api-calculators-list-card p-2 shadow text-center">
-                                        <a href="<?=$samples[$calculator]['url']?>">
-                                            <div class="api-calculators-list-image demo-api-calculators-list-image m-4">
-                                                <img class="img-fluid" src="<?=DEMO_BASE_URL?><?=$samples[$calculator]['image']?>">
-                                            </div>
-                                            <span class="feature-card-title b"><?=$samples[$calculator]['title']?></span>
-                                        </a>
-                                    </div>
+                        <?php foreach ($calculators as $calculator):?>
+                            <div class="col-6 col-sm-4 col-md-2 mb-4">
+                                <div class="api-calculators-list-card p-2 shadow text-center">
+                                    <a href="<?=$samples[$calculator]['url']?>">
+                                        <div class="api-calculators-list-image demo-api-calculators-list-image m-4">
+                                            <img class="img-fluid" src="<?=DEMO_BASE_URL?><?=$samples[$calculator]['image']?>">
+                                        </div>
+                                        <span class="feature-card-title b"><?=$samples[$calculator]['title']?></span>
+                                    </a>
                                 </div>
-                            <?php endforeach; ?>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 <?php endforeach; ?>
             </div>

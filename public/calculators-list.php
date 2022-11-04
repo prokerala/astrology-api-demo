@@ -148,13 +148,43 @@ $samples = [
     'auspicious-yoga' => [
         'image' => '/assets/img/icon/panchang.png',
         'title' => 'Auspicious Yoga',
-        'url' => DEMO_BASE_URL . '/auspicious-yoga',
+        'url' => DEMO_BASE_URL . '/auspicious-yoga.php',
         'docs' => 'auspicious-yoga',
     ],
     'calendar' => [
-        'image' => '/assets/img/icon/panchang.png',
+        'image' => '/assets/img/icon/calendar.png',
         'title' => 'Calendar',
-        'url' => DEMO_BASE_URL . '/calendar',
+        'url' => DEMO_BASE_URL . '/calendar.php',
         'docs' => 'calendar',
+    ],
+    'hindu-panchang' => [
+        'image' => '/assets/img/icon/panchang.png',
+        'title' => 'Hindu Panchang',
+        'url' => DEMO_BASE_URL . '/hindu-panchang.php',
+        'docs' => 'panchang',
+    ],
+    'tamil-panchang' => [
+        'image' => '/assets/img/icon/panchang.png',
+        'title' => 'Tamil Panchang',
+        'url' => DEMO_BASE_URL . '/tamil-panchang.php',
+        'docs' => 'panchang',
+    ],
+    'telugu-panchang' => [
+        'image' => '/assets/img/icon/panchang.png',
+        'title' => 'Telugu Panchang',
+        'url' => DEMO_BASE_URL . '/telugu-panchang.php',
+        'docs' => 'panchang',
+    ],
+    'numerology' => [
+        'image' => '/assets/img/icon/numerology.png',
+        'title' => 'Numerology',
+        'url' => DEMO_BASE_URL . '/numerology.php',
+        'docs' => 'numerology',
+    ],
+    'daily-horoscope' => [
+        'image' => '/assets/img/icon/calendar.png',
+        'title' => 'Daily Horoscope',
+        'url' => DEMO_BASE_URL . '/daily-horoscope.php',
+        'docs' => 'numerology',
     ],
 ];

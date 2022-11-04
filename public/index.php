@@ -8,6 +8,14 @@ $arGroupCalculators = [
         'auspicious-period',
         'inauspicious-period',
         'choghadiya',
+        'tamil-panchang',
+        'telugu-panchang',
+        'hindu-panchang',
+        'calendar',
+    ],
+    'Numerology & Daily Horoscope' => [
+        'numerology',
+        'daily-horoscope',
     ],
     'Horoscope' => [
         'birth-details',

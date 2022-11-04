@@ -33,19 +33,23 @@ $signs = [
     'aquarius' => 'Aquarius',
     'pisces' => 'Pisces',
 ];
-$dateSelected = $_GET['date'] ?? 'today';
+$day = $_GET['day'] ?? 'today';
 $selectedSign = $_GET['sign'] ?? null;
-$tommorow = $datetime->add(new DateInterval('P1D'));
-$yesterday = $datetime->sub(new DateInterval('P1D'));
-$resultToday = [];
+$tomorrow = new DateTimeImmutable('+1 day', $tz);
+$yesterday = new DateTimeImmutable('-1 day', $tz);
+
 $errors = [];
 if ($selectedSign) {
     try {
         $horoscopeClass = new DailyPrediction($client);
-        $resultYesterday = $horoscopeClass->process($yesterday, $selectedSign);
-        $resultToday = $horoscopeClass->process($datetime, $selectedSign);
-        $resultTommorow = $horoscopeClass->process($tommorow, $selectedSign);
-        $signName = $resultToday->getDailyHoroscopePrediction()->getSignName();
+        if ($day === 'yesterday') {
+            $result = $horoscopeClass->process($yesterday, $selectedSign);
+        } else if ($day === 'tomorrow') {
+            $result = $horoscopeClass->process($tomorrow, $selectedSign);
+        } else {
+            $result = $horoscopeClass->process($datetime, $selectedSign);
+        }
+        $signName = $result->getDailyHoroscopePrediction()->getSignName();
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {

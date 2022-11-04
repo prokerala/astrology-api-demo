@@ -108,9 +108,6 @@ if ($numberResultObject) {
 
 ?>
 
-<?php if ($nameChart): ?>
-    <?php include 'numerology-name-chart-only.tpl.php'; ?>
-<?php endif; ?>
 
 <?php if ($numberResult): ?>
     <?php include 'numerology-number-result-only.tpl.php'; ?>
@@ -144,4 +141,8 @@ if ($numberResultObject) {
         ?>
         <?php include 'numerology-number-result-only.tpl.php'; ?>
     <?php endforeach; ?>
+<?php endif; ?>
+
+<?php if ($nameChart): ?>
+    <?php include 'numerology-name-chart-only.tpl.php'; ?>
 <?php endif; ?>

@@ -64,4 +64,5 @@ if ($submit) {
 }
 
 $apiCreditUsed = $client->getCreditUsed();
+
 include DEMO_BASE_DIR . '/templates/anandadi-yoga.tpl.php';

@@ -4,7 +4,7 @@
         <div class="form-group row">
             <label class="col-md-4 pr-md-0 col-form-label">Date Of Birth:</label>
             <div class="col-md-8 pl-md-0">
-                <input type='datetime-local' name="girl_dob" class="form-control form-control-lg rounded-1"  required="required" value="<?=$girl_dob->format('Y-m-d\TH:i')?>"/>
+                <input type='datetime-local' name="girl_dob" class="form-control form-control-lg rounded-1"  required="required" value="<?= $girl_dob->format('Y-m-d\TH:i')?>"/>
             </div>
         </div>
         <div id="glocationField" class="form-group row">
@@ -21,7 +21,7 @@
         <div class="form-group row">
             <label class="col-md-4 pr-md-0 col-form-label">Date Of Birth:</label>
             <div class="col-md-8 pl-md-0">
-                <input type='datetime-local' name="boy_dob" class="form-control form-control-lg rounded-1"  required="required" value="<?=$boy_dob->format('Y-m-d\TH:i')?>"/>
+                <input type='datetime-local' name="boy_dob" class="form-control form-control-lg rounded-1"  required="required" value="<?= $boy_dob->format('Y-m-d\TH:i')?>"/>
             </div>
         </div>
         <div id="blocationField" class="form-group row">

@@ -109,7 +109,7 @@ if ($submit) {
                 'lord' => [
                     'id' => $girl_nakshatra_lord->getId(),
                     'name' => $girl_nakshatra_lord->getName(),
-                    'vedicName' => $girl_nakshatra_lord->getVedicName()
+                    'vedicName' => $girl_nakshatra_lord->getVedicName(),
                 ],
             ],
             'rasi' => [
@@ -118,7 +118,7 @@ if ($submit) {
                 'lord' => [
                     'id' => $girl_rasi_lord->getId(),
                     'name' => $girl_rasi_lord->getName(),
-                    'vedicName' => $girl_rasi_lord->getVedicName()
+                    'vedicName' => $girl_rasi_lord->getVedicName(),
                 ],
             ],
         ];
@@ -131,7 +131,7 @@ if ($submit) {
                 'lord' => [
                     'id' => $boy_nakshatra_lord->getId(),
                     'name' => $boy_nakshatra_lord->getName(),
-                    'vedicName' => $boy_nakshatra_lord->getVedicName()
+                    'vedicName' => $boy_nakshatra_lord->getVedicName(),
                 ],
             ],
             'rasi' => [
@@ -140,7 +140,7 @@ if ($submit) {
                 'lord' => [
                     'id' => $boy_rasi_lord->getId(),
                     'name' => $boy_rasi_lord->getName(),
-                    'vedicName' => $boy_rasi_lord->getVedicName()
+                    'vedicName' => $boy_rasi_lord->getVedicName(),
                 ],
             ],
         ];
@@ -171,7 +171,6 @@ if ($submit) {
                 }
             }
         }
-
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {
@@ -186,4 +185,5 @@ if ($submit) {
 }
 
 $apiCreditUsed = $client->getCreditUsed();
+
 include DEMO_BASE_DIR . '/templates/porutham.tpl.php';

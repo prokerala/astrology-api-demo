@@ -48,8 +48,8 @@
                         <?php if (in_array($key, ['nakshatra', 'rasi'], true)):?>
                             <?php foreach ($info as $item => $itemVale):?>
                                 <?php if ('id' === $item) {
-    continue;
-}?>
+                                    continue;
+                                }?>
                                 <?php if ('lord' === $item):?>
                                     <tr>
                                         <td><b><?=ucwords($key . ' ' . $item)?></b></td>
@@ -92,7 +92,8 @@
                             </tr>
                         <?php endforeach; ?>
                     <?php else:?>
-                        <?php $count = 1; foreach ($compatibilityResult['girlInfo']['koot'] as $guna => $data): ?>
+                        <?php $count = 1;
+                        foreach ($compatibilityResult['girlInfo']['koot'] as $guna => $data): ?>
                             <?php $guna_koot = preg_replace('/(?<!\ )[A-Z]/', ' $0', $guna);
                             $guna_koot = ucwords($guna_koot); ?>
                             <tr>
@@ -116,23 +117,24 @@
                 </table>
                 <?php if ('advanced' === $result_type):?>
                     <h3 class="text-black">Guna Milan Detailed Interpretation</h3>
-                    <?php $count = 1; foreach ($compatibilityResult['gunaMilan']['guna'] as  $koot): ?>
+                    <?php $count = 1;
+                    foreach ($compatibilityResult['gunaMilan']['guna'] as  $koot): ?>
                         <span class="font-weight-regular text-black"><?=$koot['id']?>. <?=$koot['name']?> Koot</span>
                         <p class="text-black"><?=$koot['description']?></p>
                         <?php ++$count; endforeach; ?>
 
                     <h3 class="text-black">Girl Mangal Dosha Details</h3>
-                    <p class="alert <?=(($compatibilityResult['girlMangalDoshaDetails']['hasMangalDosha']) ? 'alert-danger' : 'alert-success')?>">
+                    <p class="alert <?= ($compatibilityResult['girlMangalDoshaDetails']['hasMangalDosha']) ? 'alert-danger' : 'alert-success'?>">
                         <?=$compatibilityResult['girlMangalDoshaDetails']['description']?>
                     </p>
 
                     <h3 class="text-black">Boy Mangal Dosha Details</h3>
-                    <p class="alert <?=(($compatibilityResult['boyMangalDoshaDetails']['hasMangalDosha']) ? 'alert-danger' : 'alert-success')?>">
+                    <p class="alert <?= ($compatibilityResult['boyMangalDoshaDetails']['hasMangalDosha']) ? 'alert-danger' : 'alert-success'?>">
                         <?=$compatibilityResult['boyMangalDoshaDetails']['description']?>
                     </p>
                 <?php endif; ?>
 
-                <div class="mb-5 alert text-center <?=(('bad' === $compatibilityResult['message']['type']) ? 'alert-danger' : 'alert-success')?>">
+                <div class="mb-5 alert text-center <?= ('bad' === $compatibilityResult['message']['type']) ? 'alert-danger' : 'alert-success'?>">
                     <?=$compatibilityResult['message']['description']?>
                 </div>
             <?php endif; ?>
@@ -156,9 +158,9 @@
                             <label class="col-sm-3 col-md-4 col-form-label ">Ayanamsa</label>
                             <div class="col-sm-9 col-md-6">
                                 <select name="ayanamsa" class="form-control form-control-lg rounded-1">
-                                    <option value="1" <?=1 == $ayanamsa ? 'selected' : ''?>>Lahiri</option>
-                                    <option value="3" <?=3 == $ayanamsa ? 'selected' : ''?>>Raman</option>
-                                    <option value="5" <?=5 == $ayanamsa ? 'selected' : ''?>>KP</option>
+                                    <option value="1" <?=1 === $ayanamsa ? 'selected' : ''?>>Lahiri</option>
+                                    <option value="3" <?=3 === $ayanamsa ? 'selected' : ''?>>Raman</option>
+                                    <option value="5" <?=5 === $ayanamsa ? 'selected' : ''?>>KP</option>
                                 </select>
                             </div>
                         </div>

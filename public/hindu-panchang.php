@@ -46,7 +46,6 @@ $datetime = new DateTimeImmutable($input['datetime'], $tz);
 
 $location = new Location($input['latitude'], $input['longitude'], 0, $tz);
 
-
 $result = [];
 $errors = [];
 $horaResult = [];
@@ -57,7 +56,6 @@ $dishaShoolResult = [];
 
 if ($submit) {
     try {
-
         $method = new Panchang($client);
         $method->setAyanamsa($ayanamsa);
         $method->setTimeZone($tz);
@@ -114,7 +112,7 @@ if ($submit) {
                 ];
                 if ('Nakshatra' === $key) {
                     $panchangResult[$key][$idx]['nakshatra_lord'] = $data->getLord();
-                } elseif ($key === 'Tithi'){
+                } elseif ('Tithi' === $key) {
                     $panchangResult[$key][$idx]['paksha'] = $data->getPaksha();
                 }
             }
@@ -161,4 +159,5 @@ if ($submit) {
 }
 
 $apiCreditUsed = $client->getCreditUsed();
+
 include DEMO_BASE_DIR . '/templates/hindu-panchang.tpl.php';

@@ -49,7 +49,7 @@
                 <tr class="bg-secondary text-white text-center"><th colspan=2">Nakshatra Details</th></tr>
                 <?php foreach ($kundliResult['nakshatraDetails'] as $key => $kundli):?>
                     <?php $item = preg_replace('/(?<!\ )[A-Z]/', ' $0', $key); ?>
-                    <?php if (in_array($key, ['nakshatra', 'chandraRasi', 'sooryaRasi'])):?>
+                    <?php if (in_array($key, ['nakshatra', 'chandraRasi', 'sooryaRasi'], true)):?>
                         <tr><th><?=ucwords($item)?></th><td><?=$kundli['name']?></td></tr>
                         <tr><th><?=ucwords($item)?> Lord</th><td><?="{$kundli['lord']['vedicName']} ({$kundli['lord']['name']})"?></td></tr>
                     <?php elseif ('additionalInfo' === $key):?>
@@ -65,7 +65,7 @@
 
             <h3 class="text-black">Yoga Details</h3>
             <?php foreach ($kundliResult['yogaDetails'] as $data):?>
-                <h3 class="font-weight-regular text-black"><?= ($data['name'])?></h3>
+                <h3 class="font-weight-regular text-black"><?= $data['name']?></h3>
                 <p class="text-black"><?=$data['description']?></p>
                 <?php if ('advanced' === $result_type):?>
                     <?php foreach ($data['yogaList'] as $yogas):?>

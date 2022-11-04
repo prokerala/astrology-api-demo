@@ -41,7 +41,6 @@ $datetime = new DateTimeImmutable($input['datetime'], $tz);
 
 $location = new Location($input['latitude'], $input['longitude'], 0, $tz);
 
-
 $result = [];
 $errors = [];
 
@@ -85,4 +84,5 @@ if ($submit) {
 }
 
 $apiCreditUsed = $client->getCreditUsed();
+
 include DEMO_BASE_DIR . '/templates/planet-position.tpl.php';

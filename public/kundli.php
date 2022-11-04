@@ -41,7 +41,6 @@ $datetime = new DateTimeImmutable($input['datetime'], $tz);
 
 $location = new Location($input['latitude'], $input['longitude'], 0, $tz);
 
-
 $result = [];
 $errors = [];
 
@@ -74,7 +73,6 @@ if ($submit) {
 
         $kundliResult = [
             'nakshatraDetails' => [
-
                 'nakshatra' => [
                     'id' => $nakshatra->getId(),
                     'name' => $nakshatra->getName(),
@@ -94,7 +92,7 @@ if ($submit) {
                         'vedicName' => $chandraRasiLord->getVedicName(),
                     ],
                 ],
-                'sooryaRasi' =>  [
+                'sooryaRasi' => [
                     'id' => $sooryaRasi->getId(),
                     'name' => $sooryaRasi->getName(),
                     'lord' => [
@@ -103,7 +101,7 @@ if ($submit) {
                         'vedicName' => $sooryaRasiLord->getVedicName(),
                     ],
                 ],
-                'zodiac' =>  [
+                'zodiac' => [
                     'id' => $zodiac->getId(),
                     'name' => $zodiac->getName(),
                 ],
@@ -151,18 +149,18 @@ if ($submit) {
             foreach ($yogaDetails as $details) {
                 $yogaList = $details->getYogaList();
                 $yogas = [];
-                    foreach ($yogaList as $yoga) {
-                        $yogas[] = [
-                            'name' => $yoga->getName(),
-                            'hasYoga' => $yoga->hasYoga(),
-                            'description' => $yoga->getDescription(),
-                        ];
-                    }
-                    $yogaDetailResult[] = [
-                        'name' => $details->getName(),
-                        'description' => $details->getDescription(),
-                        'yogaList' => $yogas,
+                foreach ($yogaList as $yoga) {
+                    $yogas[] = [
+                        'name' => $yoga->getName(),
+                        'hasYoga' => $yoga->hasYoga(),
+                        'description' => $yoga->getDescription(),
                     ];
+                }
+                $yogaDetailResult[] = [
+                    'name' => $details->getName(),
+                    'description' => $details->getDescription(),
+                    'yogaList' => $yogas,
+                ];
             }
 
             $kundliResult['yogaDetails'] = $yogaDetailResult;
@@ -170,7 +168,7 @@ if ($submit) {
             $dashaPeriods = $result->getDashaPeriods();
             $dashaPeriodResult = [];
             foreach ($dashaPeriods as $dashaPeriod) {
-                 $antardashas = $dashaPeriod->getAntardasha();
+                $antardashas = $dashaPeriod->getAntardasha();
                 $antardashaResult = [];
                 foreach ($antardashas as $antardasha) {
                     $pratyantardashas = $antardasha->getPratyantardasha();
@@ -183,12 +181,12 @@ if ($submit) {
                             'end' => $pratyantardasha->getEnd(),
                         ];
                     }
-                    $antardashaResult[]  = [
+                    $antardashaResult[] = [
                         'id' => $antardasha->getId(),
                         'name' => $antardasha->getName(),
                         'start' => $antardasha->getStart(),
                         'end' => $antardasha->getEnd(),
-                        'pratyantardasha' => $pratyantardashaResult
+                        'pratyantardasha' => $pratyantardashaResult,
                     ];
                 }
                 $dashaPeriodResult[] = [
@@ -196,15 +194,12 @@ if ($submit) {
                     'name' => $dashaPeriod->getName(),
                     'start' => $dashaPeriod->getStart(),
                     'end' => $dashaPeriod->getEnd(),
-                    'antardasha' => $antardashaResult
+                    'antardasha' => $antardashaResult,
                 ];
             }
             $kundliResult['dashaPeriods'] = $dashaPeriodResult;
-
         }
         $kundliResult['yogaDetails'] = $yogaDetailResult;
-
-
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {
@@ -219,4 +214,5 @@ if ($submit) {
 }
 
 $apiCreditUsed = $client->getCreditUsed();
+
 include DEMO_BASE_DIR . '/templates/kundli.tpl.php';

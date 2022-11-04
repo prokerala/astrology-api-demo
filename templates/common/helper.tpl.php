@@ -5,7 +5,7 @@
             Credit Used <span class="badge badge-light"><?=$apiCreditUsed?></span>
         </span>
     </div>
-<?php endif;?>
+<?php endif; ?>
 
 <?php if (!empty($errors)):?>
     <?php foreach ($errors as $key => $error):?>
@@ -18,4 +18,4 @@
             <?php endif; ?>
         </div>
     <?php endforeach; ?>
-<?php endif;?>
+<?php endif; ?>

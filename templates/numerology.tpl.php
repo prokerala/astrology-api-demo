@@ -111,7 +111,7 @@
                                 <select name="calculatorName" id="fin-calculator-list" class="form-control form-control-lg rounded-1">
                                     <?php foreach ($calculators[$system] as $calculatorValue => $calculatorName):?>
                                         <option value="<?=$calculatorValue?>"><?=$calculatorName?></option>
-                                    <?php endforeach;?>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>

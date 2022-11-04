@@ -51,12 +51,12 @@
                             <?php foreach ($periods as $period):?>
                                 <?php foreach ($period->getCombination() as $combinations):?>
                                     <tr ><td><?=ucfirst($combinations->getType())?> - <?=$combinations->getName()?></td></tr>
-                                <?php endforeach;?>
+                                <?php endforeach; ?>
                                 <tr><td>Start - <?=$period->getStart()->format('c')?></td></tr>
                                 <tr><td>End - <?=$period->getEnd()->format('c')?></td></tr>
-                            <?php endforeach;?>
+                            <?php endforeach; ?>
                         <?php endif; ?>
-                <?php endforeach;?>
+                <?php endforeach; ?>
             </table>
         <?php endif; ?>
             <section>

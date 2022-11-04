@@ -8,12 +8,9 @@ use Prokerala\Common\Api\Exception\QuotaExceededException;
 use Prokerala\Common\Api\Exception\RateLimitExceededException;
 use Prokerala\Common\Api\Exception\ValidationException;
 
-
 require __DIR__ . '/bootstrap.php';
 
-
 $calculators = [];
-
 
 $submit = $_POST['submit'] ?? 0;
 $ayanamsa = 1;
@@ -52,22 +49,20 @@ $calculators = [
         'maturity-number' => 'Maturity Number',
         'hidden-passion-number' => 'Hidden Passion Number',
         'rational-thought-number' => 'Rational Thought Number',
-        'pinnacle-number' =>'Pinnacle Number',
-        'karmic-debt-number'=> 'Karmic Debt Number',
-        'bridge-number' =>'Bridge Number',
+        'pinnacle-number' => 'Pinnacle Number',
+        'karmic-debt-number' => 'Karmic Debt Number',
+        'bridge-number' => 'Bridge Number',
     ],
     'chaldean' => [
         'birth-number' => 'Birth Number',
         'life-path-number' => 'Life Path Number',
         'identity-initial-code-number' => 'Identity Initial Code Number',
-        'whole-name-number' => 'Whole Name Number'
-
-
-    ]
+        'whole-name-number' => 'Whole Name Number',
+    ],
 ];
 
 $calculatorClass = [
-    'pythagorean'=>[
+    'pythagorean' => [
         'life-path-number' => \Prokerala\Api\Numerology\Service\LifePathNumber::class,
         'capstone-number' => \Prokerala\Api\Numerology\Service\CapStoneNumber::class,
         'personality-number' => \Prokerala\Api\Numerology\Service\PersonalityNumber::class,
@@ -95,9 +90,9 @@ $calculatorClass = [
         'karmic-debt-number' => \Prokerala\Api\Numerology\Service\KarmicDebtNumber::class,
         'bridge-number' => \Prokerala\Api\Numerology\Service\BridgeNumber::class,
     ],
-    'chaldean'=>[
+    'chaldean' => [
         'birth-number' => \Prokerala\Api\Numerology\Service\Chaldean\BirthNumber::class,
-        'life-path-number'=> \Prokerala\Api\Numerology\Service\Chaldean\LifePathNumber::class,
+        'life-path-number' => \Prokerala\Api\Numerology\Service\Chaldean\LifePathNumber::class,
         'identity-initial-code-number' => \Prokerala\Api\Numerology\Service\Chaldean\IdentityInitialCode::class,
         'whole-name-number' => \Prokerala\Api\Numerology\Service\Chaldean\WholeNameNumber::class,
     ],
@@ -115,10 +110,10 @@ $calculatorParams = [
             'challenge-number',
             'pinnacle-number',
         ],
-        'date_and_reference_year' =>[
+        'date_and_reference_year' => [
             'personal-year-number',
             'personal-month-number',
-            'personal-day-number'
+            'personal-day-number',
         ],
         'name' => [
             'cap-stone-number',
@@ -129,13 +124,12 @@ $calculatorParams = [
             'subconscious-self-number',
             'soul-urge-number',
             'corner-stone-number',
-
         ],
-        'name_and_vowel' =>[
+        'name_and_vowel' => [
             'personality-number',
             'inner-dream-number',
         ],
-        'date_and_name' =>[
+        'date_and_name' => [
             'attainment-number',
             'maturity-number',
             'rational-thought-number',
@@ -148,41 +142,40 @@ $calculatorParams = [
             'birth-number',
             'life-path-number',
         ],
-        'name' =>[
+        'name' => [
             'identity-initial-code-number',
             'whole-name-number',
         ],
-    ]
+    ],
 ];
 
 if ($submit) {
     try {
         $firstName = isset($_POST['firstName']) ? $_POST['firstName'] : null;
-        $middleName = isset($_POST['middleName']) ? $_POST['middleName'] :null;
-        $lastName = isset($_POST['lastName']) ? $_POST['lastName'] :null;
-        $reference = isset($_POST['referenceYear']) ? $_POST['referenceYear'] :null;
-        $vowel = isset($_POST['additionalVowel']) ? $_POST['additionalVowel'] :"";
-        $system = isset($_POST['system']) ? $_POST['system'] :"";
-        $reference = intval($reference);
+        $middleName = isset($_POST['middleName']) ? $_POST['middleName'] : null;
+        $lastName = isset($_POST['lastName']) ? $_POST['lastName'] : null;
+        $reference = isset($_POST['referenceYear']) ? $_POST['referenceYear'] : null;
+        $vowel = isset($_POST['additionalVowel']) ? $_POST['additionalVowel'] : '';
+        $system = isset($_POST['system']) ? $_POST['system'] : '';
+        $reference = (int)$reference;
         $calculatorValue = isset($_POST['calculatorName']) ? $_POST['calculatorName'] : null;
 
         if ($calculatorValue) {
             $calculator = new $calculatorClass[$system][$calculatorValue]($client);
-             if (in_array($calculatorValue, $calculatorParams[$system]['date'])) {
+            if (in_array($calculatorValue, $calculatorParams[$system]['date'], true)) {
                 $result = $calculator->process($datetime);
-            } elseif (in_array($calculatorValue, $calculatorParams[$system]['name'])) {
+            } elseif (in_array($calculatorValue, $calculatorParams[$system]['name'], true)) {
                 $result = $calculator->process($firstName, $middleName, $lastName);
-            } elseif (in_array($calculatorValue, $calculatorParams[$system]['date_and_name'])) {
+            } elseif (in_array($calculatorValue, $calculatorParams[$system]['date_and_name'], true)) {
                 $result = $calculator->process($datetime, $firstName, $middleName, $lastName);
-            } elseif (in_array($calculatorValue, $calculatorParams[$system]['name_and_vowel'])){
+            } elseif (in_array($calculatorValue, $calculatorParams[$system]['name_and_vowel'], true)) {
                 $result = $calculator->process($firstName, $middleName, $lastName, $vowel);
-             } elseif (in_array($calculatorValue, $calculatorParams[$system]['date_and_reference_year'])){
-                 $result = $calculator->process($datetime, $reference);
-             } else {
-                 throw new \Exception('Selected calculator not found');
-             }
+            } elseif (in_array($calculatorValue, $calculatorParams[$system]['date_and_reference_year'], true)) {
+                $result = $calculator->process($datetime, $reference);
+            } else {
+                throw new \Exception('Selected calculator not found');
+            }
         }
-
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {
@@ -197,4 +190,5 @@ if ($submit) {
 }
 
 $apiCreditUsed = $client->getCreditUsed();
+
 include DEMO_BASE_DIR . '/templates/numerology.tpl.php';

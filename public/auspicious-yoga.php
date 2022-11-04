@@ -49,7 +49,6 @@ if ($submit) {
         $method->setAyanamsa($ayanamsa);
         $method->setTimeZone($tz);
         $result = $method->process($location, $datetime, $la);
-
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {
@@ -64,4 +63,5 @@ if ($submit) {
 }
 
 $apiCreditUsed = $client->getCreditUsed();
+
 include DEMO_BASE_DIR . '/templates/auspicious-yoga.tpl.php';

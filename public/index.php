@@ -27,4 +27,5 @@ $arGroupCalculators = [
         'papasamyam-check',
     ],
 ];
+
 include DEMO_BASE_DIR . '/templates/home.tpl.php';

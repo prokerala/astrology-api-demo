@@ -101,7 +101,7 @@
                                         <td><?=$data->getType()?></td>
                                         <td><?=$data->getStart()->format('h:i A') . ' - ' . $data->getEnd()->format('h:i A')?></td>
                                     </tr>
-                                <?php endforeach;?>
+                                <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -118,7 +118,7 @@
                                         <td><?=$data->getType()?></td>
                                         <td><?=$data->getStart()->format('h:i A') . ' - ' . $data->getEnd()->format('h:i A')?></td>
                                     </tr>
-                                <?php endforeach;?>
+                                <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>

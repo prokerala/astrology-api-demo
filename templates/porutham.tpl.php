@@ -53,8 +53,8 @@
                     <?php if (in_array($idx, ['nakshatra', 'rasi'], true)):?>
                         <?php foreach ($info as $item => $itemVale):?>
                             <?php if ('id' === $item) {
-    continue;
-}?>
+                                continue;
+                            }?>
                             <?php if ('lord' === $item):?>
                                 <tr>
                                     <td><b><?=$item?></b></td>
@@ -90,8 +90,8 @@
                         <?php if ('advanced' === $result_type):?>
                             <td>
                                 <?='Good' === $data['poruthamStatus'] ? '<span class="text-success">Good</span>' :
-                                    ('Satisfactory' === $data['poruthamStatus'] ? '<span class="text-warning">Satisfactory</span>' :
-                                        '<span class="text-danger">Not Satisfactory</span>')?></td>
+                                                                ('Satisfactory' === $data['poruthamStatus'] ? '<span class="text-warning">Satisfactory</span>' :
+                                                                    '<span class="text-danger">Not Satisfactory</span>')?></td>
                             <td class="text-center"><?=$data['points']?></td>
                         <?php else:?>
                             <td class="text-center"><?=$data['hasPorutham'] ? 1 : 0?></td>
@@ -122,9 +122,9 @@
                                 <label class="col-md-4 pr-md-0 col-form-label">Ayanamsa</label>
                                 <div class="col-md-8 pl-md-0">
                                     <select name="ayanamsa" class="form-control form-control-lg rounded-1">
-                                        <option value="1" <?=1 == $ayanamsa ? 'selected' : ''?>>Lahiri</option>
-                                        <option value="3" <?=3 == $ayanamsa ? 'selected' : ''?>>Raman</option>
-                                        <option value="5" <?=5 == $ayanamsa ? 'selected' : ''?>>KP</option>
+                                        <option value="1" <?=1 === $ayanamsa ? 'selected' : ''?>>Lahiri</option>
+                                        <option value="3" <?=3 === $ayanamsa ? 'selected' : ''?>>Raman</option>
+                                        <option value="5" <?=5 === $ayanamsa ? 'selected' : ''?>>KP</option>
                                     </select>
                                 </div>
                             </div>

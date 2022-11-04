@@ -31,7 +31,7 @@
     <div class="container prokerala-api-demo-container">
         <?php include 'common/helper.tpl.php'; ?>
         <?php if (!empty($result)): ?>
-            <div class="alert text-center p-4 pad-large <?=(($sadeSatiResult['isInSadeSati']) ? 'alert-danger' : 'alert-success')?>">
+            <div class="alert text-center p-4 pad-large <?= ($sadeSatiResult['isInSadeSati']) ? 'alert-danger' : 'alert-success'?>">
                 <?=$sadeSatiResult['description']?>
             </div>
             <?php if ('advanced' === $result_type):?>
@@ -42,7 +42,7 @@
                         <th>Start Time</th>
                         <th>End Time</th>
                     </tr>
-                    <?php $today = strtotime(date('Y-m-d'));?>
+                    <?php $today = strtotime(date('Y-m-d')); ?>
                     <?php foreach ($sadeSatiResult['transits'] as $transit):?>
                         <tr class="<?=($today >= strtotime($transit['start']->format('Y-m-d')) && $today <= strtotime($transit['end']->format('Y-m-d'))) ? 'table-danger' : ''?>">
                             <td><?=$transit['phase']?></td>

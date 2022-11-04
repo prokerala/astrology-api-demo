@@ -1,6 +1,6 @@
 <div class="text-center">
     <a href="https://github.com/prokerala/astrology-api-demo/blob/master/public/<?=$sample_name?>.php" class="btn btn-primary btn-sm mb-3" role="button">View Source Code</a>
-    <a href="/docs#operation/get-<?=$samples[$sample_name]['docs']?><?= isset($advanced) ? '-advanced' :''?>" class="btn btn-primary btn-sm mb-3" role="button">Documentation</a>
+    <a href="/docs#operation/get-<?=$samples[$sample_name]['docs']?><?= isset($advanced) ? '-advanced' : ''?>" class="btn btn-primary btn-sm mb-3" role="button">Documentation</a>
 </div>
 <section>
     <div class=" text-center">

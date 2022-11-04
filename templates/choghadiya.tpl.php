@@ -43,7 +43,7 @@
             <div class="col-12 col-md-6">
                 <table class="table table-bordered border-white table-hover table-responsive-sm" style="margin-right: 10px">
                     <tr class="bg-secondary text-white">
-                        <th colspan="4" class="text-center"><?= ($type ? 'Day' : 'Night')?> Choghadiya</th>
+                        <th colspan="4" class="text-center"><?= $type ? 'Day' : 'Night'?> Choghadiya</th>
                     </tr>
                     <tr><th>Name</th><th>Type</th><th>Start</th><th>End</th></tr>
 

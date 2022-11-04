@@ -6,25 +6,37 @@ $finder = PhpCsFixer\Finder::create()
     ->append([__DIR__.'/php-cs-fixer'])
 ;
 
-$config = PhpCsFixer\Config::create()
+$config = (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->setRules([
         '@PSR1' => true,
         '@PSR2' => true,
         '@Symfony' => true,
-        '@PHP56Migration' => true,
-        '@PHPUnit60Migration:risky' => true,
         '@PhpCsFixer' => true,
         '@PhpCsFixer:risky' => true,
+        'date_time_immutable' => true,
         'cast_spaces' => ['space' => 'none'],
         'concat_space' => ['spacing' => 'one'],
-        'list_syntax' => ['syntax' => 'short'],
+        'class_definition' => true,
+        'echo_tag_syntax' => false,
+        'phpdoc_to_comment' => false,
+        'phpdoc_separation' => false,
+        'phpdoc_summary' => false,
+        // 'declare_strict_types' => true,
         'semicolon_after_instruction' => false,
-        'no_short_echo_tag' => false,
         'no_alternative_syntax' => false,
         'phpdoc_no_empty_return' => false,
         'phpdoc_no_alias_tag' => false,
         'phpdoc_add_missing_param_annotation' => false,
+        'phpdoc_no_access' => false,
+        'ordered_imports' => [
+            'sort_algorithm' => 'alpha',
+            'imports_order' => ['class', 'function', 'const'],
+        ],
+        'native_function_invocation' => [
+            'include' => ['@compiler_optimized'],
+            'scope' => 'namespaced',
+        ],
     ])
     ->setFinder($finder)
 ;

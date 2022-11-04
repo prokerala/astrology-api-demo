@@ -47,30 +47,30 @@
                 <nav>
                     <ul class="nav nav-pills nav-fill" >
                         <li class="nav-item">
-                            <?php if($dateSelected == 'yesterday'):?>
+                            <?php if('yesterday' === $dateSelected):?>
                             <a class="nav-link active"  href="?sign=<?=strtolower($signName)?>&date=yesterday">Yesterday</a>
                             <?php else:?>
                             <a class="nav-link"  href="?sign=<?=strtolower($signName)?>&date=yesterday">Yesterday</a>
-                            <?php endif;?>
+                            <?php endif; ?>
                         </li>
                         <li class="nav-item">
-                            <?php if($dateSelected == 'today'):?>
+                            <?php if('today' === $dateSelected):?>
                                 <a class="nav-link active" aria-current="page" href="?sign=<?=strtolower($signName)?>&date=today">Today</a>
                             <?php else:?>
                                 <a class="nav-link" aria-current="page" href="?sign=<?=strtolower($signName)?>&date=today">Today</a>
-                            <?php endif;?>
+                            <?php endif; ?>
                         </li>
                         <li class="nav-item">
-                            <?php if($dateSelected == 'tommorow'):?>
+                            <?php if('tommorow' === $dateSelected):?>
                                 <a class="nav-link active" href="?sign=<?=strtolower($signName)?>&date=tommorow">Tommorow</a>
                             <?php else: ?>
                                 <a class="nav-link" href="?sign=<?=strtolower($signName)?>&date=tommorow">Tommorow</a>
-                            <?php endif;?>
+                            <?php endif; ?>
                         </li>
                     </ul>
-                    <?php if($dateSelected == 'yesterday'):?>
+                    <?php if('yesterday' === $dateSelected):?>
                         <p><?=$resultYesterday->getDailyHoroscopePrediction()->getPrediction()?></p>
-                    <?php elseif($dateSelected == 'tommorow'):?>
+                    <?php elseif('tommorow' === $dateSelected):?>
                         <p><?=$resultTommorow->getDailyHoroscopePrediction()->getPrediction()?></p>
                     <?php else:?>
                         <p><?=$resultToday->getDailyHoroscopePrediction()->getPrediction()?></p>
@@ -89,7 +89,7 @@
                             </div>
                         </a>
                     </div>
-                <?php endforeach;?>
+                <?php endforeach; ?>
             </div>
         </section>
 

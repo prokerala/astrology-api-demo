@@ -1,6 +1,5 @@
 <?php
 /** @var \Prokerala\Api\Numerology\Result\Chaldean\Birth $result */
-
 ?>
 
 <h2 class="text-center text-black">

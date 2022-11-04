@@ -23,7 +23,7 @@ $submit = $_POST['submit'] ?? 0;
 $ayanamsa = 1;
 $la = $_POST['la'] ?? 'en';
 $sample_name = 'calendar';
-$date = new DateTime('now');
+$date = new DateTimeImmutable('now');
 
 $timezone = 'Asia/Kolkata';
 if ($submit) {
@@ -31,7 +31,7 @@ if ($submit) {
     $input['calendar'] = $_POST['calendar'];
     $la = $_POST['la'] ?? 'en';
     $calendar = $input['calendar'];
-    $date = new DateTime($input['date']);
+    $date = new DateTimeImmutable($input['date']);
 }
 
 $result = [];
@@ -56,4 +56,5 @@ if ($submit) {
 }
 
 $apiCreditUsed = $client->getCreditUsed();
+
 include DEMO_BASE_DIR . '/templates/calendar.tpl.php';

@@ -43,7 +43,6 @@ $datetime = new DateTimeImmutable($input['datetime'], $tz);
 
 $location = new Location($input['latitude'], $input['longitude'], 0, $tz);
 
-
 $result = [];
 $errors = [];
 
@@ -83,7 +82,7 @@ if ($submit) {
                 ];
                 if ('Nakshatra' === $key) {
                     $panchangResult[$key][$idx]['nakshatra_lord'] = $data->getLord();
-                } elseif ($key === 'Tithi'){
+                } elseif ('Tithi' === $key) {
                     $panchangResult[$key][$idx]['paksha'] = $data->getPaksha();
                 }
             }
@@ -135,4 +134,5 @@ if ($submit) {
 }
 
 $apiCreditUsed = $client->getCreditUsed();
+
 include DEMO_BASE_DIR . '/templates/panchang.tpl.php';

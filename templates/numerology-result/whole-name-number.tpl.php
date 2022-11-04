@@ -1,8 +1,8 @@
 <?php
 /** @var \Prokerala\Api\Numerology\Result\Chaldean\WholeNameNumber $result */
 
-//echo '<pre>' . print_r($result->getChallengeNumber(), true) . '</pre>';
-//exit;
+// echo '<pre>' . print_r($result->getChallengeNumber(), true) . '</pre>';
+// exit;
 ?>
 <h2 class="text-center text-black">
     <?=$result->getWholeNameNumber()->getName()?>

@@ -11,6 +11,7 @@ use Prokerala\Common\Api\Exception\RateLimitExceededException;
 use Prokerala\Common\Api\Exception\ValidationException;
 
 require __DIR__ . '/nakshatra-list.php';
+
 require __DIR__ . '/bootstrap.php';
 
 $girl_nakshatra = 0;
@@ -39,7 +40,7 @@ if ($submit) {
         $boy_profile = new NakshatraProfile((int)$boy_nakshatra, (int)$boy_nakshatra_pada);
 
         $nakshatra_porutham = new NakshatraPorutham($client);
-        $result = $nakshatra_porutham->process($girl_profile, $boy_profile, $la,  $advanced);
+        $result = $nakshatra_porutham->process($girl_profile, $boy_profile, $la, $advanced);
 
         $compatibilityResult = [];
 
@@ -78,4 +79,5 @@ if ($submit) {
 }
 
 $apiCreditUsed = $client->getCreditUsed();
+
 include DEMO_BASE_DIR . '/templates/nakshatra-porutham.tpl.php';

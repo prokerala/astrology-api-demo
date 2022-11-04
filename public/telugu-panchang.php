@@ -5,7 +5,6 @@ declare(strict_types=1);
 use Prokerala\Api\Astrology\Location;
 use Prokerala\Api\Astrology\Service\AnandadiYoga;
 use Prokerala\Api\Astrology\Service\ChandraBala;
-use Prokerala\Api\Astrology\Service\Hora;
 use Prokerala\Api\Astrology\Service\Panchang;
 use Prokerala\Api\Astrology\Service\Ritu;
 use Prokerala\Api\Astrology\Service\Solstice;
@@ -46,7 +45,6 @@ $tz = new DateTimeZone($timezone);
 $datetime = new DateTimeImmutable($input['datetime'], $tz);
 
 $location = new Location($input['latitude'], $input['longitude'], 0, $tz);
-
 
 $result = [];
 $errors = [];
@@ -113,7 +111,7 @@ if ($submit) {
                 ];
                 if ('Nakshatra' === $key) {
                     $panchangResult[$key][$idx]['nakshatra_lord'] = $data->getLord();
-                } elseif ($key === 'Tithi'){
+                } elseif ('Tithi' === $key) {
                     $panchangResult[$key][$idx]['paksha'] = $data->getPaksha();
                 }
             }
@@ -160,4 +158,5 @@ if ($submit) {
 }
 
 $apiCreditUsed = $client->getCreditUsed();
+
 include DEMO_BASE_DIR . '/templates/telugu-panchang.tpl.php';

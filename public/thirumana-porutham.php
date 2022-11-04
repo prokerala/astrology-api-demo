@@ -11,6 +11,7 @@ use Prokerala\Common\Api\Exception\RateLimitExceededException;
 use Prokerala\Common\Api\Exception\ValidationException;
 
 require __DIR__ . '/nakshatra-list.php';
+
 require __DIR__ . '/bootstrap.php';
 
 $girl_nakshatra = 0;
@@ -78,4 +79,5 @@ if (isset($_POST['submit'])) {
 }
 
 $apiCreditUsed = $client->getCreditUsed();
+
 include DEMO_BASE_DIR . '/templates/thirumana-porutham.tpl.php';

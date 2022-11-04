@@ -89,13 +89,13 @@
                             <div class="col-sm-9 col-md-6 ">
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="system" class="fin-numerology-system" id="optionsRadios1" value=<?=$system?> checked>
+                                        <input type="radio" name="system" class="fin-numerology-system" id="optionsRadios1" value="pythagorean" <?=$system === 'pythagorean' ? 'checked' : ''?> >
                                         Pythagorean
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="system" class="fin-numerology-system" id="optionsRadios2" value="chaldean">
+                                        <input type="radio" name="system" class="fin-numerology-system" id="optionsRadios2" value="chaldean" <?=$system === 'chaldean' ? 'checked' : ''?>>
                                         Chaldean
                                     </label>
                                 </div>

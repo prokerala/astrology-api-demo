@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 use Prokerala\Api\Numerology\Service\AttainmentNumber;
 use Prokerala\Api\Numerology\Service\BalanceNumber;
-use Prokerala\Api\Numerology\Service\BirthDayNumber;
+use Prokerala\Api\Numerology\Service\BirthdayNumber;
 use Prokerala\Api\Numerology\Service\BirthMonthNumber;
 use Prokerala\Api\Numerology\Service\BridgeNumber;
 use Prokerala\Api\Numerology\Service\CapStoneNumber;
 use Prokerala\Api\Numerology\Service\Chaldean\BirthNumber;
+use Prokerala\Api\Numerology\Service\Chaldean\DailyNameNumber;
 use Prokerala\Api\Numerology\Service\Chaldean\IdentityInitialCode;
 use Prokerala\Api\Numerology\Service\Chaldean\WholeNameNumber;
 use Prokerala\Api\Numerology\Service\ChallengeNumber;
@@ -67,7 +68,7 @@ $calculators = [
         'soul-urge-number' => 'Soul Urge Number',
         'destiny-number' => 'Destiny Number',
         'attainment-number' => 'Attainment Number',
-        'birth-day-number' => 'Birth Day Number',
+        'birthday-number' => 'Birth Day Number',
         'universal-day-number' => 'Universal Day Number',
         'birth-month-number' => 'Birth Month Number',
         'universal-year-number' => 'UniversalYearNumber',
@@ -87,6 +88,7 @@ $calculators = [
         'life-path-number' => 'Life Path Number',
         'identity-initial-code-number' => 'Identity Initial Code Number',
         'whole-name-number' => 'Whole Name Number',
+        'daily-name-number' => 'Daily Name Number',
     ],
 ];
 
@@ -104,7 +106,7 @@ $calculatorClass = [
         'soul-urge-number' => SoulUrgeNumber::class,
         'destiny-number' => DestinyNumber::class,
         'attainment-number' => AttainmentNumber::class,
-        'birth-day-number' => BirthDayNumber::class,
+        'birthday-number' => BirthdayNumber::class,
         'universal-day-number' => UniversalDayNumber::class,
         'birth-month-number' => BirthMonthNumber::class,
         'universal-year-number' => UniversalYearNumber::class,
@@ -124,6 +126,7 @@ $calculatorClass = [
         'life-path-number'=> \Prokerala\Api\Numerology\Service\Chaldean\LifePathNumber::class,
         'identity-initial-code-number' => IdentityInitialCode::class,
         'whole-name-number' => WholeNameNumber::class,
+        'daily-name-number' => DailyNameNumber::class,
     ],
 ];
 
@@ -133,7 +136,7 @@ $calculatorParams = [
             'life-path-number',
             'birth-month-number',
             'universal-month-number',
-            'birth-day-number',
+            'birthday-number',
             'universal-day-number',
             'universal-year-number',
             'challenge-number',
@@ -151,13 +154,13 @@ $calculatorParams = [
             'hidden-passion-number',
             'balance-number',
             'subconscious-self-number',
-            'soul-urge-number',
             'cornerstone-number',
 
         ],
         'name_and_vowel' => [
             'personality-number',
             'inner-dream-number',
+            'soul-urge-number',
         ],
         'date_and_name' => [
             'attainment-number',
@@ -175,17 +178,18 @@ $calculatorParams = [
         'name' => [
             'identity-initial-code-number',
             'whole-name-number',
+            'daily-name-number',
         ],
     ],
 ];
-
+$selectedCalculator = null;
 if ($submit) {
     try {
         $firstName = isset($_POST['firstName']) ? $_POST['firstName'] : null;
         $middleName = isset($_POST['middleName']) ? $_POST['middleName'] :null;
         $lastName = isset($_POST['lastName']) ? $_POST['lastName'] :null;
         $reference = isset($_POST['referenceYear']) ? $_POST['referenceYear'] :null;
-        $vowel = isset($_POST['additionalVowel']) ? $_POST['additionalVowel'] :"";
+        $vowel = isset($_POST['additionalVowel']) ? $_POST['additionalVowel'] : false;
         $system = isset($_POST['system']) ? $_POST['system'] :"";
         $reference = intval($reference);
         $selectedCalculator = isset($_POST['calculatorName']) ? $_POST['calculatorName'] : null;
@@ -199,7 +203,7 @@ if ($submit) {
             } elseif (in_array($selectedCalculator, $calculatorParams[$system]['date_and_name'])) {
                 $result = $calculator->process($datetime, $firstName, $middleName, $lastName);
             } elseif (in_array($selectedCalculator, $calculatorParams[$system]['name_and_vowel'])){
-                $result = $calculator->process($firstName, $middleName, $lastName, $vowel);
+                $result = $calculator->process($firstName, $middleName, $lastName, (bool)$vowel);
              } elseif (in_array($selectedCalculator, $calculatorParams[$system]['date_and_reference_year'])){
                  $result = $calculator->process($datetime, $reference);
              } else {

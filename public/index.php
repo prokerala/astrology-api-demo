@@ -12,6 +12,14 @@ $arGroupCalculators = [
         'telugu-panchang',
         'hindu-panchang',
         'calendar',
+        'anandadi-yoga',
+        'chandra-bala',
+        'tara-bala',
+        'ritu',
+        'solstice',
+        'hora',
+        'disha-shool',
+        'auspicious-yoga',
     ],
     'Numerology & Daily Horoscope' => [
         'numerology',
@@ -26,6 +34,8 @@ $arGroupCalculators = [
         'papasamyam',
         'planet-position',
         'chart',
+        'dasha-periods',
+        'horoscope-yoga',
     ],
     'Marriage Matching' => [
         'kundli-matching',

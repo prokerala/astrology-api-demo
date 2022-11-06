@@ -20,7 +20,7 @@ $samples = [
         'docs' => 'choghadiya',
     ],
     'inauspicious-period' => [
-        'image' => '/assets/img/icon/auspicious-period.png',
+        'image' => '/assets/img/icon/inauspicious-period.png',
         'title' => 'Inauspicious Period',
         'url' => DEMO_BASE_URL . '/inauspicious-period.php',
         'docs' => 'inauspicious-period',
@@ -50,7 +50,7 @@ $samples = [
         'docs' => 'mangal-dosha',
     ],
     'birth-details' => [
-        'image' => '/assets/img/icon/birth-details.png',
+        'image' => '/assets/img/icon/birthchart.png',
         'title' => 'Birth Details',
         'url' => DEMO_BASE_URL . '/birth-details.php',
         'docs' => 'birth-details',
@@ -80,7 +80,7 @@ $samples = [
         'docs' => 'papasamyam',
     ],
     'planet-position' => [
-        'image' => '/assets/img/icon/chart.png',
+        'image' => '/assets/img/icon/planet-position.png',
         'title' => 'Planet Position',
         'url' => DEMO_BASE_URL . '/planet-position.php',
         'docs' => 'planet-position',
@@ -158,19 +158,19 @@ $samples = [
         'docs' => 'calendar',
     ],
     'hindu-panchang' => [
-        'image' => '/assets/img/icon/panchang.png',
+        'image' => '/assets/img/icon/hindu-panchang.png',
         'title' => 'Hindu Panchang',
         'url' => DEMO_BASE_URL . '/hindu-panchang.php',
         'docs' => 'panchang',
     ],
     'tamil-panchang' => [
-        'image' => '/assets/img/icon/panchang.png',
+        'image' => '/assets/img/icon/tamil-panchang.png',
         'title' => 'Tamil Panchang',
         'url' => DEMO_BASE_URL . '/tamil-panchang.php',
         'docs' => 'panchang',
     ],
     'telugu-panchang' => [
-        'image' => '/assets/img/icon/panchang.png',
+        'image' => '/assets/img/icon/telugu-panchang.png',
         'title' => 'Telugu Panchang',
         'url' => DEMO_BASE_URL . '/telugu-panchang.php',
         'docs' => 'panchang',
@@ -182,9 +182,27 @@ $samples = [
         'docs' => 'numerology',
     ],
     'daily-horoscope' => [
-        'image' => '/assets/img/icon/calendar.png',
+        'image' => '/assets/img/icon/daily-horoscope.png',
         'title' => 'Daily Horoscope',
         'url' => DEMO_BASE_URL . '/daily-horoscope.php',
         'docs' => 'numerology',
     ],
+    'dasha-periods' => [
+        'image' => '/assets/img/icon/panchang.png',
+        'title' => 'Dasha Periods',
+        'url' => DEMO_BASE_URL . '/dasha-periods.php',
+        'docs' => 'dasha-periods',
+    ],
+    'horoscope-yoga' => [
+        'image' => '/assets/img/icon/panchang.png',
+        'title' => 'Horoscope Yoga',
+        'url' => DEMO_BASE_URL . '/horoscope-yoga.php',
+        'docs' => 'dasha-periods',
+    ],
+    'pdf-report' => [
+        'image' => '/assets/img/icon/panchang.png',
+        'title' => 'PDF Report',
+        'url' => DEMO_BASE_URL . '/pdf-report.php',
+        'docs' => 'pdf-report',
+    ]
 ];

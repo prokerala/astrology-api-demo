@@ -14,8 +14,9 @@ require __DIR__ . '/bootstrap.php';
 $calculators = [];
 
 $submit = $_POST['submit'] ?? 0;
-$ayanamsa = 1;
-$sample_name = '';
+
+$sample_name = 'daily-horoscope';
+
 $timezone = 'Asia/Kolkata';
 $tz = new DateTimeZone($timezone);
 $datetime = new DateTimeImmutable('now', $tz);
@@ -39,16 +40,17 @@ $tomorrow = new DateTimeImmutable('+1 day', $tz);
 $yesterday = new DateTimeImmutable('-1 day', $tz);
 
 $errors = [];
+$result = null;
 if ($selectedSign) {
     try {
         $horoscopeClass = new DailyPrediction($client);
-        if ($day === 'yesterday') {
-            $result = $horoscopeClass->process($yesterday, $selectedSign);
-        } else if ($day === 'tomorrow') {
-            $result = $horoscopeClass->process($tomorrow, $selectedSign);
-        } else {
+//        if ($day === 'yesterday') {
+//            $result = $horoscopeClass->process($yesterday, $selectedSign);
+//        } else if ($day === 'tomorrow') {
+//            $result = $horoscopeClass->process($tomorrow, $selectedSign);
+//        } else {
             $result = $horoscopeClass->process($datetime, $selectedSign);
-        }
+//        }
         $signName = $result->getDailyHoroscopePrediction()->getSignName();
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();

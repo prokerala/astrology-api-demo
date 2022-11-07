@@ -185,7 +185,7 @@ $samples = [
         'image' => '/assets/img/icon/daily-horoscope.png',
         'title' => 'Daily Horoscope',
         'url' => DEMO_BASE_URL . '/daily-horoscope.php',
-        'docs' => 'numerology',
+        'docs' => 'daily-horoscope',
     ],
     'dasha-periods' => [
         'image' => '/assets/img/icon/dasha-periods.png',

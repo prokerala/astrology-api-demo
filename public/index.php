@@ -3,6 +3,10 @@
 require __DIR__ . '/bootstrap.php';
 
 $arGroupCalculators = [
+    'Numerology & Daily Horoscope' => [
+        'numerology',
+        'daily-horoscope',
+    ],
     'Daily Panchang' => [
         'panchang',
         'auspicious-period',
@@ -20,10 +24,6 @@ $arGroupCalculators = [
         'hora',
         'disha-shool',
         'auspicious-yoga',
-    ],
-    'Numerology & Daily Horoscope' => [
-        'numerology',
-        'daily-horoscope',
     ],
     'Horoscope' => [
         'birth-details',

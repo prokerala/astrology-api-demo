@@ -3,7 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Auspicious Period Astrology API Demo</title>
+    <?php if ($result):?>
+        <title><?=$result->getDailyHoroscopePrediction()->getSignName()?> : Daily Horoscope Astrology API Demo</title>
+    <?php else: ?>
+        <title>Daily Horoscope Astrology API Demo</title>
+    <?php endif; ?>
     <?php include 'common/style.tpl.php'; ?>
     <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/style.css">
     <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/reports.css">
@@ -26,7 +30,11 @@
             <div class="row my-auto">
                 <div class="col-xl-6 col-lg-7 col-md-12 col-sm-12 text-lg-left top-header-text-content">
                     <h2 class="text-white mb-5">
-                        <span class="font-weight-thin">Daily Horoscope</span>
+                        <?php if ($result):?>
+                            <span class="font-weight-thin"><?=$result->getDailyHoroscopePrediction()->getSignName()?> : Daily Horoscope</span>
+                        <?php else: ?>
+                            <span class="font-weight-thin">Daily Horoscope</span>
+                        <?php endif; ?>
                     </h2>
                 </div>
             </div>
@@ -40,20 +48,6 @@
             <?php if ($result):?>
             <div>
                 <h3><?=$result->getDailyHoroscopePrediction()->getSignName()?> : <?=$result->getDailyHoroscopePrediction()->getDate()->format('d M, Y')?></h3>
-                <nav class="mb-3">
-                    <ul class="nav nav-tabs" >
-                        <li class="nav-item">
-                            <a class="nav-link <?=('yesterday' === $day) ? 'active' : ''?>"  href="?sign=<?=strtolower($signName)?>&day=yesterday">Yesterday</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?=('today' === $day) ? 'active' : ''?>" aria-current="page" href="?sign=<?=strtolower($signName)?>&day=today">Today</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?=('tomorrow' === $day) ? 'active' : ''?>" href="?sign=<?=strtolower($signName)?>&day=tomorrow">Tommorow</a>
-                        </li>
-                    </ul>
-                </nav>
-
                 <p><?=$result->getDailyHoroscopePrediction()->getPrediction()?></p>
             </div>
             <?php endif?>
@@ -74,6 +68,7 @@
                 <?php endforeach; ?>
             </div>
         </section>
+        <?php include 'common/calculator-list.tpl.php'; ?>
 
     </div>
 </div>

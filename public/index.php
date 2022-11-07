@@ -25,6 +25,9 @@ $arGroupCalculators = [
         'disha-shool',
         'auspicious-yoga',
     ],
+    'PDF Report' => [
+        'pdf-report',
+    ],
     'Horoscope' => [
         'birth-details',
         'kundli',

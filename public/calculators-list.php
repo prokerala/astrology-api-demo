@@ -75,7 +75,7 @@ $samples = [
     ],
     'papasamyam' => [
         'image' => '/assets/img/icon/papasamyam.png',
-        'title' => 'Papasamyam',
+        'title' => 'Papa Dosham',
         'url' => DEMO_BASE_URL . '/papasamyam.php',
         'docs' => 'papasamyam',
     ],
@@ -200,7 +200,7 @@ $samples = [
         'docs' => 'dasha-periods',
     ],
     'pdf-report' => [
-        'image' => '/assets/img/icon/panchang.png',
+        'image' => '/assets/img/icon/birthchart.png',
         'title' => 'PDF Report',
         'url' => DEMO_BASE_URL . '/pdf-report.php',
         'docs' => 'pdf-report',

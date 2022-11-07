@@ -114,7 +114,7 @@ if ($numberResultObject) {
 <?php endif; ?>
 
 <?php if ($multipleAgeNumberResult): ?>
-    <h3><?=$name?></h3>
+    <h3 class="text-dark"><?=$name?></h3>
     <?php foreach ($multipleAgeNumbers as $number): ?>
         <?php
             $numberResult = [
@@ -130,7 +130,7 @@ if ($numberResultObject) {
 
 
 <?php if ($multipleNumberResult): ?>
-    <h3><?=$name?></h3>
+    <h3 class="text-dark"><?=$name?></h3>
     <?php foreach ($multipleNumbers as $number): ?>
         <?php
         $numberResult = [

@@ -12,6 +12,7 @@ use Prokerala\Api\Numerology\Service\Chaldean\BirthNumber;
 use Prokerala\Api\Numerology\Service\Chaldean\DailyNameNumber;
 use Prokerala\Api\Numerology\Service\Chaldean\IdentityInitialCode;
 use Prokerala\Api\Numerology\Service\Chaldean\WholeNameNumber;
+use Prokerala\Api\Numerology\Service\Chaldean\LifePathNumber as ChaldeanLifePathNumber;
 use Prokerala\Api\Numerology\Service\Pythagorean\ChallengeNumber;
 use Prokerala\Api\Numerology\Service\Pythagorean\CornerStoneNumber;
 use Prokerala\Api\Numerology\Service\Pythagorean\DestinyNumber;
@@ -44,7 +45,7 @@ $calculators = [];
 
 $submit = $_POST['submit'] ?? 0;
 $ayanamsa = 1;
-$sample_name = '';
+$sample_name = 'numerology';
 $timezone = 'Asia/Kolkata';
 $tz = new DateTimeZone($timezone);
 $datetime = new DateTimeImmutable('now');
@@ -56,77 +57,39 @@ $middleName = null;
 $lastName = null;
 $calculators = [
     'pythagorean' => [
-        'attainment-number' => 'Attainment Number',
-        'balance-number' => 'Balance Number',
-        'birth-month-number' => 'Birth Month Number',
-        'birthday-number' => 'Birthday Number',
-        'bridge-number' => 'Bridge Number',
-        'capstone-number' => 'Capstone Number',
-        'challenge-number' => 'Challenge Number',
-        'cornerstone-number' => 'Corner Stone Number',
-        'destiny-number' => 'Destiny Number',
-        'expression-number' => 'Expression Number',
-        'hidden-passion-number' => 'Hidden Passion Number',
-        'inner-dream-number' => 'Inner Dream Number',
-        'karmic-debt-number' => 'Karmic Debt Number',
-        'life-path-number' => 'Life Path Number',
-        'maturity-number' => 'Maturity Number',
-        'personal-day-number' => 'Personal Day Number',
-        'personal-month-number' => 'Personal Month Number',
-        'personal-year-number' => 'Personal Year Number',
-        'personality-number' => 'Personality Number',
-        'pinnacle-number' => 'Pinnacle Number',
-        'rational-thought-number' => 'Rational Thought Number',
-        'soul-urge-number' => 'Soul Urge Number',
-        'subconscious-self-number' => 'Subconscious Self Number',
-        'universal-day-number' => 'Universal Day Number',
-        'universal-month-number' => 'Universal Month Number',
-        'universal-year-number' => 'Universal Year Number',
+        'attainment-number' => ['class' => AttainmentNumber::class, 'name' => 'Attainment Number'],
+        'balance-number' => ['class' => BalanceNumber::class, 'name' => 'Balance Number'],
+        'birth-month-number' => ['class' => BirthMonthNumber::class, 'name' => 'Birth Month Number'],
+        'birthday-number' => ['class' => BirthdayNumber::class, 'name' => 'Birthday Number'],
+        'bridge-number' => ['class' => BridgeNumber::class, 'name' => 'Bridge Number'],
+        'capstone-number' => ['class' => CapStoneNumber::class, 'name' => 'Capstone Number'],
+        'challenge-number' => ['class' => ChallengeNumber::class, 'name' => 'Challenge Number'],
+        'cornerstone-number' => ['class' => CornerStoneNumber::class, 'name' => 'Corner Stone Number'],
+        'destiny-number' => ['class' => DestinyNumber::class, 'name' => 'Destiny Number'],
+        'expression-number' => ['class' => ExpressionNumber::class, 'name' => 'Expression Number'],
+        'hidden-passion-number' => ['class' => HiddenPassionNumber::class, 'name' => 'Hidden Passion Number'],
+        'inner-dream-number' => ['class' => InnerDreamNumber::class, 'name' => 'Inner Dream Number'],
+        'karmic-debt-number' => ['class' => KarmicDebtNumber::class, 'name' => 'Karmic Debt Number'],
+        'life-path-number' => ['class' => LifePathNumber::class, 'name' => 'Life Path Number'],
+        'maturity-number' => ['class' => MaturityNumber::class, 'name' => 'Maturity Number'],
+        'personal-day-number' => ['class' => PersonalDayNumber::class, 'name' => 'Personal Day Number'],
+        'personal-month-number' => ['class' => PersonalMonthNumber::class, 'name' => 'Personal Month Number'],
+        'personal-year-number' => ['class' => PersonalYearNumber::class, 'name' => 'Personal Year Number'],
+        'personality-number' => ['class' => PersonalityNumber::class, 'name' => 'Personality Number'],
+        'pinnacle-number' => ['class' => PinnacleNumber::class, 'name' => 'Pinnacle Number'],
+        'rational-thought-number' => ['class' => RationalThoughtNumber::class, 'name' => 'Rational Thought Number'],
+        'soul-urge-number' => ['class' => SoulUrgeNumber::class, 'name' => 'Soul Urge Number'],
+        'subconscious-self-number' => ['class' => SubconsciousSelfNumber::class, 'name' => 'Subconscious Self Number'],
+        'universal-day-number' => ['class' => UniversalDayNumber::class, 'name' => 'Universal Day Number'],
+        'universal-month-number' => ['class' => UniversalMonthNumber::class, 'name' => 'Universal Month Number'],
+        'universal-year-number' => ['class' => UniversalYearNumber::class, 'name' => 'Universal Year Number'],
     ],
     'chaldean' => [
-        'birth-number' => 'Birth Number',
-        'daily-name-number' => 'Daily Name Number',
-        'identity-initial-code-number' => 'Identity Initial Code Number',
-        'life-path-number' => 'Life Path Number',
-        'whole-name-number' => 'Whole Name Number',
-    ],
-];
-
-$calculatorClass = [
-    'pythagorean'=>[
-        'life-path-number' => LifePathNumber::class,
-        'capstone-number' => CapStoneNumber::class,
-        'personality-number' => PersonalityNumber::class,
-        'challenge-number' => ChallengeNumber::class,
-        'inner-dream-number' => InnerDreamNumber::class,
-        'personal-year-number' => PersonalYearNumber::class,
-        'expression-number' => ExpressionNumber::class,
-        'universal-month-number' => UniversalMonthNumber::class,
-        'personal-month-number' => PersonalMonthNumber::class,
-        'soul-urge-number' => SoulUrgeNumber::class,
-        'destiny-number' => DestinyNumber::class,
-        'attainment-number' => AttainmentNumber::class,
-        'birthday-number' => BirthdayNumber::class,
-        'universal-day-number' => UniversalDayNumber::class,
-        'birth-month-number' => BirthMonthNumber::class,
-        'universal-year-number' => UniversalYearNumber::class,
-        'balance-number' => BalanceNumber::class,
-        'personal-day-number' => PersonalDayNumber::class,
-        'cornerstone-number' => CornerStoneNumber::class,
-        'subconscious-self-number' => SubconsciousSelfNumber::class,
-        'maturity-number' => MaturityNumber::class,
-        'hidden-passion-number' => HiddenPassionNumber::class,
-        'rational-thought-number' => RationalThoughtNumber::class,
-        'pinnacle-number' => PinnacleNumber::class,
-        'karmic-debt-number' => KarmicDebtNumber::class,
-        'bridge-number' => BridgeNumber::class,
-    ],
-    'chaldean'=>[
-        'birth-number' => BirthNumber::class,
-        'life-path-number'=> \Prokerala\Api\Numerology\Service\Chaldean\LifePathNumber::class,
-        'identity-initial-code-number' => IdentityInitialCode::class,
-        'whole-name-number' => WholeNameNumber::class,
-        'daily-name-number' => DailyNameNumber::class,
+        'birth-number' => ['class' => BirthNumber::class, 'name' => 'Birth Number'],
+        'daily-name-number' => ['class' => DailyNameNumber::class, 'name' => 'Daily Name Number'],
+        'identity-initial-code-number' => ['class' => IdentityInitialCode::class, 'name' => 'Identity Initial Code Number'],
+        'life-path-number'=> ['class' => ChaldeanLifePathNumber::class, 'name' => 'Life Path Number'],
+        'whole-name-number' => ['class' => WholeNameNumber::class, 'name' => 'Whole Name Number'],
     ],
 ];
 
@@ -193,9 +156,10 @@ if ($submit) {
         $system = isset($_POST['system']) ? $_POST['system'] :"";
         $reference = intval($reference);
         $selectedCalculator = isset($_POST['calculatorName']) ? $_POST['calculatorName'] : null;
+        $calculatorName = $calculators[$system][$selectedCalculator]['name'];
 
         if ($selectedCalculator) {
-            $calculator = new $calculatorClass[$system][$selectedCalculator]($client);
+            $calculator = new $calculators[$system][$selectedCalculator]['class']($client);
              if (in_array($selectedCalculator, $calculatorParams[$system]['date'])) {
                 $result = $calculator->process($datetime);
             } elseif (in_array($selectedCalculator, $calculatorParams[$system]['name'])) {

@@ -3,7 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Numerology Calculator | API Demo</title>
+    <h2 class="text-white mb-5">
+    <?php if (!empty($result)): ?>
+        <title><?=$calculatorName?> | Numerology Calculator</title>
+    <?php else: ?>
+        <title>Numerology Calculator | API Demo</title>
+    <?php endif; ?>
     <?php include 'common/style.tpl.php'; ?>
     <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/style.css">
     <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/reports.css">
@@ -26,9 +31,12 @@
             <div class="row my-auto">
                 <div class="col-xl-6 col-lg-7 col-md-12 col-sm-12 text-lg-left top-header-text-content">
                     <h2 class="text-white mb-5">
-                        <span class="font-weight-thin">Numerology Calculator Demo</span>
+                        <?php if (!empty($result)): ?>
+                            <span class="font-weight-thin"><?=$calculatorName?></span>
+                        <?php else: ?>
+                            <span class="font-weight-thin">Numerology Calculator</span>
+                        <?php endif; ?>
                     </h2>
-<!--                    <p class="text-white">Auspicious period shows results like Abhijit Muhurat, Amrit Kaal and Brahma Muhurat. <a class="text-warning" href="https://www.prokerala.com/astrology/panchangam/" target="_blank">Read More..</a></p>-->
                 </div>
             </div>
         </div>
@@ -106,8 +114,8 @@
                             <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Calculator: </label>
                             <div class="col-sm-9 col-md-6 ">
                                 <select name="calculatorName" id="fin-calculator-list" class="form-control form-control-lg rounded-1">
-                                    <?php foreach ($calculators[$system] as $calculatorValue => $calculatorName):?>
-                                        <option <?=$selectedCalculator === $calculatorValue ? 'selected' : ''?> value="<?=$calculatorValue?>"><?=$calculatorName?></option>
+                                    <?php foreach ($calculators[$system] as $calculatorValue => $calculatorDetails):?>
+                                        <option <?=$selectedCalculator === $calculatorValue ? 'selected' : ''?> value="<?=$calculatorValue?>"><?=$calculatorDetails['name']?></option>
                                     <?php endforeach;?>
                                 </select>
                             </div>
@@ -123,7 +131,7 @@
                     </form>
                 </div>
             </section>
-
+        <?php include 'common/calculator-list.tpl.php'; ?>
     </div>
 </div>
 
@@ -135,7 +143,7 @@
             let calculators = numerologyCalculators[this.value];
             let html = '';
             for (var i in calculators) {
-                html += '<option value="'+ i +'">'+ calculators[i] +'</option>';
+                html += '<option value="'+ i +'">'+ calculators[i]['name'] +'</option>';
             };
             document.getElementById('fin-calculator-list').innerHTML = html;
         });

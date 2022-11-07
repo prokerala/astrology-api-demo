@@ -10,10 +10,10 @@
             </h2>
             <div class="row">
                 <?php foreach ($samples as $value):?>
-                    <div class="col-4 col-sm-3 col-md-2 mb-5">
+                    <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-5">
                         <a href="<?=$value['url']?>">
                             <span class="demo-feature-card-image feature-card-image"><img src="<?=DEMO_BASE_URL?><?=$value['image']?>"></span>
-                            <span class="feature-card-title b"><?=$value['title']?></span>
+                            <div class="feature-card-title b" style="font-size: 1.5rem;"><?=$value['title']?></div>
                         </a>
                     </div>
                 <?php endforeach; ?>

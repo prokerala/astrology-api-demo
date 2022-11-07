@@ -57,54 +57,16 @@
     </div>
     <div class="container prokerala-api-demo-container">
         <section>
-            <div class="mb-5">
-                <?php
-                $signs = [
-                    'aries' => 'Aries',
-                    'taurus' => 'Taurus',
-                    'gemini' => 'Gemini ',
-                    'cancer' => 'Cancer ',
-                    'leo' => 'Leo',
-                    'virgo' => 'Virgo',
-                    'libra' => 'Libra',
-                    'scorpio' => 'Scorpio',
-                    'sagittarius' => 'Sagittarius',
-                    'capricorn' => 'Capricorn ',
-                    'aquarius' => 'Aquarius',
-                    'pisces' => 'Pisces',
-                ];
-                ?>
-
-                <h3>Daily Horoscope</h3>
-                <div class="row mb-5 api-calculators-list">
-                    <?php foreach ($signs as $signKey => $sign):?>
-                        <div class="col-6 col-sm-4 col-md-2 mb-4">
-                            <div class="api-calculators-list-card p-2 shadow text-center">
-                                <a href="daily-horoscope.php?sign=<?=$signKey?>">
-                                    <div class="api-calculators-list-image demo-api-calculators-list-image m-4 p-4">
-                                        <img class="img-fluid" src="<?=DEMO_BASE_URL?>/assets/img/icon/sign/<?=$signKey?>.png">
-                                    </div>
-                                    <span class="feature-card-title b"><?=$sign?></span>
-                                </a>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-            <div class="mb-5">
+            <div class="mb-3">
                 <?php foreach($arGroupCalculators as $group_name => $calculators): ?>
                     <h3><?=$group_name?> Calculators</h3>
-                    <div class="row mb-5 api-calculators-list">
+                    <div class="row mb-3 api-calculators-list text-center">
                         <?php foreach ($calculators as $calculator):?>
-                            <div class="col-6 col-sm-4 col-md-2 mb-4">
-                                <div class="api-calculators-list-card p-2 shadow text-center">
-                                    <a href="<?=$samples[$calculator]['url']?>">
-                                        <div class="api-calculators-list-image demo-api-calculators-list-image m-4">
-                                            <img class="img-fluid" src="<?=DEMO_BASE_URL?><?=$samples[$calculator]['image']?>">
-                                        </div>
-                                        <span class="feature-card-title b"><?=$samples[$calculator]['title']?></span>
-                                    </a>
-                                </div>
+                            <div class="col-4 col-sm-3 col-md-2 col-lg-1 mb-5">
+                                <a href="<?=$samples[$calculator]['url']?>">
+                                    <span class="demo-feature-card-image feature-card-image"><img src="<?=DEMO_BASE_URL?><?=$samples[$calculator]['image']?>"></span>
+                                    <div class="feature-card-title b" style="font-size: 1.5rem;"><?=$samples[$calculator]['title']?></div>
+                                </a>
                             </div>
                         <?php endforeach; ?>
                     </div>

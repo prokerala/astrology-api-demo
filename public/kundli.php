@@ -24,6 +24,15 @@ $result_type = 'basic';
 $ayanamsa = 1;
 $sample_name = 'kundli';
 $la = $_POST['la'] ?? 'en';
+
+$arSupportedLanguages = [
+    'en' => 'English',
+    'hi' => 'Hindi',
+    'ta' => 'Tamil',
+    'te' => 'Telugu',
+    'ml' => 'Malayalam',
+];
+
 $timezone = 'Asia/Kolkata';
 if (isset($_POST['submit'])) {
     $input['datetime'] = $_POST['datetime'];

@@ -25,6 +25,14 @@ $la = $_POST['la'] ?? 'en';
 $sample_name = 'calendar';
 $date = new DateTimeImmutable('now');
 
+$arSupportedLanguages = [
+    'en' => 'English',
+    'hi' => 'Hindi',
+    'ta' => 'Tamil',
+    'te' => 'Telugu',
+    'ml' => 'Malayalam',
+];
+
 $timezone = 'Asia/Kolkata';
 if ($submit) {
     $input['date'] = $_POST['date'];

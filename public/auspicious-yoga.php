@@ -25,6 +25,14 @@ $ayanamsa = 1;
 $la = $_POST['la'] ?? 'en';
 $sample_name = 'auspicious-yoga';
 
+$arSupportedLanguages = [
+    'en' => 'English',
+    'hi' => 'Hindi',
+    'ta' => 'Tamil',
+    'te' => 'Telugu',
+    'ml' => 'Malayalam',
+];
+
 $timezone = 'Asia/Kolkata';
 if ($submit) {
     $input['datetime'] = $_POST['datetime'];

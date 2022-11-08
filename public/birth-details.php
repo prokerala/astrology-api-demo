@@ -25,6 +25,14 @@ $la = $_POST['la'] ?? 'en';
 $ayanamsa = 1;
 $sample_name = 'birth-details';
 
+$arSupportedLanguages = [
+    'en' => 'English',
+    'hi' => 'Hindi',
+    'ta' => 'Tamil',
+    'te' => 'Telugu',
+    'ml' => 'Malayalam',
+];
+
 $timezone = 'Asia/Kolkata';
 if (isset($_POST['submit'])) {
     $input['datetime'] = $_POST['datetime'];

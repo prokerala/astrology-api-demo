@@ -20,7 +20,6 @@ $input = [
 ];
 $coordinates = $input['latitude'] . ',' . $input['longitude'];
 $submit = $_POST['submit'] ?? 0;
-$result_type = 'basic';
 $ayanamsa = 1;
 $sample_name = 'kundli';
 $la = $_POST['la'] ?? 'en';
@@ -32,7 +31,6 @@ if (isset($_POST['submit'])) {
     $input['latitude'] = $arCoordinates[0] ?? '';
     $input['longitude'] = $arCoordinates[1] ?? '';
     $ayanamsa = $_POST['ayanamsa'];
-    $result_type = $_POST['result_type'];
     $timezone = $_POST['timezone'] ?? '';
 }
 

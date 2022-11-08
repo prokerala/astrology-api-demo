@@ -36,6 +36,12 @@ $la = $_POST['la'] ?? 0;
 $ayanamsa = 1;
 $sample_name = 'papasamyam-check';
 
+$arSupportedLanguages = [
+    'en' => 'English',
+    'ml' => 'Malayalam',
+    'ta' => 'Tamil',
+];
+
 if (isset($_POST['submit'])) {
     $girl_datetime = $_POST['girl_dob'];
     $girl_timezone = $_POST['girl_timezone'] ?? '';

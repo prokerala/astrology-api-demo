@@ -51,7 +51,7 @@ if ($submit) {
         $method = new Kundli($client);
         $method->setAyanamsa($ayanamsa);
         $method->setTimeZone($tz);
-        $result = $method->process($location, $datetime, $la, $advanced);
+        $result = $method->process($location, $datetime, $advanced, $la);
 
         $nakshatraDetails = $result->getNakshatraDetails();
         $nakshatra = $nakshatraDetails->getNakshatra();

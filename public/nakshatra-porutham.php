@@ -40,7 +40,7 @@ if ($submit) {
         $boy_profile = new NakshatraProfile((int)$boy_nakshatra, (int)$boy_nakshatra_pada);
 
         $nakshatra_porutham = new NakshatraPorutham($client);
-        $result = $nakshatra_porutham->process($girl_profile, $boy_profile, $la, $advanced);
+        $result = $nakshatra_porutham->process($girl_profile, $boy_profile, $advanced, $la);
 
         $compatibilityResult = [];
 

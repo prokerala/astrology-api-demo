@@ -22,7 +22,6 @@ $input = [
 $coordinates = $input['latitude'] . ',' . $input['longitude'];
 $result_type = 'basic';
 $submit = $_POST['submit'] ?? 0;
-$la = $_POST['la'] ?? 'en';
 $ayanamsa = 1;
 $sample_name = 'sade-sati';
 
@@ -53,7 +52,7 @@ if ($submit) {
         $sade_sati = new SadeSati($client);
         $sade_sati->setAyanamsa($ayanamsa);
         $sade_sati->setTimeZone($tz);
-        $result = $sade_sati->process($location, $datetime, $la, $advanced);
+        $result = $sade_sati->process($location, $datetime, $advanced);
 
         $sadeSatiResult = [
             'isInSadeSati' => $result->isInSadeSati(),

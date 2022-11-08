@@ -85,7 +85,7 @@ if ($submit) {
         }
         $kundli_matching = new KundliMatching($client);
         $kundli_matching->setAyanamsa($ayanamsa);
-        $result = $kundli_matching->process($girl_profile, $boy_profile, $la, $advanced);
+        $result = $kundli_matching->process($girl_profile, $boy_profile, $advanced, $la);
 
         $girl_info = $result->getGirlInfo();
         $boy_info = $result->getBoyInfo();

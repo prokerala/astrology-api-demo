@@ -51,7 +51,7 @@ if ($submit) {
 
         $method = new \Prokerala\Api\Astrology\Service\MangalDosha($client);
         $method->setAyanamsa($ayanamsa);
-        $result = $method->process($location, $datetime, $la, $advanced);
+        $result = $method->process($location, $datetime, $advanced, $la);
 
         $mangal_dosha_result = [];
 

@@ -33,14 +33,15 @@ if (isset($_POST['submit'])) {
     $boy_nakshatra = $_POST['boy_nakshatra'];
     $boy_nakshatra_pada = $_POST['boy_nakshatra_pada'];
     $result_type = $_POST['result_type'];
-
+    
     try {
+
         $advanced = 'advanced' === $result_type ? true : false;
         $girl_profile = new NakshatraProfile((int)$girl_nakshatra, (int)$girl_nakshatra_pada);
         $boy_profile = new NakshatraProfile((int)$boy_nakshatra, (int)$boy_nakshatra_pada);
 
         $thirumana_porutham = new ThirumanaPorutham($client);
-        $result = $thirumana_porutham->process($girl_profile, $boy_profile, $la, $advanced);
+        $result = $thirumana_porutham->process($girl_profile, $boy_profile, $advanced, $la);
         $compatibilityResult = [];
         $compatibilityResult['maximumPoint'] = $result->getMaximumPoints();
         $compatibilityResult['ObtainedPoint'] = $result->getObtainedPoints();

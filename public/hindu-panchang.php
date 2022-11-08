@@ -59,7 +59,7 @@ if ($submit) {
         $method = new Panchang($client);
         $method->setAyanamsa($ayanamsa);
         $method->setTimeZone($tz);
-        $result = $method->process($location, $datetime, $la, true);
+        $result = $method->process($location, $datetime, true, $la);
 
         $method = new Hora($client);
         $method->setAyanamsa($ayanamsa);

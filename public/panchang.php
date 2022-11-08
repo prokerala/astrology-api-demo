@@ -62,7 +62,7 @@ if ($submit) {
         $method->setAyanamsa($ayanamsa);
         $method->setTimeZone($tz);
 
-        $result = $method->process($location, $datetime, $la, $advanced);
+        $result = $method->process($location, $datetime, $advanced, $la);
 
         $panchangResult = [
             'sunrise' => $result->getSunrise(),

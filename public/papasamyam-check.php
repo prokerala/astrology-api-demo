@@ -80,6 +80,14 @@ $boy_profile = new Profile($boy_location, $boy_dob);
 $result = [];
 $errors = [];
 
+$arSupportedLanguages = [
+    'en' => 'English',
+    'hi' => 'Hindi',
+    'ta' => 'Tamil',
+    'te' => 'Telugu',
+    'ml' => 'Malayalam',
+];
+
 if ($submit) {
     try {
         $porutham = new PapaSamyamCheck($client);
@@ -99,14 +107,16 @@ if ($submit) {
         $papaPlanets = $papaSamyam->getPapaPlanet();
         foreach ($papaPlanets as $idx => $papaPlanet) {
             $papaSamyamCheckResult['girlPapasamyam']['papaPlanet'][$idx]['name'] = $papaPlanet->getName();
+            $arPapaFromPlanets[$idx] = $papaPlanet->getName();
             $planetDoshas = $papaPlanet->getPlanetDosha();
             foreach ($planetDoshas as $planetDosha) {
-                $papaSamyamCheckResult['girlPapasamyam']['papaPlanet'][$idx]['planetDosha'][] = [
+                $papaSamyamCheckResult['girlPapasamyam']['papaPlanet'][$idx]['planetDosha'][$planetDosha->getId()] = [
                     'id' => $planetDosha->getId(),
                     'name' => $planetDosha->getName(),
                     'position' => $planetDosha->getPosition(),
                     'hasDosha' => $planetDosha->hasDosha(),
                 ];
+                $arPapaPlanets[$planetDosha->getId()] = $planetDosha->getName();
             }
         }
 
@@ -115,14 +125,16 @@ if ($submit) {
         $papaPlanets = $papaSamyam->getPapaPlanet();
         foreach ($papaPlanets as $idx => $papaPlanet) {
             $papaSamyamCheckResult['boyPapasamyam']['papaPlanet'][$idx]['name'] = $papaPlanet->getName();
+            $arPapaFromPlanets[$idx] = $papaPlanet->getName();
             $planetDoshas = $papaPlanet->getPlanetDosha();
             foreach ($planetDoshas as $planetDosha) {
-                $papaSamyamCheckResult['boyPapasamyam']['papaPlanet'][$idx]['planetDosha'][] = [
+                $papaSamyamCheckResult['boyPapasamyam']['papaPlanet'][$idx]['planetDosha'][$planetDosha->getId()] = [
                     'id' => $planetDosha->getId(),
                     'name' => $planetDosha->getName(),
                     'position' => $planetDosha->getPosition(),
                     'hasDosha' => $planetDosha->hasDosha(),
                 ];
+                $arPapaPlanets[$planetDosha->getId()] = $planetDosha->getName();
             }
         }
     } catch (ValidationException $e) {

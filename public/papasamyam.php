@@ -24,6 +24,14 @@ $ayanamsa = 1;
 $la = $_POST['la'] ?? 'en';
 $sample_name = 'papasamyam';
 
+$arSupportedLanguages = [
+    'en' => 'English',
+    'hi' => 'Hindi',
+    'ta' => 'Tamil',
+    'te' => 'Telugu',
+    'ml' => 'Malayalam',
+];
+
 $timezone = 'Asia/Kolkata';
 if (isset($_POST['submit'])) {
     $input['datetime'] = $_POST['datetime'];
@@ -54,16 +62,19 @@ if ($submit) {
         $papaPlanets = $papaSamyam->getPapaPlanet();
         foreach ($papaPlanets as $idx => $papaPlanet) {
             $papasamyamResult['papaPlanet'][$idx]['name'] = $papaPlanet->getName();
+            $arPapaFromPlanets[$idx] = $papaPlanet->getName();
             $planetDoshas = $papaPlanet->getPlanetDosha();
             foreach ($planetDoshas as $planetDosha) {
-                $papasamyamResult['papaPlanet'][$idx]['planetDosha'][] = [
+                $papasamyamResult['papaPlanet'][$idx]['planetDosha'][$planetDosha->getId()] = [
                     'id' => $planetDosha->getId(),
                     'name' => $planetDosha->getName(),
                     'position' => $planetDosha->getPosition(),
                     'hasDosha' => $planetDosha->hasDosha(),
                 ];
+                $arPapaPlanets[$planetDosha->getId()] = $planetDosha->getName();
             }
         }
+
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {

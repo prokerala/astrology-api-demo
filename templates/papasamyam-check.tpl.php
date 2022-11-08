@@ -32,14 +32,12 @@
         <?php include 'common/helper.tpl.php'; ?>
 
         <?php if (!empty($result)): ?>
-            <?php $arPapaPlanets = ['Mars', 'Saturn', 'Sun', 'Rahu']; ?>
-            <?php $arPapaFromPlanets = ['Ascendant', 'Moon', 'Venus']; ?>
             <h2 class="text-center text-black">Papasamyam Details</h2>
             <h3 class="text-black">Girl Papa Points</h3>
             <table class="table table-bordered table-responsive-sm table-hover">
                 <thead class="bg-secondary text-white">
-                <tr><th rowspan="2">Girl Papa Points</th><th colspan="2">From Ascendant</th>
-                    <th colspan="2">From Moon</th><th colspan="2">From Venus</th>
+                <tr><th rowspan="2">Girl Papa Points</th><th colspan="2">From <?=$arPapaFromPlanets[0]?></th>
+                    <th colspan="2">From <?=$arPapaFromPlanets[1]?></th><th colspan="2">From <?=$arPapaFromPlanets[2]?></th>
                 </tr>
                 <tr><th>Position</th><th>Papam</th><th>Position</th>
                     <th>Papam</th><th>Position</th><th>Papam</th>
@@ -101,8 +99,10 @@
                         <div class="col-sm-9 col-md-6">
                             <select name="la" class="form-control form-control-lg rounded-1">
                                 <option value="en">English</option>
+                                <option value="hi">Hindi</option>
                                 <option value="ml">Malayalam</option>
                                 <option value="ta">Tamil</option>
+                                <option value="te">Telugu</option>
                             </select>
                         </div>
                     </div>

@@ -30,6 +30,11 @@ $ayanamsa = 1;
 $la = $_POST['la'] ?? 'en';
 $sample_name = 'panchang';
 
+$arSupportedLanguages = [
+    'en' => 'English',
+    'te' => 'Telugu',
+];
+
 $timezone = 'Asia/Kolkata';
 if (isset($_POST['submit'])) {
     $input['datetime'] = $_POST['datetime'];

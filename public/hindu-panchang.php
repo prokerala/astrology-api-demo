@@ -54,6 +54,11 @@ $solsticeResult = [];
 $anandadiYogaResult = [];
 $dishaShoolResult = [];
 
+$arSupportedLanguages = [
+    'en' => 'English',
+    'hi' => 'Hindi',
+];
+
 if ($submit) {
     try {
         $method = new Panchang($client);

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Hindu Panchang | Astrology API Demo - Prokerala Astrology</title>
+    <title>Malayalam Panchangam | Astrology API Demo - Prokerala Astrology</title>
     <?php include 'common/style.tpl.php'; ?>
     <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/style.css">
     <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/reports.css">
@@ -29,7 +29,7 @@
             <div class="row my-auto">
                 <div class="col-xl-6 col-lg-7 col-md-12 col-sm-12 text-lg-left top-header-text-content">
                     <h2 class="text-white mb-5">
-                        <span class="font-weight-thin">Hindu Panchang</span>
+                        <span class="font-weight-thin">Malayalam Panchangam</span>
                     </h2>
                 </div>
             </div>
@@ -40,7 +40,7 @@
         <?php include 'common/helper.tpl.php'; ?>
 
         <?php if (!empty($result)): ?>
-            <h2 class="text-center text-black">Hindu Panchang Details</h2>
+            <h2 class="text-center text-black">Tamil Panchang Details</h2>
             <div class="panchang-details">
                 <?php foreach ($panchangResult as $key => $data): ?>
 
@@ -63,6 +63,7 @@
                     <?php endif; ?>
                 <?php endforeach?>
 
+                <hr>
                     <table class="table table-bordered">
                         <tr class="alert-success text-center"><td colspan="2">Auspicious Timing</td></tr>
                         <?php foreach ($auspiciousPeriod as $muhuratName => $muhuratDetails):?>
@@ -86,42 +87,7 @@
                             </tr>
                         <?php endforeach; ?>
                     </table>
-                    <span class="text-black d-block b"><?= ucwords('Hora Timing')?></span>
-                    <div class="grid-col grid-col-xs-12 grid-col-sm-6">
-                        <div>
-                            <table class="table table-bordered table-sm table-hora-result t-small">
-                                <thead class="bg-secondary text-white">
-                                <tr><th colspan="3" class="tc t-xlarge">Day Hora</th></tr>
-                                <tr><th>Hora</th><th>Type</th><th> Time</th></tr>
-                                </thead>
-                                <tbody>
-                                <?php foreach ($horaResult->getDayHora() as $key => $data):?>
-                                    <tr class="border-top">
-                                        <td><?=$data->getHora()->getName()?></td>
-                                        <td><?=$data->getType()?></td>
-                                        <td><?=$data->getStart()->format('h:i A') . ' - ' . $data->getEnd()->format('h:i A')?></td>
-                                    </tr>
-                                <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div>
-                            <table class="table table-bordered table-sm table-hora-result t-small">
-                                <thead class="bg-secondary text-white">
-                                <tr><th colspan="3" class="tc t-xlarge">Night Hora</th></tr>
-                                <tr><th>Hora</th><th>Type</th><th> Time</th></tr>
-                                </thead>
-                                <tbody>
-                                <?php foreach ($horaResult->getNightHora() as $key => $data):?>
-                                    <tr class="border-top">
-                                        <td><?=$data->getHora()->getName()?></td>
-                                        <td><?=$data->getType()?></td>
-                                        <td><?=$data->getStart()->format('h:i A') . ' - ' . $data->getEnd()->format('h:i A')?></td>
-                                    </tr>
-                                <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                        </div>
+
                         <span class="text-black d-block b"><?= ucwords('Ritu')?></span>
                         <table class="table table-bordered text-large text-center table-hover">
                             <thead>
@@ -160,46 +126,14 @@
                                 <td><?=$solsticeResult->getDishaShool()->getVedicName()?></td>
                             </tr>
                         </table>
-                        <span class="text-black d-block b"><?= ucwords('Anandadi Yoga')?></span>
-                        <div class="grid-col grid-col-xs-12 grid-col-sm-6">
-                            <div>
-                                <table class="table table-bordered table-sm table-hora-result t-small">
-                                    <tr>
-                                        <?php foreach($anandadiYogaResult->getAnandadiYoga() as $data): ?>
-                                            <table  class="table table-bordered table-sm table-hora-result t-small">
-                                                <tr class="font-weight-bold"><td>Name</td><td><?=$data->getName()?> Yoga</td></tr>
-                                                <tr><td>Type</td><td><?=$data->getType()?></td></tr>
-                                                <tr><td>Status</td><td><?=$data->getDescription()?></td></tr>
-                                                <tr><td>Start</td><td><?=$data->getStart()->format('c')?></td></tr>
-                                                <tr><td>End</td><td><?=$data->getEnd()->format('c')?></td></tr>
-                                            </table>
-                                        <?php endforeach; ?>
-                                    </tr>
-
-                                </table>
-                            </div>
-                        </div>
-                        <span class="text-black d-block b"><?= ucwords('Disha Shool')?></span>
-                        <div class="grid-col grid-col-xs-12 grid-col-sm-6">
-                            <div>
-                                <table class="table table-bordered table-sm table-hora-result t-small">
-                                    <tbody>
-                                    <tr><td>Direction</td><td><?=$dishaShoolResult->getDishaShool()->getDirection()?></td></tr>
-                                    <tr><td>Remedy</td><td><?=$dishaShoolResult->getDishaShool()->getRemedy()?></td></tr>
-                                    <tr><td>Start</td><td><?=$dishaShoolResult->getDishaShool()->getStart()->format('c')?></td></tr>
-                                    <tr><td>End</td><td><?=$dishaShoolResult->getDishaShool()->getEnd()->format('c')?></td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
                     </div>
             </div>
         <?php endif; ?>
             <section>
                 <div class="card contact-form-wrapper box-shadow mx-auto rounded-2 mb-5">
-                    <form class="p-5 text-default"  action="hindu-panchang.php" method="POST">
+                    <form class="p-5 text-default"  action="malayalam-panchang.php" method="POST">
                         <?php include 'common/panchang-form.tpl.php'; ?>
-                             <div class="text-right">
+                        <div class="text-right">
                             <button type="submit" class="btn btn-warning btn-submit">Get Result</button>
                             <input type="hidden" name="submit" value="1">
                         </div>

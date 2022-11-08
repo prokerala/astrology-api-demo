@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 use Prokerala\Api\Astrology\Location;
 use Prokerala\Api\Astrology\Service\AnandadiYoga;
-use Prokerala\Api\Astrology\Service\DishaShool;
-use Prokerala\Api\Astrology\Service\Hora;
+use Prokerala\Api\Astrology\Service\ChandraBala;
 use Prokerala\Api\Astrology\Service\Panchang;
 use Prokerala\Api\Astrology\Service\Ritu;
 use Prokerala\Api\Astrology\Service\Solstice;
+use Prokerala\Api\Astrology\Service\TaraBala;
 use Prokerala\Common\Api\Exception\AuthenticationException;
 use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
@@ -32,7 +32,7 @@ $sample_name = 'panchang';
 
 $arSupportedLanguages = [
     'en' => 'English',
-    'ta' => 'Tamil',
+    'ml' => 'Malayalam',
 ];
 
 $timezone = 'Asia/Kolkata';
@@ -53,23 +53,17 @@ $location = new Location((float)$input['latitude'], (float)$input['longitude'], 
 
 $result = [];
 $errors = [];
-$horaResult = [];
 $rituResult = [];
 $solsticeResult = [];
 $anandadiYogaResult = [];
-$dishaShoolResult = [];
-
+$chandraBalaResult = [];
+$taraBalaResult = [];
 if ($submit) {
     try {
         $method = new Panchang($client);
         $method->setAyanamsa($ayanamsa);
         $method->setTimeZone($tz);
         $result = $method->process($location, $datetime, true, $la);
-
-        $method = new Hora($client);
-        $method->setAyanamsa($ayanamsa);
-        $method->setTimeZone($tz);
-        $horaResult = $method->process($location, $datetime, $la);
 
         $method = new Ritu($client);
         $method->setAyanamsa($ayanamsa);
@@ -81,15 +75,6 @@ if ($submit) {
         $method->setTimeZone($tz);
         $solsticeResult = $method->process($location, $datetime, $la);
 
-        $method = new AnandadiYoga($client);
-        $method->setAyanamsa($ayanamsa);
-        $method->setTimeZone($tz);
-        $anandadiYogaResult = $method->process($location, $datetime, $la);
-
-        $method = new DishaShool($client);
-        $method->setAyanamsa($ayanamsa);
-        $method->setTimeZone($tz);
-        $dishaShoolResult = $method->process($location, $datetime, $la);
 
         $panchangResult = [
             'sunrise' => $result->getSunrise(),
@@ -165,4 +150,4 @@ if ($submit) {
 
 $apiCreditUsed = $client->getCreditUsed();
 
-include DEMO_BASE_DIR . '/templates/tamil-panchang.tpl.php';
+include DEMO_BASE_DIR . '/templates/malayalam-panchang.tpl.php';

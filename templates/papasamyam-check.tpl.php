@@ -79,7 +79,6 @@
             <div class="alert  p-4 text-center
             <?='Excellent' === $papaSamyamCheckResult['message']['type'] ? 'alert-success' :
                 ('Satisfactory' === $papaSamyamCheckResult['message']['type'] ? 'alert-warning' : 'alert-danger')?>" role="alert">
-                Papasamyam for this couple is <b><?=$papaSamyamCheckResult['message']['type']?></b><br>
                 <?=$papaSamyamCheckResult['message']['description']?>
             </div>
         <?php endif; ?>
@@ -101,8 +100,9 @@
                         <label class="col-sm-3 col-md-4 col-form-label  text-xs-left">Language</label>
                         <div class="col-sm-9 col-md-6">
                             <select name="la" class="form-control form-control-lg rounded-1">
-                                <option value="en" >English</option>
-                                <option value="ml" >Malayalam</option>
+                                <option value="en">English</option>
+                                <option value="ml">Malayalam</option>
+                                <option value="ta">Tamil</option>
                             </select>
                         </div>
                     </div>

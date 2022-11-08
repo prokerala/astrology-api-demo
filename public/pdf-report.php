@@ -61,7 +61,7 @@ $reportTypes = [
             ['name' => 'yoga-details'],
             ['name' => 'kaal-sarp-dosha', 'options' => ['chart_style' => $chartType]],
             ['name' => 'sade-sati', 'options' => ['chart_style' => $chartType]],
-            ['name' => 'shodasavarga-chart', 'options' => ['chart_style' => $chartType]],
+            ['name' => 'shodasavarga-chart', 'options' => ['chart_style' => 'south-indian']],
             ['name' => 'dasa-periods'],
             ['name' => 'papa-dosha', 'options' => ['chart_style' => $chartType]],
         ]

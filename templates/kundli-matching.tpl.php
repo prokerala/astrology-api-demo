@@ -84,7 +84,7 @@
                         <?php foreach ($compatibilityResult['gunaMilan']['guna'] as $data):?>
                             <tr>
                                 <td><?=$data['id']?></td>
-                                <td><b><?=$data['name']?> Koot</b></td>
+                                <td><b><?=$data['name']?> <?=$la == 'hi' ? 'कूट' : 'Koot'?></b></td>
                                 <td><?=$data['girlKoot']?></td>
                                 <td><?=$data['boyKoot']?></td>
                                 <td><?=$data['maximumPoints']?></td>
@@ -98,7 +98,7 @@
                             $guna_koot = ucwords($guna_koot); ?>
                             <tr>
                                 <td><?=$count?></td>
-                                <td><b><?=$guna_koot?> Koot</b></td>
+                                <td><b><?=$guna_koot?> <?=$la == 'hi' ? 'कूट' : 'Koot'?></b></td>
                                 <td><?=$data?></td>
                                 <td><?=$compatibilityResult['boyInfo']['koot'][$guna]?></td>
                             </tr>
@@ -119,7 +119,7 @@
                     <h3 class="text-black">Guna Milan Detailed Interpretation</h3>
                     <?php $count = 1;
                     foreach ($compatibilityResult['gunaMilan']['guna'] as  $koot): ?>
-                        <span class="font-weight-regular text-black"><?=$koot['id']?>. <?=$koot['name']?> Koot</span>
+                        <span class="font-weight-regular text-black"><?=$koot['id']?>. <?=$koot['name']?> <?=$la == 'hi' ? 'कूट' : 'Koot'?></span>
                         <p class="text-black"><?=$koot['description']?></p>
                         <?php ++$count; endforeach; ?>
 

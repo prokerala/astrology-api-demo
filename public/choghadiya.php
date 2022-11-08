@@ -24,6 +24,11 @@ $la = $_POST['la'] ?? 'en';
 $ayanamsa = 1;
 $sample_name = 'choghadiya';
 
+$arSupportedLanguages = [
+    'en' => 'English',
+    'hi' => 'Hindi',
+];
+
 $timezone = 'Asia/Kolkata';
 if ($submit) {
     $input['datetime'] = $_POST['datetime'];

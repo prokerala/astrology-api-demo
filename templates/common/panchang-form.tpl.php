@@ -25,11 +25,9 @@
     <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Language</label>
     <div class="col-sm-9 col-md-6">
         <select name="la" class="form-control form-control-lg rounded-1">
-            <option value="en" >English</option>
-            <option value="hi" >Hindi</option>
-            <option value="ta" >Tamil</option>
-            <option value="ml" >Malayalam</option>
-            <option value="te" >Telugu</option>
+            <?php foreach ($arSupportedLanguages as $laValue => $laName): ?>
+                <option value="<?=$laValue?>" ><?=$laName?></option>
+            <?php endforeach; ?>
         </select>
     </div>
 </div>

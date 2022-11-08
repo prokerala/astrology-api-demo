@@ -44,10 +44,7 @@
                 <?php foreach ($compatibilityResult['Matches'] as $idx => $data):?>
                     <tr><td><?=$idx + 1?></td><td><?=$data['name']?></td>
                         <?php if ('advanced' === $result_type):?>
-                            <td>
-                                <?='Good' === $data['poruthamStatus'] ? '<span class="text-success">Good</span>' :
-                                    ('Bad' === $data['poruthamStatus'] ? '<span class="text-danger">Bad</span>' :
-                                        '<span class="text-warning">Satisfactory</span>')?></td>
+                            <td><?=$data['poruthamStatus']?></td>
                             <td class="text-center"><?=$data['points']?></td>
                         <?php else:?>
                             <td class="text-center"><?=$data['hasPorutham'] ? 1 : 0?></td>

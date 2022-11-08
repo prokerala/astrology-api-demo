@@ -24,6 +24,12 @@ $submit = $_POST['submit'] ?? 0;
 $ayanamsa = 1;
 $la = $_POST['la'] ?? 'en';
 $sample_name = 'tara-bala';
+
+$arSupportedLanguages = [
+    'en' => 'English',
+    'hi' => 'Hindi',
+];
+
 $timezone = 'Asia/Kolkata';
 if ($submit) {
     $input['datetime'] = $_POST['datetime'];

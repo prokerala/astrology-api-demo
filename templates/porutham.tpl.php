@@ -57,13 +57,13 @@
                             }?>
                             <?php if ('lord' === $item):?>
                                 <tr>
-                                    <td><b><?=$item?></b></td>
+                                    <td><?=ucfirst($idx)?> <?=ucfirst($item)?></b></td>
                                     <td><?="{$itemVale['vedicName']} ({$itemVale['name']})"?></td>
                                     <td><?="{$compatibilityResult['boyInfo'][$idx][$item]['vedicName']} ({$compatibilityResult['boyInfo'][$idx][$item]['name']})"?></td>
                                 </tr>
                             <?php else:?>
                                 <tr>
-                                <td><b><?=$item?></b></td>
+                                <td><?=ucfirst($idx)?> <?=ucfirst($item)?></td>
                                 <td><?=$itemVale?></td>
                                 <td><?=$compatibilityResult['boyInfo'][$idx][$item]?></td>
                                 </tr>
@@ -88,10 +88,7 @@
                 <?php foreach ($compatibilityResult['matches'] as $idx => $data):?>
                     <tr><td><?=$idx + 1?></td><td><?=$data['name']?></td>
                         <?php if ('advanced' === $result_type):?>
-                            <td>
-                                <?='Good' === $data['poruthamStatus'] ? '<span class="text-success">Good</span>' :
-                                                                ('Satisfactory' === $data['poruthamStatus'] ? '<span class="text-warning">Satisfactory</span>' :
-                                                                    '<span class="text-danger">Not Satisfactory</span>')?></td>
+                            <td><?= $data['poruthamStatus'] ?></td>
                             <td class="text-center"><?=$data['points']?></td>
                         <?php else:?>
                             <td class="text-center"><?=$data['hasPorutham'] ? 1 : 0?></td>
@@ -162,7 +159,6 @@
                                 <option value="en" >English</option>
                                 <option value="ta" >Tamil</option>
                                 <option value="ml" >Malayalam</option>
-                                <option value="hi" >Hindi</option>
                             </select>
                         </div>
                     </div>

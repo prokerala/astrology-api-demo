@@ -38,7 +38,7 @@ $arGroupCalculators = [
         'planet-position',
         'chart',
         'dasha-periods',
-        'horoscope-yoga',
+        'yoga-details',
     ],
     'Marriage Matching' => [
         'kundli-matching',

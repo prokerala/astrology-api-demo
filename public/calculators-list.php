@@ -193,11 +193,11 @@ $samples = [
         'url' => DEMO_BASE_URL . '/dasha-periods.php',
         'docs' => 'dasha-periods',
     ],
-    'horoscope-yoga' => [
-        'image' => '/assets/img/icon/panchang.png',
-        'title' => 'Horoscope Yoga',
-        'url' => DEMO_BASE_URL . '/horoscope-yoga.php',
-        'docs' => 'dasha-periods',
+    'yoga-details' => [
+        'image' => '/assets/img/icon/birthchart.png',
+        'title' => 'Yoga Details',
+        'url' => DEMO_BASE_URL . '/yoga-details.php',
+        'docs' => 'yoga',
     ],
     'pdf-report' => [
         'image' => '/assets/img/icon/birthchart.png',

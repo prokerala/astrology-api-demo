@@ -122,7 +122,7 @@ $samples = [
         'docs' => 'tara-bala',
     ],
     'ritu' => [
-        'image' => '/assets/img/icon/planet-position.png',
+        'image' => '/assets/img/icon/ritu.png',
         'title' => 'Ritu',
         'url' => DEMO_BASE_URL . '/ritu.php',
         'docs' => 'ritu',
@@ -146,7 +146,7 @@ $samples = [
         'docs' => 'disha-shool',
     ],
     'auspicious-yoga' => [
-        'image' => '/assets/img/icon/panchang.png',
+        'image' => '/assets/img/icon/auspicious-yoga.png',
         'title' => 'Auspicious Yoga',
         'url' => DEMO_BASE_URL . '/auspicious-yoga.php',
         'docs' => 'auspicious-yoga',
@@ -194,7 +194,7 @@ $samples = [
         'docs' => 'dasha-periods',
     ],
     'yoga-details' => [
-        'image' => '/assets/img/icon/birthchart.png',
+        'image' => '/assets/img/icon/yoga.png',
         'title' => 'Yoga Details',
         'url' => DEMO_BASE_URL . '/yoga-details.php',
         'docs' => 'yoga',

@@ -51,7 +51,7 @@ $reportTypes = [
             ['name' => 'birth-details'],
             ['name' => 'chart', 'options' => ['chart_style' => $chartType]],
             ['name' => 'planet-position'],
-            ['name' => 'mangal-dosha'],
+            ['name' => 'mangal-dosha', 'options' => ['chart_style' => $chartType]],
         ],
         'personal-report' => [
             ['name' => 'birth-details'],

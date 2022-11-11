@@ -72,7 +72,7 @@
                     <?php endif; ?>
                 <?php endforeach; ?>
             </table>
-            <div class="alert alert-info mb-5 p-4 text-center <?=$alertClass[$compatibilityResult['message']['type']]?>">
+            <div class="alert alert-info mb-5 p-4 text-center">
                 <?=$compatibilityResult['message']['description']?> (<?=$compatibilityResult['totalPoints']?> / 10)
             </div>
             <h3 class="text-black text-center">10 Poruthams and Your Compatibility</h3>

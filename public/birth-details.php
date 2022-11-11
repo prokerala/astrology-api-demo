@@ -29,7 +29,6 @@ $arSupportedLanguages = [
     'en' => 'English',
     'hi' => 'Hindi',
     'ta' => 'Tamil',
-    'te' => 'Telugu',
     'ml' => 'Malayalam',
 ];
 

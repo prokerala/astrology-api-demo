@@ -28,6 +28,9 @@ $sample_name = 'tara-bala';
 $arSupportedLanguages = [
     'en' => 'English',
     'hi' => 'Hindi',
+    'ta' => 'Tamil',
+    'te' => 'Telugu',
+    'ml' => 'Malayalam',
 ];
 
 $timezone = 'Asia/Kolkata';

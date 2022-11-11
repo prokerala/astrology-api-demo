@@ -23,6 +23,16 @@ $coordinates = $input['latitude'] . ',' . $input['longitude'];
 $submit = $_POST['submit'] ?? 0;
 $ayanamsa = 1;
 $la = $_POST['la'] ?? 'en';
+
+
+$arSupportedLanguages = [
+    'en' => 'English',
+    'hi' => 'Hindi',
+    'ta' => 'Tamil',
+    'te' => 'Telugu',
+    'ml' => 'Malayalam',
+];
+
 $sample_name = 'tara-bala';
 $timezone = 'Asia/Kolkata';
 if ($submit) {

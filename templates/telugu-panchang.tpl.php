@@ -104,12 +104,12 @@
                             <td><?=$rituResult->getDrikRitu()->getVedicName()?></td>
                         </tr>
                         <tr class="border-top">
-                            <td>Start: <?=$rituResult->getVedicRitu()->getStart()->format('c')?></td>
-                            <td>Start: <?=$rituResult->getDrikRitu()->getStart()->format('c')?></td>
+                            <td>Start: <?=$rituResult->getVedicRitu()->getStart()->format('d M, Y, h:i A')?></td>
+                            <td>Start: <?=$rituResult->getDrikRitu()->getStart()->format('d M, Y, h:i A')?></td>
                         </tr>
                         <tr class="border-top">
-                            <td>End: <?=$rituResult->getVedicRitu()->getEnd()->format('c')?></td>
-                            <td>End: <?=$rituResult->getDrikRitu()->getEnd()->format('c')?></td>
+                            <td>End: <?=$rituResult->getVedicRitu()->getEnd()->format('d M, Y, h:i A')?></td>
+                            <td>End: <?=$rituResult->getDrikRitu()->getEnd()->format('d M, Y, h:i A')?></td>
                         </tr>
                     </table>
                     <span class="text-black d-block b"><?= ucwords('Solstice')?></span>
@@ -125,25 +125,6 @@
                             <td><?=$solsticeResult->getDishaShool()->getVedicName()?></td>
                         </tr>
                     </table>
-                    <span class="text-black d-block b"><?= ucwords('Anandadi Yoga')?></span>
-                    <div class="grid-col grid-col-xs-12 grid-col-sm-6">
-                        <div>
-                            <table class="table table-bordered table-sm table-hora-result t-small">
-                                <tr>
-                                    <?php foreach($anandadiYogaResult->getAnandadiYoga() as $data): ?>
-                                        <table  class="table table-bordered table-sm table-hora-result t-small">
-                                            <tr class="font-weight-bold"><td>Name</td><td><?=$data->getName()?> Yoga</td></tr>
-                                            <tr><td>Type</td><td><?=$data->getType()?></td></tr>
-                                            <tr><td>Status</td><td><?=$data->getDescription()?></td></tr>
-                                            <tr><td>Start</td><td><?=$data->getStart()->format('c')?></td></tr>
-                                            <tr><td>End</td><td><?=$data->getEnd()->format('c')?></td></tr>
-                                        </table>
-                                    <?php endforeach; ?>
-                                </tr>
-
-                            </table>
-                        </div>
-                    </div>
                     <span class="text-black d-block b"><?= ucwords('Chandra Bala')?></span>
                     <table class="table table-bordered text-large text-center table-hover">
                         <tr><td class="text-right">Type</td><td class="text-left"><?=$chandraBalaResult->getChandraBala()->getType()?></td></tr>

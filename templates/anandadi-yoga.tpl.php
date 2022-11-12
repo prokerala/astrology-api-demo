@@ -47,8 +47,8 @@
                                 <tr class="font-weight-bold"><td>Name</td><td><?=$data->getName()?></td></tr>
                                 <tr><td>Type</td><td><?=$data->getType()?></td></tr>
                                 <tr><td>Status</td><td><?=$data->getDescription()?></td></tr>
-                                <tr><td>Start</td><td><?=$data->getStart()->format('c')?></td></tr>
-                                <tr><td>End</td><td><?=$data->getEnd()->format('c')?></td></tr>
+                                <tr><td>Start</td><td><?=$data->getStart()->format('d M, Y, h:i A')?></td></tr>
+                                <tr><td>End</td><td><?=$data->getEnd()->format('d M, Y, h:i A')?></td></tr>
                             </table>
                             <?php endforeach; ?>
                         </tr>

@@ -81,11 +81,6 @@ if ($submit) {
         $method->setTimeZone($tz);
         $solsticeResult = $method->process($location, $datetime, $la);
 
-        $method = new AnandadiYoga($client);
-        $method->setAyanamsa($ayanamsa);
-        $method->setTimeZone($tz);
-        $anandadiYogaResult = $method->process($location, $datetime, $la);
-
         $method = new DishaShool($client);
         $method->setAyanamsa($ayanamsa);
         $method->setTimeZone($tz);

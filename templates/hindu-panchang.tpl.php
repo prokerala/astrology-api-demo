@@ -53,7 +53,7 @@
                             <?php if ('Nakshatra' === $key):?>
                                 (Lord: <?= $value['nakshatra_lord']?>) :
                             <?php endif; ?>
-                                <?=$value['start']->format('h:i A') . ' - ' . $value['end']->format('h:i A')?></span>
+                                <?=$value['start']->format('d M, Y, h:i A') . ' - ' . $value['end']->format('d M, Y, h:i A')?></span>
                         <?php endforeach; ?>
 
                     <?php elseif ('vaara' === $key):?>
@@ -139,12 +139,12 @@
                                 <td><?=$rituResult->getDrikRitu()->getVedicName()?></td>
                             </tr>
                             <tr class="border-top">
-                                <td>Start: <?=$rituResult->getVedicRitu()->getStart()->format('c')?></td>
-                                <td>Start: <?=$rituResult->getDrikRitu()->getStart()->format('c')?></td>
+                                <td>Start: <?=$rituResult->getVedicRitu()->getStart()->format('d M, Y, h:i A')?></td>
+                                <td>Start: <?=$rituResult->getDrikRitu()->getStart()->format('d M, Y, h:i A')?></td>
                             </tr>
                             <tr class="border-top">
-                                <td>End: <?=$rituResult->getVedicRitu()->getEnd()->format('c')?></td>
-                                <td>End: <?=$rituResult->getDrikRitu()->getEnd()->format('c')?></td>
+                                <td>End: <?=$rituResult->getVedicRitu()->getEnd()->format('d M, Y, h:i A')?></td>
+                                <td>End: <?=$rituResult->getDrikRitu()->getEnd()->format('d M, Y, h:i A')?></td>
                             </tr>
                         </table>
                         <span class="text-black d-block b"><?= ucwords('Solstice')?></span>
@@ -160,25 +160,6 @@
                                 <td><?=$solsticeResult->getDishaShool()->getVedicName()?></td>
                             </tr>
                         </table>
-                        <span class="text-black d-block b"><?= ucwords('Anandadi Yoga')?></span>
-                        <div class="grid-col grid-col-xs-12 grid-col-sm-6">
-                            <div>
-                                <table class="table table-bordered table-sm table-hora-result t-small">
-                                    <tr>
-                                        <?php foreach($anandadiYogaResult->getAnandadiYoga() as $data): ?>
-                                            <table  class="table table-bordered table-sm table-hora-result t-small">
-                                                <tr class="font-weight-bold"><td>Name</td><td><?=$data->getName()?> Yoga</td></tr>
-                                                <tr><td>Type</td><td><?=$data->getType()?></td></tr>
-                                                <tr><td>Status</td><td><?=$data->getDescription()?></td></tr>
-                                                <tr><td>Start</td><td><?=$data->getStart()->format('c')?></td></tr>
-                                                <tr><td>End</td><td><?=$data->getEnd()->format('c')?></td></tr>
-                                            </table>
-                                        <?php endforeach; ?>
-                                    </tr>
-
-                                </table>
-                            </div>
-                        </div>
                         <span class="text-black d-block b"><?= ucwords('Disha Shool')?></span>
                         <div class="grid-col grid-col-xs-12 grid-col-sm-6">
                             <div>
@@ -186,8 +167,8 @@
                                     <tbody>
                                     <tr><td>Direction</td><td><?=$dishaShoolResult->getDishaShool()->getDirection()?></td></tr>
                                     <tr><td>Remedy</td><td><?=$dishaShoolResult->getDishaShool()->getRemedy()?></td></tr>
-                                    <tr><td>Start</td><td><?=$dishaShoolResult->getDishaShool()->getStart()->format('c')?></td></tr>
-                                    <tr><td>End</td><td><?=$dishaShoolResult->getDishaShool()->getEnd()->format('c')?></td></tr>
+                                    <tr><td>Start</td><td><?=$dishaShoolResult->getDishaShool()->getStart()->format('h:i A')?></td></tr>
+                                    <tr><td>End</td><td><?=$dishaShoolResult->getDishaShool()->getEnd()->format('h:i A')?></td></tr>
                                     </tbody>
                                 </table>
                             </div>

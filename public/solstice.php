@@ -25,6 +25,15 @@ $ayanamsa = 1;
 $la = $_POST['la'] ?? 'en';
 $sample_name = 'solstice';
 $timezone = 'Asia/Kolkata';
+
+$arSupportedLanguages = [
+    'en' => 'English',
+    'hi' => 'Hindi',
+    'ta' => 'Tamil',
+    'te' => 'Telugu',
+    'ml' => 'Malayalam',
+];
+
 if ($submit) {
     $input['datetime'] = $_POST['datetime'];
     $coordinates = $_POST['coordinates'];

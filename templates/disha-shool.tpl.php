@@ -46,8 +46,8 @@
                         <tbody>
                             <tr><td>Direction</td><td><?=$result->getDishaShool()->getDirection()?></td></tr>
                             <tr><td>Remedy</td><td><?=$result->getDishaShool()->getRemedy()?></td></tr>
-                            <tr><td>Start</td><td><?=$result->getDishaShool()->getStart()->format('c')?></td></tr>
-                            <tr><td>End</td><td><?=$result->getDishaShool()->getEnd()->format('c')?></td></tr>
+                            <tr><td>Start</td><td><?=$result->getDishaShool()->getStart()->format('d M, Y, h:i A')?></td></tr>
+                            <tr><td>End</td><td><?=$result->getDishaShool()->getEnd()->format('d M, Y, h:i A')?></td></tr>
                         </tbody>
                     </table>
                 </div>

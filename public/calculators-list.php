@@ -175,6 +175,12 @@ $samples = [
         'url' => DEMO_BASE_URL . '/telugu-panchang.php',
         'docs' => 'panchang',
     ],
+    'malayalam-panchang' => [
+        'image' => '/assets/img/icon/panchang.png',
+        'title' => 'Malayalam Panchang',
+        'url' => DEMO_BASE_URL . '/malayalam-panchang.php',
+        'docs' => 'panchang',
+    ],
     'numerology' => [
         'image' => '/assets/img/icon/numerology.png',
         'title' => 'Numerology',

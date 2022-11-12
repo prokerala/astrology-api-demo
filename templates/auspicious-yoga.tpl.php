@@ -52,8 +52,8 @@
                                 <?php foreach ($period->getCombination() as $combinations):?>
                                     <tr ><td><?=ucfirst($combinations->getType())?> - <?=$combinations->getName()?></td></tr>
                                 <?php endforeach; ?>
-                                <tr><td>Start - <?=$period->getStart()->format('c')?></td></tr>
-                                <tr><td>End - <?=$period->getEnd()->format('c')?></td></tr>
+                                <tr><td>Start - <?=$period->getStart()->format('d M, Y, h:i A')?></td></tr>
+                                <tr><td>End - <?=$period->getEnd()->format('d M, Y, h:i A')?></td></tr>
                             <?php endforeach; ?>
                         <?php endif; ?>
                 <?php endforeach; ?>

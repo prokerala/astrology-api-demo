@@ -55,12 +55,12 @@
                     <td><?=$result->getDrikRitu()->getVedicName()?></td>
                 </tr>
                 <tr class="border-top">
-                    <td>Start: <?=$result->getVedicRitu()->getStart()?></td>
-                    <td>Start: <?=$result->getDrikRitu()->getStart()?></td>
+                    <td>Start: <?=$result->getVedicRitu()->getStart()->format('d M, Y, h:i A')?></td>
+                    <td>Start: <?=$result->getDrikRitu()->getStart()->format('d M, Y, h:i A')?></td>
                 </tr>
                 <tr class="border-top">
-                    <td>End: <?=$result->getVedicRitu()->getEnd()?></td>
-                    <td>End: <?=$result->getDrikRitu()->getEnd()?></td>
+                    <td>End: <?=$result->getVedicRitu()->getEnd()->format('d M, Y, h:i A')?></td>
+                    <td>End: <?=$result->getDrikRitu()->getEnd()->format('d M, Y, h:i A')?></td>
                 </tr>
             </table>
         <?php endif; ?>

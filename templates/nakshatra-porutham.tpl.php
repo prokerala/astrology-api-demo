@@ -134,15 +134,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-md-2 col-form-label  text-xs-left">Language</label>
-                            <div class="col-sm-9 col-md-3">
-                                <select name="la" class="form-control form-control-lg rounded-1">
-                                    <option value="en" >English</option>
-                                    <option value="ml" >Malayalam</option>
-                                </select>
-                            </div>
-                        </div>
                         <div class="text-right">
                             <button type="submit" class="btn btn-warning btn-submit">Get Result</button>
                             <input type="hidden" name="submit" value="1">

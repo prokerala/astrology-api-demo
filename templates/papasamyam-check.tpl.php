@@ -102,7 +102,6 @@
                                 <option value="hi">Hindi</option>
                                 <option value="ml">Malayalam</option>
                                 <option value="ta">Tamil</option>
-                                <option value="te">Telugu</option>
                             </select>
                         </div>
                     </div>

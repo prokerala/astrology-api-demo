@@ -40,7 +40,7 @@
         <?php if(!empty($result)): ?>
             <h2 class="text-center text-black">Calendar</h2>
             <table class="table table-bordered text-large text-center table-hover">
-                <tr><td>Gregorian Date</td><td><?=$date->format('c')?></td></tr>
+                <tr><td>Gregorian Date</td><td><?=$date->format('d M, Y')?></td></tr>
                 <tr><td>Calendar Name </td><td><?=$result->getCalendarDate()->getName()?></td></tr>
                 <tr><td>Year</td><td><?=$result->getCalendarDate()->getYear()?></td></tr>
                 <tr><td>Month</td><td><?=$result->getCalendarDate()->getMonth()?></td></tr>

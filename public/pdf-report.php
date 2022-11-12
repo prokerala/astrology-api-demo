@@ -94,7 +94,7 @@ if ($submit) {
                 'first_name' => $firstName,
                 'middle_name' => $middleName,
                 'last_name' => $lastName,
-                'datetime' => '1809-02-12T20:00:00+05:30',
+                'datetime' => '1809-02-12T20:00:00+00:00',
                 'coordinates' => '22.6757521,88.0495361',
                 'place' => 'London, UK',
                 'gender' => $gender,
@@ -106,10 +106,10 @@ if ($submit) {
                     'first_name' => $girlFirstName,
                     'middle_name' => $girlMiddleName,
                     'last_name' => $girlLastName,
-                    'datetime' => '2019-06-13T08:00:00+05:30',
+                    'datetime' => '2019-06-13T08:00:00+00:00',
                     'coordinates' => '22.6757521,88.0495361',
                     'place' => 'London, UK',
-                    'gender' => 'male',
+                    'gender' => 'female',
                 ],
                 'second_person' => [
                     'first_name' => $boyFirstName,
@@ -118,7 +118,7 @@ if ($submit) {
                     'datetime' => '2015-02-20T22:00:00+05:30',
                     'coordinates' => '22.6757521,88.0495361',
                     'place' => 'London, UK',
-                    'gender' => 'female',
+                    'gender' => 'male',
                 ],
             ];
         }
@@ -159,84 +159,3 @@ if ($submit) {
 
 $apiCreditUsed = $client->getCreditUsed();
 include DEMO_BASE_DIR . '/templates/pdf-report.tpl.php';
-
-
-//if (true) {
-//    $input = [
-//        'first_person' => [
-//            'first_name' => 'Ram',
-//            'last_name' => 'Kumar',
-//            'datetime' => '1996-02-12T15:19:00+05:30',
-//            'coordinates' => '10.214747,78.097626',
-//            'place' => 'London, UK',
-//            'gender' => 'male',
-//        ],
-//        'second_person' => [
-//            'first_name' => 'Sita',
-//            'last_name' => 'Devi',
-//            'datetime' => '200-19-19T10:09:00+05:30',
-//            'coordinates' => '10.214747,78.097626',
-//            'place' => 'London, UK',
-//            'gender' => 'female',
-//        ]
-//    ];
-//    $options = [
-//        'modules' => [
-//            ['name' => 'kundli-matching-info'],
-//            ['name' => 'advanced-kundli-matching-info'],
-//            ['name' => 'basic-porutham-tamil'],
-//            ['name' => 'advanced-porutham-tamil'],
-//            ['name' => 'basic-porutham-kerala'],
-//            ['name' => 'advanced-porutham-kerala'],
-//        ],
-//        'report' => [
-//            'name' => 'Horoscope Compatibility',
-//            'caption' => 'Your comprehensive horoscope matching report',
-//            'brand_name' => 'Astro Services',
-//        ],
-//    ];
-//} else {
-//    $input = [
-//        'first_name' => 'Vishnu',
-//        'last_name' => 'Sharma',
-//        'datetime' => '2004-02-12T15:19:21+05:30',
-//        'coordinates' => '10.214747,78.097626',
-//        'place' => 'London, UK',
-//        'gender' => 'male',
-//    ];
-//    $options = [
-//        'modules' => [
-//            ['name' => 'mangal-dosha'],
-//            ['name' => 'advanced-mangal-dosha'],
-//            ['name' => 'birth-details'],
-//            ['name' => 'yoga-details'],
-//            ['name' => 'advanced-yoga-details'],
-//            ['name' => 'kaal-sarp-dosha'],
-//            ['name' => 'planet-position'],
-//            ['name' => 'sade-sati'],
-//            ['name' => 'advanced-sade-sati'],
-//            ['name' => 'papasamyam'],
-//            ['name' => 'chart', 'options' => ['chart_style' => 'north-indian']],
-//        ],
-//        'report' => [
-//            'name' => 'Super Horoscope',
-//            'caption' => 'Your complete horoscope',
-//            'brand_name' => 'Astro Services',
-//        ],
-//    ];
-//}
-//
-//
-//$query = [
-//    'input' => $input,
-//    'options' => $options + [
-//            'template' => [
-//                'style' => 'basic',
-//                'footer' => '<a href="https://www.example.com">Your Brand Name</a> | 📧 support@example.com | Call Now: +91-9876543210',
-//            ]
-//        ],
-//];
-//
-//echo http_build_query($query);
-//echo json_encode($query);
-//echo var_export($query, true);

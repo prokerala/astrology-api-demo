@@ -1,9 +1,9 @@
-<ul class="nav nav-pills mb-6 nav-fill">
-    <li class="nav-item p-3">
-        <a class="nav-link <?=$report_mode === 'personal-report' ? 'active' : ''?>" href="pdf-report.php">Personal Report</a>
+<ul class="nav nav-tabs mb-6 nav-fill">
+    <li class="nav-item">
+        <a class="nav-link p-4 <?=$report_mode === 'personal-report' ? 'active' : ''?>" href="pdf-report.php">Personal Report</a>
     </li>
-    <li class="nav-item p-3">
-        <a class="nav-link <?=$report_mode === 'compatibility-report' ? 'active' : ''?>" href="pdf-report.php?report_mode=compatibility-report">Compatibility Report</a>
+    <li class="nav-item">
+        <a class="nav-link p-4 <?=$report_mode === 'compatibility-report' ? 'active' : ''?>" href="pdf-report.php?report_mode=compatibility-report">Compatibility Report</a>
     </li>
 </ul>
 
@@ -66,6 +66,7 @@
         <input type='text' id="fin-location" disabled name="location" class="form-control form-control-lg rounded-1" placeholder="Place of birth" value="London, UK" required>
     </div>
 </div>
+    <p class="text-danger text-center">Place and date of birth are not editable in the demo.</p>
 <legend class="col-form-label text-center text-black py-4 text-xlarge">Report Details</legend>
 <hr>
 <div class="form-group row">
@@ -96,6 +97,7 @@ chart
 planet-position
 mangal-dosha
         </textarea>
+            <p class="text-danger">Report modules are not editable in the demo.</p>
         </div>
         <div>
             <label>
@@ -112,6 +114,7 @@ sade-sati
 advanced-sade-sati
 papasamyam
         </textarea>
+            <p class="text-danger">Report modules are not editable in the demo.</p>
         </div>
     </div>
 </div>
@@ -197,6 +200,7 @@ papasamyam
             </div>
         </div>
     </div>
+    <p class="text-danger text-center">Place and date of birth are not editable in the demo.</p>
 
     <legend class="col-form-label text-center text-black py-4 text-xlarge">Report Details</legend>
     <hr>
@@ -225,6 +229,7 @@ birth-details
 mangal-dosha
 kundli-matching
                 </textarea>
+                <p class="text-danger">Report modules are not editable in the demo.</p>
             </div>
             <div class="mb-3">
                 <label>
@@ -235,6 +240,7 @@ birth-details
 mangal-dosha
 porutham-kerala
                 </textarea>
+                <p class="text-danger">Report modules are not editable in the demo.</p>
             </div>
             <div>
                 <label>
@@ -245,13 +251,14 @@ birth-details
 mangal-dosha
 porutham-tamil
                 </textarea>
+                <p class="text-danger">Report modules are not editable in the demo.</p>
             </div>
         </div>
     </div>
     <input type="hidden" name="report_mode" value="compatibility-report">
 <?php endif; ?>
 <legend class="col-form-label text-center text-black py-4 text-xlarge">Branding and Template Settings</legend>
-
+<p class="text-center text-danger">Branding and template options are not editable in the demo.</p>
 <div class="form-group row">
     <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Brand Name:</label>
     <div class="col-sm-9 col-md-6 ">

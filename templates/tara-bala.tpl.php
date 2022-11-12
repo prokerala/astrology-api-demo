@@ -39,14 +39,19 @@
         <?php include 'common/helper.tpl.php'; ?>
         <?php if(!empty($result)): ?>
             <h2 class="text-center text-black">Tara Bala</h2>
-            <table class="table table-bordered text-large text-center table-hover">
-                <tr><td class="text-right">Name</td><td class="text-left"><?=$result->getTaraBala()->getName()?></td></tr>
-                <tr><td class="text-right">Type</td><td class="text-left"><?=$result->getTaraBala()->getType()?></td></tr>
-                <tr><td class="text-right">Nakshatra</td><td class="text-left"><?=$result->getTaraBala()->getNakshatra()->getName()?></td></tr>
-                <tr><td class="text-right">Nakshatra Lord</td><td class="text-left"><?=$result->getTaraBala()->getNakshatra()->getLord()->getName()?></td></tr>
-                <tr><td class="text-right">Start</td><td class="text-left"><?=$result->getTaraBala()->getStart()->format('c')?></td></tr>
-                <tr><td class="text-right">End</td><td class="text-left"><?=$result->getTaraBala()->getEnd()->format('c')?></td></tr>
-            </table>
+            <?php foreach($result->getTaraBala() as $taraBala): ?>
+                <table class="table table-bordered text-large text-center table-hover">
+                    <tr><td class="text-right">Nakshatra</td>
+                        <td class="text-left">
+                            <?php foreach ($taraBala->getNakshatras() as $nakshatra): ?>
+                                <?=$nakshatra->getName()?>,
+                            <?php endforeach; ?>
+                        </td>
+                    </tr>
+                    <tr><td class="text-right">Start</td><td class="text-left"><?=$taraBala->getStart()->format('d M, Y, h:i A')?></td></tr>
+                    <tr><td class="text-right">End</td><td class="text-left"><?=$taraBala->getEnd()->format('d M, Y, h:i A')?></td></tr>
+                </table>
+            <?php endforeach; ?>
         <?php endif; ?>
             <section>
                 <div class="card contact-form-wrapper box-shadow mx-auto rounded-2 mb-5">

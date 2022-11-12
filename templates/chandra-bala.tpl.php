@@ -39,13 +39,19 @@
         <?php include 'common/helper.tpl.php'; ?>
         <?php if(!empty($result)): ?>
             <h2 class="text-center text-black">Chandra Bala</h2>
-            <table class="table table-bordered text-large text-center table-hover">
-                <tr><td class="text-right">Type</td><td class="text-left"><?=$result->getChandraBala()->getType()?></td></tr>
-                <tr><td class="text-right">Rasi</td><td class="text-left"><?=$result->getChandraBala()->getRasi()->getName()?></td></tr>
-                <tr><td class="text-right">Rasi Lord</td><td class="text-left"><?=$result->getChandraBala()->getRasi()->getLord()->getName()?></td></tr>
-                <tr><td class="text-right">Start</td><td class="text-left"><?=$result->getChandraBala()->getStart()->format('c')?></td></tr>
-                <tr><td class="text-right">End</td><td class="text-left"><?=$result->getChandraBala()->getEnd()->format('c')?></td></tr>
-            </table>
+            <?php foreach ($result->getChandraBala() as $chandraBala): ?>
+                <table class="table table-bordered text-large text-center table-hover">
+                    <tr><td class="text-right">Rasi</td>
+                        <td class="text-left">
+                            <?php foreach ($chandraBala->getRasis() as $rasi): ?>
+                                <?=$rasi->getName()?>,
+                            <?php endforeach; ?>
+                        </td>
+                    </tr>
+                    <tr><td class="text-right">Start</td><td class="text-left"><?=$chandraBala->getStart()->format('d M, Y, h:i A')?></td></tr>
+                    <tr><td class="text-right">End</td><td class="text-left"><?=$chandraBala->getEnd()->format('d M, Y, h:i A')?></td></tr>
+                </table>
+            <?php endforeach; ?>
         <?php endif; ?>
             <section>
                 <div class="card contact-form-wrapper box-shadow mx-auto rounded-2 mb-5">

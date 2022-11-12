@@ -7,7 +7,7 @@
 <div class="form-group row">
     <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Calendar</label>
     <div class="col-sm-9 col-md-6">
-        <select name="calendar" class="form-control form-control-lg rounded-1">
+        <select name="calendar" class="form-control form-control-lg rounded-1" id="fin-select-calendar">
             <option value="tamil" >Tamil</option>
             <option value="shaka-samvat" >Shaka Samvat</option>
             <option value="vikram-samvat" >Vikram Samvat</option>
@@ -24,12 +24,10 @@
 <div class="form-group row">
     <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Language</label>
     <div class="col-sm-9 col-md-6">
-        <select name="la" class="form-control form-control-lg rounded-1">
-            <option value="en" >English</option>
-            <option value="hi" >Hindi</option>
-            <option value="ta" >Tamil</option>
-            <option value="ml" >Malayalam</option>
-            <option value="te" >Telugu</option>
+        <select name="la" class="form-control form-control-lg rounded-1" id="fin-supported-languages">
+            <?php foreach ($supportedLanguages as $la_value => $la_name): ?>
+                <option value="<?=$la_value?>" ><?=$la_name?></option>
+            <?php endforeach; ?>
         </select>
     </div>
 </div>

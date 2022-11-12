@@ -26,11 +26,60 @@ $sample_name = 'calendar';
 $date = new DateTimeImmutable('now');
 
 $arSupportedLanguages = [
-    'en' => 'English',
-    'hi' => 'Hindi',
-    'ta' => 'Tamil',
-    'te' => 'Telugu',
-    'ml' => 'Malayalam',
+    'tamil' => [
+        'en' => 'English',
+        'ta' => 'Tamil',
+    ],
+    'shaka-samvat' => [
+        'en' => 'English',
+        'ta' => 'Tamil',
+        'hi' => 'Hindi',
+        'te' => 'Telugu',
+        'ml' => 'Malayalam',
+    ],
+    'vikram-samvat' => [
+        'en' => 'English',
+        'ta' => 'Tamil',
+        'hi' => 'Hindi',
+        'te' => 'Telugu',
+        'ml' => 'Malayalam',
+    ],
+    'amanta' =>  [
+        'en' => 'English',
+        'ta' => 'Tamil',
+        'hi' => 'Hindi',
+        'te' => 'Telugu',
+        'ml' => 'Malayalam',
+    ],
+    'purnimanta' =>  [
+        'en' => 'English',
+        'ta' => 'Tamil',
+        'hi' => 'Hindi',
+        'te' => 'Telugu',
+        'ml' => 'Malayalam',
+    ],
+    'malayalam' => [
+        'en' => 'English',
+        'ml' => 'Malayalam',
+    ],
+    'hijri' => [
+        'en' => 'English',
+    ],
+    'gujarati' =>  [
+        'en' => 'English',
+        'gu' => 'Gujarati',
+    ],
+    'bengali' =>  [
+        'en' => 'English',
+        'bn' => 'Bengali',
+    ],
+    'lunar' =>  [
+        'en' => 'English',
+        'ta' => 'Tamil',
+        'hi' => 'Hindi',
+        'te' => 'Telugu',
+        'ml' => 'Malayalam',
+    ],
 ];
 
 $timezone = 'Asia/Kolkata';
@@ -42,6 +91,7 @@ if ($submit) {
     $date = new DateTimeImmutable($input['date']);
 }
 
+$supportedLanguages = $arSupportedLanguages[$input['calendar'] ?? 'tamil'];
 $result = [];
 $errors = [];
 $arData = [];

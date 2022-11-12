@@ -75,6 +75,20 @@
 <!-- CODE FOR LOCATION SEARCH STARTS -->
 <script>
 (function () {
+
+    var calendarSupportedLanguages = <?=json_encode($arSupportedLanguages)?>;
+
+    document.getElementById('fin-select-calendar').addEventListener('change', function () {
+        var calendar = this.value;
+        selectedLanguages = calendarSupportedLanguages[calendar];
+        var html = '';
+        for (const [key, value] of Object.entries(selectedLanguages)) {
+            html += `<option value="${key}">${value}</option>`;
+        }
+
+        document.getElementById('fin-supported-languages').innerHTML = html;
+    });
+
     function loadScript(cb) {
         var script = document.createElement('script');
         script.src = 'https://client-api.prokerala.com/static/js/location.min.js';

@@ -40,6 +40,7 @@
                         <input type="hidden" name="submit" value="1">
                     </div>
                 </form>
+                <p class="text-center"><sup class="text-danger">*</sup>Place, location, date of birth, branding and template options are not editable in the demo.</p>
             </div>
         </section>
         <?php include 'common/calculator-list.tpl.php'; ?>

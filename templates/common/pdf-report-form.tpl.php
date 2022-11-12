@@ -54,19 +54,18 @@
 </div>
 
 <div class="form-group row">
-    <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Date: </label>
+    <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Date:<sup class="text-danger">*</sup></label>
     <div class="col-sm-9 col-md-6 ">
         <input type='datetime-local' disabled name="datetime" class="form-control form-control-lg rounded-1" required="required" value="2022-06-13 08:00"/>
     </div>
 </div>
 
 <div class="form-group row">
-    <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Place of birth:</label>
+    <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Place of birth:<sup class="text-danger">*</sup></label>
     <div class="col-sm-9 col-md-6 ">
         <input type='text' id="fin-location" disabled name="location" class="form-control form-control-lg rounded-1" placeholder="Place of birth" value="London, UK" required>
     </div>
 </div>
-    <p class="text-danger text-center">Place and date of birth are not editable in the demo.</p>
 <legend class="col-form-label text-center text-black py-4 text-xlarge">Report Details</legend>
 <hr>
 <div class="form-group row">
@@ -85,7 +84,7 @@
 
 
 <div class="form-group row">
-    <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Choose Report:</label>
+    <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Choose Report:<sup class="text-danger">*</sup></label>
     <div class="col-sm-9 col-md-6 ">
         <div class="mb-5">
             <label>
@@ -97,7 +96,6 @@ chart
 planet-position
 mangal-dosha
         </textarea>
-            <p class="text-danger">Report modules are not editable in the demo.</p>
         </div>
         <div>
             <label>
@@ -114,7 +112,6 @@ sade-sati
 advanced-sade-sati
 papasamyam
         </textarea>
-            <p class="text-danger">Report modules are not editable in the demo.</p>
         </div>
     </div>
 </div>
@@ -147,13 +144,13 @@ papasamyam
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-md-4 pr-md-0 col-form-label">Date Of Birth:</label>
+                <label class="col-md-4 pr-md-0 col-form-label">Date Of Birth:<sup class="text-danger">*</sup></label>
                 <div class="col-md-8 pl-md-0">
                     <input type='datetime-local' name="girl_dob" class="form-control form-control-lg rounded-1" disabled required="required" value="2019-06-13 08:00"/>
                 </div>
             </div>
             <div id="glocationField" class="form-group row">
-                <label class="col-md-4 pr-md-0 col-form-label">Place of birth:</label>
+                <label class="col-md-4 pr-md-0 col-form-label">Place of birth:<sup class="text-danger">*</sup></label>
                 <div class="col-md-8 pl-md-0">
                     <div id='g-location'>
                         <input type='text' id="fin-girl-location" name="girl_location" class="form-control form-control-lg rounded-1" placeholder="Place of birth" value="London, UK" required="required" disabled/>
@@ -185,13 +182,13 @@ papasamyam
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-md-4 pr-md-0 col-form-label">Date Of Birth:</label>
+                <label class="col-md-4 pr-md-0 col-form-label">Date Of Birth:<sup class="text-danger">*</sup></label>
                 <div class="col-md-8 pl-md-0">
                     <input type='datetime-local' name="boy_dob" class="form-control form-control-lg rounded-1"  required="required" value="2015-02-20 22:00" disabled/>
                 </div>
             </div>
             <div id="blocationField" class="form-group row">
-                <label class="col-md-4 pr-md-0 col-form-label">Place of birth:</label>
+                <label class="col-md-4 pr-md-0 col-form-label">Place of birth:<sup class="text-danger">*</sup></label>
                 <div class="col-md-8 pl-md-0">
                     <div id='b-location'>
                         <input type='text' id="fin-boy-location" name="boy_location" class="form-control form-control-lg rounded-1" placeholder="Place of birth" value="New York, USA" required="required" disabled/>
@@ -200,7 +197,6 @@ papasamyam
             </div>
         </div>
     </div>
-    <p class="text-danger text-center">Place and date of birth are not editable in the demo.</p>
 
     <legend class="col-form-label text-center text-black py-4 text-xlarge">Report Details</legend>
     <hr>
@@ -218,7 +214,7 @@ papasamyam
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Choose Report:</label>
+        <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Choose Report:<sup class="text-danger">*</sup></label>
         <div class="col-sm-9 col-md-6 ">
             <div class="mb-3">
                 <label>
@@ -229,7 +225,6 @@ birth-details
 mangal-dosha
 kundli-matching
                 </textarea>
-                <p class="text-danger">Report modules are not editable in the demo.</p>
             </div>
             <div class="mb-3">
                 <label>
@@ -240,7 +235,6 @@ birth-details
 mangal-dosha
 porutham-kerala
                 </textarea>
-                <p class="text-danger">Report modules are not editable in the demo.</p>
             </div>
             <div>
                 <label>
@@ -251,22 +245,20 @@ birth-details
 mangal-dosha
 porutham-tamil
                 </textarea>
-                <p class="text-danger">Report modules are not editable in the demo.</p>
             </div>
         </div>
     </div>
     <input type="hidden" name="report_mode" value="compatibility-report">
 <?php endif; ?>
 <legend class="col-form-label text-center text-black py-4 text-xlarge">Branding and Template Settings</legend>
-<p class="text-center text-danger">Branding and template options are not editable in the demo.</p>
 <div class="form-group row">
-    <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Brand Name:</label>
+    <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Brand Name:<sup class="text-danger">*</sup></label>
     <div class="col-sm-9 col-md-6 ">
         <input type='text' disabled class="form-control form-control-lg rounded-1" value="Prokerala" placeholder="Enter a brand name">
     </div>
 </div>
 <div class="form-group row">
-    <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Footer:</label>
+    <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Footer:<sup class="text-danger">*</sup></label>
     <div class="col-sm-9 col-md-6 ">
         <textarea rows="4" disabled class="form-control"><a href="https://www.prokerala.com">prokerala.com</a> | 📧 support@prokerala.com | Call Now: 1800 425 0053</textarea>
     </div>

@@ -126,22 +126,33 @@
                         </tr>
                     </table>
                     <span class="text-black d-block b"><?= ucwords('Chandra Bala')?></span>
-                    <table class="table table-bordered text-large text-center table-hover">
-                        <tr><td class="text-right">Type</td><td class="text-left"><?=$chandraBalaResult->getChandraBala()->getType()?></td></tr>
-                        <tr><td class="text-right">Rasi</td><td class="text-left"><?=$chandraBalaResult->getChandraBala()->getRasi()->getName()?></td></tr>
-                        <tr><td class="text-right">Rasi Lord</td><td class="text-left"><?=$chandraBalaResult->getChandraBala()->getRasi()->getLord()->getName()?></td></tr>
-                        <tr><td class="text-right">Start</td><td class="text-left"><?=$chandraBalaResult->getChandraBala()->getStart()->format('c')?></td></tr>
-                        <tr><td class="text-right">End</td><td class="text-left"><?=$chandraBalaResult->getChandraBala()->getEnd()->format('c')?></td></tr>
-                    </table>
+                    <?php foreach ($chandraBalaResult->getChandraBala() as $chandraBala): ?>
+                        <table class="table table-bordered text-large text-center table-hover">
+                            <tr><td class="text-right">Rasi</td>
+                                <td class="text-left">
+                                    <?php foreach ($chandraBala->getRasis() as $rasi): ?>
+                                        <?=$rasi->getName()?>,
+                                    <?php endforeach; ?>
+                                </td>
+                            </tr>
+                            <tr><td class="text-right">Start</td><td class="text-left"><?=$chandraBala->getStart()->format('d M, Y, h:i A')?></td></tr>
+                            <tr><td class="text-right">End</td><td class="text-left"><?=$chandraBala->getEnd()->format('d M, Y, h:i A')?></td></tr>
+                        </table>
+                    <?php endforeach; ?>
                     <span class="text-black d-block b"><?= ucwords('Tara Bala')?></span>
-                    <table class="table table-bordered text-large text-center table-hover">
-                        <tr><td class="text-right">Name</td><td class="text-left"><?=$taraBalaResult->getTaraBala()->getName()?></td></tr>
-                        <tr><td class="text-right">Type</td><td class="text-left"><?=$taraBalaResult->getTaraBala()->getType()?></td></tr>
-                        <tr><td class="text-right">Nakshatra</td><td class="text-left"><?=$taraBalaResult->getTaraBala()->getNakshatra()->getName()?></td></tr>
-                        <tr><td class="text-right">Nakshatra Lord</td><td class="text-left"><?=$taraBalaResult->getTaraBala()->getNakshatra()->getLord()->getName()?></td></tr>
-                        <tr><td class="text-right">Start</td><td class="text-left"><?=$taraBalaResult->getTaraBala()->getStart()->format('c')?></td></tr>
-                        <tr><td class="text-right">End</td><td class="text-left"><?=$taraBalaResult->getTaraBala()->getEnd()->format('c')?></td></tr>
-                    </table>
+                    <?php foreach($taraBalaResult->getTaraBala() as $taraBala): ?>
+                        <table class="table table-bordered text-large text-center table-hover">
+                            <tr><td class="text-right">Nakshatra</td>
+                                <td class="text-left">
+                                    <?php foreach ($taraBala->getNakshatras() as $nakshatra): ?>
+                                        <?=$nakshatra->getName()?>,
+                                    <?php endforeach; ?>
+                                </td>
+                            </tr>
+                            <tr><td class="text-right">Start</td><td class="text-left"><?=$taraBala->getStart()->format('d M, Y, h:i A')?></td></tr>
+                            <tr><td class="text-right">End</td><td class="text-left"><?=$taraBala->getEnd()->format('d M, Y, h:i A')?></td></tr>
+                        </table>
+                    <?php endforeach; ?>
             </div>
         <?php endif; ?>
             <section>

@@ -72,14 +72,14 @@
 <div class="form-group row">
     <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Report Name:</label>
     <div class="col-sm-9 col-md-6 ">
-        <input type='text' name="report_name" class="form-control form-control-lg rounded-1" value="Mangal Dosha Report" placeholder="Enter a custom report">
+        <input type='text' name="report_name" class="form-control form-control-lg rounded-1" value="Custom Report Name" placeholder="Enter a custom report">
     </div>
 </div>
 
 <div class="form-group row">
     <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Report Caption:</label>
     <div class="col-sm-9 col-md-6 ">
-        <input type='text' name="report_caption" class="form-control form-control-lg rounded-1" value="Your Custom Report Caption" placeholder="Enter a custom report">
+        <input type='text' name="report_caption" class="form-control form-control-lg rounded-1" value="Custom Report Caption" placeholder="Enter a custom report">
     </div>
 </div>
 
@@ -207,14 +207,14 @@ papasamyam
     <div class="form-group row">
         <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Report Name:</label>
         <div class="col-sm-9 col-md-6 ">
-            <input type='text' name="report_name" class="form-control form-control-lg rounded-1" value="Kundli Matching Report" placeholder="Enter a custom report">
+            <input type='text' name="report_name" class="form-control form-control-lg rounded-1" value="Custom Report Name" placeholder="Enter a custom report">
         </div>
     </div>
 
     <div class="form-group row">
         <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Report Caption:</label>
         <div class="col-sm-9 col-md-6 ">
-            <input type='text' name="report_caption" class="form-control form-control-lg rounded-1" value="Your Custom Report Caption" placeholder="Enter a custom report">
+            <input type='text' name="report_caption" class="form-control form-control-lg rounded-1" value="Custom Report Caption" placeholder="Enter a custom report">
         </div>
     </div>
     <div class="form-group row">

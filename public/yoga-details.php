@@ -60,8 +60,8 @@ if ($submit) {
         $method->setTimeZone($tz);
         $result = $method->process($location, $datetime, $la);
 
-        $yogaDetails = $result->getYogas();
-
+        $yogaDetails = $result->getYogaDetails();
+        
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {

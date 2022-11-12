@@ -53,7 +53,7 @@
                             <?php if ('Nakshatra' === $key):?>
                                 (Lord: <?= $value['nakshatra_lord']?>) :
                             <?php endif; ?>
-                                <?=$value['start']->format('h:i A') . ' - ' . $value['end']->format('h:i A')?></span>
+                                <?=$value['start']->format('d M, Y, h:i A') . ' - ' . $value['end']->format('d M, Y, h:i A')?></span>
                         <?php endforeach; ?>
 
                     <?php elseif ('vaara' === $key):?>

@@ -41,6 +41,13 @@ $datetime = new DateTimeImmutable($input['datetime'], $tz);
 
 $location = new Location((float)$input['latitude'], (float)$input['longitude'], 0, $tz);
 
+$arSupportedLanguages = [
+    'en' => 'English',
+    'hi' => 'Hindi',
+    'ta' => 'Tamil',
+    'ml' => 'Malayalam',
+];
+
 $result = [];
 $errors = [];
 
@@ -48,7 +55,7 @@ if ($submit) {
     try {
         $method = new PlanetPosition($client);
         $method->setAyanamsa($ayanamsa);
-        $result = $method->process($location, $datetime, $la);
+        $result = $method->process($location, $datetime, null, $la);
         $planetPositions = $result->getPlanetPosition();
         $planetPositionResult = [];
         foreach ($planetPositions as $position) {

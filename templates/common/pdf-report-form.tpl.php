@@ -56,14 +56,14 @@
 <div class="form-group row">
     <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Date:<sup class="text-danger">*</sup></label>
     <div class="col-sm-9 col-md-6 ">
-        <input type='datetime-local' disabled name="datetime" class="form-control form-control-lg rounded-1" required="required" value="2022-06-13 08:00"/>
+        <input type='datetime-local' disabled name="datetime" class="form-control form-control-lg rounded-1" required="required" value="1973-04-24 20:52"/>
     </div>
 </div>
 
 <div class="form-group row">
     <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Place of birth:<sup class="text-danger">*</sup></label>
     <div class="col-sm-9 col-md-6 ">
-        <input type='text' id="fin-location" disabled name="location" class="form-control form-control-lg rounded-1" placeholder="Place of birth" value="London, UK" required>
+        <input type='text' id="fin-location" disabled name="location" class="form-control form-control-lg rounded-1" placeholder="Place of birth" value="New York, USA" required>
     </div>
 </div>
 <legend class="col-form-label text-center text-black py-4 text-xlarge">Report Details</legend>
@@ -105,12 +105,13 @@ mangal-dosha
 birth-details
 chart
 planet-position
-advanced-mangal-dosha
-advanced-yoga-details
+mangal-dosha
+yoga-details
 kaal-sarp-dosha
 sade-sati
-advanced-sade-sati
-papasamyam
+shodasavarga-chart
+dasa-periods
+papa-dosha
         </textarea>
         </div>
     </div>
@@ -146,7 +147,7 @@ papasamyam
             <div class="form-group row">
                 <label class="col-md-4 pr-md-0 col-form-label">Date Of Birth:<sup class="text-danger">*</sup></label>
                 <div class="col-md-8 pl-md-0">
-                    <input type='datetime-local' name="girl_dob" class="form-control form-control-lg rounded-1" disabled required="required" value="2019-06-13 08:00"/>
+                    <input type='datetime-local' name="girl_dob" class="form-control form-control-lg rounded-1" disabled required="required" value="1975-11-10 01:55"/>
                 </div>
             </div>
             <div id="glocationField" class="form-group row">
@@ -184,7 +185,7 @@ papasamyam
             <div class="form-group row">
                 <label class="col-md-4 pr-md-0 col-form-label">Date Of Birth:<sup class="text-danger">*</sup></label>
                 <div class="col-md-8 pl-md-0">
-                    <input type='datetime-local' name="boy_dob" class="form-control form-control-lg rounded-1"  required="required" value="2015-02-20 22:00" disabled/>
+                    <input type='datetime-local' name="boy_dob" class="form-control form-control-lg rounded-1"  required="required" value="1973-04-24 20:52" disabled/>
                 </div>
             </div>
             <div id="blocationField" class="form-group row">

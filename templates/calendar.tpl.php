@@ -45,10 +45,10 @@
                 <tr><td>Year</td><td><?=$result->getCalendarDate()->getYear()?></td></tr>
                 <tr><td>Month</td><td><?=$result->getCalendarDate()->getMonth()?></td></tr>
                 <tr><td>Day</td><td><?=$result->getCalendarDate()->getDay()?></td></tr>
-                <?php if(!in_array(strtolower(trim($result->getCalendarDate()->getName())), ['hijri', 'gujarati', 'bengali', 'kolla-varsham', 'tamil'], true)): ?>
+                <?php if(!in_array(strtolower(str_replace(' ', '', $result->getCalendarDate()->getName())), ['hijri', 'gujarati', 'bengali', 'kollavarsham', 'tamil'], true)): ?>
                     <tr><td>Leap</td><td><?=$result->getCalendarDate()->getLeap()?></td></tr>
                 <?php endif; ?>
-                <?php if(!in_array(strtolower(trim($result->getCalendarDate()->getName())), ['hijri', 'gujarati', 'bengali', 'kolla-varsham'], true)): ?>
+                <?php if(!in_array(strtolower(str_replace(' ', '', $result->getCalendarDate()->getName())), ['hijri', 'gujarati', 'bengali', 'kollavarsham'], true)): ?>
                     <tr><td>Year Name</td><td><?=$result->getCalendarDate()->getYearName()?></td></tr>
                 <?php endif; ?>
                 <tr><td>Month Name</td><td><?=$result->getCalendarDate()->getMonthName()?></td></tr>

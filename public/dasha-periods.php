@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Prokerala\Api\Astrology\Location;
-use Prokerala\Api\Astrology\Service\VimsottariDasha;
+use Prokerala\Api\Astrology\Service\DashaPeriod;
 use Prokerala\Common\Api\Exception\AuthenticationException;
 use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
@@ -52,7 +52,7 @@ $arSupportedLanguages = [
 if ($submit) {
     try {
 
-        $method = new VimsottariDasha($client);
+        $method = new DashaPeriod($client);
         $method->setAyanamsa($ayanamsa);
         $method->setTimeZone($tz);
         $result = $method->process($location, $datetime, $la);

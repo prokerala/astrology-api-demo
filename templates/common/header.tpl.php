@@ -29,10 +29,13 @@
                             <a href="/pricing" class="nav-link">Pricing</a>
                         </li>
                         <li class="nav-item px-3">
-                            <a href="/faq" class="nav-link">FAQ</a>
+                            <a href="/docs" target="_blank" class="nav-link">Documentation</a>
                         </li>
                         <li class="nav-item px-3">
-                            <a href="/docs" target="_blank" class="nav-link">Documentation</a>
+                            <a href="/getting-started" class="nav-link">Getting Started</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a href="/faq" class="nav-link">FAQ</a>
                         </li>
                         <li class="nav-item px-3">
                             <a href="/contact" class="nav-link">Contact</a>

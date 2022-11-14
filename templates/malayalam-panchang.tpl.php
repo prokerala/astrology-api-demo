@@ -40,7 +40,7 @@
         <?php include 'common/helper.tpl.php'; ?>
 
         <?php if (!empty($result)): ?>
-            <h2 class="text-center text-black">Tamil Panchang Details</h2>
+            <h2 class="text-center text-black">Malayalam Panchang Details</h2>
             <div class="panchang-details">
                 <?php foreach ($panchangResult as $key => $data): ?>
 

@@ -62,97 +62,111 @@
                         <span class="text-black d-block"><b><?= ucwords($key)?></b> : <?=$data->format('h:i A')?></span>
                     <?php endif; ?>
                 <?php endforeach?>
-
                 <hr>
-                    <table class="table table-bordered">
-                        <tr class="alert-success text-center"><td colspan="2">Auspicious Timing</td></tr>
-                        <?php foreach ($auspiciousPeriod as $muhuratName => $muhuratDetails):?>
-                            <tr>
-                                <td><?= ucwords($muhuratName)?></td><td>
-                                    <?php foreach ($muhuratDetails as $idx => $value):?>
-                                        <?=$value['start']->format('h:i A')?> - <?=$value['end']->format('h:i A')?><br>
+                <table class="table table-bordered">
+                    <tr class="alert-success text-center"><td colspan="2">Auspicious Timing</td></tr>
+                    <?php foreach ($auspiciousPeriod as $muhuratName => $muhuratDetails):?>
+                        <tr>
+                            <td><?= ucwords($muhuratName)?></td><td>
+                                <?php foreach ($muhuratDetails as $idx => $value):?>
+                                    <?=$value['start']->format('h:i A')?> - <?=$value['end']->format('h:i A')?><br>
 
-                                    <?php endforeach; ?>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                        <tr class="alert-danger text-center"><td colspan="2">Inauspicious Timing</td></tr>
-                        <?php foreach ($inAuspiciousPeriod as $muhuratName => $muhuratDetails):?>
-                            <tr>
-                                <td><?= ucwords($muhuratName)?></td><td>
-                                    <?php foreach ($muhuratDetails as $idx => $value):?>
-                                        <?=$value['start']->format('h:i A')?> - <?=$value['end']->format('h:i A')?><br>
-                                    <?php endforeach; ?>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </table>
-                    <span class="text-black d-block b"><?= ucwords('Ritu')?></span>
-                    <table class="table table-bordered text-large text-center table-hover">
-                        <thead>
-                        <tr>
-                            <th>Vedic Ritu</th>
-                            <th>Drik Ritu</th>
+                                <?php endforeach; ?>
+                            </td>
                         </tr>
-                        </thead>
-                        <tr class="border-top">
-                            <td><?=$rituResult->getVedicRitu()->getName()?></td>
-                            <td><?=$rituResult->getDrikRitu()->getName()?></td>
-                        </tr>
-                        <tr class="border-top">
-                            <td><?=$rituResult->getVedicRitu()->getVedicName()?></td>
-                            <td><?=$rituResult->getDrikRitu()->getVedicName()?></td>
-                        </tr>
-                        <tr class="border-top">
-                            <td>Start: <?=$rituResult->getVedicRitu()->getStart()->format('d M, Y, h:i A')?></td>
-                            <td>Start: <?=$rituResult->getDrikRitu()->getStart()->format('d M, Y, h:i A')?></td>
-                        </tr>
-                        <tr class="border-top">
-                            <td>End: <?=$rituResult->getVedicRitu()->getEnd()->format('d M, Y, h:i A')?></td>
-                            <td>End: <?=$rituResult->getDrikRitu()->getEnd()->format('d M, Y, h:i A')?></td>
-                        </tr>
-                    </table>
-                    <span class="text-black d-block b"><?= ucwords('Solstice')?></span>
-                    <table class="table table-bordered text-large text-center table-hover">
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Vedic Name</th>
-                        </tr>
-                        </thead>
-                        <tr class="border-top">
-                            <td><?=$solsticeResult->getDishaShool()->getName()?></td>
-                            <td><?=$solsticeResult->getDishaShool()->getVedicName()?></td>
-                        </tr>
-                    </table>
-                    <span class="text-black d-block b"><?= ucwords('Chandra Bala')?></span>
-                    <?php foreach ($chandraBalaResult->getChandraBala() as $chandraBala): ?>
-                        <table class="table table-bordered text-large text-center table-hover">
-                            <tr><td class="text-right">Rasi</td>
-                                <td class="text-left">
-                                    <?php foreach ($chandraBala->getRasis() as $rasi): ?>
-                                        <?=$rasi->getName()?>,
-                                    <?php endforeach; ?>
-                                </td>
-                            </tr>
-                            <tr><td class="text-right">Start</td><td class="text-left"><?=$chandraBala->getStart()->format('d M, Y, h:i A')?></td></tr>
-                            <tr><td class="text-right">End</td><td class="text-left"><?=$chandraBala->getEnd()->format('d M, Y, h:i A')?></td></tr>
-                        </table>
                     <?php endforeach; ?>
-                    <span class="text-black d-block b"><?= ucwords('Tara Bala')?></span>
-                    <?php foreach($taraBalaResult->getTaraBala() as $taraBala): ?>
-                        <table class="table table-bordered text-large text-center table-hover">
-                            <tr><td class="text-right">Nakshatra</td>
-                                <td class="text-left">
-                                    <?php foreach ($taraBala->getNakshatras() as $nakshatra): ?>
-                                        <?=$nakshatra->getName()?>,
-                                    <?php endforeach; ?>
-                                </td>
-                            </tr>
-                            <tr><td class="text-right">Start</td><td class="text-left"><?=$taraBala->getStart()->format('d M, Y, h:i A')?></td></tr>
-                            <tr><td class="text-right">End</td><td class="text-left"><?=$taraBala->getEnd()->format('d M, Y, h:i A')?></td></tr>
-                        </table>
+                    <tr class="alert-danger text-center"><td colspan="2">Inauspicious Timing</td></tr>
+                    <?php foreach ($inAuspiciousPeriod as $muhuratName => $muhuratDetails):?>
+                        <tr>
+                            <td><?= ucwords($muhuratName)?></td><td>
+                                <?php foreach ($muhuratDetails as $idx => $value):?>
+                                    <?=$value['start']->format('h:i A')?> - <?=$value['end']->format('h:i A')?><br>
+                                <?php endforeach; ?>
+                            </td>
+                        </tr>
                     <?php endforeach; ?>
+                </table>
+                <span class="text-black d-block b"><?= ucwords('Ritu')?></span>
+                <table class="table table-bordered text-large text-center table-hover">
+                    <thead>
+                    <tr>
+                        <th>Vedic Ritu</th>
+                        <th>Drik Ritu</th>
+                    </tr>
+                    </thead>
+                    <tr class="border-top">
+                        <td><?=$rituResult->getVedicRitu()->getName()?></td>
+                        <td><?=$rituResult->getDrikRitu()->getName()?></td>
+                    </tr>
+                    <tr class="border-top">
+                        <td><?=$rituResult->getVedicRitu()->getVedicName()?></td>
+                        <td><?=$rituResult->getDrikRitu()->getVedicName()?></td>
+                    </tr>
+                    <tr class="border-top">
+                        <td>Start: <?=$rituResult->getVedicRitu()->getStart()->format('d M, Y, h:i A')?></td>
+                        <td>Start: <?=$rituResult->getDrikRitu()->getStart()->format('d M, Y, h:i A')?></td>
+                    </tr>
+                    <tr class="border-top">
+                        <td>End: <?=$rituResult->getVedicRitu()->getEnd()->format('d M, Y, h:i A')?></td>
+                        <td>End: <?=$rituResult->getDrikRitu()->getEnd()->format('d M, Y, h:i A')?></td>
+                    </tr>
+                </table>
+                <span class="text-black d-block b"><?= ucwords('Solstice')?></span>
+                <table class="table table-bordered text-large text-center table-hover">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Vedic Name</th>
+                    </tr>
+                    </thead>
+                    <tr class="border-top">
+                        <td><?=$solsticeResult->getDishaShool()->getName()?></td>
+                        <td><?=$solsticeResult->getDishaShool()->getVedicName()?></td>
+                    </tr>
+                </table>
+                <span class="text-black d-block b"><?= ucwords('Chandra Bala')?></span>
+                <?php foreach ($chandraBalaResult->getChandraBala() as $chandraBala): ?>
+                    <table class="table table-bordered text-large text-center table-hover">
+                        <tr><td class="text-right">Rasi</td>
+                            <td class="text-left">
+                                <?php foreach ($chandraBala->getRasis() as $rasi): ?>
+                                    <?=$rasi->getName()?>,
+                                <?php endforeach; ?>
+                            </td>
+                        </tr>
+                        <tr><td class="text-right">Start</td><td class="text-left"><?=$chandraBala->getStart()->format('d M, Y, h:i A')?></td></tr>
+                        <tr><td class="text-right">End</td><td class="text-left"><?=$chandraBala->getEnd()->format('d M, Y, h:i A')?></td></tr>
+                    </table>
+                <?php endforeach; ?>
+                <span class="text-black d-block b"><?= ucwords('Tara Bala')?></span>
+                <?php foreach($taraBalaResult->getTaraBala() as $taraBala): ?>
+                    <table class="table table-bordered text-large text-center table-hover">
+                        <tr><td class="text-right">Nakshatra</td>
+                            <td class="text-left">
+                                <?php foreach ($taraBala->getNakshatras() as $nakshatra): ?>
+                                    <?=$nakshatra->getName()?>,
+                                <?php endforeach; ?>
+                            </td>
+                        </tr>
+                        <tr><td class="text-right">Start</td><td class="text-left"><?=$taraBala->getStart()->format('d M, Y, h:i A')?></td></tr>
+                        <tr><td class="text-right">End</td><td class="text-left"><?=$taraBala->getEnd()->format('d M, Y, h:i A')?></td></tr>
+                    </table>
+                <?php endforeach; ?>
+                <span class="text-black d-block b"><?= ucwords('Calendar')?></span>
+                <table class="table table-bordered text-large text-center table-hover">
+                    <tr><td>Gregorian Date</td><td><?=$datetime->format('d M, Y')?></td></tr>
+                    <tr><td>Calendar Name </td><td><?=$calendarResult->getCalendarDate()->getName()?></td></tr>
+                    <tr><td>Year</td><td><?=$calendarResult->getCalendarDate()->getYear()?></td></tr>
+                    <tr><td>Month</td><td><?=$calendarResult->getCalendarDate()->getMonth()?></td></tr>
+                    <tr><td>Day</td><td><?=$calendarResult->getCalendarDate()->getDay()?></td></tr>
+                    <?php if(!in_array(strtolower(trim($calendarResult->getCalendarDate()->getName())), ['hijri', 'gujarati', 'bengali', 'kolla-varsham', 'tamil'], true)): ?>
+                        <tr><td>Leap</td><td><?=$calendarResult->getCalendarDate()->getLeap()?></td></tr>
+                    <?php endif; ?>
+                    <?php if(!in_array(strtolower(trim($calendarResult->getCalendarDate()->getName())), ['hijri', 'gujarati', 'bengali', 'kolla-varsham'], true)): ?>
+                        <tr><td>Year Name</td><td><?=$calendarResult->getCalendarDate()->getYearName()?></td></tr>
+                    <?php endif; ?>
+                    <tr><td>Month Name</td><td><?=$calendarResult->getCalendarDate()->getMonthName()?></td></tr>
+                </table>
             </div>
         <?php endif; ?>
             <section>

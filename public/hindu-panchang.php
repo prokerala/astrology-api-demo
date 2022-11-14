@@ -9,6 +9,7 @@ use Prokerala\Api\Astrology\Service\Hora;
 use Prokerala\Api\Astrology\Service\Panchang;
 use Prokerala\Api\Astrology\Service\Ritu;
 use Prokerala\Api\Astrology\Service\Solstice;
+use Prokerala\Api\Calendar\Service\CalendarDate;
 use Prokerala\Common\Api\Exception\AuthenticationException;
 use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
@@ -89,6 +90,14 @@ if ($submit) {
         $method->setAyanamsa($ayanamsa);
         $method->setTimeZone($tz);
         $dishaShoolResult = $method->process($location, $datetime, $la);
+        $apiCreditUsed += $client->getCreditUsed();
+
+        $method = new CalendarDate($client);
+        $shakaCalendarResult = $method->process('shaka-samvat', $datetime, $la);
+        $apiCreditUsed += $client->getCreditUsed();
+
+        $method = new CalendarDate($client);
+        $amantaCalendarResult = $method->process('amanta', $datetime, $la);
         $apiCreditUsed += $client->getCreditUsed();
 
         $panchangResult = [

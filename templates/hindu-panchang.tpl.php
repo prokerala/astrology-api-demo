@@ -173,6 +173,25 @@
                                 </table>
                             </div>
                         </div>
+                        <span class="text-black d-block b"><?= ucwords('Calendar')?></span>
+                        <table class="table table-bordered text-large text-center table-hover">
+                            <tr class="bg-secondary text-white"><td>Calendar Name </td><td><?=$shakaCalendarResult->getCalendarDate()->getName()?></td></tr>
+                            <tr><td>Gregorian Date</td><td><?=$datetime->format('d M, Y')?></td></tr>
+                            <tr><td>Year</td><td><?=$shakaCalendarResult->getCalendarDate()->getYear()?></td></tr>
+                            <tr><td>Month</td><td><?=$shakaCalendarResult->getCalendarDate()->getMonth()?></td></tr>
+                            <tr><td>Day</td><td><?=$shakaCalendarResult->getCalendarDate()->getDay()?></td></tr>
+                            <tr><td>Year Name</td><td><?=$shakaCalendarResult->getCalendarDate()->getYearName()?></td></tr>
+                            <tr><td>Month Name</td><td><?=$shakaCalendarResult->getCalendarDate()->getMonthName()?></td></tr>
+                        </table>
+                        <table class="table table-bordered text-large text-center table-hover">
+                            <tr class="bg-secondary text-white"><td>Calendar Name </td><td><?=$amantaCalendarResult->getCalendarDate()->getName()?></td></tr>
+                            <tr><td>Gregorian Date</td><td><?=$datetime->format('d M, Y')?></td></tr>
+                            <tr><td>Year</td><td><?=$amantaCalendarResult->getCalendarDate()->getYear()?></td></tr>
+                            <tr><td>Month</td><td><?=$amantaCalendarResult->getCalendarDate()->getMonth()?></td></tr>
+                            <tr><td>Day</td><td><?=$amantaCalendarResult->getCalendarDate()->getDay()?></td></tr>
+                            <tr><td>Year Name</td><td><?=$amantaCalendarResult->getCalendarDate()->getYearName()?></td></tr>
+                            <tr><td>Month Name</td><td><?=$amantaCalendarResult->getCalendarDate()->getMonthName()?></td></tr>
+                        </table>
                     </div>
             </div>
         <?php endif; ?>

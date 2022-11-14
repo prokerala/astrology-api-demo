@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 use Prokerala\Api\Astrology\Location;
-use Prokerala\Api\Astrology\Service\AnandadiYoga;
 use Prokerala\Api\Astrology\Service\ChandraBala;
 use Prokerala\Api\Astrology\Service\Panchang;
 use Prokerala\Api\Astrology\Service\Ritu;
 use Prokerala\Api\Astrology\Service\Solstice;
 use Prokerala\Api\Astrology\Service\TaraBala;
+use Prokerala\Api\Calendar\Service\CalendarDate;
 use Prokerala\Common\Api\Exception\AuthenticationException;
 use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
@@ -91,6 +91,10 @@ if ($submit) {
         $method->setAyanamsa($ayanamsa);
         $method->setTimeZone($tz);
         $taraBalaResult = $method->process($location, $datetime, $la);
+        $apiCreditUsed += $client->getCreditUsed();
+
+        $method = new CalendarDate($client);
+        $calendarResult = $method->process('vikram-samvat', $datetime, $la);
         $apiCreditUsed += $client->getCreditUsed();
 
         $panchangResult = [

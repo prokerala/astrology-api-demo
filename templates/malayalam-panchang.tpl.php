@@ -126,6 +126,15 @@
                                 <td><?=$solsticeResult->getDishaShool()->getVedicName()?></td>
                             </tr>
                         </table>
+                        <span class="text-black d-block b"><?= ucwords('Calendar')?></span>
+                        <table class="table table-bordered text-large text-center table-hover">
+                            <tr><td>Gregorian Date</td><td><?=$datetime->format('d M, Y')?></td></tr>
+                            <tr><td>Calendar Name </td><td><?=$calendarResult->getCalendarDate()->getName()?></td></tr>
+                            <tr><td>Year</td><td><?=$calendarResult->getCalendarDate()->getYear()?></td></tr>
+                            <tr><td>Month</td><td><?=$calendarResult->getCalendarDate()->getMonth()?></td></tr>
+                            <tr><td>Day</td><td><?=$calendarResult->getCalendarDate()->getDay()?></td></tr>
+                            <tr><td>Month Name</td><td><?=$calendarResult->getCalendarDate()->getMonthName()?></td></tr>
+                        </table>
                     </div>
             </div>
         <?php endif; ?>

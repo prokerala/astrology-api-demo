@@ -9,6 +9,7 @@ use Prokerala\Api\Astrology\Service\Panchang;
 use Prokerala\Api\Astrology\Service\Ritu;
 use Prokerala\Api\Astrology\Service\Solstice;
 use Prokerala\Api\Astrology\Service\TaraBala;
+use Prokerala\Api\Calendar\Service\CalendarDate;
 use Prokerala\Common\Api\Exception\AuthenticationException;
 use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
@@ -80,6 +81,9 @@ if ($submit) {
         $solsticeResult = $method->process($location, $datetime, $la);
         $apiCreditUsed += $client->getCreditUsed();
 
+        $method = new CalendarDate($client);
+        $calendarResult = $method->process('kolla-varsham', $datetime, $la);
+        $apiCreditUsed += $client->getCreditUsed();
 
         $panchangResult = [
             'sunrise' => $result->getSunrise(),

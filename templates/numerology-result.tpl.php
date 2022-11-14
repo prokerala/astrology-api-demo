@@ -89,12 +89,15 @@ if ($system === 'pythagorean') {
         $numberResultObject = $result->getLifePathNumber();
     } else if ($selectedCalculator === 'identity-initial-code-number') {
         $numberResultObject = $result->getIdentityInitialCodeNumber();
+        $nameChart = $result->getNameChart();
     } else if ($selectedCalculator === 'daily-name-number') {
         $numberResultObject = $result->getDailyNameNumber();
+        $nameChart = $result->getNameChart();
     } else if ($selectedCalculator === 'whole-name-number') {
         $name = $result->getWholeNameNumber()->getName();
         $multipleNumbers = $result->getWholeNameNumber()->getEnergies();
         $multipleNumberResult = true;
+        $nameChart = $result->getNameChart();
     }
 }
 

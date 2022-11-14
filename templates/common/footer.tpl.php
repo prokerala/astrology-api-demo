@@ -106,24 +106,41 @@
                             <span class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             API Demo
                             </span>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><a class="dropdown-item" target="_blank" href="/demo/anandadi-yoga.php">Anandadi Yoga</a>
                                 <a class="dropdown-item" target="_blank" href="/demo/auspicious-period.php">Auspicious Period</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/auspicious-yoga.php">Auspicious Yoga</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/birth-details.php">Birth Details</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/calendar.php">Calendar</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/chandra-bala.php">Chandra Bala</a>
                                 <a class="dropdown-item" target="_blank" href="/demo/chart.php">Chart</a>
                                 <a class="dropdown-item" target="_blank" href="/demo/choghadiya.php">Choghadiya</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/daily-horoscope.php">Daily Horoscope</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/dasha-periods.php">Dasha Periods</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/disha-shool.php">Disha Shool</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/hindu-panchang.php">Hindu Panchang</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/hora.php">Hora</a>
                                 <a class="dropdown-item" target="_blank" href="/demo/inauspicious-period.php">Inauspicious Period</a>
                                 <a class="dropdown-item" target="_blank" href="/demo/kaal-sarp-dosha.php">Kaal Sarp Dosha</a>
-                                <a class="dropdown-item" target="_blank" href="/demo/kundli.php">Kundli</a>
                                 <a class="dropdown-item" target="_blank" href="/demo/kundli-matching.php">Kundli Matching</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/kundli.php">Kundli</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/malayalam-panchang.php">Malayalam Panchang</a>
                                 <a class="dropdown-item" target="_blank" href="/demo/mangal-dosha.php">Mangal Dosha</a>
-                                <a class="dropdown-item" target="_blank" href="/demo/birth-details.php">Birth Details</a>
                                 <a class="dropdown-item" target="_blank" href="/demo/nakshatra-porutham.php">Nakshatra Porutham</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/numerology.php">Numerology</a>
                                 <a class="dropdown-item" target="_blank" href="/demo/panchang.php">Panchang</a>
                                 <a class="dropdown-item" target="_blank" href="/demo/papasamyam-check.php">Papasamyam Check</a>
                                 <a class="dropdown-item" target="_blank" href="/demo/papasamyam.php">Papasamyam</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/pdf-report.php">PDF Report</a>
                                 <a class="dropdown-item" target="_blank" href="/demo/planet-position.php">Planet Position</a>
                                 <a class="dropdown-item" target="_blank" href="/demo/porutham.php">Porutham</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/ritu.php">Ritu</a>
                                 <a class="dropdown-item" target="_blank" href="/demo/sade-sati.php">Sade Sati</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/solstice.php">Solstice</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/tamil-panchang.php">Tamil Panchang</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/tara-bala.php">Tara Bala</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/telugu-panchang.php">Telugu Panchang</a>
                                 <a class="dropdown-item" target="_blank" href="/demo/thirumana-porutham.php">Thirumana Porutham</a>
+                                <a class="dropdown-item" target="_blank" href="/demo/yoga-details.php">Yoga Details</a>
                             </div>
                         </li>
                         <li class="align-items-center sidebar-panel-link py-3">

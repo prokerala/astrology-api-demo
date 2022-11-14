@@ -168,7 +168,7 @@
                                     <tr>
                                         <?php foreach($anandadiYogaResult->getAnandadiYoga() as $data): ?>
                                             <table  class="table table-bordered table-sm table-hora-result t-small">
-                                                <tr class="font-weight-bold"><td>Name</td><td><?=$data->getName()?> Yoga</td></tr>
+                                                <tr class="font-weight-bold"><td>Name</td><td><?=$data->getName()?></td></tr>
                                                 <tr><td>Type</td><td><?=$data->getType()?></td></tr>
                                                 <tr><td>Status</td><td><?=$data->getDescription()?></td></tr>
                                                 <tr><td>Start</td><td><?=$data->getStart()->format('c')?></td></tr>

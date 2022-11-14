@@ -13,7 +13,7 @@
             <option value="vikram-samvat" >Vikram Samvat</option>
             <option value="amanta" >Amanta</option>
             <option value="purnimanta" >Purnimanta</option>
-            <option value="malayalam" >Malayalam</option>
+            <option value="kolla-varsham" >Kolla Varsham</option>
             <option value="hijri" >Hijri</option>
             <option value="gujarati" >Gujarati</option>
             <option value="bengali" >Bengali</option>

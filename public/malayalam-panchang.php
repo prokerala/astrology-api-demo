@@ -58,22 +58,27 @@ $solsticeResult = [];
 $anandadiYogaResult = [];
 $chandraBalaResult = [];
 $taraBalaResult = [];
+$apiCreditUsed = 0;
+
 if ($submit) {
     try {
         $method = new Panchang($client);
         $method->setAyanamsa($ayanamsa);
         $method->setTimeZone($tz);
         $result = $method->process($location, $datetime, true, $la);
+        $apiCreditUsed += $client->getCreditUsed();
 
         $method = new Ritu($client);
         $method->setAyanamsa($ayanamsa);
         $method->setTimeZone($tz);
         $rituResult = $method->process($location, $datetime, $la);
+        $apiCreditUsed += $client->getCreditUsed();
 
         $method = new Solstice($client);
         $method->setAyanamsa($ayanamsa);
         $method->setTimeZone($tz);
         $solsticeResult = $method->process($location, $datetime, $la);
+        $apiCreditUsed += $client->getCreditUsed();
 
 
         $panchangResult = [
@@ -147,7 +152,5 @@ if ($submit) {
         $errors = ['message' => "API Request Failed with error {$e->getMessage()}"];
     }
 }
-
-$apiCreditUsed = $client->getCreditUsed();
 
 include DEMO_BASE_DIR . '/templates/malayalam-panchang.tpl.php';

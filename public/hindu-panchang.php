@@ -58,33 +58,38 @@ $arSupportedLanguages = [
     'en' => 'English',
     'hi' => 'Hindi',
 ];
-
+$apiCreditUsed = 0;
 if ($submit) {
     try {
         $method = new Panchang($client);
         $method->setAyanamsa($ayanamsa);
         $method->setTimeZone($tz);
         $result = $method->process($location, $datetime, true, $la);
+        $apiCreditUsed += $client->getCreditUsed();
 
         $method = new Hora($client);
         $method->setAyanamsa($ayanamsa);
         $method->setTimeZone($tz);
         $horaResult = $method->process($location, $datetime, $la);
+        $apiCreditUsed += $client->getCreditUsed();
 
         $method = new Ritu($client);
         $method->setAyanamsa($ayanamsa);
         $method->setTimeZone($tz);
         $rituResult = $method->process($location, $datetime, $la);
+        $apiCreditUsed += $client->getCreditUsed();
 
         $method = new Solstice($client);
         $method->setAyanamsa($ayanamsa);
         $method->setTimeZone($tz);
         $solsticeResult = $method->process($location, $datetime, $la);
+        $apiCreditUsed += $client->getCreditUsed();
 
         $method = new DishaShool($client);
         $method->setAyanamsa($ayanamsa);
         $method->setTimeZone($tz);
         $dishaShoolResult = $method->process($location, $datetime, $la);
+        $apiCreditUsed += $client->getCreditUsed();
 
         $panchangResult = [
             'sunrise' => $result->getSunrise(),
@@ -157,7 +162,5 @@ if ($submit) {
         $errors = ['message' => "API Request Failed with error {$e->getMessage()}"];
     }
 }
-
-$apiCreditUsed = $client->getCreditUsed();
 
 include DEMO_BASE_DIR . '/templates/hindu-panchang.tpl.php';

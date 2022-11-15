@@ -9,7 +9,7 @@ $samples = [
     ],
     'chart' => [
         'image' => '/assets/img/icon/chart.png',
-        'title' => 'Chart',
+        'title' => 'Birth Chart',
         'url' => DEMO_BASE_URL . '/chart.php',
         'docs' => 'birth-chart',
     ],

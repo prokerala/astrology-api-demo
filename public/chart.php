@@ -33,6 +33,14 @@ $ayanamsa = 1;
 $chart_style = 'south-indian';
 $sample_name = 'chart';
 
+$arSupportedLanguages = [
+    'en' => 'English',
+    'hi' => 'Hindi',
+    'ta' => 'Tamil',
+    'te' => 'Telugu',
+    'ml' => 'Malayalam',
+];
+
 $timezone = 'Asia/Kolkata';
 if ($submit) {
     $input['datetime'] = $_POST['datetime'];
@@ -43,6 +51,7 @@ if ($submit) {
     $chart_type = $_POST['chart_type'];
     $chart_style = $_POST['chart_style'];
     $timezone = $_POST['timezone'] ?? '';
+    $la = $_POST['la'] ?? 'en';
 }
 
 $tz = new DateTimeZone($timezone);
@@ -57,7 +66,7 @@ if ($submit) {
     try {
         $method = new Chart($client);
         $method->setAyanamsa($ayanamsa);
-        $result = $method->process($location, $datetime, $chart_type, $chart_style);
+        $result = $method->process($location, $datetime, $chart_type, $chart_style, $la);
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {

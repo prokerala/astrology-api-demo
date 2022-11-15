@@ -36,11 +36,11 @@
             <h3 class="text-black">Girl Papa Points</h3>
             <table class="table table-bordered table-responsive-sm table-hover">
                 <thead class="bg-secondary text-white">
-                <tr><th rowspan="2">Girl Papa Points</th><th colspan="2">From <?=$arPapaFromPlanets[0]?></th>
-                    <th colspan="2">From <?=$arPapaFromPlanets[1]?></th><th colspan="2">From <?=$arPapaFromPlanets[2]?></th>
+                <tr><th rowspan="2">Girl Papa Points</th><th colspan="2"><?=$arPapaFromPlanets[0]?></th>
+                    <th colspan="2"><?=$arPapaFromPlanets[1]?></th><th colspan="2"><?=$arPapaFromPlanets[2]?></th>
                 </tr>
-                <tr><th>Position</th><th>Papam</th><th>Position</th>
-                    <th>Papam</th><th>Position</th><th>Papam</th>
+                <tr><th>Position</th><th>Point</th><th>Position</th>
+                    <th>Point</th><th>Position</th><th>Point</th>
                 </tr>
                 </thead>
                     <?php foreach ($arPapaPlanets as $papaPlanet => $papaPlanetName):?>
@@ -57,11 +57,11 @@
             <h3 class="text-black">Boy Papa Points</h3>
             <table class="table table-bordered table-responsive-sm table-hover">
                 <thead class="bg-secondary text-white">
-                    <tr><th rowspan="2">Boy Papa Points</th><th colspan="2">From Ascendant</th>
-                        <th colspan="2">From Moon</th><th colspan="2">From Venus</th>
+                    <tr><th rowspan="2">Boy Papa Points</th><th colspan="2"><?=$arPapaFromPlanets[0]?></th>
+                        <th colspan="2"><?=$arPapaFromPlanets[1]?></th><th colspan="2"><?=$arPapaFromPlanets[2]?></th>
                     </tr>
-                    <tr><th>Position</th><th>Papam</th><th>Position</th>
-                        <th>Papam</th><th>Position</th><th>Papam</th>
+                    <tr><th>Position</th><th>Point</th><th>Position</th>
+                        <th>Point</th><th>Position</th><th>Point</th>
                     </tr>
                 </thead>
                 <?php foreach ($arPapaPlanets as $papaPlanet => $papaPlanetName):?>

@@ -48,7 +48,7 @@
                     <tr><th>Name</th><th>Type</th><th>Start</th><th>End</th></tr>
 
                 <?php foreach ($choghadiya as $data):?>
-                    <tr class="<?= 'Good' === $data['type'] ? 'table-warning' : ('Inauspicious' === $data['type'] ? 'table-danger' : 'table-success')?>">
+                    <tr>
                         <td><?=$data['name']?><br><i><?= $data['vela'] ?: ''?></i></td>
                         <td><?= $data['type']?></td>
                         <td><?= $data['start']->format('h:i:A')?></td>

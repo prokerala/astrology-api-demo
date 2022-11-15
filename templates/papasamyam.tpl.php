@@ -35,9 +35,9 @@
             <h2 class="text-center text-black">Papasamyam Details</h2>
             <table class="table table-bordered table-responsive-sm table-hover">
                 <thead>
-                <tr class="bg-secondary text-white"><th rowspan="2">Papa Points</th><th colspan="2">From <?=$arPapaFromPlanets[0]?></th><th colspan="2">From <?=$arPapaFromPlanets[1]?></th><th colspan="2">From <?=$arPapaFromPlanets[2]?>
+                <tr class="bg-secondary text-white"><th rowspan="2">Papa Points</th><th colspan="2"><?=$arPapaFromPlanets[0]?></th><th colspan="2"><?=$arPapaFromPlanets[1]?></th><th colspan="2">From <?=$arPapaFromPlanets[2]?>
                     </th></tr>
-                <tr class="bg-secondary text-white"><th>Position</th><th>Papam</th><th>Position</th><th>Papam</th><th>Position</th><th>Papam</th></tr>
+                <tr class="bg-secondary text-white"><th>Position</th><th>Point</th><th>Position</th><th>Point</th><th>Position</th><th>Point</th></tr>
                 </thead>
                 <?php foreach ($arPapaPlanets as $papaPlanet => $papaPlanetName):?>
                     <tr><th><?=$papaPlanetName?></th>

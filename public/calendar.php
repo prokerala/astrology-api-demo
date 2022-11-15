@@ -96,8 +96,17 @@ $result = [];
 $errors = [];
 $arData = [];
 
+$today = new \DateTimeImmutable('now');
+$weekNumber = (int)$today->format("W");
+$dateMinimum = (new \DateTimeImmutable())->setISODate((int)$today->format('Y'), $weekNumber);
+$dateMinimum = $dateMinimum->modify('-1 day');
+$dateMaximum = $dateMinimum->modify('+6 days');
+
 if ($submit) {
     try {
+        if ($date < $dateMinimum || $date > $dateMaximum) {
+            throw new Exception('Enter date between '. $dateMinimum->format('Y-m-d') .' and '. $dateMaximum->format('Y-m-d'));
+        }
         $method = new CalendarDate($client);
         $result = $method->process($calendar, $date, $la);
     } catch (ValidationException $e) {

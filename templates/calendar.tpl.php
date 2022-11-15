@@ -64,6 +64,7 @@
                         </div>
                     </form>
                 </div>
+                <p class="text-center"><sup class="text-danger">*</sup>The demo can only change data for the current week</p>
             </section>
         <?php include 'common/calculator-list.tpl.php'; ?>
 

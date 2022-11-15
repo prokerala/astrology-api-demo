@@ -7,14 +7,14 @@ use Prokerala\Api\Numerology\Service\Pythagorean\BalanceNumber;
 use Prokerala\Api\Numerology\Service\Pythagorean\BirthdayNumber;
 use Prokerala\Api\Numerology\Service\Pythagorean\BirthMonthNumber;
 use Prokerala\Api\Numerology\Service\Pythagorean\BridgeNumber;
-use Prokerala\Api\Numerology\Service\Pythagorean\CapStoneNumber;
+use Prokerala\Api\Numerology\Service\Pythagorean\CapstoneNumber;
 use Prokerala\Api\Numerology\Service\Chaldean\BirthNumber;
 use Prokerala\Api\Numerology\Service\Chaldean\DailyNameNumber;
 use Prokerala\Api\Numerology\Service\Chaldean\IdentityInitialCode;
 use Prokerala\Api\Numerology\Service\Chaldean\WholeNameNumber;
 use Prokerala\Api\Numerology\Service\Chaldean\LifePathNumber as ChaldeanLifePathNumber;
 use Prokerala\Api\Numerology\Service\Pythagorean\ChallengeNumber;
-use Prokerala\Api\Numerology\Service\Pythagorean\CornerStoneNumber;
+use Prokerala\Api\Numerology\Service\Pythagorean\CornerstoneNumber;
 use Prokerala\Api\Numerology\Service\Pythagorean\DestinyNumber;
 use Prokerala\Api\Numerology\Service\Pythagorean\ExpressionNumber;
 use Prokerala\Api\Numerology\Service\Pythagorean\HiddenPassionNumber;
@@ -62,9 +62,9 @@ $calculators = [
         'birth-month-number' => ['class' => BirthMonthNumber::class, 'name' => 'Birth Month Number'],
         'birthday-number' => ['class' => BirthdayNumber::class, 'name' => 'Birthday Number'],
         'bridge-number' => ['class' => BridgeNumber::class, 'name' => 'Bridge Number'],
-        'capstone-number' => ['class' => CapStoneNumber::class, 'name' => 'Capstone Number'],
+        'capstone-number' => ['class' => CapstoneNumber::class, 'name' => 'Capstone Number'],
         'challenge-number' => ['class' => ChallengeNumber::class, 'name' => 'Challenge Number'],
-        'cornerstone-number' => ['class' => CornerStoneNumber::class, 'name' => 'Corner Stone Number'],
+        'cornerstone-number' => ['class' => CornerstoneNumber::class, 'name' => 'Corner Stone Number'],
         'destiny-number' => ['class' => DestinyNumber::class, 'name' => 'Destiny Number'],
         'expression-number' => ['class' => ExpressionNumber::class, 'name' => 'Expression Number'],
         'hidden-passion-number' => ['class' => HiddenPassionNumber::class, 'name' => 'Hidden Passion Number'],

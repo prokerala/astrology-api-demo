@@ -9,11 +9,11 @@
     <div class="col-sm-9 col-md-6">
         <select name="calendar" class="form-control form-control-lg rounded-1" id="fin-select-calendar">
             <option value="tamil" >Tamil</option>
+            <option value="malayalam" >Malayalam</option>
             <option value="shaka-samvat" >Shaka Samvat</option>
             <option value="vikram-samvat" >Vikram Samvat</option>
             <option value="amanta" >Amanta</option>
             <option value="purnimanta" >Purnimanta</option>
-            <option value="kolla-varsham" >Kolla Varsham</option>
             <option value="hijri" >Hijri</option>
             <option value="gujarati" >Gujarati</option>
             <option value="bengali" >Bengali</option>

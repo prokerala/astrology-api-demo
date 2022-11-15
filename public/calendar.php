@@ -58,7 +58,7 @@ $arSupportedLanguages = [
         'te' => 'Telugu',
         'ml' => 'Malayalam',
     ],
-    'kolla-varsham' => [
+    'malayalam' => [
         'en' => 'English',
         'ml' => 'Malayalam',
     ],

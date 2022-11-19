@@ -82,7 +82,7 @@ if ($submit) {
         $apiCreditUsed += $client->getCreditUsed();
 
         $method = new CalendarDate($client);
-        $calendarResult = $method->process('kolla-varsham', $datetime, $la);
+        $calendarResult = $method->process('malayalam', $datetime, $la);
         $apiCreditUsed += $client->getCreditUsed();
 
         $panchangResult = [

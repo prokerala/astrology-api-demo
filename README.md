@@ -32,12 +32,24 @@ composer install
 
 #### Start the built-in PHP server
 
-Open your terminal (PowerShell on Windows) and run
+
+On Linux/macOS, open up your terminal and run
 
 ```
 DEMO_CLIENT_ID=<YOUR_CLIENT_ID> DEMO_CLIENT_SECRET=<YOUR_CLIENT_SECRET> php -S localhost:8000 -t public
-
 ```
 
-In the above command, replace `<YOUR_CLIENT_ID>` and `<YOUR_CLIENT_SECRET>` with your actual client id and secret.
+On Windows, open Powershell and run
+
+```
+$env:DEMO_CLIENT_ID="<YOUR_CLIENT_ID>"
+$env:DEMO_CLIENT_SECRET="<YOUR_CLIENT_SECRET>"
+php -S localhost:8000 -t public
+```
+
+In the above commands, replace `<YOUR_CLIENT_ID>` and `<YOUR_CLIENT_SECRET>` with your actual client id and secret.
+
+### Troubleshooting
+
+- If you get `command not found: php` (Linux/macOS) or `The term 'php' is not recognized as the name of a cmdlet` (Windows) error, ensure that `php` executable directory is in your `PATH` variable.
 

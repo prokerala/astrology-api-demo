@@ -210,5 +210,77 @@ $samples = [
         'title' => 'PDF Report',
         'url' => DEMO_BASE_URL . '/pdf-report.php',
         'docs' => 'pdf-report',
+    ],
+    'natal-chart' => [
+        'image' => '/assets/img/icon/numerology.png',
+        'title' => 'Natal Chart',
+        'url' => DEMO_BASE_URL . '/natal-chart.php',
+        'docs' => 'natal-chart',
+    ],
+    'transit-chart' => [
+        'image' => '/assets/img/icon/numerology.png',
+        'title' => 'Transit Chart',
+        'url' => DEMO_BASE_URL . '/transit-chart.php',
+        'docs' => 'transit-chart',
+    ],
+    'progression-chart' => [
+        'image' => '/assets/img/icon/numerology.png',
+        'title' => 'Progression Chart',
+        'url' => DEMO_BASE_URL . '/progression-chart.php',
+        'docs' => 'progression-chart',
+    ],
+    'solar-return-chart' => [
+        'image' => '/assets/img/icon/numerology.png',
+        'title' => 'Solar Return Chart',
+        'url' => DEMO_BASE_URL . '/solar-return-chart.php',
+        'docs' => 'solar-return-chart',
+    ],
+    'synastry-chart' => [
+        'image' => '/assets/img/icon/numerology.png',
+        'title' => 'Synastry Chart',
+        'url' => DEMO_BASE_URL . '/synastry-chart.php',
+        'docs' => 'synastry-chart',
+    ],
+    'composite-chart' => [
+        'image' => '/assets/img/icon/numerology.png',
+        'title' => 'Composite Chart',
+        'url' => DEMO_BASE_URL . '/composite-chart.php',
+        'docs' => 'composite-chart',
+    ],
+    'natal-aspect-chart' => [
+        'image' => '/assets/img/icon/numerology.png',
+        'title' => 'Natal Aspect Chart',
+        'url' => DEMO_BASE_URL . '/natal-aspect-chart.php',
+        'docs' => 'natal-aspect-chart',
+    ],
+    'transit-aspect-chart' => [
+        'image' => '/assets/img/icon/numerology.png',
+        'title' => 'Transit Aspect Chart',
+        'url' => DEMO_BASE_URL . '/transit-aspect-chart.php',
+        'docs' => 'transit-aspect-chart',
+    ],
+    'progression-aspect-chart' => [
+        'image' => '/assets/img/icon/numerology.png',
+        'title' => 'Progression Aspect Chart',
+        'url' => DEMO_BASE_URL . '/progression-aspect-chart.php',
+        'docs' => 'progression-aspect-chart',
+    ],
+    'solar-return-aspect-chart' => [
+        'image' => '/assets/img/icon/numerology.png',
+        'title' => 'Solar Return Aspect Chart',
+        'url' => DEMO_BASE_URL . '/solar-return-aspect-chart.php',
+        'docs' => 'solar-return-aspect-chart',
+    ],
+    'synastry-aspect-chart' => [
+        'image' => '/assets/img/icon/numerology.png',
+        'title' => 'Synastry Aspect Chart',
+        'url' => DEMO_BASE_URL . '/synastry-aspect-chart.php',
+        'docs' => 'synastry-aspect-chart',
+    ],
+    'composite-aspect-chart' => [
+        'image' => '/assets/img/icon/numerology.png',
+        'title' => 'Composite Aspect Chart',
+        'url' => DEMO_BASE_URL . '/composite-aspect-chart.php',
+        'docs' => 'composite-aspect-chart',
     ]
 ];

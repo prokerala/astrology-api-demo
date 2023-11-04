@@ -13,38 +13,35 @@ use Prokerala\Common\Api\Exception\ValidationException;
 require __DIR__ . '/bootstrap.php';
 
 $sample_name = 'transit-aspect-chart';
-$time_now = new DateTimeImmutable();
 
-$input = [
-    'datetime' => $time_now->format('c'),
-    'latitude' => '19.0821978',
-    'longitude' => '72.7411014', // Mumbai
-    'transit_datetime' => $time_now->format('c'),
-    'transit_latitude' => '19.0821978',
-    'transit_longitude' => '72.7411014', // Mumbai
-];
-$coordinates = $input['latitude'] . ',' . $input['longitude'];
-$transitCoordinates = $input['transit_latitude'] . ',' . $input['transit_longitude'];
+$transitDatetime = new DateTimeImmutable('now', new DateTimeZone('Asia/Kolkata'));
+$birthTime = $transitDatetime->modify('-18 years')->format('c');
+$transitDatetime = $transitDatetime->format('c');
+
+$latitude = 19.0821978;// Mumbai
+$longitude = 72.7411014;
+$current_latitude = 19.0821978;// Mumbai
+$current_longitude = 72.7411014;
+
 $submit = $_POST['submit'] ?? 0;
+
 $houseSystem = 'placidus';
 $orb = 'default';
 $birthTimeUnknown = 'false';
 $rectificationChart = 'noon';
-$timezone = 'Asia/Kolkata';
 $aspectFilter = 'all';
 
 if (isset($_POST['submit'])) {
-    $input['datetime'] = $_POST['datetime'];
-    $input['transit_datetime'] = $_POST['transit_datetime'];
+    $datetime = $_POST['datetime'];
+    $transitDatetime = $_POST['transit_datetime'];
     $coordinates = $_POST['coordinates'];
+    $arCoordinates = explode(',', $coordinates);
+    $latitude = $arCoordinates[0] ?? '';
+    $longitude = $arCoordinates[1] ?? '';
     $transitCoordinates = $_POST['current_coordinates'];
     $arCoordinates = explode(',', $coordinates);
-    $input['latitude'] = $arCoordinates[0] ?? '';
-    $input['longitude'] = $arCoordinates[1] ?? '';
-    $arCoordinates = explode(',', $transitCoordinates);
-    $input['transit_latitude'] = $arCoordinates[0] ?? '';
-    $input['transit_longitude'] = $arCoordinates[1] ?? '';
-    $timezone = $_POST['timezone'] ?? '';
+    $current_latitude = $arCoordinates[0] ?? '';
+    $current_longitude = $arCoordinates[1] ?? '';
     $houseSystem = $_POST['house_system'];
     $orb = $_POST['orb'];
     $birthTimeUnknown = $_POST['birth_time_unknown'];
@@ -52,12 +49,11 @@ if (isset($_POST['submit'])) {
     $aspectFilter = $_POST['aspect_filter'];
 }
 
-$tz = new DateTimeZone($timezone);
-$datetime = new DateTimeImmutable($input['datetime'], $tz);
-$transitDatetime = new DateTimeImmutable($input['transit_datetime'], $tz);
+$location = new Location((float)$latitude, (float)$longitude, 0);
+$transitLocation = new Location((float)$current_latitude, (float)$current_longitude, 0);
 
-$location = new Location((float)$input['latitude'], (float)$input['longitude'], 0, $tz);
-$transitLocation = new Location((float)$input['transit_latitude'], (float)$input['transit_longitude'], 0, $tz);
+$datetime = new DateTimeImmutable($birthTime, $location->getTimeZone());
+$transitDatetime = new DateTimeImmutable($transitDatetime, $location->getTimeZone());
 
 $result = [];
 $errors = [];

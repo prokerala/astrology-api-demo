@@ -30,7 +30,6 @@ $houseSystem = 'placidus';
 $orb = 'default';
 $birthTimeUnknown = 'false';
 $rectificationChart = 'noon';
-$timezone = 'Asia/Kolkata';
 $aspectFilter = 'all';
 
 if (isset($_POST['submit'])) {
@@ -44,7 +43,6 @@ if (isset($_POST['submit'])) {
     $input['transit_latitude'] = $arCoordinates[0] ?? '';
     $input['transit_longitude'] = $arCoordinates[1] ?? '';
     $progressionYear = $_POST['progression_year'];
-    $timezone = $_POST['timezone'] ?? '';
     $houseSystem = $_POST['house_system'];
     $orb = $_POST['orb'];
     $birthTimeUnknown = $_POST['birth_time_unknown'];
@@ -52,11 +50,10 @@ if (isset($_POST['submit'])) {
     $aspectFilter = $_POST['aspect_filter'];
 }
 
-$tz = new DateTimeZone($timezone);
-$datetime = new DateTimeImmutable($input['datetime'], $tz);
+$location = new Location((float)$input['latitude'], (float)$input['longitude'], 0);
+$datetime = new DateTimeImmutable($input['datetime'], $location->getTimeZone());
 
-$location = new Location((float)$input['latitude'], (float)$input['longitude'], 0, $tz);
-$transitLocation = new Location((float)$input['transit_latitude'], (float)$input['transit_longitude'], 0, $tz);
+$transitLocation = new Location((float)$input['transit_latitude'], (float)$input['transit_longitude'], 0);
 
 $result = [];
 $errors = [];

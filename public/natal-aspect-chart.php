@@ -13,40 +13,36 @@ use Prokerala\Common\Api\Exception\ValidationException;
 require __DIR__ . '/bootstrap.php';
 
 $sample_name = 'natal-aspect-chart';
-$time_now = new DateTimeImmutable();
 
-$input = [
-    'datetime' => $time_now->format('c'),
-    'latitude' => '19.0821978',
-    'longitude' => '72.7411014', // Mumbai
-];
-$coordinates = $input['latitude'] . ',' . $input['longitude'];
+$datetime = (new DateTimeImmutable('now', new DateTimeZone('Asia/Kolkata')))->format('c');
+
+$latitude = 19.0821978;
+$longitude = 72.7411014;
+$coordinates = "{$latitude},{$longitude}"; // Mumbai
+
 $submit = $_POST['submit'] ?? 0;
+
 $houseSystem = 'placidus';
 $orb = 'default';
 $birthTimeUnknown = 'false';
-$rectificationChart = 'flat-chart';
-$timezone = 'Asia/Kolkata';
+$rectificationChart = 'noon';
 $aspectFilter = 'all';
 
 if (isset($_POST['submit'])) {
-    $input['datetime'] = $_POST['datetime'];
+    $datetime = $_POST['datetime'];
     $coordinates = $_POST['coordinates'];
     $arCoordinates = explode(',', $coordinates);
-    $input['latitude'] = $arCoordinates[0] ?? '';
-    $input['longitude'] = $arCoordinates[1] ?? '';
-    $timezone = $_POST['timezone'] ?? '';
+    $latitude = $arCoordinates[0] ?? '';
+    $longitude = $arCoordinates[1] ?? '';
     $houseSystem = $_POST['house_system'];
     $orb = $_POST['orb'];
     $birthTimeUnknown = $_POST['birth_time_unknown'];
     $rectificationChart = $_POST['birth_time_rectification'];
     $aspectFilter = $_POST['aspect_filter'];
 }
+$location = new Location((float)$latitude, (float)$longitude, 0);
 
-$tz = new DateTimeZone($timezone);
-$datetime = new DateTimeImmutable($input['datetime'], $tz);
-
-$location = new Location((float)$input['latitude'], (float)$input['longitude'], 0, $tz);
+$datetime = new DateTimeImmutable($datetime, $location->getTimeZone());
 
 $result = [];
 $errors = [];

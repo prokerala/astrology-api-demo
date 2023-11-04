@@ -128,12 +128,12 @@
             <label class="col-sm-3 col-md-4 col-form-label ">Rectification Chart: </label>
             <div class="col-sm-9 col-md-6 ">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="rectification_chart" id="rectification_chart1" value="noon" <?='noon' === $rectificationChart ? 'checked' : ''?>>
-                    <label class="form-check-label" for="rectification_chart1">Flat Chart</label>
+                    <input class="form-check-input" type="radio" name="birth_time_rectification" id="birth_time_rectification1" value="noon" <?='noon' === $rectificationChart ? 'checked' : ''?>>
+                    <label class="form-check-label" for="birth_time_rectification1">Flat Chart</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="rectification_chart" id="rectification_chart2" value="sunrise" <?='sunrise' === $rectificationChart ? 'checked' : ''?>>
-                    <label class="form-check-label" for="rectification_chart2">True Sunrise</label>
+                    <input class="form-check-input" type="radio" name="birth_time_rectification" id="birth_time_rectification2" value="sunrise" <?='sunrise' === $rectificationChart ? 'checked' : ''?>>
+                    <label class="form-check-label" for="birth_time_rectification2">True Sunrise</label>
                 </div>
             </div>
         </div>

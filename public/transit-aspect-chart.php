@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
     $houseSystem = $_POST['house_system'];
     $orb = $_POST['orb'];
     $birthTimeUnknown = $_POST['birth_time_unknown'];
-    $rectificationChart = $_POST['rectification_chart'];
+    $rectificationChart = $_POST['birth_time_rectification'];
     $aspectFilter = $_POST['aspect_filter'];
 }
 

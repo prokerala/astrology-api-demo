@@ -31,7 +31,35 @@
                 </select>
             </div>
         </div>
+        <?php if (in_array($sample_name, ['transit-chart', 'transit-aspect-chart'])): ?>
+            <div class="form-group row">
+                <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Transit Date Time: </label>
+                <div class="col-sm-9 col-md-6 ">
+                    <input type='datetime-local' name="transit_datetime" class="form-control form-control-lg rounded-1" required="required" value="<?= $transitDatetime->format('Y-m-d\TH:i')?>"/>
+                </div>
+            </div>
 
+            <div class="form-group row">
+                <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Transit Location:</label>
+                <div class="col-sm-9 col-md-6 ">
+                    <input type='text' id="fin-current-location" name="current_location" autocomplete="off" class="form-control form-control-lg rounded-1 prokerala-location-input" placeholder="Transit Location" value="" required>
+                </div>
+            </div>
+        <?php elseif (in_array($sample_name, ['progression-chart', 'progression-aspect-chart'])): ?>
+            <div class="form-group row">
+                <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Progression Year: </label>
+                <div class="col-sm-9 col-md-6 ">
+                    <input type='date' name="progression_year" class="form-control form-control-lg rounded-1" required="required" value="<?= $transitDatetime->format('Y')?>"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Progressed Location:</label>
+                <div class="col-sm-9 col-md-6 ">
+                    <input type='text' id="fin-current-location" name="current_location" autocomplete="off" class="form-control form-control-lg rounded-1 prokerala-location-input" placeholder="Transit Location" value="" required>
+                </div>
+            </div>
+        <?php endif; ?>
     </div>
 
     <div class="col-12 col-md-6">

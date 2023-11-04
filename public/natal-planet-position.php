@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Prokerala\Api\Astrology\Location;
-use Prokerala\Api\Astrology\Western\Service\AspectCharts\NatalChart;
+use Prokerala\Api\Astrology\Western\Service\PlanetPositions\NatalChart;
 use Prokerala\Common\Api\Exception\AuthenticationException;
 use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
@@ -12,7 +12,7 @@ use Prokerala\Common\Api\Exception\ValidationException;
 
 require __DIR__ . '/bootstrap.php';
 
-$sample_name = 'natal-aspect-chart';
+$sample_name = 'natal-planet-position';
 
 $datetime = (new DateTimeImmutable('now', new DateTimeZone('Asia/Kolkata')))->format('c');
 
@@ -52,7 +52,10 @@ if ($submit) {
         $method = new NatalChart($client);
 
         $result = $method->process($location, $datetime, $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
-        $chart = $result->getChart();
+        $houses = $result->getHouses();
+        $planetPositions = $result->getAngles();
+        $aspects = $result->getAspects();
+        $declinations = $result->getDeclinations();
 
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
@@ -69,4 +72,4 @@ if ($submit) {
 
 $apiCreditUsed = $client->getCreditUsed();
 
-include DEMO_BASE_DIR . '/templates/natal-aspect-chart.tpl.php';
+include DEMO_BASE_DIR . '/templates/natal-planet-position.tpl.php';

@@ -282,5 +282,41 @@ $samples = [
         'title' => 'Composite Aspect Chart',
         'url' => DEMO_BASE_URL . '/composite-aspect-chart.php',
         'docs' => 'composite-aspect-chart',
+    ],
+    'natal-planet-position' => [
+        'image' => '/assets/img/icon/solstice.png',
+        'title' => 'Natal Planet Position',
+        'url' => DEMO_BASE_URL . '/natal-planet-position.php',
+        'docs' => 'natal-planet-position',
+    ],
+    'transit-planet-position' => [
+        'image' => '/assets/img/icon/solstice.png',
+        'title' => 'Transit Planet Position',
+        'url' => DEMO_BASE_URL . '/transit-planet-position.php',
+        'docs' => 'transit-planet-position',
+    ],
+    'progression-planet-position' => [
+        'image' => '/assets/img/icon/solstice.png',
+        'title' => 'Progression Planet Position',
+        'url' => DEMO_BASE_URL . '/progression-planet-position.php',
+        'docs' => 'progression-planet-position',
+    ],
+    'solar-return-planet-position' => [
+        'image' => '/assets/img/icon/solstice.png',
+        'title' => 'Solar Return Planet Position',
+        'url' => DEMO_BASE_URL . '/solar-return-planet-position.php',
+        'docs' => 'solar-return-planet-position',
+    ],
+    'synastry-planet-position' => [
+        'image' => '/assets/img/icon/solstice.png',
+        'title' => 'Synastry Planet Aspect',
+        'url' => DEMO_BASE_URL . '/synastry-planet-aspect.php',
+        'docs' => 'synastry-planet-aspect',
+    ],
+    'composite-planet-position' => [
+        'image' => '/assets/img/icon/solstice.png',
+        'title' => 'Composite Planet Position',
+        'url' => DEMO_BASE_URL . '/composite-planet-aspect.php',
+        'docs' => 'composite-planet-aspect',
     ]
 ];

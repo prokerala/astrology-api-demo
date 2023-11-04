@@ -78,8 +78,8 @@ if ($submit) {
             $houseSystem,
             $chartType,
             $orb,
-            $primaryBirthTimeUnknown,
-            $secondaryBirthTimeUnknown,
+            $primaryBirthTimeUnknown === 'true',
+            $secondaryBirthTimeUnknown === 'true',
             $rectificationChart,
             $aspectFilter
         );

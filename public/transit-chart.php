@@ -63,7 +63,7 @@ if ($submit) {
         $method = new TransitChart($client);
 
         $result = $method->process($location, $datetime, $transitLocation, $transitDatetime,
-                            $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter);
+                            $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
         $chart = $result->getChart();
 
     } catch (ValidationException $e) {

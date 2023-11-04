@@ -17,7 +17,7 @@
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">House System</label>
+            <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">House System: </label>
             <div class="col-sm-9 col-md-6">
                 <select name="house_system" class="form-control form-control-lg rounded-1">
                     <option value="placidus" <?= 'placidus' === $houseSystem ? 'selected' : ''?>>Placidus</option>
@@ -49,14 +49,14 @@
             <div class="form-group row">
                 <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Progression Year: </label>
                 <div class="col-sm-9 col-md-6 ">
-                    <input type='date' name="progression_year" class="form-control form-control-lg rounded-1" required="required" value="<?= $transitDatetime->format('Y')?>"/>
+                    <input type="number" name="progression_year" class="form-control form-control-lg rounded-1" placeholder="Enter Progression Year" value="<?= $progressionYear?>" required>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Progressed Location:</label>
                 <div class="col-sm-9 col-md-6 ">
-                    <input type='text' id="fin-current-location" name="current_location" autocomplete="off" class="form-control form-control-lg rounded-1 prokerala-location-input" placeholder="Transit Location" value="" required>
+                    <input type='text' id="fin-current-location" name="current_location" autocomplete="off" class="form-control form-control-lg rounded-1 prokerala-location-input" placeholder="Progressed Location" value="" required>
                 </div>
             </div>
         <?php endif; ?>

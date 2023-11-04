@@ -62,6 +62,22 @@
 </div>
 
 <div>
+    <?php if(in_array($sample_name, ['composite-chart', 'composite-aspect-chart'])) : ?>
+        <div class="form-group row">
+            <label class="col-sm-3 col-md-4 col-form-label">Transit Date:</label>
+            <div class="col-sm-9 col-md-6">
+                <input type='date' name="transit_datetime" class="form-control form-control-lg rounded-1"  required="required" value="<?= $transitDateTime->format('Y-m-d')?>"/>
+            </div>
+        </div>
+        <div id="blocationField" class="form-group row">
+            <label class="col-sm-3 col-md-4 col-form-label">Reference Place:</label>
+            <div class="col-sm-9 col-md-6">
+                <div id='b-location'>
+                    <input type='text' id="fin-current-location" name="current_location" autocomplete="off" class="porutham-form-input autocomplete form-control form-control-lg rounded-1 prokerala-location-input" data-location_input_prefix="boy_" placeholder="Reference Place" value="" required="required"/>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
 
     <div class="form-group row">
         <label class="col-sm-3 col-md-4 col-form-label">House System: </label>

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Prokerala\Api\Astrology\Location;
-use Prokerala\Api\Astrology\Western\Service\Charts\SynastryChart;
+use Prokerala\Api\Astrology\Western\Service\Charts\CompositeChart;
 use Prokerala\Common\Api\Exception\AuthenticationException;
 use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
@@ -12,18 +12,22 @@ use Prokerala\Common\Api\Exception\ValidationException;
 
 require __DIR__ . '/bootstrap.php';
 
-$sample_name = 'synastry-chart';
+$sample_name = 'composite-chart';
 
 $primary_latitude = 19.0821978;
 $primary_longitude = 72.7411014;
 $secondary_latitude = 35.6895;
 $secondary_longitude = 139.692;
+$current_latitude = 28.6;
+$current_longitude = 77.2;
 
 $primaryCoordinates = "{$primary_latitude},{$primary_longitude}"; // Mumbai
 $secondaryCoordinates = "{$secondary_latitude},{$secondary_longitude}"; // Tokyo
+$currentCoordinates = "{$current_latitude},{$current_longitude}"; // New Delhi
 
 $primaryDatetime = (new DateTimeImmutable("1989-10-25", new DateTimeZone('Asia/Kolkata')))->format('c');
 $secondaryDatetime = (new DateTimeImmutable("1994-01-18", new DateTimeZone('Asia/Tokyo')))->format('c');
+$transitDateTime = (new DateTimeImmutable("now", new DateTimeZone('Asia/Kolkata')))->format('c');
 
 $houseSystem = 'placidus';
 $orb = 'default';
@@ -31,7 +35,6 @@ $primaryBirthTimeUnknown = 'false';
 $secondaryBirthTimeUnknown = 'false';
 $rectificationChart = 'noon';
 $aspectFilter = 'all';
-$chartType = 'zodiac-contact-chart';
 
 $submit = $_POST['submit'] ?? 0;
 
@@ -50,33 +53,41 @@ if (isset($_POST['submit'])) {
     $secondary_latitude = $arCoordinates[0] ?? '';
     $secondary_longitude = $arCoordinates[1] ?? '';
 
+    $transitDateTime = $_POST['transit_datetime'];
+    $currentCoordinates = $_POST['current_coordinates'];
+    $arCoordinates = explode(',', $primaryCoordinates);
+    $current_latitude = $arCoordinates[0] ?? '';
+    $current_longitude = $arCoordinates[1] ?? '';
+
     $houseSystem = $_POST['house_system'];
     $orb = $_POST['orb'];
     $rectificationChart = $_POST['birth_time_rectification'];
     $aspectFilter = $_POST['aspect_filter'];
-    $chartType = $_POST['chart_type'];
 }
 
 $primaryBirthLocation = new Location((float)$primary_latitude, (float)$primary_longitude, 0);
 $secondaryBirthLocation = new Location((float)$secondary_latitude, (float)$secondary_longitude, 0);
+$currentLocation = new Location((float)$current_latitude, (float)$current_longitude, 0);
 
 $primaryBirthTime = new DateTimeImmutable($primaryDatetime, $primaryBirthLocation->getTimeZone());
 $secondaryBirthTime = new DateTimeImmutable($secondaryDatetime, $secondaryBirthLocation->getTimeZone());
+$transitDateTime = new DateTimeImmutable($transitDateTime, $currentLocation->getTimeZone());
 
 $result = [];
 $errors = [];
 
 if ($submit) {
     try {
-        $method = new SynastryChart($client);
+        $method = new CompositeChart($client);
 
         $result = $method->process(
             $primaryBirthLocation,
             $primaryBirthTime,
             $secondaryBirthLocation,
             $secondaryBirthTime,
+            $currentLocation,
+            $transitDateTime,
             $houseSystem,
-            $chartType,
             $orb,
             $primaryBirthTimeUnknown,
             $secondaryBirthTimeUnknown,
@@ -100,4 +111,4 @@ if ($submit) {
 
 $apiCreditUsed = $client->getCreditUsed();
 
-include DEMO_BASE_DIR . '/templates/synastry-chart.tpl.php';
+include DEMO_BASE_DIR . '/templates/composite-chart.tpl.php';

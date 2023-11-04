@@ -104,22 +104,22 @@
                     <label class="form-check-label" for="aspect_filter2">Major</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="aspect_filter" id="aspect_filter2" value="minor" <?='minor' === $aspectFilter ? 'checked' : ''?>>
-                    <label class="form-check-label" for="aspect_filter2">Minor</label>
+                    <input class="form-check-input" type="radio" name="aspect_filter" id="aspect_filter3" value="minor" <?='minor' === $aspectFilter ? 'checked' : ''?>>
+                    <label class="form-check-label" for="aspect_filter3">Minor</label>
                 </div>
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-3 col-md-4 col-form-label ">Birth Time Known: </label>
+            <label class="col-sm-3 col-md-4 col-form-label ">Birth Time is Unknown: </label>
             <div class="col-sm-9 col-md-6 ">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="birth_time_unknown" id="birth_time_unknown1" value="false" <?='false' === $birthTimeUnknown ? 'checked' : ''?>>
-                    <label class="form-check-label" for="birth_time_unknown1">Yes</label>
+                    <label class="form-check-label" for="birth_time_unknown1">No</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="birth_time_unknown" id="birth_time_unknown2" value="true" <?='true' === $birthTimeUnknown ? 'checked' : ''?>>
-                    <label class="form-check-label" for="birth_time_unknown2">No</label>
+                    <label class="form-check-label" for="birth_time_unknown2">Yes</label>
                 </div>
             </div>
         </div>

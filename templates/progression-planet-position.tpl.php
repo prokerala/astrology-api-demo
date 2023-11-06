@@ -1,23 +1,9 @@
-<?php
-/**
- * @var PlanetPosition[] $planetPositions
- * @var House[] $houses
- * @var PlanetAspect[] $aspects
- * @var PlanetAspect[] $declinations
- */
-
-use Prokerala\Api\Astrology\Western\Result\PlanetPositions\House;
-use Prokerala\Api\Astrology\Western\Result\PlanetPositions\PlanetAspect;
-use Prokerala\Api\Astrology\Western\Result\PlanetPositions\PlanetPosition;
-
-?>
-
 <!DOCTYPE HTML>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Natal Planet Positions | Astrology API Demo - Prokerala Astrology</title>
+    <title>Progression Planet Positions | Astrology API Demo - Prokerala Astrology</title>
     <?php include 'common/style.tpl.php'; ?>
     <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/style.css">
     <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/reports.css">
@@ -35,7 +21,7 @@ use Prokerala\Api\Astrology\Western\Result\PlanetPositions\PlanetPosition;
             <div class="row my-auto">
                 <div class="col-xl-6 col-lg-7 col-md-12 col-sm-12 text-lg-left top-header-text-content">
                     <h2 class="text-white mb-5">
-                        <span class="font-weight-thin">Natal Planet Positions</span>
+                        <span class="font-weight-thin">Progression Planet Positions</span>
                     </h2>
                 </div>
             </div>
@@ -46,10 +32,10 @@ use Prokerala\Api\Astrology\Western\Result\PlanetPositions\PlanetPosition;
         <?php include 'common/helper.tpl.php'; ?>
 
         <?php if (!empty($result)): ?>
-            <h3 class="text-center">Natal Planet Positions</h3>
+            <h3 class="text-center">Progression Planet Positions</h3>
 
             <!--            Planet Position table-->
-            <h2>Planet Positions</h2>
+            <h2>Progression Planet Positions</h2>
             <table>
                 <tr>
                     <th>Planet</th>
@@ -72,7 +58,7 @@ use Prokerala\Api\Astrology\Western\Result\PlanetPositions\PlanetPosition;
             </table>
 
             <!--            House table-->
-            <h2>Houses</h2>
+            <h2>Progression Houses</h2>
             <table>
                 <tr>
                     <th>House</th>
@@ -95,7 +81,7 @@ use Prokerala\Api\Astrology\Western\Result\PlanetPositions\PlanetPosition;
             </table>
 
             <!--            Aspect table-->
-            <h2>Planet Aspects</h2>
+            <h2>Progression Aspects</h2>
             <table>
                 <tr>
                     <th>Planet 1</th>
@@ -114,7 +100,7 @@ use Prokerala\Api\Astrology\Western\Result\PlanetPositions\PlanetPosition;
             </table>
 
             <!--            Declination table-->
-            <h2>Declinations</h2>
+            <h2>Progression Declination Aspects</h2>
             <table>
                 <tr>
                     <th>Planet 1</th>
@@ -131,10 +117,28 @@ use Prokerala\Api\Astrology\Western\Result\PlanetPositions\PlanetPosition;
                     </tr>
                 <?php endforeach; ?>
             </table>
+            <!--            Progression - Natal Aspects table-->
+            <h2>Progression - Natal Aspects</h2>
+            <table>
+                <tr>
+                    <th>Planet 1</th>
+                    <th>Planet 2</th>
+                    <th>Aspect</th>
+                    <th>Orb</th>
+                </tr>
+                <?php foreach($progressionNatalAspects as $aspect): ?>
+                    <tr>
+                        <td><?=$aspect->getPlanetOne()->getName()?></td>
+                        <td><?=$aspect->getPlanetTwo()->getName()?></td>
+                        <td><?=$aspect->getAspect()->getName()?></td>
+                        <td><?=$aspect->getOrb()?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
         <?php endif; ?>
         <section>
             <div class="card contact-form-wrapper box-shadow mx-auto rounded-2 mb-5">
-                <form class="p-5 text-default"  action="natal-planet-position.php" method="POST">
+                <form class="p-5 text-default"  action="progression-planet-position.php" method="POST">
                     <?php include 'common/western-horoscope-form.tpl.php'; ?>
                     <div class="text-right">
                         <button type="submit" class="btn btn-warning btn-submit">Get Result</button>

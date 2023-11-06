@@ -28,7 +28,7 @@
                 </select>
             </div>
         </div>
-        <?php if (in_array($sample_name, ['transit-chart', 'transit-aspect-chart'])): ?>
+        <?php if (in_array($sample_name, ['transit-chart', 'transit-aspect-chart', 'transit-planet-position'])): ?>
             <div class="form-group row">
                 <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Transit Date Time: </label>
                 <div class="col-sm-9 col-md-6 ">
@@ -42,7 +42,7 @@
                     <input type='text' id="fin-current-location" name="current_location" autocomplete="off" class="form-control form-control-lg rounded-1 prokerala-location-input" placeholder="Transit Location" value="" data-location_input_prefix="current_" required>
                 </div>
             </div>
-        <?php elseif (in_array($sample_name, ['progression-chart', 'progression-aspect-chart'])): ?>
+        <?php elseif (in_array($sample_name, ['progression-chart', 'progression-aspect-chart', 'progression-planet-position'])): ?>
             <div class="form-group row">
                 <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Progression Year: </label>
                 <div class="col-sm-9 col-md-6 ">
@@ -56,7 +56,7 @@
                     <input type='text' id="fin-current-location" name="current_location" autocomplete="off" class="form-control form-control-lg rounded-1 prokerala-location-input" placeholder="Progressed Location" data-location_input_prefix="current_" value="" required>
                 </div>
             </div>
-        <?php elseif (in_array($sample_name, ['solar-return-chart', 'solar-return-aspect-chart'])): ?>
+        <?php elseif (in_array($sample_name, ['solar-return-chart', 'solar-return-aspect-chart', 'solar-return-planet-position'])): ?>
             <div class="form-group row">
                 <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Solar Year: </label>
                 <div class="col-sm-9 col-md-6 ">

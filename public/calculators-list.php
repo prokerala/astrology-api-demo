@@ -307,15 +307,15 @@ $samples = [
         'url' => DEMO_BASE_URL . '/solar-return-planet-position.php',
         'docs' => 'solar-return-planet-position',
     ],
-    'synastry-planet-position' => [
+    'synastry-planet-aspect' => [
         'image' => '/assets/img/icon/solstice.png',
         'title' => 'Synastry Planet Aspect',
         'url' => DEMO_BASE_URL . '/synastry-planet-aspect.php',
         'docs' => 'synastry-planet-aspect',
     ],
-    'composite-planet-position' => [
+    'composite-planet-aspect' => [
         'image' => '/assets/img/icon/solstice.png',
-        'title' => 'Composite Planet Position',
+        'title' => 'Composite Planet Aspect',
         'url' => DEMO_BASE_URL . '/composite-planet-aspect.php',
         'docs' => 'composite-planet-aspect',
     ]

@@ -33,11 +33,9 @@
 
         <?php if (!empty($result)): ?>
             <h3 class="text-center">Transit Chart</h3>
-            <div id="chart" class="item-block align-center tc">
-                <div class="transit-chart-wrapper item-block">
-                    <?= str_replace('<svg ', '<svg preserveAspectRatio="none" viewBox="0 0 600 600" ', $chart); ?>
+            <div id="chart" class="d-flex justify-content-center">
+                    <?= str_replace('<svg ', '<svg preserveAspectRatio="none" viewBox="0 0 680 680" ', $chart); ?>
                 </div>
-            </div>
         <?php endif; ?>
         <section>
             <div class="card contact-form-wrapper box-shadow mx-auto rounded-2 mb-5">

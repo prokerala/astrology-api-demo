@@ -7,7 +7,6 @@
     <?php include 'common/style.tpl.php'; ?>
     <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/style.css">
     <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/reports.css">
-
 </head>
 
 <body>
@@ -33,10 +32,8 @@
 
         <?php if (!empty($result)): ?>
             <h3 class="text-center">Natal Aspect Chart</h3>
-            <div id="chart" class="item-block align-center tc">
-                <div class="natal-aspect-chart-wrapper item-block">
-                    <?= str_replace('<svg ', '<svg preserveAspectRatio="none" viewBox="0 0 600 600" ', $chart); ?>
-                </div>
+            <div class="mb-5 d-flex justify-content-center">
+                <?= str_replace('<svg ', '<svg preserveAspectRatio="none" viewBox="0 0 750 530" ', $chart); ?>
             </div>
         <?php endif; ?>
         <section>

@@ -4,14 +4,14 @@
         <div class="form-group row">
             <label class="col-md-4 pr-md-0 col-form-label">Date Of Birth:</label>
             <div class="col-md-8 pl-md-0">
-                <input type='datetime-local' name="girl_dob" class="form-control form-control-lg rounded-1"  required="required" value="<?= $primaryBirthTime->format('Y-m-d\TH:i')?>"/>
+                <input type='datetime-local' name="partner_a_dob" class="form-control form-control-lg rounded-1"  required="required" value="<?= $primaryBirthTime->format('Y-m-d\TH:i')?>"/>
             </div>
         </div>
-        <div id="glocationField" class="form-group row">
+        <div id="alocationField" class="form-group row">
             <label class="col-md-4 pr-md-0 col-form-label">Place of birth:</label>
             <div class="col-md-8 pl-md-0">
-                <div id='g-location'>
-                    <input type='text' id="fin-girl-location" name="girl_location" autocomplete="off" class="porutham-form-input autocomplete form-control form-control-lg rounded-1 prokerala-location-input" data-location_input_prefix="girl_" placeholder="Place of birth" value="" required="required"/>
+                <div id='a-location'>
+                    <input type='text' id="fin-partner-a-location" name="partner_a_location" autocomplete="off" class="porutham-form-input autocomplete form-control form-control-lg rounded-1 prokerala-location-input" data-location_input_prefix="partner_a_" placeholder="Place of birth" value="" required="required"/>
                 </div>
             </div>
         </div>
@@ -34,14 +34,14 @@
         <div class="form-group row">
             <label class="col-md-4 pr-md-0 col-form-label">Date Of Birth:</label>
             <div class="col-md-8 pl-md-0">
-                <input type='datetime-local' name="boy_dob" class="form-control form-control-lg rounded-1"  required="required" value="<?= $secondaryBirthTime->format('Y-m-d\TH:i')?>"/>
+                <input type='datetime-local' name="partner_b_dob" class="form-control form-control-lg rounded-1"  required="required" value="<?= $secondaryBirthTime->format('Y-m-d\TH:i')?>"/>
             </div>
         </div>
         <div id="blocationField" class="form-group row">
             <label class="col-md-4 pr-md-0 col-form-label">Place of birth:</label>
             <div class="col-md-8 pl-md-0">
                 <div id='b-location'>
-                    <input type='text' id="fin-boy-location" name="boy_location" autocomplete="off" class="porutham-form-input autocomplete form-control form-control-lg rounded-1 prokerala-location-input" data-location_input_prefix="boy_" placeholder="Place of birth" value="" required="required"/>
+                    <input type='text' id="fin-partner-b-location" name="partner_b_location" autocomplete="off" class="porutham-form-input autocomplete form-control form-control-lg rounded-1 prokerala-location-input" data-location_input_prefix="partner_b_" placeholder="Place of birth" value="" required="required"/>
                 </div>
             </div>
         </div>
@@ -62,7 +62,7 @@
 </div>
 
 <div>
-    <?php if(in_array($sample_name, ['composite-chart', 'composite-aspect-chart'])) : ?>
+    <?php if(in_array($sample_name, ['composite-chart', 'composite-aspect-chart', 'composite-planet-aspect'])) : ?>
         <div class="form-group row">
             <label class="col-sm-3 col-md-4 col-form-label">Transit Date:</label>
             <div class="col-sm-9 col-md-6">
@@ -73,12 +73,23 @@
             <label class="col-sm-3 col-md-4 col-form-label">Reference Place:</label>
             <div class="col-sm-9 col-md-6">
                 <div id='b-location'>
-                    <input type='text' id="fin-current-location" name="current_location" autocomplete="off" class="porutham-form-input autocomplete form-control form-control-lg rounded-1 prokerala-location-input" data-location_input_prefix="boy_" placeholder="Reference Place" value="" required="required"/>
+                    <input type='text' id="fin-current-location" name="current_location" autocomplete="off" class="porutham-form-input autocomplete form-control form-control-lg rounded-1 prokerala-location-input" data-location_input_prefix="current_" placeholder="Reference Place" value="" required="required"/>
                 </div>
             </div>
         </div>
     <?php endif; ?>
 
+    <?php if(in_array($sample_name, ['synastry-chart', 'synastry-aspect-chart', 'synastry-planet-aspect'])) : ?>
+        <div class="form-group row">
+            <label class="col-sm-3 col-md-4 col-form-label">Chart Type: </label>
+            <div class="col-sm-9 col-md-6">
+                <select name="chart_type" class="form-control form-control-lg rounded-1">
+                    <option value="zodiac-contact-chart" <?= 'zodiac-contact-chart' === $houseSystem ? 'selected' : ''?>>Zodiacal Contact Chart</option>
+                    <option value="house-contact-chart" <?= 'house-contact-chart' === $houseSystem ? 'selected' : ''?>>House Contact Chart</option>
+                </select>
+            </div>
+        </div>
+    <?php endif; ?>
     <div class="form-group row">
         <label class="col-sm-3 col-md-4 col-form-label">House System: </label>
         <div class="col-sm-9 col-md-6">
@@ -131,11 +142,11 @@
         <label class="col-sm-3 col-md-4 col-form-label ">Rectification Chart: </label>
         <div class="col-sm-9 col-md-6 ">
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="rectification_chart" id="rectification_chart1" value="noon" <?='noon' === $rectificationChart ? 'checked' : ''?>>
+                <input class="form-check-input" type="radio" name="birth_time_rectification" id="rectification_chart1" value="noon" <?='noon' === $rectificationChart ? 'checked' : ''?>>
                 <label class="form-check-label" for="rectification_chart1">Flat Chart</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="rectification_chart" id="rectification_chart2" value="sunrise" <?='sunrise' === $rectificationChart ? 'checked' : ''?>>
+                <input class="form-check-input" type="radio" name="birth_time_rectification" id="rectification_chart2" value="sunrise" <?='sunrise' === $rectificationChart ? 'checked' : ''?>>
                 <label class="form-check-label" for="rectification_chart2">True Sunrise</label>
             </div>
         </div>

@@ -33,10 +33,8 @@
 
         <?php if (!empty($result)): ?>
             <h3 class="text-center">Composite Chart</h3>
-            <div id="chart" class="item-block align-center tc">
-                <div class="composite-chart-wrapper item-block">
-                    <?= str_replace('<svg ', '<svg preserveAspectRatio="none" viewBox="0 0 600 600" ', $chart); ?>
-                </div>
+            <div id="chart" class="d-flex justify-content-center">
+                <?= str_replace('<svg ', '<svg preserveAspectRatio="none" viewBox="0 0 600 600" ', $chart); ?>
             </div>
         <?php endif; ?>
         <section>

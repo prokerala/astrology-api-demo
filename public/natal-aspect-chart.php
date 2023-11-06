@@ -52,7 +52,7 @@ if ($submit) {
         $method = new NatalChart($client);
 
         $result = $method->process($location, $datetime, $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
-        $chart = $result->getChart();
+        $chart = $result;
 
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();

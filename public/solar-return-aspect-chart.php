@@ -24,7 +24,7 @@ $input = [
 ];
 $coordinates = $input['latitude'] . ',' . $input['longitude'];
 $transitCoordinates = $input['transit_latitude'] . ',' . $input['transit_longitude'];
-$solarYear = $time_now->format('Y');
+$solarYear = (int)$time_now->format('Y');
 $submit = $_POST['submit'] ?? 0;
 $houseSystem = 'placidus';
 $orb = 'default';
@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
     $arCoordinates = explode(',', $transitCoordinates);
     $input['transit_latitude'] = $arCoordinates[0] ?? '';
     $input['transit_longitude'] = $arCoordinates[1] ?? '';
-    $solarYear = $_POST['solar_year'];
+    $solarYear = (int)$_POST['solar_year'];
     $houseSystem = $_POST['house_system'];
     $orb = $_POST['orb'];
     $birthTimeUnknown = $_POST['birth_time_unknown'];
@@ -63,7 +63,7 @@ if ($submit) {
 
         $result = $method->process($location, $datetime, $transitLocation, $solarYear,
                             $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
-        $chart = $result->getChart();
+        $chart = $result;
 
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();

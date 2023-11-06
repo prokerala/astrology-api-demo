@@ -94,7 +94,7 @@ if ($submit) {
             $rectificationChart,
             $aspectFilter
         );
-        $chart = $result->getChart();
+        $chart = $result;
 
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();

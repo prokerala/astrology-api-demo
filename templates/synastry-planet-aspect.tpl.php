@@ -33,10 +33,11 @@
 
         <?php if (!empty($result)): ?>
             <h3 class="text-center">Synastry Planet Aspect</h3>
-            <table>
+        <div class="d-flex justify-content-center">
+            <table class="table table-bordered w-50">
                 <tr>
-                    <th>Planet 1</th>
-                    <th>Planet 2</th>
+                    <th>Primary Planet</th>
+                    <th>Secondary Planet</th>
                     <th>Aspect</th>
                     <th>Orb</th>
                 </tr>
@@ -49,6 +50,7 @@
                     </tr>
                 <?php endforeach; ?>
             </table>
+        </div>
         <?php endif; ?>
         <section>
             <div class="card contact-form-wrapper box-shadow mx-auto rounded-2 mb-5">

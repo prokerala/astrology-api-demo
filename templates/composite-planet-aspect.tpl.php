@@ -33,29 +33,29 @@
 
         <?php if (!empty($result)): ?>
             <h3 class="text-center">Composite Planet Position</h3>
-            <table>
+            <table class="table table-bordered">
                 <tr>
                     <th>Planet</th>
                     <th>Longitude</th>
-                    <th>Is Retrograde</th>
-                    <th>Position</th>
+                    <th>Motion</th>
                     <th>Degree</th>
+                    <th>Position</th>
                     <th>Zodiac</th>
                 </tr>
                 <?php foreach($planetPositions as $planetPosition): ?>
                     <tr>
                         <td><?=$planetPosition->getName()?></td>
-                        <td><?=$planetPosition->getLongitude()?></td>
-                        <td><?=$planetPosition->isRetrograde()?></td>
+                        <td><?=round($planetPosition->getLongitude(), 3)?></td>
+                        <td><?=$planetPosition->isRetrograde() === true ? 'Retrograde' : 'Forward'?></td>
+                        <td><?=round($planetPosition->getDegree(), 3)?></td>
                         <td><?=$planetPosition->getPosition()?></td>
-                        <td><?=$planetPosition->getDegree()?></td>
                         <td><?=$planetPosition->getZodiac()->getName()?></td>
                     </tr>
                 <?php endforeach; ?>
             </table>
 
             <h3 class="text-center">Composite Planet Aspect</h3>
-            <table>
+            <table class="table table-bordered">
                 <tr>
                     <th>Planet 1</th>
                     <th>Planet 2</th>

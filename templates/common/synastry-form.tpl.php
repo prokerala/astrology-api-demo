@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-12 col-md-6">
-        <legend class="col-form-label text-black py-4 text-xlarge">Enter Primary Birth Details</legend>
+        <legend class="col-form-label text-black py-4 text-xlarge">Enter Primary Profile</legend>
         <div class="form-group row">
             <label class="col-md-4 pr-md-0 col-form-label">Date Of Birth:</label>
             <div class="col-md-8 pl-md-0">
@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="col-12 col-md-6">
-        <legend class="col-form-label text-black py-4 text-xlarge">Enter Secondary Birth Details</legend>
+        <legend class="col-form-label text-black py-4 text-xlarge">Enter Secondary Profile</legend>
         <div class="form-group row">
             <label class="col-md-4 pr-md-0 col-form-label">Date Of Birth:</label>
             <div class="col-md-8 pl-md-0">

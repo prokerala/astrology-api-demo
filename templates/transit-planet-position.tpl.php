@@ -32,34 +32,33 @@
         <?php include 'common/helper.tpl.php'; ?>
 
         <?php if (!empty($result)): ?>
-            <h3 class="text-center">Transit Planet Positions</h3>
+            <h3 class="text-center mt-5">Transit Planet Positions</h3>
 
             <!--            Planet Position table-->
-            <h2>Transit Planet Positions</h2>
-            <table>
+            <table class="table table-bordered">
                 <tr>
                     <th>Planet</th>
                     <th>Longitude</th>
-                    <th>Is Retrograde</th>
-                    <th>Position</th>
+                    <th>Motion</th>
                     <th>Degree</th>
+                    <th>Position</th>
                     <th>Zodiac</th>
                 </tr>
                 <?php foreach($planetPositions as $planetPosition): ?>
                     <tr>
                         <td><?=$planetPosition->getName()?></td>
-                        <td><?=$planetPosition->getLongitude()?></td>
-                        <td><?=$planetPosition->isRetrograde()?></td>
+                        <td><?=round($planetPosition->getLongitude(), 3)?></td>
+                        <td><?=$planetPosition->isRetrograde() === true ? 'Retrograde' : 'Forward'?></td>
+                        <td><?=round($planetPosition->getDegree(), 3)?></td>
                         <td><?=$planetPosition->getPosition()?></td>
-                        <td><?=$planetPosition->getDegree()?></td>
                         <td><?=$planetPosition->getZodiac()->getName()?></td>
                     </tr>
                 <?php endforeach; ?>
             </table>
 
             <!--            House table-->
-            <h2>Transit Houses</h2>
-            <table>
+            <h3 class="text-center mt-5">Transit Houses</h3>
+            <table class="table table-bordered">
                 <tr>
                     <th>House</th>
                     <th>Start Degree</th>
@@ -81,8 +80,8 @@
             </table>
 
             <!--            Aspect table-->
-            <h2>Transit Aspects</h2>
-            <table>
+            <h3 class="text-center mt-5">Transit Aspects</h3>
+            <table class="table table-bordered">
                 <tr>
                     <th>Planet 1</th>
                     <th>Planet 2</th>
@@ -100,8 +99,8 @@
             </table>
 
             <!--            Declination table-->
-            <h2>Transit Declination Aspects</h2>
-            <table>
+            <h3 class="text-center mt-5">Transit Declination Aspects</h3>
+            <table class="table table-bordered">
                 <tr>
                     <th>Planet 1</th>
                     <th>Planet 2</th>
@@ -118,8 +117,8 @@
                 <?php endforeach; ?>
             </table>
             <!--            Transit - Natal Aspects table-->
-            <h2>Transit - Natal Aspects</h2>
-            <table>
+            <h3 class="text-center mt-5">Transit - Natal Aspects</h3>
+            <table class="table table-bordered">
                 <tr>
                     <th>Planet 1</th>
                     <th>Planet 2</th>

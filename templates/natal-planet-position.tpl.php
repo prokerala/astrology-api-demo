@@ -49,31 +49,30 @@ use Prokerala\Api\Astrology\Western\Result\PlanetPositions\PlanetPosition;
             <h3 class="text-center">Natal Planet Positions</h3>
 
             <!--            Planet Position table-->
-            <h2>Planet Positions</h2>
-            <table>
+            <table class="table table-bordered">
                 <tr>
                     <th>Planet</th>
                     <th>Longitude</th>
-                    <th>Is Retrograde</th>
-                    <th>Position</th>
+                    <th>Motion</th>
                     <th>Degree</th>
+                    <th>Position</th>
                     <th>Zodiac</th>
                 </tr>
                 <?php foreach($planetPositions as $planetPosition): ?>
                     <tr>
                         <td><?=$planetPosition->getName()?></td>
-                        <td><?=$planetPosition->getLongitude()?></td>
-                        <td><?=$planetPosition->isRetrograde()?></td>
+                        <td><?=round($planetPosition->getLongitude(), 3)?></td>
+                        <td><?=$planetPosition->isRetrograde() === true ? 'Retrograde' : 'Forward'?></td>
+                        <td><?=round($planetPosition->getDegree(), 3)?></td>
                         <td><?=$planetPosition->getPosition()?></td>
-                        <td><?=$planetPosition->getDegree()?></td>
                         <td><?=$planetPosition->getZodiac()->getName()?></td>
                     </tr>
                 <?php endforeach; ?>
             </table>
 
             <!--            House table-->
-            <h2>Houses</h2>
-            <table>
+            <h3 class="text-center mt-5">Houses</h3>
+            <table class="table table-bordered">
                 <tr>
                     <th>House</th>
                     <th>Start Degree</th>
@@ -95,8 +94,8 @@ use Prokerala\Api\Astrology\Western\Result\PlanetPositions\PlanetPosition;
             </table>
 
             <!--            Aspect table-->
-            <h2>Planet Aspects</h2>
-            <table>
+            <h3 class="text-center mt-5">Planet Aspects</h3>
+            <table class="table table-bordered">
                 <tr>
                     <th>Planet 1</th>
                     <th>Planet 2</th>
@@ -114,8 +113,8 @@ use Prokerala\Api\Astrology\Western\Result\PlanetPositions\PlanetPosition;
             </table>
 
             <!--            Declination table-->
-            <h2>Declinations</h2>
-            <table>
+            <h3 class="text-center mt-5">Declinations Aspects</h3>
+            <table class="table table-bordered">
                 <tr>
                     <th>Planet 1</th>
                     <th>Planet 2</th>

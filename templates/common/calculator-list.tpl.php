@@ -5,6 +5,19 @@
 
 <?php if(in_array($sample_name, $westernSamples)): ?>
     <?php $samples = array_filter($samples, fn($val) => in_array($val['docs'], $westernSamples)); ?>
+    <?php $samples['numerology'] = [
+        'image' => '/assets/img/icon/numerology.png',
+        'title' => 'Numerology',
+        'url' => DEMO_BASE_URL . '/numerology.php',
+        'docs' => 'numerology',
+    ];
+    $samples['daily-horoscope'] = [
+        'image' => '/assets/img/icon/daily-horoscope.png',
+        'title' => 'Daily Horoscope',
+        'url' => DEMO_BASE_URL . '/daily-horoscope.php',
+        'docs' => 'daily-horoscope',
+    ];
+    ?>
 <?php else:?>
     <?php $samples = array_filter($samples, fn($val) => !in_array($val['docs'], $westernSamples)); ?>
 <?php endif;?>

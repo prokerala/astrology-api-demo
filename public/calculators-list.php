@@ -322,8 +322,6 @@ $samples = [
 ];
 
 $westernSamples = [
-    'numerology',
-    'daily-horoscope',
     'natal-chart',
     'transit-chart',
     'progression-chart',

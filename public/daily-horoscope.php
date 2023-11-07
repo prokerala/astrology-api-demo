@@ -2,12 +2,15 @@
 
 declare(strict_types=1);
 
+use Prokerala\Api\Horoscope\Result\DailyHoroscope;
 use Prokerala\Api\Horoscope\Service\DailyPrediction;
 use Prokerala\Common\Api\Exception\AuthenticationException;
 use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
 use Prokerala\Common\Api\Exception\RateLimitExceededException;
 use Prokerala\Common\Api\Exception\ValidationException;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Symfony\Contracts\Cache\ItemInterface;
 
 require __DIR__ . '/bootstrap.php';
 
@@ -44,13 +47,12 @@ $result = null;
 if ($selectedSign) {
     try {
         $horoscopeClass = new DailyPrediction($client);
-//        if ($day === 'yesterday') {
-//            $result = $horoscopeClass->process($yesterday, $selectedSign);
-//        } else if ($day === 'tomorrow') {
-//            $result = $horoscopeClass->process($tomorrow, $selectedSign);
-//        } else {
-            $result = $horoscopeClass->process($datetime, $selectedSign);
-//        }
+        $cache = new FilesystemAdapter();
+        $result = $cache->get("daily_horoscope_{$selectedSign}", function (ItemInterface $item) use ($horoscopeClass, $datetime, $selectedSign): DailyHoroscope {
+            $item->expiresAfter(2880);
+            return $horoscopeClass->process($datetime, $selectedSign);
+        });
+
         $signName = $result->getDailyHoroscopePrediction()->getSignName();
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
@@ -61,6 +63,8 @@ if ($selectedSign) {
     } catch (AuthenticationException $e) {
         $errors = ['message' => $e->getMessage()];
     } catch (Exception $e) {
+        $errors = ['message' => "API Request Failed with error {$e->getMessage()}"];
+    } catch (\Psr\Cache\InvalidArgumentException $e) {
         $errors = ['message' => "API Request Failed with error {$e->getMessage()}"];
     }
 }

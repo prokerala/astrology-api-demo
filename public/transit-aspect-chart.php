@@ -29,7 +29,7 @@ $houseSystem = 'placidus';
 $orb = 'default';
 $birthTimeUnknown = 'false';
 $rectificationChart = 'noon';
-$aspectFilter = 'all';
+$aspectFilter = 'major';
 
 if (isset($_POST['submit'])) {
     $datetime = $_POST['datetime'];

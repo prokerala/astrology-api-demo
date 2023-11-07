@@ -34,7 +34,7 @@ $orb = 'default';
 $primaryBirthTimeUnknown = 'false';
 $secondaryBirthTimeUnknown = 'false';
 $rectificationChart = 'noon';
-$aspectFilter = 'all';
+$aspectFilter = 'major';
 
 $submit = $_POST['submit'] ?? 0;
 

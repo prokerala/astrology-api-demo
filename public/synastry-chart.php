@@ -30,7 +30,7 @@ $orb = 'default';
 $primaryBirthTimeUnknown = 'false';
 $secondaryBirthTimeUnknown = 'false';
 $rectificationChart = 'noon';
-$aspectFilter = 'all';
+$aspectFilter = 'major';
 $chartType = 'zodiac-contact-chart';
 
 $submit = $_POST['submit'] ?? 0;

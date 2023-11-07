@@ -41,13 +41,13 @@ $submit = $_POST['submit'] ?? 0;
 if (isset($_POST['submit'])) {
     $primaryDatetime = $_POST['partner_a_dob'];
     $primaryCoordinates = $_POST['partner_a_coordinates'];
-    $primaryBirthTimeUnknown = $_POST['partner_a_birth_time_unknown'];
+    $primaryBirthTimeUnknown = $_POST['partner_a_birth_time_unknown'] ?? false;
     $arCoordinates = explode(',', $primaryCoordinates);
     $primary_latitude = $arCoordinates[0] ?? '';
     $primary_longitude = $arCoordinates[1] ?? '';
 
     $secondaryDatetime = $_POST['partner_b_dob'];
-    $secondaryBirthTimeUnknown = $_POST['partner_b_birth_time_unknown'];
+    $secondaryBirthTimeUnknown = $_POST['partner_b_birth_time_unknown'] ?? false;
     $secondaryCoordinates = $_POST['partner_b_coordinates'];
     $arCoordinates = explode(',', $secondaryCoordinates);
     $secondary_latitude = $arCoordinates[0] ?? '';

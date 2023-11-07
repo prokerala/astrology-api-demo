@@ -69,7 +69,8 @@ if ($submit) {
         $progressionNatalAspects  =  $result->getProgressionNatalAspect();
         $progressionDatetime =  $result->getProgressionDatetime();
         $houses = $details->getHouses();
-        $planetPositions = $details->getAngles();
+        $planetPositions = $details->getPlanetPositions();
+        $angles = $details->getAngles();
         $aspects = $details->getAspects();
         $declinations = $details->getDeclinations();
     } catch (ValidationException $e) {

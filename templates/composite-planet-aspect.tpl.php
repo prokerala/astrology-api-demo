@@ -39,7 +39,7 @@
                     <th>Longitude</th>
                     <th>Motion</th>
                     <th>Degree</th>
-                    <th>Position</th>
+                    <th>House</th>
                     <th>Zodiac</th>
                 </tr>
                 <?php foreach($planetPositions as $planetPosition): ?>
@@ -48,7 +48,7 @@
                         <td><?=round($planetPosition->getLongitude(), 3)?></td>
                         <td><?=$planetPosition->isRetrograde() === true ? 'Retrograde' : 'Forward'?></td>
                         <td><?=round($planetPosition->getDegree(), 3)?></td>
-                        <td><?=$planetPosition->getPosition()?></td>
+                        <td><?=$planetPosition->getHouseNumber()?></td>
                         <td><?=$planetPosition->getZodiac()->getName()?></td>
                     </tr>
                 <?php endforeach; ?>

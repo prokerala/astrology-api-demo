@@ -69,7 +69,8 @@ if ($submit) {
         $transitNatalAspects  =  $result->getTransitNatalAspect();
         $transitDatetime =  $result->getTransitDatetime();
         $houses = $details->getHouses();
-        $planetPositions = $details->getAngles();
+        $planetPositions = $details->getPlanetPositions();
+        $angles = $details->getAngles();
         $aspects = $details->getAspects();
         $declinations = $details->getDeclinations();
 

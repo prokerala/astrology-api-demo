@@ -53,8 +53,9 @@ if ($submit) {
 
         $result = $method->process($location, $datetime, $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
 
+        $planetPositions = $result->getPlanetPositions();
         $houses = $result->getHouses();
-        $planetPositions = $result->getAngles();
+        $angles = $result->getAngles();
         $aspects = $result->getAspects();
         $declinations = $result->getDeclinations();
 

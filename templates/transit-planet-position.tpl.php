@@ -41,7 +41,7 @@
                     <th>Longitude</th>
                     <th>Motion</th>
                     <th>Degree</th>
-                    <th>Position</th>
+                    <th>House</th>
                     <th>Zodiac</th>
                 </tr>
                 <?php foreach($planetPositions as $planetPosition): ?>
@@ -50,12 +50,33 @@
                         <td><?=round($planetPosition->getLongitude(), 3)?></td>
                         <td><?=$planetPosition->isRetrograde() === true ? 'Retrograde' : 'Forward'?></td>
                         <td><?=round($planetPosition->getDegree(), 3)?></td>
-                        <td><?=$planetPosition->getPosition()?></td>
+                        <td><?=$planetPosition->getHouseNumber()?></td>
                         <td><?=$planetPosition->getZodiac()->getName()?></td>
                     </tr>
                 <?php endforeach; ?>
             </table>
 
+            <h3 class="text-center mt-5">Angles</h3>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Angles</th>
+                    <th>Longitude</th>
+                    <th>Motion</th>
+                    <th>Degree</th>
+                    <th>House</th>
+                    <th>Zodiac</th>
+                </tr>
+                <?php foreach($angles as $planetPosition): ?>
+                    <tr>
+                        <td><?=$planetPosition->getName()?></td>
+                        <td><?=round($planetPosition->getLongitude(), 3)?></td>
+                        <td><?=$planetPosition->isRetrograde() === true ? 'Retrograde' : 'Forward'?></td>
+                        <td><?=round($planetPosition->getDegree(), 3)?></td>
+                        <td><?=$planetPosition->getHouseNumber()?></td>
+                        <td><?=$planetPosition->getZodiac()->getName()?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
             <!--            House table-->
             <h3 class="text-center mt-5">Transit Houses</h3>
             <table class="table table-bordered">
@@ -63,18 +84,12 @@
                     <th>House</th>
                     <th>Start Degree</th>
                     <th>End Degree</th>
-                    <th>Planets</th>
                 </tr>
                 <?php foreach($houses as $house): ?>
                     <tr>
                         <td><?=$house->getNumber()?></td>
                         <td><?=$house->getStartDegree()?></td>
                         <td><?=$house->getEndDegree()?></td>
-                        <?php $planet = []; ?>
-                        <?php foreach($house->getPlanetPositions() as $planetPosition): ?>
-                            <?php $planet[] = $planetPosition->getName()?>
-                        <?php endforeach; ?>
-                        <td><?=implode(', ', $planet)?></td>
                     </tr>
                 <?php endforeach; ?>
             </table>

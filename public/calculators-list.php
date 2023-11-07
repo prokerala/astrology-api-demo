@@ -320,3 +320,26 @@ $samples = [
         'docs' => 'composite-planet-aspect',
     ]
 ];
+
+$westernSamples = [
+    'numerology',
+    'daily-horoscope',
+    'natal-chart',
+    'transit-chart',
+    'progression-chart',
+    'solar-return-chart',
+    'synastry-chart',
+    'composite-chart',
+    'natal-aspect-chart',
+    'transit-aspect-chart',
+    'progression-aspect-chart',
+    'solar-return-aspect-chart',
+    'synastry-aspect-chart',
+    'composite-aspect-chart',
+    'natal-planet-position',
+    'transit-planet-position',
+    'progression-planet-position',
+    'solar-return-planet-position',
+    'synastry-planet-aspect',
+    'composite-planet-aspect',
+];

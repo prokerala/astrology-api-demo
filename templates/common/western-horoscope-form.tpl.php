@@ -1,13 +1,23 @@
     <div>
         <div class="form-group row">
-            <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Date: </label>
+            <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Birth Date: </label>
             <div class="col-sm-9 col-md-6 ">
                 <input type='datetime-local' name="datetime" class="form-control form-control-lg rounded-1" required="required" value="<?= $datetime->format('Y-m-d\TH:i')?>"/>
             </div>
         </div>
 
         <div class="form-group row">
-            <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Place of birth:</label>
+            <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left"></label>
+            <div class="col-sm-9 col-md-6 ">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="birth_time_unknown" id="birth_time_unknown" <?='true' === $birthTimeUnknown ? 'checked' : ''?>>
+                    <label class="form-check-label" for="birth_time_unknown">Check if birth time is unknown</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Birth Place:</label>
             <div class="col-sm-9 col-md-6 ">
                 <input type='text' id="fin-location" name="location" autocomplete="off" class="form-control form-control-lg rounded-1 prokerala-location-input" placeholder="Place of birth" value="" required>
             </div>
@@ -73,6 +83,16 @@
         <?php endif; ?>
 
         <div class="form-group row">
+            <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Aspect Filter: </label>
+            <div class="col-sm-9 col-md-6">
+                <select name="aspect_filter" class="form-control form-control-lg rounded-1">
+                    <option value="major" <?= 'major' === $aspectFilter ? 'selected' : ''?>>Show major aspects</option>
+                    <option value="all" <?= 'all' === $aspectFilter ? 'selected' : ''?>>Show all aspects</option>
+                    <option value="minor" <?= 'minor' === $aspectFilter ? 'selected' : ''?>>Show minor aspects only</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
             <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Orb: </label>
             <div class="col-sm-9 col-md-6 ">
                 <div class="form-check form-check-inline">
@@ -85,41 +105,8 @@
                 </div>
             </div>
         </div>
-
-        <div class="form-group row">
-            <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Aspect Filter: </label>
-            <div class="col-sm-9 col-md-6 ">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="aspect_filter" id="aspect_filter1" value="all" <?='all' === $aspectFilter ? 'checked' : ''?>>
-                    <label class="form-check-label" for="aspect_filter1">All</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="aspect_filter" id="aspect_filter2" value="major" <?='major' === $aspectFilter ? 'checked' : ''?>>
-                    <label class="form-check-label" for="aspect_filter2">Major</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="aspect_filter" id="aspect_filter3" value="minor" <?='minor' === $aspectFilter ? 'checked' : ''?>>
-                    <label class="form-check-label" for="aspect_filter3">Minor</label>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Birth Time is Unknown: </label>
-            <div class="col-sm-9 col-md-6 ">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="birth_time_unknown" id="birth_time_unknown1" value="false" <?='false' === $birthTimeUnknown ? 'checked' : ''?>>
-                    <label class="form-check-label" for="birth_time_unknown1">No</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="birth_time_unknown" id="birth_time_unknown2" value="true" <?='true' === $birthTimeUnknown ? 'checked' : ''?>>
-                    <label class="form-check-label" for="birth_time_unknown2">Yes</label>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Rectification Chart: </label>
+        <div class="form-group row d-none" id="birth_time_rectification_tab">
+            <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Birth Time Rectification Chart: </label>
             <div class="col-sm-9 col-md-6 ">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="birth_time_rectification" id="birth_time_rectification1" value="noon" <?='noon' === $rectificationChart ? 'checked' : ''?>>
@@ -132,3 +119,20 @@
             </div>
         </div>
     </div>
+
+    <script>
+        (function () {
+            const $birthTimeUnknownCheckbox = document.getElementById('birth_time_unknown');
+            const $birthTimeRectificationTab = document.getElementById('birth_time_rectification_tab');
+
+            $birthTimeUnknownCheckbox.addEventListener('click', (e) => {
+                if(e.target.checked){
+                    $birthTimeRectificationTab.classList.remove('d-none');
+                } else {
+                    if(!$birthTimeRectificationTab.classList.contains('d-none')){
+                        $birthTimeRectificationTab.classList.add('d-none');
+                    }
+                }
+            });
+        }());
+    </script>

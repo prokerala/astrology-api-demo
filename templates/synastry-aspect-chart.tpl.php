@@ -34,7 +34,7 @@
         <?php if (!empty($result)): ?>
             <h3 class="text-center">Synastry Aspect Chart</h3>
             <div id="chart" class="d-flex justify-content-center">
-                <?= str_replace('<svg ', '<svg preserveAspectRatio="none" viewBox="0 0 450 450" ', $chart); ?>
+                <?= str_replace('<svg ', '<svg preserveAspectRatio="none" viewBox="0 0 500 500" ', $chart); ?>
             </div>
         <?php endif; ?>
         <section>

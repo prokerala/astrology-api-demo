@@ -49,7 +49,7 @@ if ($selectedSign) {
         $horoscopeClass = new DailyPrediction($client);
         $cache = new FilesystemAdapter();
         $result = $cache->get("daily_horoscope_{$selectedSign}", function (ItemInterface $item) use ($horoscopeClass, $datetime, $selectedSign): DailyHoroscope {
-            $item->expiresAfter(2880);
+            $item->expiresAfter(28800);
             return $horoscopeClass->process($datetime, $selectedSign);
         });
 

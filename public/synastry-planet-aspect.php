@@ -30,7 +30,6 @@ $orb = 'default';
 $primaryBirthTimeUnknown = 'false';
 $secondaryBirthTimeUnknown = 'false';
 $rectificationChart = 'noon';
-$aspectFilter = 'major';
 $chartType = 'zodiac-contact-chart';
 
 $submit = $_POST['submit'] ?? 0;
@@ -53,7 +52,6 @@ if (isset($_POST['submit'])) {
     $houseSystem = $_POST['house_system'];
     $orb = $_POST['orb'];
     $rectificationChart = $_POST['birth_time_rectification'];
-    $aspectFilter = $_POST['aspect_filter'];
     $chartType = $_POST['chart_type'];
 }
 
@@ -81,7 +79,6 @@ if ($submit) {
             $primaryBirthTimeUnknown === 'true',
             $secondaryBirthTimeUnknown === 'true',
             $rectificationChart,
-            $aspectFilter
         );
         $aspects = $result->getAspects();
 

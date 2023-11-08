@@ -34,7 +34,6 @@ $orb = 'default';
 $primaryBirthTimeUnknown = 'false';
 $secondaryBirthTimeUnknown = 'false';
 $rectificationChart = 'noon';
-$aspectFilter = 'major';
 
 $submit = $_POST['submit'] ?? 0;
 
@@ -62,7 +61,6 @@ if (isset($_POST['submit'])) {
     $houseSystem = $_POST['house_system'];
     $orb = $_POST['orb'];
     $rectificationChart = $_POST['birth_time_rectification'];
-    $aspectFilter = $_POST['aspect_filter'];
 }
 
 $primaryBirthLocation = new Location((float)$primary_latitude, (float)$primary_longitude, 0);
@@ -92,7 +90,6 @@ if ($submit) {
             $primaryBirthTimeUnknown === 'true',
             $secondaryBirthTimeUnknown === 'true',
             $rectificationChart,
-            $aspectFilter
         );
         $aspects = $result->getAspect();
         $planetPositions = $result->getPlanetPositions();

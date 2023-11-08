@@ -29,7 +29,6 @@ $houseSystem = 'placidus';
 $orb = 'default';
 $birthTimeUnknown = 'false';
 $rectificationChart = 'noon';
-$aspectFilter = 'major';
 
 if (isset($_POST['submit'])) {
     $datetime = $_POST['datetime'];
@@ -46,7 +45,6 @@ if (isset($_POST['submit'])) {
     $orb = $_POST['orb'];
     $birthTimeUnknown = $_POST['birth_time_unknown'] ?? false;
     $rectificationChart = $_POST['birth_time_rectification'];
-    $aspectFilter = $_POST['aspect_filter'];
 }
 
 $location = new Location((float)$latitude, (float)$longitude, 0);
@@ -63,7 +61,7 @@ if ($submit) {
         $method = new TransitChart($client);
 
         $result = $method->process($location, $datetime, $transitLocation, $transitDatetime,
-                            $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
+                            $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart);
 
         $details =  $result->getTransitDetails();
         $transitNatalAspects  =  $result->getTransitNatalAspect();

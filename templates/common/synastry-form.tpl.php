@@ -97,16 +97,18 @@
             </select>
         </div>
     </div>
-    <div class="form-group row">
-        <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Aspect Filter: </label>
-        <div class="col-sm-9 col-md-6">
-            <select name="aspect_filter" class="form-control form-control-lg rounded-1">
-                <option value="major" <?= 'major' === $aspectFilter ? 'selected' : ''?>>Show major aspects</option>
-                <option value="all" <?= 'all' === $aspectFilter ? 'selected' : ''?>>Show all aspects</option>
-                <option value="minor" <?= 'minor' === $aspectFilter ? 'selected' : ''?>>Show minor aspects only</option>
-            </select>
+    <?php if(in_array($sample_name, ['synastry-chart', 'synastry-aspect-chart', 'composite-chart', 'composite-aspect-chart'])): ?>
+        <div class="form-group row">
+            <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Aspect Filter: </label>
+            <div class="col-sm-9 col-md-6">
+                <select name="aspect_filter" class="form-control form-control-lg rounded-1">
+                    <option value="major" <?= 'major' === $aspectFilter ? 'selected' : ''?>>Show major aspects</option>
+                    <option value="all" <?= 'all' === $aspectFilter ? 'selected' : ''?>>Show all aspects</option>
+                    <option value="minor" <?= 'minor' === $aspectFilter ? 'selected' : ''?>>Show minor aspects only</option>
+                </select>
+            </div>
         </div>
-    </div>
+    <?php endif; ?>
     <div class="form-group row">
         <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Orb: </label>
         <div class="col-sm-9 col-md-6 ">

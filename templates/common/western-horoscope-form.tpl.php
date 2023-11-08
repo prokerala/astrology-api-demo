@@ -81,6 +81,8 @@
                 </div>
             </div>
         <?php endif; ?>
+        <?php if (!in_array($sample_name,
+            ['natal-planet-position', 'transit-planet-position', 'progression-planet-position', 'solar-return-planet-position', 'composite-planet-aspect', 'synastry-planet-aspect'])): ?>
 
         <div class="form-group row">
             <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Aspect Filter: </label>
@@ -92,6 +94,8 @@
                 </select>
             </div>
         </div>
+        <?php endif; ?>
+
         <div class="form-group row">
             <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Orb: </label>
             <div class="col-sm-9 col-md-6 ">

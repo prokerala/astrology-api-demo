@@ -54,7 +54,7 @@
                 <?php endforeach; ?>
             </table>
 
-            <h3 class="text-center">Composite Planet Aspect</h3>
+            <h3 class="text-center mt-5">Composite Planet Aspect</h3>
             <table class="table table-bordered">
                 <tr>
                     <th>Planet 1</th>

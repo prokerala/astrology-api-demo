@@ -12,7 +12,7 @@ use Prokerala\Common\Api\Exception\ValidationException;
 
 require __DIR__ . '/bootstrap.php';
 
-$sample_name = 'solar-return-chart';
+$sample_name = 'solar-return-planet-position';
 $time_now = new DateTimeImmutable();
 
 $input = [

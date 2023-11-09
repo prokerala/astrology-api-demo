@@ -34,7 +34,7 @@
         <?php if (!empty($result)): ?>
             <h3 class="text-center">Solar Return Chart</h3>
             <div id="chart" class="d-flex justify-content-center">
-                <?= str_replace('<svg ', '<svg preserveAspectRatio="none" viewBox="0 0 680 680" ', $chart); ?>
+                <?= str_replace('<svg ', '<svg preserveAspectRatio="none" viewBox="0 0 700 700" ', $chart); ?>
             </div>
         <?php endif; ?>
         <section>

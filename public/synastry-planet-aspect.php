@@ -29,7 +29,7 @@ $houseSystem = 'placidus';
 $orb = 'default';
 $primaryBirthTimeUnknown = 'false';
 $secondaryBirthTimeUnknown = 'false';
-$rectificationChart = 'noon';
+$rectificationChart = 'flat-chart';
 $chartType = 'zodiac-contact-chart';
 
 $submit = $_POST['submit'] ?? 0;

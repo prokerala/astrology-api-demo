@@ -33,7 +33,7 @@ $houseSystem = 'placidus';
 $orb = 'default';
 $primaryBirthTimeUnknown = 'false';
 $secondaryBirthTimeUnknown = 'false';
-$rectificationChart = 'noon';
+$rectificationChart = 'flat-chart';
 $aspectFilter = 'major';
 
 $submit = $_POST['submit'] ?? 0;

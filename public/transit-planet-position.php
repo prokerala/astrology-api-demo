@@ -28,7 +28,7 @@ $submit = $_POST['submit'] ?? 0;
 $houseSystem = 'placidus';
 $orb = 'default';
 $birthTimeUnknown = 'false';
-$rectificationChart = 'noon';
+$rectificationChart = 'flat-chart';
 
 if (isset($_POST['submit'])) {
     $datetime = $_POST['datetime'];

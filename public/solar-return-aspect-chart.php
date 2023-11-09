@@ -29,7 +29,7 @@ $submit = $_POST['submit'] ?? 0;
 $houseSystem = 'placidus';
 $orb = 'default';
 $birthTimeUnknown = 'false';
-$rectificationChart = 'noon';
+$rectificationChart = 'flat-chart';
 $aspectFilter = 'major';
 
 if (isset($_POST['submit'])) {

@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div id="blocationField" class="form-group row">
+        <div id="primaryLocationField" class="form-group row">
             <label class="col-md-4 pr-md-0 col-form-label">Place of birth:</label>
             <div class="col-md-8 pl-md-0">
                 <div id='b-location'>
@@ -56,13 +56,13 @@
 <div>
     <?php if(in_array($sample_name, ['composite-chart', 'composite-aspect-chart', 'composite-planet-aspect'])) : ?>
         <div class="form-group row">
-            <label class="col-sm-3 col-md-4 col-form-label">Transit Date:</label>
+            <label class="col-sm-3 col-md-4 col-form-label text-md-right text-xs-left">Transit Date:</label>
             <div class="col-sm-9 col-md-6">
                 <input type='date' name="transit_datetime" class="form-control form-control-lg rounded-1"  required="required" value="<?= $transitDateTime->format('Y-m-d')?>"/>
             </div>
         </div>
-        <div id="blocationField" class="form-group row">
-            <label class="col-sm-3 col-md-4 col-form-label">Reference Place:</label>
+        <div id="secondaryLocationField" class="form-group row">
+            <label class="col-sm-3 col-md-4 col-form-label text-md-right text-xs-left">Reference Place:</label>
             <div class="col-sm-9 col-md-6">
                 <div id='b-location'>
                     <input type='text' id="fin-current-location" name="current_location" autocomplete="off" class="porutham-form-input autocomplete form-control form-control-lg rounded-1 prokerala-location-input" data-location_input_prefix="current_" placeholder="Reference Place" value="" required="required"/>
@@ -73,7 +73,7 @@
 
     <?php if(in_array($sample_name, ['synastry-chart', 'synastry-aspect-chart', 'synastry-planet-aspect'])) : ?>
         <div class="form-group row">
-            <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Synastry Chart Type: </label>
+            <label class="col-sm-3 col-md-4 col-form-label text-md-right text-xs-left">Synastry Chart Type: </label>
             <div class="col-sm-9 col-md-6">
                 <select name="chart_type" class="form-control form-control-lg rounded-1">
                     <option value="zodiac-contact-chart" <?= 'zodiac-contact-chart' === $houseSystem ? 'selected' : ''?>>Zodiacal Contact Chart</option>
@@ -83,7 +83,7 @@
         </div>
     <?php endif; ?>
     <div class="form-group row">
-        <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">House System: </label>
+        <label class="col-sm-3 col-md-4 col-form-label text-md-right text-xs-left">House System: </label>
         <div class="col-sm-9 col-md-6">
             <select name="house_system" class="form-control form-control-lg rounded-1">
                 <option value="placidus" <?= 'placidus' === $houseSystem ? 'selected' : ''?>>Placidus</option>
@@ -99,7 +99,7 @@
     </div>
     <?php if(in_array($sample_name, ['synastry-chart', 'synastry-aspect-chart', 'composite-chart', 'composite-aspect-chart'])): ?>
         <div class="form-group row">
-            <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Aspect Filter: </label>
+            <label class="col-sm-3 col-md-4 col-form-label text-md-right text-xs-left">Aspect Filter: </label>
             <div class="col-sm-9 col-md-6">
                 <select name="aspect_filter" class="form-control form-control-lg rounded-1">
                     <option value="major" <?= 'major' === $aspectFilter ? 'selected' : ''?>>Show major aspects</option>
@@ -110,7 +110,7 @@
         </div>
     <?php endif; ?>
     <div class="form-group row">
-        <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Orb: </label>
+        <label class="col-sm-3 col-md-4 col-form-label text-md-right text-xs-left">Orb: </label>
         <div class="col-sm-9 col-md-6 ">
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="orb" id="orb1" value="default" <?='default' === $orb ? 'checked' : ''?>>
@@ -123,14 +123,14 @@
         </div>
     </div>
     <div class="form-group row d-none" id="birth_time_rectification_tab">
-        <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Birth Time Rectification Chart: </label>
+        <label class="col-sm-3 col-md-4 col-form-label text-md-right text-xs-left">Birth Time Rectification Chart: </label>
         <div class="col-sm-9 col-md-6 ">
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="birth_time_rectification" id="rectification_chart1" value="noon" <?='noon' === $rectificationChart ? 'checked' : ''?>>
+                <input class="form-check-input" type="radio" name="birth_time_rectification" id="rectification_chart1" value="flat-chart" <?='flat-chart' === $rectificationChart ? 'checked' : ''?>>
                 <label class="form-check-label" for="rectification_chart1">Flat Chart</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="birth_time_rectification" id="rectification_chart2" value="sunrise" <?='sunrise' === $rectificationChart ? 'checked' : ''?>>
+                <input class="form-check-input" type="radio" name="birth_time_rectification" id="rectification_chart2" value="true-sunrise" <?='true-sunrise' === $rectificationChart ? 'checked' : ''?>>
                 <label class="form-check-label" for="rectification_chart2">True Sunrise</label>
             </div>
         </div>

@@ -24,7 +24,7 @@ $input = [
 ];
 $coordinates = $input['latitude'] . ',' . $input['longitude'];
 $transitCoordinates = $input['transit_latitude'] . ',' . $input['transit_longitude'];
-$solarYear = (int)$time_now->format('Y');
+$solarYear = (int)$time_now->format('Y') + 1;
 $submit = $_POST['submit'] ?? 0;
 $houseSystem = 'placidus';
 $orb = 'default';
@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
     $arCoordinates = explode(',', $transitCoordinates);
     $input['transit_latitude'] = $arCoordinates[0] ?? '';
     $input['transit_longitude'] = $arCoordinates[1] ?? '';
-    $solarYear = (int)$_POST['solar_year'];
+    $solarYear = (int)$_POST['solar_return_year'];
     $houseSystem = $_POST['house_system'];
     $orb = $_POST['orb'];
     $birthTimeUnknown = $_POST['birth_time_unknown'] ?? false;

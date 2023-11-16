@@ -24,7 +24,7 @@ $input = [
 ];
 $coordinates = $input['latitude'] . ',' . $input['longitude'];
 $transitCoordinates = $input['transit_latitude'] . ',' . $input['transit_longitude'];
-$progressionYear = (int)$time_now->format('Y');
+$progressionYear = (int)$time_now->format('Y') + 1;
 $submit = $_POST['submit'] ?? 0;
 $houseSystem = 'placidus';
 $orb = 'default';
@@ -65,7 +65,8 @@ if ($submit) {
 
         $details =  $result->getProgressionDetails();
         $progressionNatalAspects  =  $result->getProgressionNatalAspect();
-        $progressionDatetime =  $result->getProgressionDatetime();
+        $progressionDate =  $result->getProgressionDate();
+        $progressionYear = $result->getProgressionYear();
         $houses = $details->getHouses();
         $planetPositions = $details->getPlanetPositions();
         $angles = $details->getAngles();

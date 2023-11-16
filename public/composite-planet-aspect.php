@@ -91,8 +91,10 @@ if ($submit) {
             $secondaryBirthTimeUnknown === 'true',
             $rectificationChart,
         );
-        $aspects = $result->getAspect();
-        $planetPositions = $result->getPlanetPositions();
+        $houses = $result->getCompositeHouses();
+        $planetPositions = $result->getCompositePlanetPositions();
+        $angles = $result->getCompositeAngles();
+        $aspects = $result->getCompositeAspects();
 
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();

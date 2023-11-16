@@ -32,8 +32,26 @@
         <?php include 'common/helper.tpl.php'; ?>
 
         <?php if (!empty($result)): ?>
-            <h3 class="text-center">Composite Planet Position</h3>
+
+            <!--            House table-->
+            <h3 class="text-center m-5">Composite Houses</h3>
             <table class="table table-bordered">
+                <tr>
+                    <th>House</th>
+                    <th>Start Degree</th>
+                    <th>End Degree</th>
+                </tr>
+                <?php foreach($houses as $house): ?>
+                    <tr>
+                        <td><?=$house->getNumber()?></td>
+                        <td><?=$house->getStartDegree()?></td>
+                        <td><?=$house->getEndDegree()?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+
+            <h3 class="text-center">Composite Planet Position</h3>
+            <table class="table table-bordered m-5">
                 <tr>
                     <th>Planet</th>
                     <th>Longitude</th>
@@ -54,7 +72,29 @@
                 <?php endforeach; ?>
             </table>
 
-            <h3 class="text-center mt-5">Composite Planet Aspect</h3>
+            <h3 class="text-center">Composite Angles</h3>
+            <table class="table table-bordered m-5">
+                <tr>
+                    <th>Planet</th>
+                    <th>Longitude</th>
+                    <th>Motion</th>
+                    <th>Degree</th>
+                    <th>House</th>
+                    <th>Zodiac</th>
+                </tr>
+                <?php foreach($angles as $planetPosition): ?>
+                    <tr>
+                        <td><?=$planetPosition->getName()?></td>
+                        <td><?=round($planetPosition->getLongitude(), 3)?></td>
+                        <td><?=$planetPosition->isRetrograde() === true ? 'Retrograde' : 'Forward'?></td>
+                        <td><?=round($planetPosition->getDegree(), 3)?></td>
+                        <td><?=$planetPosition->getHouseNumber()?></td>
+                        <td><?=$planetPosition->getZodiac()->getName()?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+
+            <h3 class="text-center m-5">Composite Planet Aspect</h3>
             <table class="table table-bordered">
                 <tr>
                     <th>Planet 1</th>

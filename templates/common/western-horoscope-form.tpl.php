@@ -68,9 +68,9 @@
             </div>
         <?php elseif (in_array($sample_name, ['solar-return-chart', 'solar-return-aspect-chart', 'solar-return-planet-position'])): ?>
             <div class="form-group row">
-                <label class="col-sm-3 col-md-4 col-form-label text-md-right text-xs-left">Solar Year: </label>
+                <label class="col-sm-3 col-md-4 col-form-label text-md-right text-xs-left">Solar Return Year: </label>
                 <div class="col-sm-9 col-md-6 ">
-                    <input type="number" name="solar_year" class="form-control form-control-lg rounded-1" placeholder="Enter Solar Year" value="<?= $solarYear?>" required>
+                    <input type="number" name="solar_return_year" class="form-control form-control-lg rounded-1" placeholder="Enter Solar Return Year" value="<?= $solarYear?>" required>
                 </div>
             </div>
 

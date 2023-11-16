@@ -32,6 +32,14 @@
         <?php include 'common/helper.tpl.php'; ?>
 
         <?php if (!empty($result)): ?>
+
+            <table class="table table-bordered mt-5 mb-5">
+                <tr>
+                    <th>Solar Return Date</th>
+                    <td><?=$solarDatetime->format('d M Y, h:i A')?></td>
+                </tr>
+            </table>
+
             <h3 class="text-center">Solar Return Planet Positions</h3>
 
             <!--            Planet Position table-->

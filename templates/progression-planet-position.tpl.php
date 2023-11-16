@@ -32,6 +32,18 @@
         <?php include 'common/helper.tpl.php'; ?>
 
         <?php if (!empty($result)): ?>
+
+            <table class="table table-bordered mt-5 mb-5">
+                <tr>
+                    <th>Progression Year</th>
+                    <td><?=$progressionYear?></td>
+                </tr>
+                <tr>
+                    <th>Progression Date</th>
+                    <td><?=$progressionDate->format('d M Y')?></td>
+                </tr>
+            </table>
+
             <h3 class="text-center">Progression Planet Positions</h3>
 
             <!--            Planet Position table-->

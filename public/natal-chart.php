@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use Prokerala\Api\Astrology\Location;
 use Prokerala\Api\Astrology\Western\Service\Charts\NatalChart;
+use Prokerala\Api\Astrology\Western\Service\AspectCharts\NatalChart as NatalAspectChart;
+use Prokerala\Api\Astrology\Western\Service\PlanetPositions\NatalChart as NatalPlanetPosition;
 use Prokerala\Common\Api\Exception\AuthenticationException;
 use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
@@ -50,9 +52,18 @@ $errors = [];
 if ($submit) {
     try {
         $method = new NatalChart($client);
+        $chart = $method->process($location, $datetime, $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
 
-        $result = $method->process($location, $datetime, $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
-        $chart = $result;
+        $method = new NatalAspectChart($client);
+        $aspectChart = $method->process($location, $datetime, $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
+
+        $method = new NatalPlanetPosition($client);
+        $result = $method->process($location, $datetime, $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart);
+        $planetPositions = $result->getPlanetPositions();
+        $houses = $result->getHouses();
+        $angles = $result->getAngles();
+        $aspects = $result->getAspects();
+        $declinations = $result->getDeclinations();
 
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();

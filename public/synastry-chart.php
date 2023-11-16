@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use Prokerala\Api\Astrology\Location;
 use Prokerala\Api\Astrology\Western\Service\Charts\SynastryChart;
+use Prokerala\Api\Astrology\Western\Service\AspectCharts\SynastryChart as SynastryAspectChart;
+use Prokerala\Api\Astrology\Western\Service\PlanetPositions\SynastryChart as SynastryPlanetAspects;
 use Prokerala\Common\Api\Exception\AuthenticationException;
 use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
@@ -70,7 +72,7 @@ if ($submit) {
     try {
         $method = new SynastryChart($client);
 
-        $result = $method->process(
+        $chart = $method->process(
             $primaryBirthLocation,
             $primaryBirthTime,
             $secondaryBirthLocation,
@@ -83,7 +85,38 @@ if ($submit) {
             $rectificationChart,
             $aspectFilter
         );
-        $chart = $result;
+
+        $method = new SynastryAspectChart($client);
+
+        $aspectChart = $method->process(
+            $primaryBirthLocation,
+            $primaryBirthTime,
+            $secondaryBirthLocation,
+            $secondaryBirthTime,
+            $houseSystem,
+            $chartType,
+            $orb,
+            $primaryBirthTimeUnknown === 'true',
+            $secondaryBirthTimeUnknown === 'true',
+            $rectificationChart,
+            $aspectFilter
+        );
+
+        $method = new SynastryPlanetAspects($client);
+
+        $result = $method->process(
+            $primaryBirthLocation,
+            $primaryBirthTime,
+            $secondaryBirthLocation,
+            $secondaryBirthTime,
+            $houseSystem,
+            $chartType,
+            $orb,
+            $primaryBirthTimeUnknown === 'true',
+            $secondaryBirthTimeUnknown === 'true',
+            $rectificationChart,
+        );
+        $aspects = $result->getAspects();
 
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();

@@ -36,6 +36,31 @@
             <div id="chart" class="d-flex justify-content-center">
                 <?= str_replace('<svg ', '<svg preserveAspectRatio="none" viewBox="0 0 700 700" ', $chart); ?>
             </div>
+
+            <h3 class="text-center">Synastry Aspect Chart</h3>
+            <div id="chart" class="d-flex justify-content-center">
+                <?= str_replace('<svg ', '<svg preserveAspectRatio="none" viewBox="0 0 500 500" ', $aspectChart); ?>
+            </div>
+
+            <h3 class="text-center">Synastry Planet Aspect</h3>
+            <div class="d-flex justify-content-center">
+                <table class="table table-bordered w-50">
+                    <tr>
+                        <th>Primary Planet</th>
+                        <th>Secondary Planet</th>
+                        <th>Aspect</th>
+                        <th>Orb</th>
+                    </tr>
+                    <?php foreach($aspects as $aspect): ?>
+                        <tr>
+                            <td><?=$aspect->getPlanetOne()->getName()?></td>
+                            <td><?=$aspect->getPlanetTwo()->getName()?></td>
+                            <td><?=$aspect->getAspect()->getName()?></td>
+                            <td><?=$aspect->getOrb()?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            </div>
         <?php endif; ?>
         <section>
             <div class="card contact-form-wrapper box-shadow mx-auto rounded-2 mb-5">

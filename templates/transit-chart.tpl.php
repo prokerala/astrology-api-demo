@@ -32,10 +32,135 @@
         <?php include 'common/helper.tpl.php'; ?>
 
         <?php if (!empty($result)): ?>
+
             <h3 class="text-center">Transit Chart</h3>
             <div id="chart" class="d-flex justify-content-center">
                     <?= str_replace('<svg ', '<svg preserveAspectRatio="none" viewBox="0 0 700 700" ', $chart); ?>
-                </div>
+            </div>
+
+            <h3 class="text-center">Transit Aspect Chart</h3>
+            <div id="chart" class="d-flex justify-content-center">
+                <?= str_replace('<svg ', '<svg preserveAspectRatio="none" viewBox="0 0 710 470" ', $aspectChart); ?>
+            </div>
+
+            <h3 class="text-center mt-5">Transit Planet Positions</h3>
+
+            <!--            Planet Position table-->
+            <table class="table table-bordered">
+                <tr>
+                    <th>Planet</th>
+                    <th>Longitude</th>
+                    <th>Motion</th>
+                    <th>Degree</th>
+                    <th>House</th>
+                    <th>Zodiac</th>
+                </tr>
+                <?php foreach($planetPositions as $planetPosition): ?>
+                    <tr>
+                        <td><?=$planetPosition->getName()?></td>
+                        <td><?=round($planetPosition->getLongitude(), 3)?></td>
+                        <td><?=$planetPosition->isRetrograde() === true ? 'Retrograde' : 'Forward'?></td>
+                        <td><?=round($planetPosition->getDegree(), 3)?></td>
+                        <td><?=$planetPosition->getHouseNumber()?></td>
+                        <td><?=$planetPosition->getZodiac()->getName()?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+
+            <h3 class="text-center mt-5">Angles</h3>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Angles</th>
+                    <th>Longitude</th>
+                    <th>Motion</th>
+                    <th>Degree</th>
+                    <th>House</th>
+                    <th>Zodiac</th>
+                </tr>
+                <?php foreach($angles as $planetPosition): ?>
+                    <tr>
+                        <td><?=$planetPosition->getName()?></td>
+                        <td><?=round($planetPosition->getLongitude(), 3)?></td>
+                        <td><?=$planetPosition->isRetrograde() === true ? 'Retrograde' : 'Forward'?></td>
+                        <td><?=round($planetPosition->getDegree(), 3)?></td>
+                        <td><?=$planetPosition->getHouseNumber()?></td>
+                        <td><?=$planetPosition->getZodiac()->getName()?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+            <!--            House table-->
+            <h3 class="text-center mt-5">Transit Houses</h3>
+            <table class="table table-bordered">
+                <tr>
+                    <th>House</th>
+                    <th>Start Degree</th>
+                    <th>End Degree</th>
+                </tr>
+                <?php foreach($houses as $house): ?>
+                    <tr>
+                        <td><?=$house->getNumber()?></td>
+                        <td><?=$house->getStartDegree()?></td>
+                        <td><?=$house->getEndDegree()?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+
+            <!--            Aspect table-->
+            <h3 class="text-center mt-5">Transit Aspects</h3>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Planet 1</th>
+                    <th>Planet 2</th>
+                    <th>Aspect</th>
+                    <th>Orb</th>
+                </tr>
+                <?php foreach($aspects as $aspect): ?>
+                    <tr>
+                        <td><?=$aspect->getPlanetOne()->getName()?></td>
+                        <td><?=$aspect->getPlanetTwo()->getName()?></td>
+                        <td><?=$aspect->getAspect()->getName()?></td>
+                        <td><?=$aspect->getOrb()?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+
+            <!--            Declination table-->
+            <h3 class="text-center mt-5">Transit Declination Aspects</h3>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Planet 1</th>
+                    <th>Planet 2</th>
+                    <th>Aspect</th>
+                    <th>Orb</th>
+                </tr>
+                <?php foreach($declinations as $aspect): ?>
+                    <tr>
+                        <td><?=$aspect->getPlanetOne()->getName()?></td>
+                        <td><?=$aspect->getPlanetTwo()->getName()?></td>
+                        <td><?=$aspect->getAspect()->getName()?></td>
+                        <td><?=$aspect->getOrb()?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+            <!--            Transit - Natal Aspects table-->
+            <h3 class="text-center mt-5">Transit - Natal Aspects</h3>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Planet 1</th>
+                    <th>Planet 2</th>
+                    <th>Aspect</th>
+                    <th>Orb</th>
+                </tr>
+                <?php foreach($transitNatalAspects as $aspect): ?>
+                    <tr>
+                        <td><?=$aspect->getPlanetOne()->getName()?></td>
+                        <td><?=$aspect->getPlanetTwo()->getName()?></td>
+                        <td><?=$aspect->getAspect()->getName()?></td>
+                        <td><?=$aspect->getOrb()?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+
         <?php endif; ?>
         <section>
             <div class="card contact-form-wrapper box-shadow mx-auto rounded-2 mb-5">

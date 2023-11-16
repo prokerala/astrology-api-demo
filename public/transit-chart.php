@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use Prokerala\Api\Astrology\Location;
 use Prokerala\Api\Astrology\Western\Service\Charts\TransitChart;
+use Prokerala\Api\Astrology\Western\Service\AspectCharts\TransitChart as TransitAspectChart;
+use Prokerala\Api\Astrology\Western\Service\PlanetPositions\TransitChart as TransitPlanetPositions;
 use Prokerala\Common\Api\Exception\AuthenticationException;
 use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
@@ -61,10 +63,26 @@ $errors = [];
 if ($submit) {
     try {
         $method = new TransitChart($client);
+        $chart = $method->process($location, $datetime, $transitLocation, $transitDatetime,
+                            $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
+
+        $method = new TransitAspectChart($client);
+        $aspectChart = $method->process($location, $datetime, $transitLocation, $transitDatetime,
+            $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
+
+        $method = new TransitPlanetPositions($client);
 
         $result = $method->process($location, $datetime, $transitLocation, $transitDatetime,
-                            $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
-        $chart = $result;
+            $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart);
+
+        $details =  $result->getTransitDetails();
+        $transitNatalAspects  =  $result->getTransitNatalAspect();
+        $transitDatetime =  $result->getTransitDatetime();
+        $houses = $details->getHouses();
+        $planetPositions = $details->getPlanetPositions();
+        $angles = $details->getAngles();
+        $aspects = $details->getAspects();
+        $declinations = $details->getDeclinations();
 
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();

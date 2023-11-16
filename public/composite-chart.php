@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use Prokerala\Api\Astrology\Location;
 use Prokerala\Api\Astrology\Western\Service\Charts\CompositeChart;
+use Prokerala\Api\Astrology\Western\Service\AspectCharts\CompositeChart as CompositeAspectChart;
+use Prokerala\Api\Astrology\Western\Service\PlanetPositions\CompositeChart as CompositePlanetPositions;
 use Prokerala\Common\Api\Exception\AuthenticationException;
 use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
@@ -80,7 +82,7 @@ if ($submit) {
     try {
         $method = new CompositeChart($client);
 
-        $result = $method->process(
+        $chart = $method->process(
             $primaryBirthLocation,
             $primaryBirthTime,
             $secondaryBirthLocation,
@@ -94,7 +96,43 @@ if ($submit) {
             $rectificationChart,
             $aspectFilter
         );
-        $chart = $result;
+
+        $method = new CompositeAspectChart($client);
+
+        $aspectChart = $method->process(
+            $primaryBirthLocation,
+            $primaryBirthTime,
+            $secondaryBirthLocation,
+            $secondaryBirthTime,
+            $currentLocation,
+            $transitDateTime,
+            $houseSystem,
+            $orb,
+            $primaryBirthTimeUnknown === 'true',
+            $secondaryBirthTimeUnknown === 'true',
+            $rectificationChart,
+            $aspectFilter
+        );
+
+        $method = new CompositePlanetPositions($client);
+
+        $result = $method->process(
+            $primaryBirthLocation,
+            $primaryBirthTime,
+            $secondaryBirthLocation,
+            $secondaryBirthTime,
+            $currentLocation,
+            $transitDateTime,
+            $houseSystem,
+            $orb,
+            $primaryBirthTimeUnknown === 'true',
+            $secondaryBirthTimeUnknown === 'true',
+            $rectificationChart,
+        );
+        $houses = $result->getCompositeHouses();
+        $planetPositions = $result->getCompositePlanetPositions();
+        $angles = $result->getCompositeAngles();
+        $aspects = $result->getCompositeAspects();
 
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();

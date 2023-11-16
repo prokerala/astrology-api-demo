@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use Prokerala\Api\Astrology\Location;
 use Prokerala\Api\Astrology\Western\Service\Charts\ProgressionChart;
+use Prokerala\Api\Astrology\Western\Service\AspectCharts\ProgressionChart as ProgressionAspectChart;
+use Prokerala\Api\Astrology\Western\Service\PlanetPositions\ProgressionChart as ProgressionPlanetPositions;
 use Prokerala\Common\Api\Exception\AuthenticationException;
 use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
@@ -61,11 +63,27 @@ $errors = [];
 if ($submit) {
     try {
         $method = new ProgressionChart($client);
+        $chart = $method->process($location, $datetime, $transitLocation, $progressionYear,
+                            $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
+
+        $method = new ProgressionAspectChart($client);
+        $aspectChart = $method->process($location, $datetime, $transitLocation, $progressionYear,
+            $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
+
+        $method = new ProgressionPlanetPositions($client);
 
         $result = $method->process($location, $datetime, $transitLocation, $progressionYear,
-                            $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
-        $chart = $result;
+            $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart);
 
+        $details =  $result->getProgressionDetails();
+        $progressionNatalAspects  =  $result->getProgressionNatalAspect();
+        $progressionDate =  $result->getProgressionDate();
+        $progressionYear = $result->getProgressionYear();
+        $houses = $details->getHouses();
+        $planetPositions = $details->getPlanetPositions();
+        $angles = $details->getAngles();
+        $aspects = $details->getAspects();
+        $declinations = $details->getDeclinations();
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {

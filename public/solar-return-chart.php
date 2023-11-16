@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use Prokerala\Api\Astrology\Location;
 use Prokerala\Api\Astrology\Western\Service\Charts\SolarReturnChart;
+use Prokerala\Api\Astrology\Western\Service\AspectCharts\SolarReturnChart as SolarReturnAspectChart;
+use Prokerala\Api\Astrology\Western\Service\PlanetPositions\SolarReturnChart as SolarReturnPlanetPositions;
 use Prokerala\Common\Api\Exception\AuthenticationException;
 use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
@@ -61,11 +63,25 @@ $errors = [];
 if ($submit) {
     try {
         $method = new SolarReturnChart($client);
-
-        $result = $method->process($location, $datetime, $transitLocation, $solarYear,
+        $chart = $method->process($location, $datetime, $transitLocation, $solarYear,
                             $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
-        $chart = $result;
 
+        $method = new SolarReturnAspectChart($client);
+        $aspectChart = $method->process($location, $datetime, $transitLocation, $solarYear,
+            $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
+
+        $method = new SolarReturnPlanetPositions($client);
+        $result = $method->process($location, $datetime, $transitLocation, $solarYear,
+            $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart);
+
+        $details =  $result->getSolarDetails();
+        $solarNatalAspects  =  $result->getSolarNatalAspect();
+        $solarDatetime =  $result->getSolarDatetime();
+        $houses = $details->getHouses();
+        $planetPositions = $details->getPlanetPositions();
+        $angles = $details->getAngles();
+        $aspects = $details->getAspects();
+        $declinations = $details->getDeclinations();
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {

@@ -50,23 +50,11 @@ $arGroupCalculators = [
     ],
     'Western Astrology' => [
         'natal-chart',
-        'natal-aspect-chart',
-        'natal-planet-position',
         'transit-chart',
-        'transit-aspect-chart',
-        'transit-planet-position',
         'progression-chart',
-        'progression-aspect-chart',
-        'progression-planet-position',
         'solar-return-chart',
-        'solar-return-aspect-chart',
-        'solar-return-planet-position',
         'synastry-chart',
-        'synastry-aspect-chart',
-        'synastry-planet-aspect',
         'composite-chart',
-        'composite-aspect-chart',
-        'composite-planet-aspect',
     ],
 ];
 

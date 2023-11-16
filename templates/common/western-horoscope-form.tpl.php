@@ -11,7 +11,7 @@
             <div class="col-sm-9 col-md-6 ">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="checkbox" name="birth_time_unknown" id="birth_time_unknown" <?='true' === $birthTimeUnknown ? 'checked' : ''?>>
-                    <label class="form-check-label" for="birth_time_unknown">Check if birth time is unknown</label>
+                    <label class="form-check-label" for="birth_time_unknown">Check if exact birth time is unknown</label>
                 </div>
             </div>
         </div>

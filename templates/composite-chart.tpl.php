@@ -44,18 +44,18 @@
 
 
             <!--            House table-->
-            <h3 class="text-center m-5">Composite Houses</h3>
+            <h3 class="text-center m-5">Composite House Cusps</h3>
             <table class="table table-bordered">
                 <tr>
                     <th>House</th>
-                    <th>Start Degree</th>
-                    <th>End Degree</th>
+                    <th>Start Cusp</th>
+                    <th>End Cusp</th>
                 </tr>
                 <?php foreach($houses as $house): ?>
                     <tr>
                         <td><?=$house->getNumber()?></td>
-                        <td><?=$house->getStartDegree()?></td>
-                        <td><?=$house->getEndDegree()?></td>
+                        <td><?=round($house->getStartDegree(), 2)?></td>
+                        <td><?=round($house->getEndDegree(), 2)?></td>
                     </tr>
                 <?php endforeach; ?>
             </table>
@@ -65,7 +65,6 @@
                 <tr>
                     <th>Planet</th>
                     <th>Longitude</th>
-                    <th>Motion</th>
                     <th>Degree</th>
                     <th>House</th>
                     <th>Zodiac</th>
@@ -73,9 +72,8 @@
                 <?php foreach($planetPositions as $planetPosition): ?>
                     <tr>
                         <td><?=$planetPosition->getName()?></td>
-                        <td><?=round($planetPosition->getLongitude(), 3)?></td>
-                        <td><?=$planetPosition->isRetrograde() === true ? 'Retrograde' : 'Forward'?></td>
-                        <td><?=round($planetPosition->getDegree(), 3)?></td>
+                        <td><?=round($planetPosition->getLongitude(), 2)?></td>
+                        <td><?=round($planetPosition->getDegree(), 2)?></td>
                         <td><?=$planetPosition->getHouseNumber()?></td>
                         <td><?=$planetPosition->getZodiac()->getName()?></td>
                     </tr>
@@ -85,9 +83,8 @@
             <h3 class="text-center">Composite Angles</h3>
             <table class="table table-bordered m-5">
                 <tr>
-                    <th>Planet</th>
+                    <th>Angles</th>
                     <th>Longitude</th>
-                    <th>Motion</th>
                     <th>Degree</th>
                     <th>House</th>
                     <th>Zodiac</th>
@@ -95,9 +92,8 @@
                 <?php foreach($angles as $planetPosition): ?>
                     <tr>
                         <td><?=$planetPosition->getName()?></td>
-                        <td><?=round($planetPosition->getLongitude(), 3)?></td>
-                        <td><?=$planetPosition->isRetrograde() === true ? 'Retrograde' : 'Forward'?></td>
-                        <td><?=round($planetPosition->getDegree(), 3)?></td>
+                        <td><?=round($planetPosition->getLongitude(), 2)?></td>
+                        <td><?=round($planetPosition->getDegree(), 2)?></td>
                         <td><?=$planetPosition->getHouseNumber()?></td>
                         <td><?=$planetPosition->getZodiac()->getName()?></td>
                     </tr>
@@ -108,16 +104,36 @@
             <table class="table table-bordered">
                 <tr>
                     <th>Planet 1</th>
-                    <th>Planet 2</th>
                     <th>Aspect</th>
+                    <th>Planet 2</th>
                     <th>Orb</th>
                 </tr>
+
+                <tr><th class="text-center" colspan="4">Major Aspects</th></tr>
+
                 <?php foreach($aspects as $aspect): ?>
+                    <?php if(!in_array($aspect->getAspect()->getName(), ['Opposition', 'Conjunction', 'Sextile', 'Square', 'Trine'])): ?>
+                        <?php continue; ?>
+                    <?php endif; ?>
                     <tr>
                         <td><?=$aspect->getPlanetOne()->getName()?></td>
-                        <td><?=$aspect->getPlanetTwo()->getName()?></td>
                         <td><?=$aspect->getAspect()->getName()?></td>
-                        <td><?=$aspect->getOrb()?></td>
+                        <td><?=$aspect->getPlanetTwo()->getName()?></td>
+                        <td><?=round($aspect->getOrb(), 2)?></td>
+                    </tr>
+                <?php endforeach; ?>
+
+                <tr><th class="text-center" colspan="4">Minor Aspects</th></tr>
+
+                <?php foreach($aspects as $aspect): ?>
+                    <?php if(in_array($aspect->getAspect()->getName(), ['Opposition', 'Conjunction', 'Sextile', 'Square', 'Trine'])): ?>
+                        <?php continue; ?>
+                    <?php endif; ?>
+                    <tr>
+                        <td><?=$aspect->getPlanetOne()->getName()?></td>
+                        <td><?=$aspect->getAspect()->getName()?></td>
+                        <td><?=$aspect->getPlanetTwo()->getName()?></td>
+                        <td><?=round($aspect->getOrb(), 2)?></td>
                     </tr>
                 <?php endforeach; ?>
             </table>

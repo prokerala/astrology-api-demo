@@ -47,16 +47,35 @@
                 <table class="table table-bordered w-50">
                     <tr>
                         <th>Primary Planet</th>
-                        <th>Secondary Planet</th>
                         <th>Aspect</th>
+                        <th>Secondary Planet</th>
                         <th>Orb</th>
                     </tr>
+                    <tr><th class="text-center" colspan="4">Major Aspects</th></tr>
+
                     <?php foreach($aspects as $aspect): ?>
+                        <?php if(!in_array($aspect->getAspect()->getName(), ['Opposition', 'Conjunction', 'Sextile', 'Square', 'Trine'])): ?>
+                            <?php continue; ?>
+                        <?php endif; ?>
                         <tr>
                             <td><?=$aspect->getPlanetOne()->getName()?></td>
-                            <td><?=$aspect->getPlanetTwo()->getName()?></td>
                             <td><?=$aspect->getAspect()->getName()?></td>
-                            <td><?=$aspect->getOrb()?></td>
+                            <td><?=$aspect->getPlanetTwo()->getName()?></td>
+                            <td><?=round($aspect->getOrb(), 2)?></td>
+                        </tr>
+                    <?php endforeach; ?>
+
+                    <tr><th class="text-center" colspan="4">Minor Aspects</th></tr>
+
+                    <?php foreach($aspects as $aspect): ?>
+                        <?php if(in_array($aspect->getAspect()->getName(), ['Opposition', 'Conjunction', 'Sextile', 'Square', 'Trine'])): ?>
+                            <?php continue; ?>
+                        <?php endif; ?>
+                        <tr>
+                            <td><?=$aspect->getPlanetOne()->getName()?></td>
+                            <td><?=$aspect->getAspect()->getName()?></td>
+                            <td><?=$aspect->getPlanetTwo()->getName()?></td>
+                            <td><?=round($aspect->getOrb(), 2)?></td>
                         </tr>
                     <?php endforeach; ?>
                 </table>

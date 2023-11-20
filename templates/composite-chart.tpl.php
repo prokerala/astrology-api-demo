@@ -54,8 +54,8 @@
                 <?php foreach($houses as $house): ?>
                     <tr>
                         <td><?=$house->getNumber()?></td>
-                        <td><?=round($house->getStartDegree(), 2)?></td>
-                        <td><?=round($house->getEndDegree(), 2)?></td>
+                        <td><?=round($house->getStartCusp()->getLongitude(), 2)?></td>
+                        <td><?=round($house->getEndCusp()->getLongitude(), 2)?></td>
                     </tr>
                 <?php endforeach; ?>
             </table>

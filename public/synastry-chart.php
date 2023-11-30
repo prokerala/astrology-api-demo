@@ -37,6 +37,8 @@ $chartType = 'zodiac-contact-chart';
 
 $submit = $_POST['submit'] ?? 0;
 
+$partner_a_timezone = 'Asia/Kolkata';
+$partner_b_timezone = 'Asia/Kolkata';
 if (isset($_POST['submit'])) {
     $primaryDatetime = $_POST['partner_a_dob'];
     $primaryCoordinates = $_POST['partner_a_coordinates'];
@@ -57,10 +59,17 @@ if (isset($_POST['submit'])) {
     $rectificationChart = $_POST['birth_time_rectification'];
     $aspectFilter = $_POST['aspect_filter'];
     $chartType = $_POST['chart_type'];
+
+    $partner_a_timezone = $_POST['partner_a_timezone'] ?? '';
+    $partner_b_timezone = $_POST['partner_b_timezone'] ?? '';
 }
 
-$primaryBirthLocation = new Location((float)$primary_latitude, (float)$primary_longitude, 0);
-$secondaryBirthLocation = new Location((float)$secondary_latitude, (float)$secondary_longitude, 0);
+
+$partner_a_timezone = new DateTimeZone($partner_a_timezone);
+$partner_b_timezone = new DateTimeZone($partner_b_timezone);
+
+$primaryBirthLocation = new Location((float)$primary_latitude, (float)$primary_longitude, 0, $partner_a_timezone);
+$secondaryBirthLocation = new Location((float)$secondary_latitude, (float)$secondary_longitude, 0, $partner_b_timezone);
 
 $primaryBirthTime = new DateTimeImmutable($primaryDatetime, $primaryBirthLocation->getTimeZone());
 $secondaryBirthTime = new DateTimeImmutable($secondaryDatetime, $secondaryBirthLocation->getTimeZone());

@@ -39,6 +39,8 @@ $rectificationChart = 'flat-chart';
 $aspectFilter = 'major';
 
 $submit = $_POST['submit'] ?? 0;
+$partner_a_timezone = 'Asia/Kolkata';
+$partner_b_timezone = 'Asia/Kolkata';
 
 if (isset($_POST['submit'])) {
     $primaryDatetime = $_POST['partner_a_dob'];
@@ -65,10 +67,15 @@ if (isset($_POST['submit'])) {
     $orb = $_POST['orb'];
     $rectificationChart = $_POST['birth_time_rectification'];
     $aspectFilter = $_POST['aspect_filter'];
+    $partner_a_timezone = $_POST['partner_a_timezone'] ?? '';
+    $partner_b_timezone = $_POST['partner_b_timezone'] ?? '';
 }
 
-$primaryBirthLocation = new Location((float)$primary_latitude, (float)$primary_longitude, 0);
-$secondaryBirthLocation = new Location((float)$secondary_latitude, (float)$secondary_longitude, 0);
+$partner_a_timezone = new DateTimeZone($partner_a_timezone);
+$partner_b_timezone = new DateTimeZone($partner_b_timezone);
+
+$primaryBirthLocation = new Location((float)$primary_latitude, (float)$primary_longitude, 0, $partner_a_timezone);
+$secondaryBirthLocation = new Location((float)$secondary_latitude, (float)$secondary_longitude, 0, $partner_b_timezone);
 $currentLocation = new Location((float)$current_latitude, (float)$current_longitude, 0);
 
 $primaryBirthTime = new DateTimeImmutable($primaryDatetime, $primaryBirthLocation->getTimeZone());

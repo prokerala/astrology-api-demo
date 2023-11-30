@@ -32,6 +32,8 @@ $orb = 'default';
 $birthTimeUnknown = 'false';
 $rectificationChart = 'flat-chart';
 $aspectFilter = 'major';
+$timezone = 'Asia/Kolkata';
+$current_timezone = 'Asia/Kolkata';
 
 if (isset($_POST['submit'])) {
     $datetime = $_POST['datetime'];
@@ -49,10 +51,14 @@ if (isset($_POST['submit'])) {
     $birthTimeUnknown = $_POST['birth_time_unknown'] ?? false;
     $rectificationChart = $_POST['birth_time_rectification'];
     $aspectFilter = $_POST['aspect_filter'];
+    $timezone = $_POST['timezone'] ?? '';
+    $current_timezone = $_POST['current_timezone'] ?? '';
 }
+$tz = new DateTimeZone($timezone);
+$currentTimezone = new DateTimeZone($current_timezone);
 
-$location = new Location((float)$latitude, (float)$longitude, 0);
-$transitLocation = new Location((float)$current_latitude, (float)$current_longitude, 0);
+$location = new Location((float)$latitude, (float)$longitude, 0, $tz);
+$transitLocation = new Location((float)$current_latitude, (float)$current_longitude, 0, $currentTimezone);
 
 $datetime = new DateTimeImmutable($birthTime, $location->getTimeZone());
 $transitDatetime = new DateTimeImmutable($transitDatetime, $location->getTimeZone());

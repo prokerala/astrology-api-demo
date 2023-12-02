@@ -36,7 +36,7 @@ $timezone = 'Asia/Kolkata';
 $current_timezone = 'Asia/Kolkata';
 
 if (isset($_POST['submit'])) {
-    $datetime = $_POST['datetime'];
+    $birthTime = $_POST['datetime'];
     $transitDatetime = $_POST['transit_datetime'];
     $coordinates = $_POST['coordinates'];
     $arCoordinates = explode(',', $coordinates);
@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
     $current_longitude = $arCoordinates[1] ?? '';
     $houseSystem = $_POST['house_system'];
     $orb = $_POST['orb'];
-    $birthTimeUnknown = $_POST['birth_time_unknown'] ?? false;
+    $birthTimeUnknown = isset($_POST['birth_time_unknown']);
     $rectificationChart = $_POST['birth_time_rectification'];
     $aspectFilter = $_POST['aspect_filter'];
     $timezone = $_POST['timezone'] ?? '';
@@ -70,16 +70,16 @@ if ($submit) {
     try {
         $method = new TransitChart($client);
         $chart = $method->process($location, $datetime, $transitLocation, $transitDatetime,
-                            $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
+                            $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter);
 
         $method = new TransitAspectChart($client);
         $aspectChart = $method->process($location, $datetime, $transitLocation, $transitDatetime,
-            $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
+            $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter);
 
         $method = new TransitPlanetPositions($client);
 
         $result = $method->process($location, $datetime, $transitLocation, $transitDatetime,
-            $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart);
+            $houseSystem, $orb, $birthTimeUnknown, $rectificationChart);
 
         $details =  $result->getTransitDetails();
         $transitNatalAspects  =  $result->getTransitNatalAspect();

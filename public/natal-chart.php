@@ -26,7 +26,7 @@ $submit = $_POST['submit'] ?? 0;
 
 $houseSystem = 'placidus';
 $orb = 'default';
-$birthTimeUnknown = 'false';
+$birthTimeUnknown = false;
 $rectificationChart = 'flat-chart';
 $aspectFilter = 'major';
 $timezone = 'Asia/Kolkata';
@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
     $longitude = $arCoordinates[1] ?? '';
     $houseSystem = $_POST['house_system'];
     $orb = $_POST['orb'];
-    $birthTimeUnknown = $_POST['birth_time_unknown'] ?? false;
+    $birthTimeUnknown = isset($_POST['birth_time_unknown']);
     $rectificationChart = $_POST['birth_time_rectification'];
     $aspectFilter = $_POST['aspect_filter'];
     $timezone = $_POST['timezone'] ?? '';
@@ -56,13 +56,13 @@ $errors = [];
 if ($submit) {
     try {
         $method = new NatalChart($client);
-        $chart = $method->process($location, $datetime, $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
+        $chart = $method->process($location, $datetime, $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter);
 
         $method = new NatalAspectChart($client);
-        $aspectChart = $method->process($location, $datetime, $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
+        $aspectChart = $method->process($location, $datetime, $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter);
 
         $method = new NatalPlanetPosition($client);
-        $result = $method->process($location, $datetime, $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart);
+        $result = $method->process($location, $datetime, $houseSystem, $orb, $birthTimeUnknown, $rectificationChart);
         $planetPositions = $result->getPlanetPositions();
         $houses = $result->getHouses();
         $angles = $result->getAngles();

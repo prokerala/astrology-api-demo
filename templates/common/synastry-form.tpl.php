@@ -11,7 +11,7 @@
             <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left"></label>
             <div class="col-md-8 pl-md-0">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input birth_time_unknown" type="checkbox" name="partner_a_birth_time_unknown" id="partner_a_birth_time_unknown" <?='true' === $primaryBirthTimeUnknown ? 'checked' : ''?>>
+                    <input class="form-check-input birth_time_unknown" type="checkbox" name="partner_a_birth_time_unknown" id="partner_a_birth_time_unknown" <?=isset($primaryBirthTimeUnknown) && $primaryBirthTimeUnknown ? 'checked' : ''?>>
                     <label class="form-check-label" for="partner_a_birth_time_unknown">Exact primary birth time is unknown</label>
                 </div>
             </div>
@@ -37,7 +37,7 @@
             <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left"></label>
             <div class="col-md-8 pl-md-0">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input birth_time_unknown" type="checkbox" name="partner_b_birth_time_unknown" id="partner_b_birth_time_unknown" <?='true' === $secondaryBirthTimeUnknown ? 'checked' : ''?>>
+                    <input class="form-check-input birth_time_unknown" type="checkbox" name="partner_b_birth_time_unknown" id="partner_b_birth_time_unknown" <?=isset($secondaryBirthTimeUnknown) && $secondaryBirthTimeUnknown ? 'checked' : ''?>>
                     <label class="form-check-label" for="partner_b_birth_time_unknown">Exact secondary birth time is unknown</label>
                 </div>
             </div>

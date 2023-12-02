@@ -30,7 +30,7 @@ $progressionYear = (int)$time_now->format('Y') + 1;
 $submit = $_POST['submit'] ?? 0;
 $houseSystem = 'placidus';
 $orb = 'default';
-$birthTimeUnknown = 'false';
+$birthTimeUnknown = false;
 $rectificationChart = 'flat-chart';
 $aspectFilter = 'major';
 
@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
     $progressionYear = (int)$_POST['progression_year'];
     $houseSystem = $_POST['house_system'];
     $orb = $_POST['orb'];
-    $birthTimeUnknown = $_POST['birth_time_unknown'] ?? false;
+    $birthTimeUnknown = isset($_POST['birth_time_unknown']);
     $rectificationChart = $_POST['birth_time_rectification'];
     $aspectFilter = $_POST['aspect_filter'];
     $timezone = $_POST['timezone'] ?? '';
@@ -73,16 +73,16 @@ if ($submit) {
     try {
         $method = new ProgressionChart($client);
         $chart = $method->process($location, $datetime, $transitLocation, $progressionYear,
-                            $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
+                            $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter);
 
         $method = new ProgressionAspectChart($client);
         $aspectChart = $method->process($location, $datetime, $transitLocation, $progressionYear,
-            $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
+            $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter);
 
         $method = new ProgressionPlanetPositions($client);
 
         $result = $method->process($location, $datetime, $transitLocation, $progressionYear,
-            $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart);
+            $houseSystem, $orb, $birthTimeUnknown, $rectificationChart);
 
         $details =  $result->getProgressionDetails();
         $progressionNatalAspects  =  $result->getProgressionNatalAspect();

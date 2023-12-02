@@ -10,7 +10,7 @@
             <label class="col-sm-3 col-md-4 col-form-label text-md-right text-xs-left"></label>
             <div class="col-sm-9 col-md-6 ">
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="birth_time_unknown" id="birth_time_unknown" <?='true' === $birthTimeUnknown ? 'checked' : ''?>>
+                    <input class="form-check-input" type="checkbox" name="birth_time_unknown" id="birth_time_unknown" <?= isset($birthTimeUnknown) && $birthTimeUnknown ? 'checked' : ''?>>
                     <label class="form-check-label" for="birth_time_unknown">Check if exact birth time is unknown</label>
                 </div>
             </div>

@@ -30,7 +30,7 @@ $solarYear = (int)$time_now->format('Y') + 1;
 $submit = $_POST['submit'] ?? 0;
 $houseSystem = 'placidus';
 $orb = 'default';
-$birthTimeUnknown = 'false';
+$birthTimeUnknown = false;
 $rectificationChart = 'flat-chart';
 $aspectFilter = 'major';
 
@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
     $solarYear = (int)$_POST['solar_return_year'];
     $houseSystem = $_POST['house_system'];
     $orb = $_POST['orb'];
-    $birthTimeUnknown = $_POST['birth_time_unknown'] ?? false;
+    $birthTimeUnknown = isset($_POST['birth_time_unknown']);
     $rectificationChart = $_POST['birth_time_rectification'];
     $aspectFilter = $_POST['aspect_filter'];
 
@@ -72,15 +72,15 @@ if ($submit) {
     try {
         $method = new SolarReturnChart($client);
         $chart = $method->process($location, $datetime, $transitLocation, $solarYear,
-                            $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
+                            $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter);
 
         $method = new SolarReturnAspectChart($client);
         $aspectChart = $method->process($location, $datetime, $transitLocation, $solarYear,
-            $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart, $aspectFilter);
+            $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter);
 
         $method = new SolarReturnPlanetPositions($client);
         $result = $method->process($location, $datetime, $transitLocation, $solarYear,
-            $houseSystem, $orb, $birthTimeUnknown === 'true', $rectificationChart);
+            $houseSystem, $orb, $birthTimeUnknown, $rectificationChart);
 
         $details =  $result->getSolarDetails();
         $solarNatalAspects  =  $result->getSolarNatalAspect();

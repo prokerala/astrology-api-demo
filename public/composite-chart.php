@@ -33,8 +33,8 @@ $transitDateTime = (new DateTimeImmutable("now", new DateTimeZone('Asia/Kolkata'
 
 $houseSystem = 'placidus';
 $orb = 'default';
-$primaryBirthTimeUnknown = 'false';
-$secondaryBirthTimeUnknown = 'false';
+$primaryBirthTimeUnknown = false;
+$secondaryBirthTimeUnknown = false;
 $rectificationChart = 'flat-chart';
 $aspectFilter = 'major';
 
@@ -45,13 +45,13 @@ $partner_b_timezone = 'Asia/Kolkata';
 if (isset($_POST['submit'])) {
     $primaryDatetime = $_POST['partner_a_dob'];
     $primaryCoordinates = $_POST['partner_a_coordinates'];
-    $primaryBirthTimeUnknown = $_POST['partner_a_birth_time_unknown'] ?? false;
+    $primaryBirthTimeUnknown = isset($_POST['partner_a_birth_time_unknown']);
     $arCoordinates = explode(',', $primaryCoordinates);
     $primary_latitude = $arCoordinates[0] ?? '';
     $primary_longitude = $arCoordinates[1] ?? '';
 
     $secondaryDatetime = $_POST['partner_b_dob'];
-    $secondaryBirthTimeUnknown = $_POST['partner_b_birth_time_unknown'] ?? false;
+    $secondaryBirthTimeUnknown = isset($_POST['partner_b_birth_time_unknown']);
     $secondaryCoordinates = $_POST['partner_b_coordinates'];
     $arCoordinates = explode(',', $secondaryCoordinates);
     $secondary_latitude = $arCoordinates[0] ?? '';
@@ -98,8 +98,8 @@ if ($submit) {
             $transitDateTime,
             $houseSystem,
             $orb,
-            $primaryBirthTimeUnknown === 'true',
-            $secondaryBirthTimeUnknown === 'true',
+            $primaryBirthTimeUnknown,
+            $secondaryBirthTimeUnknown,
             $rectificationChart,
             $aspectFilter
         );
@@ -115,8 +115,8 @@ if ($submit) {
             $transitDateTime,
             $houseSystem,
             $orb,
-            $primaryBirthTimeUnknown === 'true',
-            $secondaryBirthTimeUnknown === 'true',
+            $primaryBirthTimeUnknown,
+            $secondaryBirthTimeUnknown,
             $rectificationChart,
             $aspectFilter
         );
@@ -132,8 +132,8 @@ if ($submit) {
             $transitDateTime,
             $houseSystem,
             $orb,
-            $primaryBirthTimeUnknown === 'true',
-            $secondaryBirthTimeUnknown === 'true',
+            $primaryBirthTimeUnknown,
+            $secondaryBirthTimeUnknown,
             $rectificationChart,
         );
         $houses = $result->getCompositeHouses();

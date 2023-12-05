@@ -117,8 +117,8 @@
                     <label class="form-check-label" for="birth_time_rectification1">Flat Chart</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="birth_time_rectification" id="birth_time_rectification2" value="true-sunrise" <?='true-sunrise' === $rectificationChart ? 'checked' : ''?>>
-                    <label class="form-check-label" for="birth_time_rectification2">True Sunrise</label>
+                    <input class="form-check-input" type="radio" name="birth_time_rectification" id="birth_time_rectification2" value="true-sunrise-chart" <?='true-sunrise-chart' === $rectificationChart ? 'checked' : ''?>>
+                    <label class="form-check-label" for="birth_time_rectification2">True Sunrise Chart</label>
                 </div>
             </div>
         </div>

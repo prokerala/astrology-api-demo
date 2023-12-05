@@ -2,9 +2,8 @@
     "name": "prokerala/astrology-api-demo",
     "description": "Demo site using Prokerala Astrology API",
     "type": "project",
-    "version": "0.1.2",
     "require": {
-        "prokerala/astrology-sdk": "1.0.*@dev",
+        "prokerala/astrology-sdk": "^1.1",
         "nyholm/psr7": "^1.3",
         "php-http/message-factory": "^1.0",
         "guzzlehttp/guzzle": "^7.1",

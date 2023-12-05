@@ -48,6 +48,14 @@ $arGroupCalculators = [
         'porutham',
         'papasamyam-check',
     ],
+    'Western Astrology' => [
+        'natal-chart',
+        'transit-chart',
+        'progression-chart',
+        'solar-return-chart',
+        'synastry-chart',
+        'composite-chart',
+    ],
 ];
 
 include DEMO_BASE_DIR . '/templates/home.tpl.php';

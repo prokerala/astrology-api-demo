@@ -210,5 +210,50 @@ $samples = [
         'title' => 'PDF Report',
         'url' => DEMO_BASE_URL . '/pdf-report.php',
         'docs' => 'pdf-report',
-    ]
+    ],
+    'natal-chart' => [
+        'image' => '/assets/img/icon/natal.png',
+        'title' => 'Natal Chart',
+        'url' => DEMO_BASE_URL . '/natal-chart.php',
+        'docs' => 'natal-chart',
+    ],
+    'transit-chart' => [
+        'image' => '/assets/img/icon/transit.png',
+        'title' => 'Transit Chart',
+        'url' => DEMO_BASE_URL . '/transit-chart.php',
+        'docs' => 'transit-chart',
+    ],
+    'progression-chart' => [
+        'image' => '/assets/img/icon/progression.png',
+        'title' => 'Progression Chart',
+        'url' => DEMO_BASE_URL . '/progression-chart.php',
+        'docs' => 'progression-chart',
+    ],
+    'solar-return-chart' => [
+        'image' => '/assets/img/icon/solar-return.png',
+        'title' => 'Solar Return Chart',
+        'url' => DEMO_BASE_URL . '/solar-return-chart.php',
+        'docs' => 'solar-return-chart',
+    ],
+    'synastry-chart' => [
+        'image' => '/assets/img/icon/synastry.png',
+        'title' => 'Synastry Chart',
+        'url' => DEMO_BASE_URL . '/synastry-chart.php',
+        'docs' => 'synastry-chart',
+    ],
+    'composite-chart' => [
+        'image' => '/assets/img/icon/synastry.png',
+        'title' => 'Composite Chart',
+        'url' => DEMO_BASE_URL . '/composite-chart.php',
+        'docs' => 'composite-chart',
+    ],
+];
+
+$westernSamples = [
+    'natal-chart',
+    'transit-chart',
+    'progression-chart',
+    'solar-return-chart',
+    'synastry-chart',
+    'composite-chart',
 ];

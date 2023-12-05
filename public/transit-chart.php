@@ -66,15 +66,19 @@ $transitDatetime = new DateTimeImmutable($transitDatetime, $location->getTimeZon
 $result = [];
 $errors = [];
 
+$apiCreditUsed = 0;
+
 if ($submit) {
     try {
         $method = new TransitChart($client);
         $chart = $method->process($location, $datetime, $transitLocation, $transitDatetime,
                             $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter);
+        $apiCreditUsed += $client->getCreditUsed();
 
         $method = new TransitAspectChart($client);
         $aspectChart = $method->process($location, $datetime, $transitLocation, $transitDatetime,
             $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter);
+        $apiCreditUsed += $client->getCreditUsed();
 
         $method = new TransitPlanetPositions($client);
 
@@ -89,6 +93,7 @@ if ($submit) {
         $angles = $details->getAngles();
         $aspects = $details->getAspects();
         $declinations = $details->getDeclinations();
+        $apiCreditUsed += $client->getCreditUsed();
 
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
@@ -102,7 +107,5 @@ if ($submit) {
         $errors = ['message' => "API Request Failed with error {$e->getMessage()}"];
     }
 }
-
-$apiCreditUsed = $client->getCreditUsed();
 
 include DEMO_BASE_DIR . '/templates/transit-chart.tpl.php';

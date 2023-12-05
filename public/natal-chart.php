@@ -53,13 +53,17 @@ $datetime = new DateTimeImmutable($datetime, $location->getTimeZone());
 $result = [];
 $errors = [];
 
+$apiCreditUsed = 0;
+
 if ($submit) {
     try {
         $method = new NatalChart($client);
         $chart = $method->process($location, $datetime, $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter);
+        $apiCreditUsed += $client->getCreditUsed();
 
         $method = new NatalAspectChart($client);
         $aspectChart = $method->process($location, $datetime, $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter);
+        $apiCreditUsed += $client->getCreditUsed();
 
         $method = new NatalPlanetPosition($client);
         $result = $method->process($location, $datetime, $houseSystem, $orb, $birthTimeUnknown, $rectificationChart);
@@ -68,6 +72,7 @@ if ($submit) {
         $angles = $result->getAngles();
         $aspects = $result->getAspects();
         $declinations = $result->getDeclinations();
+        $apiCreditUsed += $client->getCreditUsed();
 
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
@@ -81,7 +86,5 @@ if ($submit) {
         $errors = ['message' => "API Request Failed with error {$e->getMessage()}"];
     }
 }
-
-$apiCreditUsed = $client->getCreditUsed();
 
 include DEMO_BASE_DIR . '/templates/natal-chart.tpl.php';

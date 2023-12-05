@@ -85,6 +85,8 @@ $transitDateTime = new DateTimeImmutable($transitDateTime, $currentLocation->get
 $result = [];
 $errors = [];
 
+$apiCreditUsed = 0;
+
 if ($submit) {
     try {
         $method = new CompositeChart($client);
@@ -103,6 +105,7 @@ if ($submit) {
             $rectificationChart,
             $aspectFilter
         );
+        $apiCreditUsed += $client->getCreditUsed();
 
         $method = new CompositeAspectChart($client);
 
@@ -120,6 +123,7 @@ if ($submit) {
             $rectificationChart,
             $aspectFilter
         );
+        $apiCreditUsed += $client->getCreditUsed();
 
         $method = new CompositePlanetPositions($client);
 
@@ -140,6 +144,7 @@ if ($submit) {
         $planetPositions = $result->getCompositePlanetPositions();
         $angles = $result->getCompositeAngles();
         $aspects = $result->getCompositeAspects();
+        $apiCreditUsed += $client->getCreditUsed();
 
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
@@ -153,7 +158,5 @@ if ($submit) {
         $errors = ['message' => "API Request Failed with error {$e->getMessage()}"];
     }
 }
-
-$apiCreditUsed = $client->getCreditUsed();
 
 include DEMO_BASE_DIR . '/templates/composite-chart.tpl.php';

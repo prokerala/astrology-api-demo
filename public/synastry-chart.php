@@ -39,6 +39,7 @@ $submit = $_POST['submit'] ?? 0;
 
 $partner_a_timezone = 'Asia/Kolkata';
 $partner_b_timezone = 'Asia/Kolkata';
+
 if (isset($_POST['submit'])) {
     $primaryDatetime = $_POST['partner_a_dob'];
     $primaryCoordinates = $_POST['partner_a_coordinates'];
@@ -77,6 +78,8 @@ $secondaryBirthTime = new DateTimeImmutable($secondaryDatetime, $secondaryBirthL
 $result = [];
 $errors = [];
 
+$apiCreditUsed = 0;
+
 if ($submit) {
     try {
         $method = new SynastryChart($client);
@@ -94,6 +97,7 @@ if ($submit) {
             $rectificationChart,
             $aspectFilter
         );
+        $apiCreditUsed += $client->getCreditUsed();
 
         $method = new SynastryAspectChart($client);
 
@@ -110,6 +114,7 @@ if ($submit) {
             $rectificationChart,
             $aspectFilter
         );
+        $apiCreditUsed += $client->getCreditUsed();
 
         $method = new SynastryPlanetAspects($client);
 
@@ -126,6 +131,7 @@ if ($submit) {
             $rectificationChart,
         );
         $aspects = $result->getAspects();
+        $apiCreditUsed += $client->getCreditUsed();
 
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
@@ -139,7 +145,5 @@ if ($submit) {
         $errors = ['message' => "API Request Failed with error {$e->getMessage()}"];
     }
 }
-
-$apiCreditUsed = $client->getCreditUsed();
 
 include DEMO_BASE_DIR . '/templates/synastry-chart.tpl.php';

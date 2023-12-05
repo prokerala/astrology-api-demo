@@ -68,15 +68,19 @@ $transitLocation = new Location((float)$input['transit_latitude'], (float)$input
 $result = [];
 $errors = [];
 
+$apiCreditUsed = 0;
+
 if ($submit) {
     try {
         $method = new SolarReturnChart($client);
         $chart = $method->process($location, $datetime, $transitLocation, $solarYear,
                             $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter);
+        $apiCreditUsed += $client->getCreditUsed();
 
         $method = new SolarReturnAspectChart($client);
         $aspectChart = $method->process($location, $datetime, $transitLocation, $solarYear,
             $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter);
+        $apiCreditUsed += $client->getCreditUsed();
 
         $method = new SolarReturnPlanetPositions($client);
         $result = $method->process($location, $datetime, $transitLocation, $solarYear,
@@ -90,6 +94,8 @@ if ($submit) {
         $angles = $details->getAngles();
         $aspects = $details->getAspects();
         $declinations = $details->getDeclinations();
+        $apiCreditUsed += $client->getCreditUsed();
+
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {
@@ -102,7 +108,5 @@ if ($submit) {
         $errors = ['message' => "API Request Failed with error {$e->getMessage()}"];
     }
 }
-
-$apiCreditUsed = $client->getCreditUsed();
 
 include DEMO_BASE_DIR . '/templates/solar-return-chart.tpl.php';

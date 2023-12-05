@@ -69,15 +69,19 @@ $transitLocation = new Location((float)$input['transit_latitude'], (float)$input
 $result = [];
 $errors = [];
 
+$apiCreditUsed = 0;
+
 if ($submit) {
     try {
         $method = new ProgressionChart($client);
         $chart = $method->process($location, $datetime, $transitLocation, $progressionYear,
                             $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter);
+        $apiCreditUsed += $client->getCreditUsed();
 
         $method = new ProgressionAspectChart($client);
         $aspectChart = $method->process($location, $datetime, $transitLocation, $progressionYear,
             $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter);
+        $apiCreditUsed += $client->getCreditUsed();
 
         $method = new ProgressionPlanetPositions($client);
 
@@ -93,6 +97,8 @@ if ($submit) {
         $angles = $details->getAngles();
         $aspects = $details->getAspects();
         $declinations = $details->getDeclinations();
+        $apiCreditUsed += $client->getCreditUsed();
+
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {
@@ -105,7 +111,5 @@ if ($submit) {
         $errors = ['message' => "API Request Failed with error {$e->getMessage()}"];
     }
 }
-
-$apiCreditUsed = $client->getCreditUsed();
 
 include DEMO_BASE_DIR . '/templates/progression-chart.tpl.php';

@@ -6,7 +6,7 @@
     <title>Progression Chart | Astrology API Demo - Prokerala Astrology</title>
     <?php include 'common/style.tpl.php'; ?>
     <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/style.css">
-    <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/reports.css">
+    <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/reports.css?_=20231214">
 
 </head>
 

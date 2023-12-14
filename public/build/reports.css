@@ -165,6 +165,7 @@
 .prokerala-api-demo-container svg {
   overflow: hidden;
   vertical-align: middle;
+  height: auto;
 }
 
 .prokerala-api-demo-container table {

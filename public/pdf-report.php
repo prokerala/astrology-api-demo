@@ -150,6 +150,7 @@ if ($submit) {
         $result = $method->process($input, $options);
 
         header('Content-Type: application/pdf');
+        header('Content-disposition: attachment; filename="Prokerala Astrology Report.pdf"');
         echo $result;
         exit;
 

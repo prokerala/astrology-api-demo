@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Planet Position | Astrology API Demo - Prokerala Astrology</title>
+    <title>Planet Relationship | Astrology API Demo - Prokerala Astrology</title>
     <?php include 'common/style.tpl.php'; ?>
     <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/style.css">
     <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/reports.css">
@@ -34,8 +34,7 @@
         <?php if (!empty($result)): ?>
             <h3 class="text-center">Planet Relationship</h3>
             <h3>Naisargika Maitri Table: </h3>
-                <p>The subsequent table illustrates the Naisargika Maitri, representing the inherent or natural relationships among the planets:</p>
-            <div class="table-responsive">
+            <div class="table-responsive mb-5">
                 <table class="table table-bordered table-sm t-sm">
                     <tr>
                         <th>Planets</th>
@@ -48,26 +47,18 @@
                         <tr>
                             <th><?= $planet_one?></th>
                             <?php foreach ($planet_order as $planet_two_id => $planet_two): ?>
-                                <?php
-                                foreach ($planetRelationships->getNaturalRelationship() as $relation) {
-                                    if ($relation->getFirstPlanet()->getId() === $planet_one_id
-                                        && $relation->getSecondPlanet()->getId() === $planet_two_id
-                                    ) {
-                                        $relationship = $relation->getRelation();
-                                    }
-                                }
-                                ?>
-                                <td>
-                                    <?= 'No Relation' === $relationship ? '--' : $relationship ?>
-                                </td>
+                                <?php foreach ($planetRelationships->getNaturalRelationship() as $relation): ?>
+                                    <?php if ($relation->getFirstPlanet()->getid() === $planet_one_id  && $relation->getSecondPlanet()->getId() === $planet_two_id): ?>
+                                        <td>  <?= $planet_one === $planet_two ? '--' : $relation->getRelation(); ?> </td>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
                             <?php endforeach; ?>
                         </tr>
                     <?php endforeach; ?>
                 </table>
             </div>
             <h3>Tatkaala Maitri Table: </h3>
-                <p>The table below shows the temporary relationships among the planets, known as Tatkaala Maitri or Temporary Relationship:</p>
-            <div class="table-responsive">
+            <div class="table-responsive mb-5">
                 <table class="table table-bordered table-sm t-sm">
                     <tr>
                         <th>Planets</th>
@@ -80,26 +71,18 @@
                         <tr>
                             <th><?= $planet_one?></th>
                             <?php foreach ($planet_order as $planet_two_id => $planet_two): ?>
-                                <?php
-                                foreach ($planetRelationships->getTemporalRelationship() as $relation) {
-                                    if ($relation->getFirstPlanet()->getId() === $planet_one_id
-                                        && $relation->getSecondPlanet()->getId() === $planet_two_id
-                                    ) {
-                                        $relationship = $relation->getRelation();
-                                    }
-                                }
-                                ?>
-                                <td>
-                                    <?= 'No Relation' === $relationship ? '--' : $relationship ?>
-                                </td>
+                                <?php foreach ($planetRelationships->getTemporalRelationship() as $relation): ?>
+                                    <?php if ($relation->getFirstPlanet()->getid() === $planet_one_id  && $relation->getSecondPlanet()->getId() === $planet_two_id): ?>
+                                        <td>  <?= $planet_one === $planet_two ? '--' : $relation->getRelation(); ?> </td>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
                             <?php endforeach; ?>
                         </tr>
                     <?php endforeach; ?>
                 </table>
             </div>
             <h3>Panchada Maitri Table:</h3>
-                <p>The ensuing table displays the compound relationship among the planets, referred to as the Panchada Maitri or Five-Fold relationship. This calculation involves the combination of both Naisargika and Tatkaala Maitri:</p>
-            <div class="table-responsive">
+            <div class="table-responsive mb-5">
                 <table class="table table-bordered table-sm t-sm">
                     <tr>
                         <th>Planets</th>
@@ -108,12 +91,12 @@
                         <?php endforeach; ?>
 
                     </tr>
-                    <?php foreach ($planet_order as $planet_one): ?>
+                    <?php foreach ($planet_order as $planet_one_id => $planet_one): ?>
                         <tr>
                             <th><?= $planet_one?></th>
-                            <?php foreach ($planet_order as $planet_two): ?>
+                            <?php foreach ($planet_order as $planet_two_id => $planet_two): ?>
                                 <?php foreach ($planetRelationships->getCompoundRelationship() as $relation): ?>
-                                    <?php if ($relation->getFirstPlanet()->geti() === $planet_one  && $relation->getSecondPlanet()->getName() === $planet_two): ?>
+                                    <?php if ($relation->getFirstPlanet()->getid() === $planet_one_id  && $relation->getSecondPlanet()->getId() === $planet_two_id): ?>
                                         <td>  <?= $planet_one === $planet_two ? '--' : $relation->getRelation(); ?> </td>
                                     <?php endif; ?>
                                 <?php endforeach; ?>

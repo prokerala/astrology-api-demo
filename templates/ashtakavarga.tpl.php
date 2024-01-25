@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Auspicious Period Astrology API Demo</title>
+    <title>Ashtakavarga And Sarvashtakavarga | Astrology API Demo - Prokerala Astrology</title>
     <?php
     include 'common/style.tpl.php'; ?>
     <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/style.css">

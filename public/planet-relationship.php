@@ -19,7 +19,7 @@ $planet_order = [
     Planet::MOON => 'Moon',
     Planet::MERCURY => 'Mercury',
     Planet::VENUS => 'Venus',
-    Planet::MARS => 'Mars',;
+    Planet::MARS => 'Mars',
     Planet::JUPITER => 'Jupiter',
     Planet::SATURN => 'Saturn',
 ];

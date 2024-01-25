@@ -26,9 +26,9 @@ use Prokerala\Api\Astrology\Result\Planet;
 
     <?= createAshtagavargaTable($sarvashtavarga->getHouses(), $sarvashtavarga->getScore(), true) ?>
 
-    <span class="text-large item-">Ashtagavarga Chart and Table</span>
+    <h3 class="text-center">Ashtagavarga Chart and Table</h3>
     <?php foreach ($ar_ashtakavarga as $ashtakavarga): ?>
-        <span class="text-large"><?= $ashtakavarga['planet'] ?> Ashtagavarga</span>
+        <h4 class="text-center text-large"><?= $ashtakavarga['planet'] ?> Ashtagavarga</h4>
         <div class="d-flex justify-content-center">
             <?= $ashtakavarga['chart'] ?>
         </div>
@@ -39,7 +39,7 @@ use Prokerala\Api\Astrology\Result\Planet;
 
 <?php else: ?>
 
-    <h2><?= Planet::PLANET_LIST[$planetId]?> Ashtagavarga</h2>
+    <h3><?= Planet::PLANET_LIST[$planetId]?> Ashtagavarga</h3>
     <div class="d-flex justify-content-center">
         <?= $chart ?>
     </div>

@@ -1,6 +1,12 @@
 <?php
 
 $samples = [
+    'ashtakavarga' => [
+        'image' => '/assets/img/icon/auspicious-period.png',
+        'title' => 'Ashtakavarga and Sarvashta varga Chart',
+        'url' => DEMO_BASE_URL . '/ashtakavarga.php',
+        'docs' => 'ashtakavarga',
+    ],
     'sudarshana-chakra' => [
         'image' => '/assets/img/icon/auspicious-period.png',
         'title' => 'Sudarshana chakra',

@@ -40,6 +40,7 @@ $arGroupCalculators = [
         'chart',
         'dasha-periods',
         'yoga-details',
+        'sudarshana-chakra',
     ],
     'Marriage Matching' => [
         'kundli-matching',

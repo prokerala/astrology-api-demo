@@ -1,6 +1,12 @@
 <?php
 
 $samples = [
+    'sudarshana-chakra' => [
+        'image' => '/assets/img/icon/auspicious-period.png',
+        'title' => 'Sudarshana chakra',
+        'url' => DEMO_BASE_URL . '/sudarshana-chakra.php',
+        'docs' => 'sudarshana-chakra',
+    ],
     'auspicious-period' => [
         'image' => '/assets/img/icon/auspicious-period.png',
         'title' => 'Auspicious Period',

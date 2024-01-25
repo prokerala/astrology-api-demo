@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
-use Prokerala\Api\Astrology\Location;
+
+use Prokerala\Api\Astrology\Result\Planet;
 use Prokerala\Api\Report\Service\PersonalReport;
 use Prokerala\Api\Report\Service\CompatibilityReport;
 use Prokerala\Common\Api\Exception\AuthenticationException;
@@ -21,6 +22,8 @@ if (!in_array($report_mode, ['personal-report', 'compatibility-report'])) {
 
 $timezone = 'Asia/Kolkata';
 $chartType = 'north-indian';
+$planet = Planet::SUN;
+$showAllAshtakaVarga = 1;
 if (isset($_POST['submit'])) {
 
     if ($report_mode === 'personal-report') {
@@ -29,6 +32,8 @@ if (isset($_POST['submit'])) {
         $lastName = $_POST['last_name'];
         $gender = $_POST['gender'];
         $chartType = $_POST['chart_type'];
+        $planet = $_POST['planet'];
+        $showAllAshtakaVarga = $_POST['show_all_ashtakavarga'];
     } else {
         $girlFirstName = $_POST['girl_first_name'];
         $girlMiddleName = $_POST['girl_middle_name'];
@@ -54,6 +59,10 @@ $reportTypes = [
             ['name' => 'mangal-dosha', 'options' => ['chart_style' => $chartType]],
         ],
         'personal-report' => [
+            ['name' => 'planet-relationship'],
+            ['name' => 'ashtagavarga', 'options' => ['chart_style' => $chartType, 'planet' => $planet]],
+            ['name' => 'sarvashtagavarga', 'options' => ['chart_style' => $chartType, 'show_all_ashtakavarga' => $showAllAshtakaVarga]],
+            ['name' => 'sudarshana-chakra'],
             ['name' => 'birth-details'],
             ['name' => 'chart', 'options' => ['chart_style' => $chartType]],
             ['name' => 'planet-position'],
@@ -64,7 +73,7 @@ $reportTypes = [
             ['name' => 'shodasavarga-chart', 'options' => ['chart_style' => 'south-indian']],
             ['name' => 'dasa-periods'],
             ['name' => 'papa-dosha', 'options' => ['chart_style' => $chartType]],
-        ]
+        ],
     ],
     'compatibility-report' => [
         'kundli-matching' => [

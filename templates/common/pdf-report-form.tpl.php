@@ -1,3 +1,8 @@
+<?php
+
+use Prokerala\Api\Astrology\Result\Planet;
+
+?>
 <ul class="nav nav-tabs mb-6 nav-fill">
     <li class="nav-item">
         <a class="nav-link p-4 <?=$report_mode === 'personal-report' ? 'active' : ''?>" href="pdf-report.php">Personal Report</a>
@@ -49,6 +54,30 @@
             <option value="north-indian" >North Indian</option>
             <option value="south-indian" >South Indian</option>
             <option value="east-indian" >East Indian</option>
+        </select>
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Show All Ashtakavarga:</label>
+    <div class="col-sm-9 col-md-6 ">
+        <select name="show_all_ashtakavarga" class="form-control form-control-lg rounded-1">
+            <option value="1" >true</option>
+            <option value="0" >false</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left ">Chart:</label>
+    <div class="col-sm-9 col-md-6 ">
+        <select name="planet" class="form-control form-control-lg rounded-1">
+
+            <?php foreach (Planet::PLANET_LIST as $planet_id => $planet): ?>
+
+                <option value="<?=$planet_id?>" ><?=$planet?></option>
+
+              <?php endforeach; ?>
+
         </select>
     </div>
 </div>
@@ -111,7 +140,10 @@ kaal-sarp-dosha
 sade-sati
 shodasavarga-chart
 dasa-periods
-papa-dosha
+planet-relationship
+ashtagavarga
+sarvashtagavarga
+sudarshana-chakra
         </textarea>
         </div>
     </div>

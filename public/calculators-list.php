@@ -205,6 +205,12 @@ $samples = [
         'url' => DEMO_BASE_URL . '/daily-horoscope.php',
         'docs' => 'daily-horoscope',
     ],
+    'planet-relationship' => [
+        'image' => '/assets/img/icon/dasha-periods.png',
+        'title' => 'planet-relationship',
+        'url' => DEMO_BASE_URL . '/planet-relationship.php',
+        'docs' => 'planet-relationship',
+    ],
     'dasha-periods' => [
         'image' => '/assets/img/icon/dasha-periods.png',
         'title' => 'Dasha Periods',

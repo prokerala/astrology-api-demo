@@ -1,9 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 use Prokerala\Api\Astrology\Result\Planet;
-use Prokerala\Api\Report\Service\PersonalReport;
 use Prokerala\Api\Report\Service\CompatibilityReport;
+use Prokerala\Api\Report\Service\PersonalReport;
 use Prokerala\Common\Api\Exception\AuthenticationException;
 use Prokerala\Common\Api\Exception\Exception;
 use Prokerala\Common\Api\Exception\QuotaExceededException;
@@ -16,7 +17,7 @@ $submit = $_POST['submit'] ?? 0;
 $sample_name = 'pdf-report';
 $report_mode = isset($_POST['report_mode']) ? $_POST['report_mode'] : (isset($_GET['report_mode']) ? $_GET['report_mode'] : 'personal-report');
 
-if (!in_array($report_mode, ['personal-report', 'compatibility-report'])) {
+if (!in_array($report_mode, ['personal-report', 'compatibility-report'], true)) {
     $report_mode = 'personal-report';
 }
 
@@ -25,8 +26,7 @@ $chartType = 'north-indian';
 $planet = Planet::SUN;
 $showAllAshtakaVarga = 1;
 if (isset($_POST['submit'])) {
-
-    if ($report_mode === 'personal-report') {
+    if ('personal-report' === $report_mode) {
         $firstName = $_POST['first_name'];
         $middleName = $_POST['middle_name'];
         $lastName = $_POST['last_name'];
@@ -60,8 +60,8 @@ $reportTypes = [
         ],
         'personal-report' => [
             ['name' => 'planet-relationship'],
-            ['name' => 'ashtagavarga', 'options' => ['chart_style' => $chartType, 'planet' => $planet]],
-            ['name' => 'sarvashtagavarga', 'options' => ['chart_style' => $chartType, 'show_all_ashtakavarga' => $showAllAshtakaVarga]],
+            ['name' => 'ashtakavarga', 'options' => ['chart_style' => $chartType, 'planet' => $planet]],
+            ['name' => 'sarvashtakavarga', 'options' => ['chart_style' => $chartType, 'show_all_ashtakavarga' => $showAllAshtakaVarga]],
             ['name' => 'sudarshana-chakra'],
             ['name' => 'birth-details'],
             ['name' => 'chart', 'options' => ['chart_style' => $chartType]],
@@ -90,14 +90,13 @@ $reportTypes = [
             ['name' => 'birth-details', 'options' => ['chart_style' => 'south-indian']],
             ['name' => 'mangal-dosha'],
             ['name' => 'porutham-kerala'],
-        ]
+        ],
     ],
 ];
 
 if ($submit) {
     try {
-
-        if ($report_mode === 'personal-report') {
+        if ('personal-report' === $report_mode) {
             $method = new PersonalReport($client);
             $input = [
                 'first_name' => $firstName,
@@ -145,15 +144,13 @@ if ($submit) {
             ],
         ];
 
-
-
         $result = $method->process($input, $options);
-
         header('Content-Type: application/pdf');
         header('Content-disposition: attachment; filename="Prokerala Astrology Report.pdf"');
-        echo $result;
-        exit;
 
+        echo $result;
+
+        exit;
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {
@@ -168,4 +165,5 @@ if ($submit) {
 }
 
 $apiCreditUsed = $client->getCreditUsed();
+
 include DEMO_BASE_DIR . '/templates/pdf-report.tpl.php';

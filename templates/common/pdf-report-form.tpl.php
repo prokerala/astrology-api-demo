@@ -141,8 +141,8 @@ sade-sati
 shodasavarga-chart
 dasa-periods
 planet-relationship
-ashtagavarga
-sarvashtagavarga
+ashtakavarga
+sarvashtakavarga
 sudarshana-chakra
         </textarea>
         </div>

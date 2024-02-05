@@ -22,7 +22,7 @@ use Prokerala\Api\Astrology\Result\Planet;
     <div class="d-flex justify-content-center">
         <?= $chart ?>
     </div>
-    <?php $sarvashtavarga = $result->getSarvashtakavarga() ?>
+    <?php $sarvashtavarga = $result->getSarvashtakavarga()->getPrastara() ?>
 
     <?= createAshtagavargaTable($sarvashtavarga->getHouses(), $sarvashtavarga->getScore(), true) ?>
 
@@ -43,7 +43,7 @@ use Prokerala\Api\Astrology\Result\Planet;
     <div class="d-flex justify-content-center">
         <?= $chart ?>
     </div>
-    <?php $ashtakavarga = $result->getAshtakavarga() ?>
+    <?php $ashtakavarga = $result->getAshtakavarga()->getPrastara() ?>
     <?= createAshtagavargaTable($ashtakavarga->getHouses(), $ashtakavarga->getScore()) ?>
 
 <?php endif; ?>

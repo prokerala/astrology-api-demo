@@ -24,7 +24,7 @@ if (!in_array($report_mode, ['personal-report', 'compatibility-report'], true)) 
 $timezone = 'Asia/Kolkata';
 $chartType = 'north-indian';
 $planet = Planet::SUN;
-$showAllAshtakaVarga = 1;
+$hideAshtakaVarga = 0;
 if (isset($_POST['submit'])) {
     if ('personal-report' === $report_mode) {
         $firstName = $_POST['first_name'];
@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
         $gender = $_POST['gender'];
         $chartType = $_POST['chart_type'];
         $planet = $_POST['planet'];
-        $showAllAshtakaVarga = $_POST['show_all_ashtakavarga'];
+        $hideAshtakaVarga = $_POST['hide_ashtakavarga'];
     } else {
         $girlFirstName = $_POST['girl_first_name'];
         $girlMiddleName = $_POST['girl_middle_name'];
@@ -61,7 +61,7 @@ $reportTypes = [
         'personal-report' => [
             ['name' => 'planet-relationship'],
             ['name' => 'ashtakavarga', 'options' => ['chart_style' => $chartType, 'planet' => $planet]],
-            ['name' => 'sarvashtakavarga', 'options' => ['chart_style' => $chartType, 'show_all_ashtakavarga' => $showAllAshtakaVarga]],
+            ['name' => 'sarvashtakavarga', 'options' => ['chart_style' => $chartType, 'hide_ashtakavarga' => $hideAshtakaVarga]],
             ['name' => 'sudarshana-chakra'],
             ['name' => 'birth-details'],
             ['name' => 'chart', 'options' => ['chart_style' => $chartType]],

@@ -33,7 +33,8 @@ use Prokerala\Api\Astrology\Result\Planet;
             <?= $ashtakavarga['chart'] ?>
         </div>
 
-        <?php $ashtakavarga = $ashtakavarga['result']->getAshtakavarga() ?>
+        <?php $ashtakavarga = $ashtakavarga['result']->getAshtakavarga()->getPrastara() ?>
+
         <?= createAshtagavargaTable($ashtakavarga->getHouses(), $ashtakavarga->getScore()) ?>
     <?php endforeach; ?>
 

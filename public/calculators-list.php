@@ -207,7 +207,7 @@ $samples = [
     ],
     'planet-relationship' => [
         'image' => '/assets/img/icon/dasha-periods.png',
-        'title' => 'planet-relationship',
+        'title' => 'Planet Relationship',
         'url' => DEMO_BASE_URL . '/planet-relationship.php',
         'docs' => 'planet-relationship',
     ],

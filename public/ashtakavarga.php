@@ -95,10 +95,10 @@ if ($submit) {
                 if ($planetId > Planet::SATURN) {
                     continue;
                 }
-                [$chart, $ashtakavarga_result] = getAshtaVargaChartAndResult($client, $ayanamsa, $location, $datetime, $planetId, $chart_style, $la);
+                [$ashtakavarga_chart, $ashtakavarga_result] = getAshtaVargaChartAndResult($client, $ayanamsa, $location, $datetime, $planetId, $chart_style, $la);
                 $ar_ashtakavarga[] = [
                     'planet' => $planetName,
-                    'chart' => $chart,
+                    'chart' => $ashtakavarga_chart,
                     'result' => $ashtakavarga_result,
                 ];
             }

@@ -10,7 +10,8 @@ use Prokerala\Api\Astrology\Result\Planet;
 <section>
     <div class="card contact-form-wrapper box-shadow mx-auto rounded-2 mb-5">
         <form class="p-5 text-default"  action="ashtakavarga.php" method="POST">
-            <?php include __DIR__ . '/../common/panchang-form.tpl.php'; ?>
+            <?php include __DIR__ . '/../common/horoscope-form.tpl.php'; ?>
+
             <div class="form-group row">
                 <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Planet</label>
                 <div class="col-sm-9 col-md-6">

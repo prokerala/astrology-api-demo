@@ -18,16 +18,16 @@ function createAshtagavargaTable(array $houses, int $totalScore, bool $isSarvash
             } else {
                 $planet_score[$planet_id] = $planet->getScore();
             }
-            $table_body .= "<th>{$planet->getScore()}</th>";
+            $table_body .= "<td>{$planet->getScore()}</td>";
         }
         $table_body .= "<th>{$house->getScore()}</th>";
         $table_body .= '</tr>';
     }
     $table_body .= '<tr><th>Score</th>';
     foreach ($planet_score as $score) {
-        $table_body .= "<td>{$score}</td>";
+        $table_body .= "<th>{$score}</th>";
     }
-    $table_body .= "<td>{$totalScore}</td></tr>";
+    $table_body .= "<th>{$totalScore}</th></tr>";
 
     return <<<TABLE
         <div class="mt-3">

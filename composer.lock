@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d6511c21080114e0167f186585035b06",
+    "content-hash": "1481e2df57d6697d155499583774b476",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -455,16 +455,16 @@
         },
         {
             "name": "prokerala/astrology-sdk",
-            "version": "1.1.0",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/prokerala/astrology-sdk.git",
-                "reference": "f5a9634218e51fa5870f1cacdef54fe3ad444064"
+                "reference": "07455cd2e344b24bfd39c095d0fbc2ade0b4d6c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/prokerala/astrology-sdk/zipball/f5a9634218e51fa5870f1cacdef54fe3ad444064",
-                "reference": "f5a9634218e51fa5870f1cacdef54fe3ad444064",
+                "url": "https://api.github.com/repos/prokerala/astrology-sdk/zipball/07455cd2e344b24bfd39c095d0fbc2ade0b4d6c6",
+                "reference": "07455cd2e344b24bfd39c095d0fbc2ade0b4d6c6",
                 "shasum": ""
             },
             "require": {
@@ -512,9 +512,9 @@
             "description": "Prokerala.com Astrology API Client Library for PHP.",
             "support": {
                 "issues": "https://github.com/prokerala/astrology-sdk/issues",
-                "source": "https://github.com/prokerala/astrology-sdk/tree/v1.1.0"
+                "source": "https://github.com/prokerala/astrology-sdk/tree/v1.2.0"
             },
-            "time": "2023-12-05T11:28:26+00:00"
+            "time": "2024-02-15T08:19:46+00:00"
         },
         {
             "name": "psr/cache",

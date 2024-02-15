@@ -1,6 +1,18 @@
 <?php
 
 $samples = [
+    'ashtakavarga' => [
+        'image' => '/assets/img/icon/auspicious-period.png',
+        'title' => 'Ashtakavarga and Sarvashta varga Chart',
+        'url' => DEMO_BASE_URL . '/ashtakavarga.php',
+        'docs' => 'ashtakavarga',
+    ],
+    'sudarshana-chakra' => [
+        'image' => '/assets/img/icon/auspicious-period.png',
+        'title' => 'Sudarshana chakra',
+        'url' => DEMO_BASE_URL . '/sudarshana-chakra.php',
+        'docs' => 'sudarshana-chakra',
+    ],
     'auspicious-period' => [
         'image' => '/assets/img/icon/auspicious-period.png',
         'title' => 'Auspicious Period',
@@ -192,6 +204,12 @@ $samples = [
         'title' => 'Daily Horoscope',
         'url' => DEMO_BASE_URL . '/daily-horoscope.php',
         'docs' => 'daily-horoscope',
+    ],
+    'planet-relationship' => [
+        'image' => '/assets/img/icon/dasha-periods.png',
+        'title' => 'Planet Relationship',
+        'url' => DEMO_BASE_URL . '/planet-relationship.php',
+        'docs' => 'planet-relationship',
     ],
     'dasha-periods' => [
         'image' => '/assets/img/icon/dasha-periods.png',

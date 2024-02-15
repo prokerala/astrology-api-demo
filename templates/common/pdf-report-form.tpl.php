@@ -1,3 +1,8 @@
+<?php
+
+use Prokerala\Api\Astrology\Result\Planet;
+
+?>
 <ul class="nav nav-tabs mb-6 nav-fill">
     <li class="nav-item">
         <a class="nav-link p-4 <?=$report_mode === 'personal-report' ? 'active' : ''?>" href="pdf-report.php">Personal Report</a>
@@ -52,6 +57,8 @@
         </select>
     </div>
 </div>
+<input type="hidden" name="planet_ashtakavarga" value="all">
+<input type="hidden" name="planet" value="0">
 
 <div class="form-group row">
     <label class="col-sm-3 col-md-4 col-form-label  text-md-right text-xs-left">Date:<sup class="text-danger">*</sup></label>
@@ -111,7 +118,10 @@ kaal-sarp-dosha
 sade-sati
 shodasavarga-chart
 dasa-periods
-papa-dosha
+planet-relationship
+ashtakavarga
+sarvashtakavarga
+sudarshana-chakra
         </textarea>
         </div>
     </div>

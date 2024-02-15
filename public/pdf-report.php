@@ -24,7 +24,7 @@ if (!in_array($report_mode, ['personal-report', 'compatibility-report'], true)) 
 $timezone = 'Asia/Kolkata';
 $chartType = 'north-indian';
 $planet = Planet::SUN;
-$hideAshtakaVarga = 0;
+$planetAshtakaVarga = 'all';
 if (isset($_POST['submit'])) {
     if ('personal-report' === $report_mode) {
         $firstName = $_POST['first_name'];
@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
         $gender = $_POST['gender'];
         $chartType = $_POST['chart_type'];
         $planet = $_POST['planet'];
-        $hideAshtakaVarga = $_POST['hide_ashtakavarga'];
+        $planetAshtakaVarga = $_POST['planet_ashtakavarga'];
     } else {
         $girlFirstName = $_POST['girl_first_name'];
         $girlMiddleName = $_POST['girl_middle_name'];
@@ -67,7 +67,7 @@ $reportTypes = [
             ['name' => 'yoga-details'],
             ['name' => 'kaal-sarp-dosha', 'options' => ['chart_style' => $chartType]],
             ['name' => 'planet-relationship'],
-            ['name' => 'sarvashtakavarga', 'options' => ['chart_style' => $chartType, 'hide_ashtakavarga' => $hideAshtakaVarga]],
+            ['name' => 'sarvashtakavarga', 'options' => ['chart_style' => $chartType, 'planet_ashtakavarga' => $planetAshtakaVarga]],
             ['name' => 'sade-sati', 'options' => ['chart_style' => $chartType]],
             ['name' => 'shodasavarga-chart', 'options' => ['chart_style' => 'south-indian']],
             ['name' => 'dasa-periods'],

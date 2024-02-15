@@ -57,7 +57,7 @@ use Prokerala\Api\Astrology\Result\Planet;
         </select>
     </div>
 </div>
-<input type="hidden" name="hide_ashtakavarga" value="0">
+<input type="hidden" name="planet_ashtakavarga" value="all">
 <input type="hidden" name="planet" value="0">
 
 <div class="form-group row">

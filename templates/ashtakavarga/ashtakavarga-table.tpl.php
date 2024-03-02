@@ -4,7 +4,7 @@ declare(strict_types=1);
 use Prokerala\Api\Astrology\Result\Horoscope\Astagavarga\AshtakavargaChartHousePlanet;
 
 /** @param  AshtakavargaChartHousePlanet[] $houses */
-function createAshtagavargaTable(array $houses, int $totalScore, bool $isSarvashtavarga = false): string
+function createAshtakavargaTable(array $houses, int $totalScore, bool $isSarvashtavarga = false): string
 {
     $ascendant = !$isSarvashtavarga ? '<th>Ascendant</th>' : '';
     $table_body = '';

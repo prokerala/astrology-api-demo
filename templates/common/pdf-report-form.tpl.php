@@ -116,12 +116,12 @@ mangal-dosha
 yoga-details
 kaal-sarp-dosha
 sade-sati
-shodasavarga-chart
+shodashvarga-chart
 dasa-periods
 planet-relationship
-ashtakavarga
-sarvashtakavarga
-sudarshana-chakra
+ashtakavarga-chart
+sarvashtakavarga-chart
+sudharshanachakra-chart
         </textarea>
         </div>
     </div>

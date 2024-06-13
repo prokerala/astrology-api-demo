@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use Prokerala\Api\Astrology\Location;
-use Prokerala\Api\Astrology\Western\Service\Charts\ProgressionChart;
 use Prokerala\Api\Astrology\Western\Service\AspectCharts\ProgressionChart as ProgressionAspectChart;
+use Prokerala\Api\Astrology\Western\Service\Charts\ProgressionChart;
 use Prokerala\Api\Astrology\Western\Service\PlanetPositions\ProgressionChart as ProgressionPlanetPositions;
 use Prokerala\Common\Api\Exception\AuthenticationException;
 use Prokerala\Common\Api\Exception\Exception;
@@ -34,9 +34,9 @@ $birthTimeUnknown = false;
 $rectificationChart = 'flat-chart';
 $aspectFilter = 'major';
 
-
 $timezone = 'Asia/Kolkata';
 $current_timezone = 'Asia/Kolkata';
+$la = 'en';
 
 if (isset($_POST['submit'])) {
     $input['datetime'] = $_POST['datetime'];
@@ -56,6 +56,7 @@ if (isset($_POST['submit'])) {
     $aspectFilter = $_POST['aspect_filter'];
     $timezone = $_POST['timezone'] ?? '';
     $current_timezone = $_POST['current_timezone'] ?? '';
+    $la = $_POST['la'] ?? 'en';
 }
 
 $tz = new DateTimeZone($timezone);
@@ -74,23 +75,52 @@ $apiCreditUsed = 0;
 if ($submit) {
     try {
         $method = new ProgressionChart($client);
-        $chart = $method->process($location, $datetime, $transitLocation, $progressionYear,
-                            $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter);
+        $chart = $method->process(
+            $location,
+            $datetime,
+            $transitLocation,
+            $progressionYear,
+            $houseSystem,
+            $orb,
+            $birthTimeUnknown,
+            $rectificationChart,
+            $aspectFilter,
+            $la
+        );
         $apiCreditUsed += $client->getCreditUsed();
 
         $method = new ProgressionAspectChart($client);
-        $aspectChart = $method->process($location, $datetime, $transitLocation, $progressionYear,
-            $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter);
+        $aspectChart = $method->process(
+            $location,
+            $datetime,
+            $transitLocation,
+            $progressionYear,
+            $houseSystem,
+            $orb,
+            $birthTimeUnknown,
+            $rectificationChart,
+            $aspectFilter,
+            $la
+        );
         $apiCreditUsed += $client->getCreditUsed();
 
         $method = new ProgressionPlanetPositions($client);
 
-        $result = $method->process($location, $datetime, $transitLocation, $progressionYear,
-            $houseSystem, $orb, $birthTimeUnknown, $rectificationChart);
+        $result = $method->process(
+            $location,
+            $datetime,
+            $transitLocation,
+            $progressionYear,
+            $houseSystem,
+            $orb,
+            $birthTimeUnknown,
+            $rectificationChart,
+            $la
+        );
 
-        $details =  $result->getProgressionDetails();
-        $progressionNatalAspects  =  $result->getProgressionNatalAspect();
-        $progressionDate =  $result->getProgressionDate();
+        $details = $result->getProgressionDetails();
+        $progressionNatalAspects = $result->getProgressionNatalAspect();
+        $progressionDate = $result->getProgressionDate();
         $progressionYear = $result->getProgressionYear();
         $houses = $details->getHouses();
         $planetPositions = $details->getPlanetPositions();
@@ -98,7 +128,6 @@ if ($submit) {
         $aspects = $details->getAspects();
         $declinations = $details->getDeclinations();
         $apiCreditUsed += $client->getCreditUsed();
-
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {

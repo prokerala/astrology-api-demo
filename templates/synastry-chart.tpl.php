@@ -1,3 +1,4 @@
+<?php include __DIR__ . '/translations/western/trans.php'; ?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -21,7 +22,7 @@
             <div class="row my-auto">
                 <div class="col-xl-6 col-lg-7 col-md-12 col-sm-12 text-lg-left top-header-text-content">
                     <h2 class="text-white mb-5">
-                        <span class="font-weight-thin">Synastry Chart</span>
+                        <span class="font-weight-thin"><?= __('Synastry Chart') ?></span>
                     </h2>
                 </div>
             </div>
@@ -32,26 +33,26 @@
         <?php include 'common/helper.tpl.php'; ?>
 
         <?php if (!empty($result)): ?>
-            <h3 class="text-center">Synastry Chart</h3>
+            <h3 class="text-center"><?= __('Synastry Chart') ?></h3>
             <div id="chart" class="d-flex justify-content-center">
                 <?= str_replace('<svg ', '<svg preserveAspectRatio="none" viewBox="0 0 700 700" ', $chart); ?>
             </div>
 
-            <h3 class="text-center">Synastry Aspect Chart</h3>
+            <h3 class="text-center"><?= __('Synastry Aspect Chart') ?></h3>
             <div id="chart" class="d-flex justify-content-center">
                 <?= str_replace('<svg ', '<svg preserveAspectRatio="none" viewBox="0 0 500 500" ', $aspectChart); ?>
             </div>
 
-            <h3 class="text-center">Synastry Planet Aspect</h3>
+            <h3 class="text-center"><?= __('Synastry Planet Aspect') ?></h3>
             <div class="d-flex justify-content-center">
                 <table class="table table-bordered w-50">
                     <tr>
-                        <th>Primary Planet</th>
-                        <th>Aspect</th>
-                        <th>Secondary Planet</th>
-                        <th>Orb</th>
+                        <th><?= __('Primary Planet') ?></th>
+                        <th><?= __('Aspect') ?></th>
+                        <th><?= __('Secondary Planet') ?></th>
+                        <th><?= __('Orb') ?></th>
                     </tr>
-                    <tr><th class="text-center" colspan="4">Major Aspects</th></tr>
+                    <tr><th class="text-center" colspan="4"><?= __('Major Aspects') ?></th></tr>
 
                     <?php foreach($aspects as $aspect): ?>
                         <?php if(!in_array($aspect->getAspect()->getName(), ['Opposition', 'Conjunction', 'Sextile', 'Square', 'Trine'])): ?>
@@ -65,7 +66,7 @@
                         </tr>
                     <?php endforeach; ?>
 
-                    <tr><th class="text-center" colspan="4">Minor Aspects</th></tr>
+                    <tr><th class="text-center" colspan="4"><?= __('Minor Aspects') ?></th></tr>
 
                     <?php foreach($aspects as $aspect): ?>
                         <?php if(in_array($aspect->getAspect()->getName(), ['Opposition', 'Conjunction', 'Sextile', 'Square', 'Trine'])): ?>
@@ -85,6 +86,16 @@
             <div class="card contact-form-wrapper box-shadow mx-auto rounded-2 mb-5">
                 <form class="p-5 text-default"  action="synastry-chart.php" method="POST">
                     <?php include 'common/synastry-form.tpl.php'; ?>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-md-4 col-form-label text-md-right text-xs-left">Language: </label>
+                        <div class="col-sm-9 col-md-6">
+                            <select name="la" class="form-control form-control-lg rounded-1">
+                                <option value="en" selected>English</option>
+                                <option value="de">German</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="text-right">
                         <button type="submit" class="btn btn-warning btn-submit">Get Result</button>
                         <input type="hidden" name="submit" value="1">

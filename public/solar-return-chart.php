@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use Prokerala\Api\Astrology\Location;
-use Prokerala\Api\Astrology\Western\Service\Charts\SolarReturnChart;
 use Prokerala\Api\Astrology\Western\Service\AspectCharts\SolarReturnChart as SolarReturnAspectChart;
+use Prokerala\Api\Astrology\Western\Service\Charts\SolarReturnChart;
 use Prokerala\Api\Astrology\Western\Service\PlanetPositions\SolarReturnChart as SolarReturnPlanetPositions;
 use Prokerala\Common\Api\Exception\AuthenticationException;
 use Prokerala\Common\Api\Exception\Exception;
@@ -36,6 +36,7 @@ $aspectFilter = 'major';
 
 $timezone = 'Asia/Kolkata';
 $current_timezone = 'Asia/Kolkata';
+$la = 'en';
 
 if (isset($_POST['submit'])) {
     $input['datetime'] = $_POST['datetime'];
@@ -56,6 +57,7 @@ if (isset($_POST['submit'])) {
 
     $timezone = $_POST['timezone'] ?? '';
     $current_timezone = $_POST['current_timezone'] ?? '';
+    $la = $_POST['la'] ?? 'en';
 }
 
 $tz = new DateTimeZone($timezone);
@@ -73,29 +75,57 @@ $apiCreditUsed = 0;
 if ($submit) {
     try {
         $method = new SolarReturnChart($client);
-        $chart = $method->process($location, $datetime, $transitLocation, $solarYear,
-                            $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter);
+        $chart = $method->process(
+            $location,
+            $datetime,
+            $transitLocation,
+            $solarYear,
+            $houseSystem,
+            $orb,
+            $birthTimeUnknown,
+            $rectificationChart,
+            $aspectFilter,
+            $la
+        );
         $apiCreditUsed += $client->getCreditUsed();
 
         $method = new SolarReturnAspectChart($client);
-        $aspectChart = $method->process($location, $datetime, $transitLocation, $solarYear,
-            $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter);
+        $aspectChart = $method->process(
+            $location,
+            $datetime,
+            $transitLocation,
+            $solarYear,
+            $houseSystem,
+            $orb,
+            $birthTimeUnknown,
+            $rectificationChart,
+            $aspectFilter,
+            $la
+        );
         $apiCreditUsed += $client->getCreditUsed();
 
         $method = new SolarReturnPlanetPositions($client);
-        $result = $method->process($location, $datetime, $transitLocation, $solarYear,
-            $houseSystem, $orb, $birthTimeUnknown, $rectificationChart);
+        $result = $method->process(
+            $location,
+            $datetime,
+            $transitLocation,
+            $solarYear,
+            $houseSystem,
+            $orb,
+            $birthTimeUnknown,
+            $rectificationChart,
+            $la
+        );
 
-        $details =  $result->getSolarDetails();
-        $solarNatalAspects  =  $result->getSolarNatalAspect();
-        $solarDatetime =  $result->getSolarDatetime();
+        $details = $result->getSolarDetails();
+        $solarNatalAspects = $result->getSolarNatalAspect();
+        $solarDatetime = $result->getSolarDatetime();
         $houses = $details->getHouses();
         $planetPositions = $details->getPlanetPositions();
         $angles = $details->getAngles();
         $aspects = $details->getAspects();
         $declinations = $details->getDeclinations();
         $apiCreditUsed += $client->getCreditUsed();
-
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {

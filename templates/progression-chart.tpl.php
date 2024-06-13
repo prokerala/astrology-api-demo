@@ -1,3 +1,4 @@
+<?php include __DIR__ . '/translations/western/trans.php'; ?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -21,7 +22,7 @@
             <div class="row my-auto">
                 <div class="col-xl-6 col-lg-7 col-md-12 col-sm-12 text-lg-left top-header-text-content">
                     <h2 class="text-white mb-5">
-                        <span class="font-weight-thin">Progression Chart</span>
+                        <span class="font-weight-thin"><?= __('Progression Chart') ?></span>
                     </h2>
                 </div>
             </div>
@@ -32,37 +33,37 @@
         <?php include 'common/helper.tpl.php'; ?>
 
         <?php if (!empty($result)): ?>
-            <h3 class="text-center">Progression Chart</h3>
+            <h3 class="text-center"><?= __('Progression Chart') ?></h3>
             <div id="chart" class="d-flex justify-content-center">
                 <?= str_replace('<svg ', '<svg preserveAspectRatio="none" viewBox="0 0 700 700" ', $chart); ?>
             </div>
 
-            <h3 class="text-center">Progression Aspect Chart</h3>
+            <h3 class="text-center"><?= __('Progression Aspect Chart') ?></h3>
             <div id="chart" class="d-flex justify-content-center">
                 <?= str_replace('<svg ', '<svg preserveAspectRatio="none" viewBox="0 0 710 470" ', $aspectChart); ?>
             </div>
 
             <table class="table table-bordered mt-5 mb-5">
                 <tr>
-                    <th>Progression Year</th>
+                    <th><?= __('Progression Year') ?></th>
                     <td><?=$progressionYear?></td>
                 </tr>
                 <tr>
-                    <th>Progression Date</th>
+                    <th><?= __('Progression Date') ?></th>
                     <td><?=$progressionDate->format('d M Y')?></td>
                 </tr>
             </table>
 
-            <h3 class="text-center">Progression Planet Positions</h3>
+            <h3 class="text-center"><?= __('Progression Planet Positions') ?></h3>
 
             <!--            Planet Position table-->
             <table class="table table-bordered">
                 <tr>
-                    <th>Planet</th>
-                    <th>Longitude</th>
-                    <th>Degree</th>
-                    <th>House</th>
-                    <th>Zodiac</th>
+                    <th><?= __('Planet') ?></th>
+                    <th><?= __('Longitude') ?></th>
+                    <th><?= __('Degree') ?></th>
+                    <th><?= __('House') ?></th>
+                    <th><?= __('Zodiac') ?></th>
                 </tr>
                 <?php foreach($planetPositions as $planetPosition): ?>
                     <tr>
@@ -74,7 +75,7 @@
                     </tr>
                 <?php endforeach; ?>
             </table>
-            <h3 class="text-center">Retrograding Planets</h3>
+            <h3 class="text-center"><?= __('Retrograding Planets') ?></h3>
 
             <table class="table table-bordered">
                 <?php foreach($planetPositions as $planetPosition): ?>
@@ -87,16 +88,16 @@
                 <?php endforeach; ?>
             </table>
 
-            <h3 class="text-center mt-5">Angles</h3>
+            <h3 class="text-center mt-5"><?= __('Angles') ?></h3>
 
             <!--            Planet Position table-->
             <table class="table table-bordered">
                 <tr>
-                    <th>Angles</th>
-                    <th>Longitude</th>
-                    <th>Degree</th>
-                    <th>House</th>
-                    <th>Zodiac</th>
+                    <th><?= __('Angles') ?></th>
+                    <th><?= __('Longitude') ?></th>
+                    <th><?= __('Degree') ?></th>
+                    <th><?= __('House') ?></th>
+                    <th><?= __('Zodiac') ?></th>
                 </tr>
                 <?php foreach($angles as $planetPosition): ?>
                     <tr>
@@ -110,12 +111,12 @@
             </table>
 
             <!--            House table-->
-            <h3 class="text-center mt-5">Progression House Cusps</h3>
+            <h3 class="text-center mt-5"><?= __('Progression House Cusps') ?></h3>
             <table class="table table-bordered">
                 <tr>
-                    <th>House</th>
-                    <th>Start Cusp</th>
-                    <th>End Cusp</th>
+                    <th><?= __('House') ?></th>
+                    <th><?= __('Start Cusp') ?></th>
+                    <th><?= __('End Cusp') ?></th>
                 </tr>
                 <?php foreach($houses as $house): ?>
                     <tr>
@@ -126,34 +127,34 @@
                 <?php endforeach; ?>
             </table>
 
-            <h3 class="text-center">List of Aspects</h3>
+            <h3 class="text-center"><?= __('List of Aspects') ?></h3>
 
             <table class="table table-bordered m-5">
                 <tr>
-                    <th>Major Aspects</th>
-                    <td>Opposition, Conjunction, Sextile, Square, Trine</td>
+                    <th><?= __('Major Aspects') ?></th>
+                    <td><?= __('Opposition') ?>, <?= __('Conjunction') ?>, <?= __('Sextile') ?>, <?= __('Square') ?>, <?= __('Trine') ?></td>
                 </tr>
                 <tr>
-                    <th>Minor Aspects</th>
-                    <td>Semi Sextile, Semi Square, BiQuintile, Quincunx, Sesquiquadrate</td>
+                    <th><?= __('Minor Aspects') ?></th>
+                    <td><?= __('Semi Sextile') ?>, <?= __('Semi Square') ?>, <?= __('Bi Quintile') ?>, <?= __('Quincunx') ?>, <?= __('Sesquiquadrate') ?></td>
                 </tr>
                 <tr>
-                    <th>Declination Aspects</th>
-                    <td>Parallel, Contra Parallel</td>
+                    <th><?= __('Declination Aspects') ?></th>
+                    <td><?= __('Parallel') ?>, <?= __('Contra Parallel') ?></td>
                 </tr>
             </table>
 
             <!--            Aspect table-->
-            <h3 class="text-center mt-5">Progression Aspects</h3>
+            <h3 class="text-center mt-5"><?= __('Progression Aspects') ?></h3>
             <table class="table table-bordered">
                 <tr>
-                    <th>Planet 1</th>
-                    <th>Aspect</th>
-                    <th>Planet 2</th>
-                    <th>Orb</th>
+                    <th><?= __('Planet 1') ?></th>
+                    <th><?= __('Aspect') ?></th>
+                    <th><?= __('Planet 2') ?></th>
+                    <th><?= __('Orb') ?></th>
                 </tr>
 
-                <tr><th class="text-center" colspan="4">Major Aspects</th></tr>
+                <tr><th class="text-center" colspan="4"><?= __('Major Aspects') ?></th></tr>
 
                 <?php foreach($aspects as $aspect): ?>
                     <?php if(!in_array($aspect->getAspect()->getName(), ['Opposition', 'Conjunction', 'Sextile', 'Square', 'Trine'])): ?>
@@ -167,7 +168,7 @@
                     </tr>
                 <?php endforeach; ?>
 
-                <tr><th class="text-center" colspan="4">Minor Aspects</th></tr>
+                <tr><th class="text-center" colspan="4"><?= __('Minor Aspects') ?></th></tr>
 
                 <?php foreach($aspects as $aspect): ?>
                     <?php if(in_array($aspect->getAspect()->getName(), ['Opposition', 'Conjunction', 'Sextile', 'Square', 'Trine'])): ?>
@@ -181,7 +182,7 @@
                     </tr>
                 <?php endforeach; ?>
 
-                <tr><th class="text-center" colspan="4">Declination Aspects</th></tr>
+                <tr><th class="text-center" colspan="4"><?= __('Declination Aspects') ?></th></tr>
 
                 <?php foreach($declinations as $aspect): ?>
                     <tr>
@@ -194,16 +195,16 @@
             </table>
 
             <!--            Progression - Natal Aspects table-->
-            <h3 class="text-center mt-5">Progression - Natal Aspects</h3>
+            <h3 class="text-center mt-5"><?= __('Progression - Natal Aspects') ?></h3>
             <table class="table table-bordered">
                 <tr>
-                    <th>Planet 1</th>
-                    <th>Aspect</th>
-                    <th>Planet 2</th>
-                    <th>Orb</th>
+                    <th><?= __('Planet 1') ?></th>
+                    <th><?= __('Aspect') ?></th>
+                    <th><?= __('Planet 2') ?></th>
+                    <th><?= __('Orb') ?></th>
                 </tr>
 
-                <tr><th class="text-center" colspan="4">Major Aspects</th></tr>
+                <tr><th class="text-center" colspan="4"><?= __('Major Aspects') ?></th></tr>
 
                 <?php foreach($progressionNatalAspects as $aspect): ?>
                     <?php if(!in_array($aspect->getAspect()->getName(), ['Opposition', 'Conjunction', 'Sextile', 'Square', 'Trine'])): ?>
@@ -217,7 +218,7 @@
                     </tr>
                 <?php endforeach; ?>
 
-                <tr><th class="text-center" colspan="4">Minor Aspects</th></tr>
+                <tr><th class="text-center" colspan="4"><?= __('Minor Aspects') ?></th></tr>
 
                 <?php foreach($progressionNatalAspects as $aspect): ?>
                     <?php if(in_array($aspect->getAspect()->getName(), ['Opposition', 'Conjunction', 'Sextile', 'Square', 'Trine'])): ?>
@@ -236,6 +237,16 @@
             <div class="card contact-form-wrapper box-shadow mx-auto rounded-2 mb-5">
                 <form class="p-5 text-default"  action="progression-chart.php" method="POST">
                     <?php include 'common/western-horoscope-form.tpl.php'; ?>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-md-4 col-form-label text-md-right text-xs-left">Language: </label>
+                        <div class="col-sm-9 col-md-6">
+                            <select name="la" class="form-control form-control-lg rounded-1">
+                                <option value="en" selected>English</option>
+                                <option value="de">German</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="text-right">
                         <button type="submit" class="btn btn-warning btn-submit">Get Result</button>
                         <input type="hidden" name="submit" value="1">

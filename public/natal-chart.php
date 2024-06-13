@@ -43,6 +43,7 @@ if (isset($_POST['submit'])) {
     $rectificationChart = $_POST['birth_time_rectification'];
     $aspectFilter = $_POST['aspect_filter'];
     $timezone = $_POST['timezone'] ?? '';
+    $la = $_POST['la'] ?? 'en';
 }
 $tz = new DateTimeZone($timezone);
 
@@ -58,15 +59,15 @@ $apiCreditUsed = 0;
 if ($submit) {
     try {
         $method = new NatalChart($client);
-        $chart = $method->process($location, $datetime, $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter);
+        $chart = $method->process($location, $datetime, $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter, $la);
         $apiCreditUsed += $client->getCreditUsed();
 
         $method = new NatalAspectChart($client);
-        $aspectChart = $method->process($location, $datetime, $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter);
+        $aspectChart = $method->process($location, $datetime, $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $aspectFilter, $la);
         $apiCreditUsed += $client->getCreditUsed();
 
         $method = new NatalPlanetPosition($client);
-        $result = $method->process($location, $datetime, $houseSystem, $orb, $birthTimeUnknown, $rectificationChart);
+        $result = $method->process($location, $datetime, $houseSystem, $orb, $birthTimeUnknown, $rectificationChart, $la);
         $planetPositions = $result->getPlanetPositions();
         $houses = $result->getHouses();
         $angles = $result->getAngles();

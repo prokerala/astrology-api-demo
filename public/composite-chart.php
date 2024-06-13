@@ -41,6 +41,7 @@ $aspectFilter = 'major';
 $submit = $_POST['submit'] ?? 0;
 $partner_a_timezone = 'Asia/Kolkata';
 $partner_b_timezone = 'Asia/Kolkata';
+$la = 'en';
 
 if (isset($_POST['submit'])) {
     $primaryDatetime = $_POST['partner_a_dob'];
@@ -69,6 +70,7 @@ if (isset($_POST['submit'])) {
     $aspectFilter = $_POST['aspect_filter'];
     $partner_a_timezone = $_POST['partner_a_timezone'] ?? '';
     $partner_b_timezone = $_POST['partner_b_timezone'] ?? '';
+    $la = $_POST['la'] ?? 'en';
 }
 
 $partner_a_timezone = new DateTimeZone($partner_a_timezone);
@@ -103,7 +105,8 @@ if ($submit) {
             $primaryBirthTimeUnknown,
             $secondaryBirthTimeUnknown,
             $rectificationChart,
-            $aspectFilter
+            $aspectFilter,
+            $la,
         );
         $apiCreditUsed += $client->getCreditUsed();
 
@@ -121,7 +124,8 @@ if ($submit) {
             $primaryBirthTimeUnknown,
             $secondaryBirthTimeUnknown,
             $rectificationChart,
-            $aspectFilter
+            $aspectFilter,
+            $la,
         );
         $apiCreditUsed += $client->getCreditUsed();
 

@@ -43,6 +43,28 @@
     <div class="container prokerala-api-demo-container">
         <?php include 'common/helper.tpl.php'; ?>
         <?php if (!empty($result)): ?>
+        <h2>Maha Dasha</h2>
+            <table class="table table-bordered mb-5 col-12 col-md-6 text-small table-dashas">
+                <thead>
+                <tr>
+                    <th>Mahadasha</th>
+                    <th>Start</th>
+                    <th>End</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach($kundliResult['dashaPeriods'] as $maha_dasha): ?>
+
+                    <?php $maha_dasha_lord = $maha_dasha['name'] ?>
+                    <tr>
+                        <td class="b"><?=$maha_dasha_lord?></td>
+                        <td><?=$maha_dasha['start']->format('d-M, Y')?></td>
+                        <td><?=$maha_dasha['end']->format('d-M, Y')?></td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+
             <?php foreach ($kundliResult['dashaPeriods'] as $mahadashas):?>
                 <h3 class="text-black">Anthardashas in <?=$mahadashas['name']?> Mahadasha</h3>
                 <div class="row">

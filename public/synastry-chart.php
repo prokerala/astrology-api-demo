@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use Prokerala\Api\Astrology\Location;
-use Prokerala\Api\Astrology\Western\Service\Charts\SynastryChart;
 use Prokerala\Api\Astrology\Western\Service\AspectCharts\SynastryChart as SynastryAspectChart;
+use Prokerala\Api\Astrology\Western\Service\Charts\SynastryChart;
 use Prokerala\Api\Astrology\Western\Service\PlanetPositions\SynastryChart as SynastryPlanetAspects;
 use Prokerala\Common\Api\Exception\AuthenticationException;
 use Prokerala\Common\Api\Exception\Exception;
@@ -24,8 +24,8 @@ $secondary_longitude = 139.692;
 $primaryCoordinates = "{$primary_latitude},{$primary_longitude}"; // Mumbai
 $secondaryCoordinates = "{$secondary_latitude},{$secondary_longitude}"; // Tokyo
 
-$primaryDatetime = (new DateTimeImmutable("1989-10-25", new DateTimeZone('Asia/Kolkata')))->format('c');
-$secondaryDatetime = (new DateTimeImmutable("1994-01-18", new DateTimeZone('Asia/Tokyo')))->format('c');
+$primaryDatetime = (new DateTimeImmutable('1989-10-25', new DateTimeZone('Asia/Kolkata')))->format('c');
+$secondaryDatetime = (new DateTimeImmutable('1994-01-18', new DateTimeZone('Asia/Tokyo')))->format('c');
 
 $houseSystem = 'placidus';
 $orb = 'default';
@@ -39,6 +39,7 @@ $submit = $_POST['submit'] ?? 0;
 
 $partner_a_timezone = 'Asia/Kolkata';
 $partner_b_timezone = 'Asia/Kolkata';
+$la = 'en';
 
 if (isset($_POST['submit'])) {
     $primaryDatetime = $_POST['partner_a_dob'];
@@ -63,8 +64,8 @@ if (isset($_POST['submit'])) {
 
     $partner_a_timezone = $_POST['partner_a_timezone'] ?? '';
     $partner_b_timezone = $_POST['partner_b_timezone'] ?? '';
+    $la = $_POST['la'] ?? 'en';
 }
-
 
 $partner_a_timezone = new DateTimeZone($partner_a_timezone);
 $partner_b_timezone = new DateTimeZone($partner_b_timezone);
@@ -95,7 +96,8 @@ if ($submit) {
             $primaryBirthTimeUnknown,
             $secondaryBirthTimeUnknown,
             $rectificationChart,
-            $aspectFilter
+            $aspectFilter,
+            $la,
         );
         $apiCreditUsed += $client->getCreditUsed();
 
@@ -112,7 +114,8 @@ if ($submit) {
             $primaryBirthTimeUnknown,
             $secondaryBirthTimeUnknown,
             $rectificationChart,
-            $aspectFilter
+            $aspectFilter,
+            $la,
         );
         $apiCreditUsed += $client->getCreditUsed();
 
@@ -129,10 +132,10 @@ if ($submit) {
             $primaryBirthTimeUnknown,
             $secondaryBirthTimeUnknown,
             $rectificationChart,
+            $la,
         );
         $aspects = $result->getAspects();
         $apiCreditUsed += $client->getCreditUsed();
-
     } catch (ValidationException $e) {
         $errors = $e->getValidationErrors();
     } catch (QuotaExceededException $e) {

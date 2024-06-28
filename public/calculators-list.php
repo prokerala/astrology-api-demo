@@ -1,6 +1,18 @@
 <?php
 
 $samples = [
+    'chandrashtama' => [
+        'image' => '/assets/img/icon/auspicious-period.png',
+        'title' => 'Chandrashtama',
+        'url' => DEMO_BASE_URL . '/chandrashtama.php',
+        'docs' => 'chandrashtama',
+    ],
+    'chandrashtama-periods' => [
+        'image' => '/assets/img/icon/auspicious-period.png',
+        'title' => 'Chandrashtama Periods',
+        'url' => DEMO_BASE_URL . '/chandrashtama-periods.php',
+        'docs' => 'chandrashtama-periods',
+    ],
     'ashtakavarga' => [
         'image' => '/assets/img/icon/auspicious-period.png',
         'title' => 'Ashtakavarga and Sarvashta varga Chart',

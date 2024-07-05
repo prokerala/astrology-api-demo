@@ -1,12 +1,6 @@
 <?php
 
 $samples = [
-    'chandrashtama' => [
-        'image' => '/assets/img/icon/auspicious-period.png',
-        'title' => 'Chandrashtama',
-        'url' => DEMO_BASE_URL . '/chandrashtama.php',
-        'docs' => 'chandrashtama',
-    ],
     'chandrashtama-periods' => [
         'image' => '/assets/img/icon/auspicious-period.png',
         'title' => 'Chandrashtama Periods',

@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Tara Bala Astrology API Demo</title>
-    <?php include 'common/style.tpl.php'; ?>
+    <?php use Prokerala\Api\Astrology\Result\Panchang\TaraBala as TaraBalaResult;
+
+    include 'common/style.tpl.php'; ?>
     <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/style.css">
     <link rel="stylesheet" href="<?=DEMO_BASE_URL?>/build/reports.css">
     <style>
@@ -39,17 +41,26 @@
         <?php include 'common/helper.tpl.php'; ?>
         <?php if(!empty($result)): ?>
             <h2 class="text-center text-black">Tara Bala</h2>
+        <?php /** @var TaraBalaResult $result */?>
             <?php foreach($result->getTaraBala() as $taraBala): ?>
                 <table class="table table-bordered text-large text-center table-hover">
-                    <tr><td class="text-right">Nakshatra</td>
+                    <tr>
+                        <th class="text-right">Tarabalam</th>
+                        <td class="text-left"><?= $taraBala->getName() ?></td>
+                    </tr>
+                    <tr>
+                        <th class="text-right">Strength</th>
+                        <td class="text-left"><?= $taraBala->getType() ?></td>
+                    </tr>
+                    <tr><th class="text-right">Nakshatra</th>
                         <td class="text-left">
                             <?php foreach ($taraBala->getNakshatras() as $nakshatra): ?>
                                 <?=$nakshatra->getName()?>,
                             <?php endforeach; ?>
                         </td>
                     </tr>
-                    <tr><td class="text-right">Start</td><td class="text-left"><?=$taraBala->getStart()->format('d M, Y, h:i A')?></td></tr>
-                    <tr><td class="text-right">End</td><td class="text-left"><?=$taraBala->getEnd()->format('d M, Y, h:i A')?></td></tr>
+                    <tr><th class="text-right">Start</th><td class="text-left"><?=$taraBala->getStart()->format('d M, Y, h:i A')?></td></tr>
+                    <tr><th class="text-right">End</th><td class="text-left"><?=$taraBala->getEnd()->format('d M, Y, h:i A')?></td></tr>
                 </table>
             <?php endforeach; ?>
         <?php endif; ?>

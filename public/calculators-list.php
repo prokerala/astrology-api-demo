@@ -1,8 +1,20 @@
 <?php
 
 $samples = [
-    'ashtakavarga' => [
+    'gowri-nalla-neram' => [
         'image' => '/assets/img/icon/auspicious-period.png',
+        'title' => 'Gowri Nalla Neram',
+        'url' => DEMO_BASE_URL . '/gowri-nalla-neram.php',
+        'docs' => 'gowri-nalla-neram',
+    ],
+    'chandrashtama-periods' => [
+        'image' => '/assets/img/icon/auspicious-period.png',
+        'title' => 'Chandrashtama Periods',
+        'url' => DEMO_BASE_URL . '/chandrashtama-periods.php',
+        'docs' => 'chandrashtama-periods',
+    ],
+    'ashtakavarga' => [
+        'image' => '/assets/img/icon/papasamyam.png',
         'title' => 'Ashtakavarga and Sarvashta varga Chart',
         'url' => DEMO_BASE_URL . '/ashtakavarga.php',
         'docs' => 'ashtakavarga',

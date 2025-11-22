@@ -223,6 +223,12 @@ $samples = [
         'url' => DEMO_BASE_URL . '/love-horoscope.php',
         'docs' => 'horoscope-daily-love-compatibility',
     ],
+    'batch-compatibility' => [
+        'image' => '/assets/img/icon/thirumana-porutham.png',
+        'title' => 'Batch Compatibility',
+        'url' => DEMO_BASE_URL . '/batch-compatibility.php',
+        'docs' => 'batch-compatibility',
+    ],
     'planet-relationship' => [
         'image' => '/assets/img/icon/dasha-periods.png',
         'title' => 'Planet Relationship',

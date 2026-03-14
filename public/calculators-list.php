@@ -283,6 +283,12 @@ $samples = [
         'url' => DEMO_BASE_URL . '/composite-chart.php',
         'docs' => 'composite-chart',
     ],
+    'raja-yoga' => [
+        'image' => '/assets/img/icon/synastry.png',
+        'title' => 'Raja Yoga',
+        'url' => DEMO_BASE_URL . '/raja-yoga.php',
+        'docs' => 'get-basic-raja-yoga',
+    ],
 ];
 
 $westernSamples = [

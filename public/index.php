@@ -53,6 +53,7 @@ $arGroupCalculators = [
         'thirumana-porutham',
         'porutham',
         'papasamyam-check',
+        'batch-compatibility'
     ],
     'Western Astrology' => [
         'natal-chart',
